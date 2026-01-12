@@ -1,0 +1,48 @@
+
+import React from 'react';
+import { Language, TRANSLATIONS } from '../constants';
+import BrandLogo from './BrandLogo';
+
+interface HeaderProps {
+  lang: Language;
+  setLang: (lang: Language) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
+  const t = TRANSLATIONS[lang].nav;
+
+  return (
+    <nav className="fixed top-0 left-0 w-full z-50 mix-blend-difference px-6 py-6 md:px-12 flex justify-between items-center">
+      <a href="/" className="group py-2">
+        <BrandLogo size="md" />
+      </a>
+      
+      <div className="flex items-center gap-4 md:gap-12">
+        <div className="hidden md:flex gap-8 text-[9px] font-bold uppercase tracking-[0.25em] text-neutral-400">
+          <a href="#work" className="hover:text-white transition-colors">{t.strategy}</a>
+          <a href="#about-trigger" className="hover:text-white transition-colors">{t.about}</a>
+          <a href="#about" className="hover:text-white transition-colors">{t.philosophy}</a>
+          <a href="#contact" className="hover:text-white transition-colors">{t.contact}</a>
+        </div>
+
+        {/* Language Switcher */}
+        <div className="flex gap-1 border border-neutral-800 rounded-full p-1 bg-black/50 backdrop-blur-md">
+          <button 
+            onClick={() => setLang('PT')}
+            className={`text-[8px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'PT' ? 'bg-[#FFEE00] text-black' : 'text-neutral-500 hover:text-white'}`}
+          >
+            PT
+          </button>
+          <button 
+            onClick={() => setLang('EN')}
+            className={`text-[8px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'EN' ? 'bg-[#FFEE00] text-black' : 'text-neutral-500 hover:text-white'}`}
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Header;

@@ -1,5 +1,6 @@
 
-import { HighlightColor, ListItem, Principle } from './types';
+import { HighlightColor, ListItem, Principle, CategoryGroup } from './types';
+import { ALL_REPORTS } from './reportsData';
 
 export const COLORS = {
   YELLOW: '#FFEE00',
@@ -10,19 +11,49 @@ export const COLORS = {
 
 export type Language = 'PT' | 'EN';
 
-export interface CategoryGroup {
-  name: string;
-  items: ListItem[];
-}
-
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'Capacidades', philosophy: 'Filosofia', contact: 'Direto', back: 'Voltar', about: 'Sobre' },
+    nav: { strategy: 'Capacidades', philosophy: 'Filosofia', contact: 'Direto', back: 'Voltar', about: 'Sobre', reports: 'Reports 2026' },
     hero: {
       line1: 'Sistemas',
       line2: 'de Futuro',
       description: 'Estrategista de produto e growth especializado em transformar visão bruta em ecossistemas de alta performance.',
       focus: 'Foco Atual'
+    },
+    reportsPage: {
+      title: 'Intelligence',
+      subtitle: 'Hub 2026',
+      description: 'Análises proprietárias sobre a convergência entre tecnologia, economia e comportamento humano no território brasileiro.',
+      ui: {
+        summary: 'Sumário Executivo',
+        methodology: 'Metodologia de Inteligência',
+        analysis: 'Análise Principal de Mercado',
+        findings: 'Principais Descobertas (Key Findings)',
+        recommendations: 'Conclusões & Recomendações Estratégicas',
+        nextSteps: 'Próximos Pasos & Monitoramento',
+        references: 'Referências & Dados',
+        backToHub: 'Voltar para o Hub',
+        access: 'Acessar Report Completo',
+        truthIndex: 'Índice de Veracidade Probabilística',
+        metricsTitle: 'Indicadores de Performance 2026',
+        insightsTitle: 'Deep Insights & Projeções',
+        sourcesTitle: 'Fontes de Pesquisa & Verificação'
+      },
+      categories: {
+        all: 'Todos',
+        market: 'Mercado & IA',
+        algo: 'Algoritmos & Ontologia',
+        data: 'Dados & Esportes',
+        esg: 'Sustentabilidade',
+        consumer: 'Comportamento',
+        finance: 'Mercado Financeiro',
+        mobility: 'Mobilidade',
+        health: 'Saúde',
+        edu: 'Educação',
+        culture: 'Cultura',
+        exp: 'Experimental'
+      },
+      items: ALL_REPORTS
     },
     about: {
       title: 'O Arquiteto',
@@ -51,7 +82,7 @@ export const TRANSLATIONS = {
       strategy: { title: 'Estratégias', category: 'Vision', desc: 'Desenho de manobras táticas e visão de longo prazo.', thesis: 'Estratégia não é um plano, é uma posição de poder em constante mutação.', impact: 'Criação de fossos competitivos e aumento de LTV.' },
       innovation: { title: 'Inovação', category: 'Disruption', desc: 'Criação de novos paradigmas e produtos.', thesis: 'Inovação real é invisível até que se torne indispensável.', impact: 'Abertura de novos mercados e verticais.' },
       marketing: { title: 'Marketing', category: 'Narrative', desc: 'Posicionamento e construção de autoridade.', thesis: 'Marketing é a tradução da verdade do produto para a linguagem do desejo.', impact: 'Redução de CAC e construção de Brand Equity.' },
-      paidMedia: { title: 'Mídia Paga', category: 'Performance', desc: 'Escalabilidade através de algoritmos.', thesis: 'Mídia paga é o combustível; o sistema é o motor.', impact: 'Escala exponencial de receita com ROI controlado.' },
+      paidMedia: { title: 'Mídia Paga', category: 'Performance', desc: 'Escalabilidade através de algoritmos.', thesis: 'Mídia paga é o combustível; o system é o motor.', impact: 'Escala exponencial de receita com ROI controlado.' },
       design: { title: 'Design', category: 'Systems', desc: 'Interface onde a forma segue a intenção.', thesis: 'Design sistêmico elimina fricção e acelera a decisão.', impact: 'Aumento de conversão e retenção emocional.' },
       ai: { title: 'IA', category: 'Intelligence', desc: 'Implementação de inteligência generativa.', thesis: 'IA não substitui o humano, ela amplia a capacidade de síntese e execução.', impact: 'Ganho de 10x em velocidade operacional.' },
       vibeCoding: { title: 'Vibe Coding', category: 'Velocity', desc: 'Desenvolvimento ágil utilizando LLMs.', thesis: 'A barreira entre ideia e execução foi destruída pela linguagem natural.', impact: 'Deploy de protótipos funcionais em tempo recorde.' },
@@ -70,17 +101,52 @@ export const TRANSLATIONS = {
     }
   },
   EN: {
-    nav: { strategy: 'Capacities', philosophy: 'Philosophy', contact: 'Direct', back: 'Back', about: 'About' },
+    nav: { strategy: 'Capacities', philosophy: 'Philosophy', contact: 'Direct', back: 'Back', about: 'About', reports: 'Reports 2026' },
     hero: {
       line1: 'Future',
       line2: 'Systems',
       description: 'Product & growth strategist specialized in transforming raw vision into high-performance ecosystems.',
       focus: 'Current Focus'
     },
+    reportsPage: {
+      title: 'Intelligence',
+      subtitle: 'Hub 2026',
+      description: 'Proprietary analyses on the convergence of technology, economy, and human behavior.',
+      ui: {
+        summary: 'Executive Summary',
+        methodology: 'Intelligence Methodology',
+        analysis: 'Main Market Analysis',
+        findings: 'Key Findings',
+        recommendations: 'Conclusions & Recommendations',
+        nextSteps: 'Next Steps',
+        references: 'References',
+        backToHub: 'Back to Hub',
+        access: 'Access Full Report',
+        truthIndex: 'Probabilistic Truth Index',
+        metricsTitle: '2026 Performance Indicators',
+        insightsTitle: 'Deep Insights & Projections',
+        sourcesTitle: 'Research Sources & Verification'
+      },
+      categories: {
+        all: 'All',
+        market: 'Market & AI',
+        algo: 'Algorithms & Ontology',
+        data: 'Data & Sports',
+        esg: 'Sustainability',
+        consumer: 'Consumer Behavior',
+        finance: 'Finance & Real Estate',
+        mobility: 'Mobility',
+        health: 'Digital Health',
+        edu: 'Education & Tech',
+        culture: 'Culture & Gaming',
+        exp: 'Experimental'
+      },
+      items: ALL_REPORTS
+    },
     about: {
       title: 'The Architect',
       subtitle: 'Fernando Ramalho is the intersection of analytical rigor and creative execution.',
-      manifesto: 'Strategy is not about what you do, it is about what you stop doing to dominate what remains. I don’t just build products; I design growth engines that self-optimize.',
+      manifesto: 'Strategy is not about what you do, it is about what you stop doing to dominate what remains.',
       stats: [
         { label: 'Vision', value: 'Strategic' },
         { label: 'Execution', value: 'Systemic' },

@@ -6,9 +6,10 @@ import BrandLogo from './BrandLogo';
 interface HeaderProps {
   lang: Language;
   setLang: (lang: Language) => void;
+  onOpenReports?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
+const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
   const t = TRANSLATIONS[lang].nav;
 
   return (
@@ -21,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
         <div className="hidden md:flex gap-8 text-[9px] font-bold uppercase tracking-[0.25em] text-neutral-400">
           <a href="#work" className="hover:text-white transition-colors">{t.strategy}</a>
           <a href="#about-trigger" className="hover:text-white transition-colors">{t.about}</a>
+          <button onClick={onOpenReports} className="hover:text-[#FFEE00] transition-colors uppercase">{t.reports}</button>
           <a href="#about" className="hover:text-white transition-colors">{t.philosophy}</a>
           <a href="#contact" className="hover:text-white transition-colors">{t.contact}</a>
         </div>

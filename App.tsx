@@ -7,6 +7,7 @@ import StrategySection from './components/StrategySection';
 import Footer from './components/Footer';
 import CapacityDetail from './components/CapacityDetail';
 import AboutView from './components/AboutView';
+import ReportsView from './components/ReportsView';
 import { Language } from './constants';
 import { ListItem } from './types';
 
@@ -14,6 +15,7 @@ function App() {
   const [lang, setLang] = useState<Language>('PT');
   const [selectedCapacity, setSelectedCapacity] = useState<ListItem | null>(null);
   const [showAbout, setShowAbout] = useState(false);
+  const [showReports, setShowReports] = useState(false);
 
   // Smooth scroll implementation for anchor links
   useEffect(() => {
@@ -41,22 +43,30 @@ function App() {
     return () => window.removeEventListener('click', handleScroll);
   }, []);
 
-  // Lock scroll when detail or about is open
+  // Lock scroll when detail or about or reports is open
   useEffect(() => {
-    if (selectedCapacity || showAbout) {
+    if (selectedCapacity || showAbout || showReports) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [selectedCapacity, showAbout]);
+  }, [selectedCapacity, showAbout, showReports]);
+
+  const isAnyViewOpen = !!selectedCapacity || showAbout || showReports;
 
   return (
     <div className="relative bg-[#050505] text-white overflow-x-hidden selection:bg-[#FFEE00] selection:text-black">
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] z-50"></div>
       
-      {(!selectedCapacity && !showAbout) && <Header lang={lang} setLang={setLang} />}
+      {!isAnyViewOpen && (
+        <Header 
+          lang={lang} 
+          setLang={setLang} 
+          onOpenReports={() => setShowReports(true)} 
+        />
+      )}
       
-      <main className={(selectedCapacity || showAbout) ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
+      <main className={isAnyViewOpen ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
         <Hero lang={lang} />
         
         <div className="px-6 md:px-12 mb-20">
@@ -77,7 +87,7 @@ function App() {
         </section>
       </main>
       
-      {(!selectedCapacity && !showAbout) && <Footer lang={lang} />}
+      {!isAnyViewOpen && <Footer lang={lang} />}
 
       {selectedCapacity && (
         <CapacityDetail 
@@ -91,6 +101,13 @@ function App() {
         <AboutView 
           lang={lang} 
           onClose={() => setShowAbout(false)} 
+        />
+      )}
+
+      {showReports && (
+        <ReportsView 
+          lang={lang} 
+          onClose={() => setShowReports(false)} 
         />
       )}
     </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
+import CommitsGrid from './CommitsGrid';
 
 interface FooterProps {
   lang: Language;
@@ -63,6 +64,16 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             alt="Bandeira do Brasil" 
             className="w-6 h-4 object-contain"
           />
+        </div>
+        
+        {/* Futuro Grid - Elemento de Atenção Final */}
+        <div className="flex justify-center items-center pt-12 border-t border-neutral-900/50">
+          <div className="flex flex-col items-center gap-6">
+            <CommitsGrid text="O FUTURO COMEÇOU" />
+            <p className="text-[8px] font-black uppercase tracking-[0.4em] text-neutral-800 text-center">
+              A INOVAÇÃO NÃO ESPERA
+            </p>
+          </div>
         </div>
       </div>
     </footer>

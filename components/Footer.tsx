@@ -17,15 +17,6 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-16">
           <div className="max-w-2xl flex flex-col gap-6">
-            <div className="flex flex-row items-baseline font-black uppercase tracking-[0.1em] text-[11px] md:text-xs opacity-50">
-              <span className="text-white">
-                FERNANDO
-              </span>
-              <span className="text-[#5AB473] mx-[1px]">.</span>
-              <span className="text-neutral-500 opacity-70 group-hover:text-neutral-300 group-hover:opacity-100 transition-all duration-500">
-                RAMALHO
-              </span>
-            </div>
             
             <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-tight mt-2 uppercase">
               {t.cta.split(' ').slice(0, -1).join(' ')} <span className="text-[#5AB473] italic">{t.cta.split(' ').slice(-1)}</span>
@@ -51,6 +42,11 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               {t.rights} <br /> 
               SYSTEMS FOR DOMINANCE
             </div>
+            <img 
+              src="/logofernando.png" 
+              alt="FERNANDO.RAMALHO" 
+              className="h-3 w-auto"
+            />
           </div>
         </div>
         

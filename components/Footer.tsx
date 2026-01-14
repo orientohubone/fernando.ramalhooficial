@@ -32,8 +32,8 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             </h2>
             
             <div className="flex flex-wrap gap-8 items-center mt-2">
-              <a href="mailto:fernandoluizsouzaramalho@gmail.com" className="text-base md:text-lg font-black uppercase tracking-widest border-b-2 border-[#5AB473] pb-1 hover:bg-[#5AB473] hover:text-black transition-all">
-                fernandoluizsouzaramalho@gmail.com
+              <a href="mailto:fernando@orientohub.com.br" className="text-base md:text-lg font-black uppercase tracking-widest border-b-2 border-[#5AB473] pb-1 hover:bg-[#5AB473] hover:text-black transition-all">
+                fernando@orientohub.com.br
               </a>
             </div>
           </div>

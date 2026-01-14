@@ -139,10 +139,10 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
             </section>
 
             <section className="pt-24 border-t border-neutral-900">
-               <a href="mailto:fernandoluizsouzaramalho@gmail.com" className="group block">
+               <a href="mailto:fernando@orientohub.com.br" className="group block">
                  <span className="block text-[10px] font-black uppercase tracking-[0.6em] text-neutral-700 mb-4 group-hover:text-[#FFEE00] transition-colors">CONTATO DIRETO</span>
                  <span className="text-2xl md:text-4xl font-black border-b-2 border-[#FFEE00] pb-2 group-hover:bg-[#FFEE00] group-hover:text-black transition-all inline-block uppercase tracking-tighter">
-                   fernandoluizsouzaramalho@gmail.com
+                   fernando@orientohub.com.br
                  </span>
                </a>
             </section>

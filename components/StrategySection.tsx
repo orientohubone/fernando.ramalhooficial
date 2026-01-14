@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Language, TRANSLATIONS, getPrinciples } from '../constants.tsx';
+import { Language, TRANSLATIONS, getPrinciples } from '../constants';
 
 interface StrategySectionProps {
   lang: Language;

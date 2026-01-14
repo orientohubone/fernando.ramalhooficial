@@ -88,7 +88,7 @@ export const TRANSLATIONS = {
       design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface onde a forma segue a intenção.', thesis: 'DESIGN SISTÊMICO ELIMINA FRICÇÃO E ACELERA A DECISÃO.', impact: 'Aumento de conversão e retenção emocional.' },
       ai: { title: 'IA', category: 'INTELLIGENCE', desc: 'Implementação de inteligência generativa.', thesis: 'IA NÃO SUBSTITUI O HUMANO, ELA AMPLIA A CAPACIDADE DE SÍNTESE E EXECUÇÃO.', impact: 'Ganho de 10x em velocidade operacional.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Desenvolvimento ágil utilizando LLMs.', thesis: 'A BARREIRA ENTRE IDEIA E EXECUÇÃO FOI DESTRUÍDA PELA LINGUAGEM NATURAL.', impact: 'Deploy de protótipos funcionais em tempo recorde.' },
-      brandReg: { title: 'REGISTRO DE MARCA', category: 'EQUITY', desc: 'Proteção de ativos intelectuais.', thesis: 'UMA MARCA SEM PROTEÇÃO É APENAS UM EMPRÉSTIMO DO MERCADO.', impact: 'Segurança jurídica e valorização de ativos.' }
+      brandReg: { title: 'MARCAS', category: 'EQUITY', desc: 'Proteção e valorização de marcas.', thesis: 'UMA MARCA SEM PROTEÇÃO É APENAS UM EMPRÉSTIMO DO MERCADO.', impact: 'Segurança jurídica e valorização de ativos.' }
     },
     mindset: {
       title: 'MENTALIDADE OPERACIONAL',
@@ -178,7 +178,7 @@ export const TRANSLATIONS = {
       design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface where form follows intent.', thesis: 'SYSTEMIC DESIGN ELIMINATES FRICTION AND ACCELERATES DECISION-MAKING.', impact: 'Conversion increase and emotional retention.' },
       ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI does not replace humans, it amplifies the capacity for synthesis and execution.', impact: '10x gain in operational speed.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Agile development using LLMs.', thesis: 'THE BARRIER BETWEEN IDEA AND EXECUTION HAS BEEN DESTROYED BY NATURAL LANGUAGE.', impact: 'Deployment of functional prototypes in record time.' },
-      brandReg: { title: 'BRAND EQUITY', category: 'EQUITY', desc: 'Protecting intellectual assets.', thesis: 'A BRAND WITHOUT PROTECTION IS JUST A LOAN FROM THE MARKET.', impact: 'Legal security and asset valuation.' }
+      brandReg: { title: 'BRANDS', category: 'EQUITY', desc: 'Brand protection and valuation.', thesis: 'A BRAND WITHOUT PROTECTION IS JUST A LOAN FROM THE MARKET.', impact: 'Legal security and asset valuation.' }
     },
     mindset: {
       title: 'OPERATIONAL MINDSET',

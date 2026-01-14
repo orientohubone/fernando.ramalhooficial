@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -8,6 +7,7 @@ import Footer from './components/Footer';
 import CapacityDetail from './components/CapacityDetail';
 import AboutView from './components/AboutView';
 import ReportsView from './components/ReportsView';
+import WhatsAppButton from './components/WhatsAppButton';
 import { Language } from './constants';
 import { ListItem } from './types';
 
@@ -110,6 +110,9 @@ function App() {
           onClose={() => setShowReports(false)} 
         />
       )}
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 }

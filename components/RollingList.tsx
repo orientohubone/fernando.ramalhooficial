@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { ListItem, HighlightColor } from '../types';
-import { Language, TRANSLATIONS, getCategorizedPillars } from '../constants.tsx';
+import { Language, TRANSLATIONS, getCategorizedPillars } from '../constants';
 
 interface RollingTextItemProps {
   item: ListItem;

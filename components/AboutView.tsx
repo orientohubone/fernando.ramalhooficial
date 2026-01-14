@@ -73,9 +73,44 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
                 <div className="h-[1px] w-12 bg-[#FFEE00]"></div>
                 <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">Manifesto</h3>
               </div>
-              <p className="text-3xl md:text-5xl font-black tracking-tighter leading-tight text-white uppercase italic">
-                {t.manifesto}
-              </p>
+              
+              <div className="space-y-8">
+                {/* Palavra-chave 1 */}
+                <div className="space-y-3">
+                  <span className="inline-block px-4 py-2 bg-[#FFEE00] text-black text-sm font-black uppercase tracking-wider">
+                    {lang === 'PT' ? 'ESTRATÉGIA' : 'STRATEGY'}
+                  </span>
+                  <p className="text-lg md:text-xl text-neutral-400 leading-relaxed pl-1">
+                    {lang === 'PT' 
+                      ? 'Não é sobre prever o futuro, mas sobre arquitetar a lógica que o torna inevitável.'
+                      : 'Is not about predicting the future, but about architecting the logic that makes it inevitable.'}
+                  </p>
+                </div>
+
+                {/* Palavra-chave 2 */}
+                <div className="space-y-3">
+                  <span className="inline-block px-4 py-2 bg-[#FFEE00] text-black text-sm font-black uppercase tracking-wider">
+                    {lang === 'PT' ? 'COMPLEXIDADE' : 'COMPLEXITY'}
+                  </span>
+                  <p className="text-lg md:text-xl text-neutral-400 leading-relaxed pl-1">
+                    {lang === 'PT' 
+                      ? 'Traduzo em clareza absoluta, desenhando sistemas onde cada peça tem propósito.'
+                      : 'I translate into absolute clarity, designing systems where every piece has purpose.'}
+                  </p>
+                </div>
+
+                {/* Palavra-chave 3 */}
+                <div className="space-y-3">
+                  <span className="inline-block px-4 py-2 bg-[#FFEE00] text-black text-sm font-black uppercase tracking-wider">
+                    {lang === 'PT' ? 'INOVAÇÃO' : 'INNOVATION'}
+                  </span>
+                  <p className="text-lg md:text-xl text-neutral-400 leading-relaxed pl-1">
+                    {lang === 'PT' 
+                      ? 'Deixa de ser uma aposta para se tornar o núcleo de uma vantagem competitiva implacável.'
+                      : 'Becomes the core of an implacable competitive advantage, not a gamble.'}
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section className="space-y-8">
@@ -104,10 +139,10 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
             </section>
 
             <section className="pt-24 border-t border-neutral-900">
-               <a href="mailto:contato@fernandoramalho.com.br" className="group block">
+               <a href="mailto:fernandoluizsouzaramalho@gmail.com" className="group block">
                  <span className="block text-[10px] font-black uppercase tracking-[0.6em] text-neutral-700 mb-4 group-hover:text-[#FFEE00] transition-colors">CONTATO DIRETO</span>
                  <span className="text-2xl md:text-4xl font-black border-b-2 border-[#FFEE00] pb-2 group-hover:bg-[#FFEE00] group-hover:text-black transition-all inline-block uppercase tracking-tighter">
-                   contato@fernandoramalho.com.br
+                   fernandoluizsouzaramalho@gmail.com
                  </span>
                </a>
             </section>

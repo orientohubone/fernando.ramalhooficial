@@ -222,7 +222,10 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
              {t.backToHub}
            </button>
            <div className="flex flex-col gap-2">
-            <span className="text-[8px] font-mono text-neutral-800 uppercase tracking-[1em]">Fernando Ramalho / Systems Architect 2026</span>
+            <div className="flex items-center gap-2">
+              <img src="/logofernando.png" alt="FERNANDO.RAMALHO" className="h-2" />
+              <span className="text-[8px] font-mono text-neutral-800 uppercase tracking-[1em]">/ Systems Architect 2026</span>
+            </div>
             <span className="text-[8px] font-mono text-neutral-800 uppercase tracking-[0.5em]">Strategically Engineered for Global Dominance</span>
            </div>
         </footer>

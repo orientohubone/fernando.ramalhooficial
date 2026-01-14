@@ -8,13 +8,16 @@ interface ProfileImageProps {
 const ProfileImage: React.FC<ProfileImageProps> = ({ className = "" }) => {
   // Caminhos prováveis em ambientes estáticos e servidores web
   const paths = [
-    'fernando.png',              // Raiz
+    '/fernando.PNG',              // Raiz absoluta com nome correto
+    'fernando.PNG',              // Raiz com nome correto
     '/fernando.png',             // Raiz absoluta
+    'fernando.png',              // Raiz
+    'images/fernando.PNG',       // Subpasta com nome correto
+    '/images/fernando.PNG',      // Subpasta absoluta com nome correto
     'images/fernando.png',       // Subpasta
     '/images/fernando.png',      // Subpasta absoluta
-    'public/fernando.png',       // Direto public
-    'public/images/fernando.png', // Completo
-    'fernando.PNG',              // Case extension
+    'public/fernando.PNG',       // Direto public com nome correto
+    'public/images/fernando.PNG', // Completo com nome correto
     'Fernando.png'               // Case name
   ];
 

@@ -17,23 +17,28 @@ const RollingTextItem: React.FC<RollingTextItemProps> = ({ item, onHover, onClic
       onMouseEnter={() => onHover(item)}
       onMouseLeave={() => onHover(null)}
       onClick={() => onClick(item)}
-      className="group relative w-full cursor-pointer border-b border-neutral-900/50 py-8 md:py-12 overflow-visible z-10"
+      className="group relative w-full cursor-pointer border-b border-neutral-900/50 py-6 md:py-10 overflow-visible z-10"
     >
-      <div className="relative overflow-hidden h-[50px] md:h-24">
+      {/* Container fixo para o corte de overflow */}
+      <div className="relative overflow-hidden h-[65px] md:h-32">
+        {/* Div que desliza - não deve ter h-full para não achatar os filhos */}
         <div className="transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:-translate-y-1/2">
-          <div className="h-[50px] md:h-24 flex items-center">
-            <h2 className="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
+          {/* Linha 1: Texto Branco - Altura deve casar com o pai */}
+          <div className="h-[65px] md:h-32 flex items-center">
+            <h2 className="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
               {item.title}
             </h2>
           </div>
-          <div className="h-[50px] md:h-24 flex items-center">
-            <h2 className={`text-4xl md:text-8xl font-black tracking-tighter uppercase italic ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
+          {/* Linha 2: Texto Colorido - Altura deve casar com o pai */}
+          <div className="h-[65px] md:h-32 flex items-center">
+            <h2 className={`text-4xl md:text-8xl font-black tracking-tighter uppercase italic leading-none ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
               {item.title}
             </h2>
           </div>
         </div>
       </div>
 
+      {/* Descrição que aparece lateralmente no desktop */}
       <div className="mt-4 md:mt-0 md:absolute md:top-1/2 md:left-[60%] md:-translate-y-1/2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:group-hover:translate-x-4 max-w-sm pointer-events-none">
         <p className="text-sm text-neutral-400 leading-relaxed font-bold uppercase tracking-wider">
           {item.description}

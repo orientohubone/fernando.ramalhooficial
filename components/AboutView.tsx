@@ -80,8 +80,26 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
 
             <section className="space-y-8">
               <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-700 border-b border-neutral-900 pb-4">BIOGRAFIA</h3>
-              <div className="text-neutral-400 leading-relaxed text-xl md:text-2xl font-medium max-w-2xl space-y-6 italic">
+              <div className="text-neutral-400 leading-relaxed text-xl md:text-2xl font-medium max-w-2xl space-y-12 italic">
                 <p>{t.bio}</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-600">{(t as any).ventureTitle}</h4>
+                    <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="group flex flex-col gap-2">
+                      <span className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white group-hover:text-[#FFEE00] transition-colors leading-none">Orientohub</span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-700 group-hover:text-white transition-colors">Founder & Strategist</span>
+                    </a>
+                  </div>
+
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#58B573]">{(t as any).creativeTitle}</h4>
+                    <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="group flex flex-col gap-2">
+                      <span className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white group-hover:text-[#58B573] transition-colors leading-none">Behance</span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-700 group-hover:text-white transition-colors">Case Studies & Craft</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </section>
 

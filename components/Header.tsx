@@ -23,6 +23,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
           <a href="#work" className="hover:text-white transition-colors">{t.strategy}</a>
           <a href="#about-trigger" className="hover:text-white transition-colors">{t.about}</a>
           <button onClick={onOpenReports} className="hover:text-[#FFEE00] transition-colors">{t.reports}</button>
+          <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="hover:text-[#58B573] transition-colors uppercase">{t.creative}</a>
           <a href="#about" className="hover:text-white transition-colors">{t.philosophy}</a>
           <a href="#contact" className="hover:text-white transition-colors">{t.contact}</a>
         </div>

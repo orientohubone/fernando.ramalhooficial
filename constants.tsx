@@ -13,7 +13,7 @@ export type Language = 'PT' | 'EN';
 
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'CAPACIDADES', philosophy: 'FILOSOFIA', contact: 'DIRETO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026' },
+    nav: { strategy: 'CAPACIDADES', philosophy: 'FILOSOFIA', contact: 'DIRETO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026', creative: 'CRAFT' },
     hero: {
       line1: 'INOVAÇÃO',
       line2: 'ESTRATÉGICA',
@@ -41,7 +41,6 @@ export const TRANSLATIONS = {
       },
       categories: {
         all: 'TODOS',
-        brand: 'BRANDING & SEMIÓTICA',
         market: 'MERCADO & IA',
         algo: 'ALGORITMOS',
         data: 'DADOS',
@@ -50,7 +49,8 @@ export const TRANSLATIONS = {
         finance: 'FINANÇAS',
         mobility: 'MOBILIDADE',
         health: 'SAÚDE',
-        culture: 'CULTURA & ENTRETENIMENTO',
+        edu: 'EDUCAÇÃO',
+        culture: 'CULTURA',
         exp: 'EXPERIMENTAL'
       },
       items: ALL_REPORTS
@@ -65,7 +65,9 @@ export const TRANSLATIONS = {
         { label: 'ENTREGA', value: 'IMPACTO' }
       ],
       mantras: ['NÃO PARE', 'AVANCE', 'TERMINE'],
-      bio: 'Desde 2019 criando soluções, estratégias e marcas que definem novos padrões de mercado. Minha prática une o rigor analítico à profundidade da psicologia de consumo, atuando como o núcleo lógico de ecossistemas que buscam não apenas escala, mas dominância através de inteligência aplicada.'
+      bio: 'Desde 2019 criando soluções, estratégias e marcas que definem novos padrões de mercado. Minha prática une o rigor analítico à profundidade da psicologia de consumo, atuando como o núcleo lógico de ecossistemas que buscam não apenas escala, mas dominância através de inteligência aplicada.',
+      ventureTitle: 'VENTURE ATIVA',
+      creativeTitle: 'PORTFÓLIO CRIATIVO'
     },
     sections: {
       thesis: 'A TESE',
@@ -79,14 +81,14 @@ export const TRANSLATIONS = {
     },
     capacities: {
       title: 'CAPACIDADES CENTRAIS',
-      strategy: { title: 'ESTRATÉGIAS', category: 'VISION', desc: 'Desenho de manobras táticas e visão de longo prazo.', thesis: 'ESTRATÉGIA NÃO É UM PLANO, É UMA POSIÇÃO DE PODER EM CONSTANTE MUTAÇÃO.', impact: 'Criação de fossos competitivos e aumento de LTV.' },
+      strategy: { title: 'ESTRATÉGIAS', category: 'VISION', desc: 'Desenho de manobras táticas e visão de longo prazo.', thesis: 'ESTRATÉGIA NÃO É UM PLANO, É uma posição de poder em constante mutação.', impact: 'Criação de fossos competitivos e aumento de LTV.' },
       innovation: { title: 'INOVAÇÃO', category: 'DISRUPTION', desc: 'Criação de novos paradigmas e produtos.', thesis: 'INOVAÇÃO REAL É INVISÍVEL ATÉ QUE SE TORNE INDISPENSÁVEL.', impact: 'Abertura de novos mercados e verticais.' },
       marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Posicionamento e construção de autoridade.', thesis: 'MARKETING É A TRADUÇÃO DA VERDADE DO PRODUTO PARA A LINGUAGEM DO DESEJO.', impact: 'Redução de CAC e construção de Brand Equity.' },
       paidMedia: { title: 'MÍDIA PAGA', category: 'PERFORMANCE', desc: 'Escalabilidade através de algoritmos.', thesis: 'MÍDIA PAGA É O COMBUSTÍVEL; O SYSTEM É O MOTOR.', impact: 'Escala exponencial de receita com ROI controlado.' },
       design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface onde a forma segue a intenção.', thesis: 'DESIGN SISTÊMICO ELIMINA FRICÇÃO E ACELERA A DECISÃO.', impact: 'Aumento de conversão e retenção emocional.' },
       ai: { title: 'IA', category: 'INTELLIGENCE', desc: 'Implementação de inteligência generativa.', thesis: 'IA NÃO SUBSTITUI O HUMANO, ELA AMPLIA A CAPACIDADE DE SÍNTESE E EXECUÇÃO.', impact: 'Ganho de 10x em velocidade operacional.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Desenvolvimento ágil utilizando LLMs.', thesis: 'A BARREIRA ENTRE IDEIA E EXECUÇÃO FOI DESTRUÍDA PELA LINGUAGEM NATURAL.', impact: 'Deploy de protótipos funcionais em tempo recorde.' },
-      brandReg: { title: 'PROPRIEDADE DE MARCA', category: 'EQUITY', desc: 'Proteção de ativos intelectuais.', thesis: 'UMA MARCA SEM PROTEÇÃO É APENAS UM EMPRÉSTIMO DO MERCADO.', impact: 'Segurança jurídica e valorização de ativos.' }
+      brandReg: { title: 'REGISTRO DE MARCA', category: 'EQUITY', desc: 'Proteção de ativos intelectuais.', thesis: 'UMA MARCA SEM PROTEÇÃO É APENAS UM EMPRÉSTIMO DO MERCADO.', impact: 'Segurança jurídica e valorização de ativos.' }
     },
     mindset: {
       title: 'MENTALIDADE OPERACIONAL',
@@ -101,7 +103,7 @@ export const TRANSLATIONS = {
     }
   },
   EN: {
-    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'DIRECT', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026' },
+    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'DIRECT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026', creative: 'CRAFT' },
     hero: {
       line1: 'STRATEGIC',
       line2: 'INNOVATION',
@@ -129,7 +131,6 @@ export const TRANSLATIONS = {
       },
       categories: {
         all: 'ALL',
-        brand: 'BRANDING & SEMIOTICS',
         market: 'MARKET & AI',
         algo: 'ALGORITHMS',
         data: 'DATA',
@@ -138,7 +139,8 @@ export const TRANSLATIONS = {
         finance: 'FINANCE',
         mobility: 'MOBILITY',
         health: 'HEALTH',
-        culture: 'CULTURE & ENT.',
+        edu: 'EDUCATION',
+        culture: 'CULTURA',
         exp: 'EXPERIMENTAL'
       },
       items: ALL_REPORTS
@@ -153,7 +155,9 @@ export const TRANSLATIONS = {
         { label: 'DELIVERY', value: 'IMPACT' }
       ],
       mantras: ['DON\'T STOP', 'ADVANCE', 'FINISH'],
-      bio: 'Since 2019 creating solutions, strategies, and brands that set new market standards. My practice bridges analytical rigor with consumer psychology, acting as the logical core for ecosystems seeking not just scale, but dominance through applied intelligence.'
+      bio: 'Since 2019 creating solutions, strategies, and brands that set new market standards. My practice bridges analytical rigor with consumer psychology, acting as the logical core for ecosystems seeking not just scale, but dominance through applied intelligence.',
+      ventureTitle: 'ACTIVE VENTURE',
+      creativeTitle: 'CREATIVE PORTFOLIO'
     },
     sections: {
       thesis: 'THE THESIS',
@@ -172,7 +176,7 @@ export const TRANSLATIONS = {
       marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Brand positioning and authority building.', thesis: 'MARKETING IS THE TRANSLATION OF PRODUCT TRUTH INTO THE LANGUAGE OF DESIRE.', impact: 'CAC reduction and Brand Equity building.' },
       paidMedia: { title: 'PAID MEDIA', category: 'PERFORMANCE', desc: 'Scalability through algorithms.', thesis: 'PAID MEDIA IS THE FUEL; THE SYSTEM IS THE ENGINE.', impact: 'Exponential revenue scale with controlled ROI.' },
       design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface where form follows intent.', thesis: 'SYSTEMIC DESIGN ELIMINATES FRICTION AND ACCELERATES DECISION-MAKING.', impact: 'Conversion increase and emotional retention.' },
-      ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI DOES NOT REPLACE HUMANS, IT AMPLIFIES THE CAPACITY FOR SYNTHESIS AND EXECUTION.', impact: 'Gain in operational speed.' },
+      ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI does not replace humans, it amplifies the capacity for synthesis and execution.', impact: '10x gain in operational speed.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Agile development using LLMs.', thesis: 'THE BARRIER BETWEEN IDEA AND EXECUTION HAS BEEN DESTROYED BY NATURAL LANGUAGE.', impact: 'Deployment of functional prototypes in record time.' },
       brandReg: { title: 'BRAND EQUITY', category: 'EQUITY', desc: 'Protecting intellectual assets.', thesis: 'A BRAND WITHOUT PROTECTION IS JUST A LOAN FROM THE MARKET.', impact: 'Legal security and asset valuation.' }
     },

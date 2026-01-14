@@ -18,25 +18,28 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           <div className="max-w-2xl flex flex-col gap-6">
             <BrandLogo size="md" className="opacity-50" />
             
-            <h2 className="text-2xl md:text-4xl font-light tracking-tight leading-tight mt-2">
-              {t.cta.split(' ').slice(0, -1).join(' ')} <span className="text-[#FFEE00] font-medium italic">{t.cta.split(' ').slice(-1)}</span>
+            <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-tight mt-2 uppercase">
+              {t.cta.split(' ').slice(0, -1).join(' ')} <span className="text-[#FFEE00] italic">{t.cta.split(' ').slice(-1)}</span>
             </h2>
             
             <div className="flex flex-wrap gap-8 items-center mt-2">
-              <a href="mailto:contato@fernandoramalho.com.br" className="text-base md:text-lg font-medium border-b border-[#FFEE00] pb-1 hover:bg-[#FFEE00] hover:text-black transition-all">
+              <a href="mailto:contato@fernandoramalho.com.br" className="text-base md:text-lg font-black uppercase tracking-widest border-b-2 border-[#FFEE00] pb-1 hover:bg-[#FFEE00] hover:text-black transition-all">
                 contato@fernandoramalho.com.br
               </a>
             </div>
           </div>
           
           <div className="flex flex-col gap-6 items-start md:items-end">
-            <div className="flex gap-6 items-center">
+            <div className="flex flex-wrap gap-6 items-center justify-start md:justify-end">
+              <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FFEE00] hover:text-white transition-colors">FOUNDER @ ORIENTOHUB</a>
+              <div className="w-[1px] h-4 bg-neutral-800 hidden md:block" />
+              <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="text-[9px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#FFEE00] transition-colors">Behance</a>
               <a href="#" className="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">LinkedIn</a>
               <a href="#" className="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">X / Twitter</a>
             </div>
-            <div className="text-[8px] font-medium uppercase tracking-[0.4em] text-neutral-800 text-right leading-loose">
+            <div className="text-[8px] font-black uppercase tracking-[0.4em] text-neutral-800 text-left md:text-right leading-loose">
               {t.rights} <br /> 
-              Systems for Dominance
+              SYSTEMS FOR DOMINANCE
             </div>
           </div>
         </div>

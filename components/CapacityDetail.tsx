@@ -37,38 +37,38 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
           <div className="lg:col-span-7 space-y-24">
             <header className="space-y-4">
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
-                Capacity / 0{item.id}
+                CAPACITY / 0{item.id}
               </span>
-              <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85]">
+              <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85]">
                 {item.title}<span style={{ color: colorHex }}>.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-400 font-medium max-w-xl italic">
+              <p className="text-xl md:text-2xl text-neutral-400 font-black uppercase tracking-tight max-w-xl italic">
                 {item.description}
               </p>
             </header>
 
             <section className="space-y-8">
-              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neutral-600 border-b border-neutral-900 pb-4">{t.thesis}</h3>
-              <p className="text-2xl md:text-4xl font-bold leading-tight uppercase tracking-tight">
+              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neutral-600 border-b-2 border-neutral-900 pb-4">{t.thesis}</h3>
+              <p className="text-3xl md:text-5xl font-black leading-tight uppercase tracking-tighter italic">
                 {item.thesis}
               </p>
             </section>
 
             <section className="grid grid-cols-1 md:grid-cols-2 gap-16">
               <div className="space-y-8">
-                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neutral-600 border-b border-neutral-900 pb-4">{t.stack}</h3>
-                <ul className="space-y-2">
+                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neutral-600 border-b-2 border-neutral-900 pb-4">{t.stack}</h3>
+                <ul className="space-y-3">
                   {item.stack?.map((s, i) => (
-                    <li key={i} className="text-sm font-black uppercase tracking-widest text-white flex items-center gap-3">
-                      <div className="w-1 h-1 rounded-full bg-[#FFEE00]" />
+                    <li key={i} className="text-sm font-black uppercase tracking-[0.2em] text-white flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-[#FFEE00] animate-pulse" />
                       {s}
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="space-y-8">
-                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neutral-600 border-b border-neutral-900 pb-4">{t.impact}</h3>
-                <p className="text-neutral-400 text-lg leading-relaxed">
+                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neutral-600 border-b-2 border-neutral-900 pb-4">{t.impact}</h3>
+                <p className="text-neutral-400 text-lg font-bold leading-relaxed uppercase tracking-tight italic">
                   {item.impact}
                 </p>
               </div>
@@ -77,7 +77,7 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
 
           {/* Right Visual */}
           <div className="lg:col-span-5 sticky top-40 hidden lg:block">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-700 group">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-700 group border border-neutral-900">
               <img 
                 src={item.src} 
                 alt={item.alt} 
@@ -85,7 +85,7 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
               />
               <div className="absolute inset-0 bg-black/20" />
               <div 
-                className="absolute bottom-0 left-0 w-full h-1" 
+                className="absolute bottom-0 left-0 w-full h-2" 
                 style={{ backgroundColor: colorHex }}
               />
             </div>
@@ -98,13 +98,13 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
            <button 
             onClick={onClose}
-            className="text-4xl md:text-6xl font-black uppercase tracking-tighter hover:text-[#FFEE00] transition-colors"
+            className="text-5xl md:text-7xl font-black uppercase tracking-tighter hover:text-[#FFEE00] transition-colors"
            >
              {nav.back}
            </button>
-           <div className="h-[1px] flex-1 bg-neutral-900 mx-12 hidden md:block" />
-           <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-600">
-             Fernando Ramalho / Systems for Dominance
+           <div className="h-[2px] flex-1 bg-neutral-900 mx-12 hidden md:block" />
+           <p className="text-[10px] font-black uppercase tracking-[0.6em] text-neutral-600">
+             FERNANDO RAMALHO / SYSTEMS FOR DOMINANCE
            </p>
         </div>
       </footer>

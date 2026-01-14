@@ -19,7 +19,6 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* Navigation */}
       <nav className="sticky top-0 left-0 w-full z-[110] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
         <button onClick={onClose} className="group flex items-center gap-4">
           <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" />
@@ -34,13 +33,13 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
           {/* Photo Column */}
           <div className="lg:col-span-5 relative">
             <div className="sticky top-40">
-              <ProfileImage className="aspect-[3/4] rounded-sm shadow-[0_0_80px_rgba(255,238,0,0.1)] border border-neutral-800" />
+              <ProfileImage className="aspect-[3/4] rounded-sm border border-neutral-900" />
               
               <div className="mt-12 grid grid-cols-1 gap-4">
                 {t.stats.map((stat, i) => (
                   <div key={i} className="flex justify-between items-end border-b border-neutral-900 pb-3">
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-600">{stat.label}</span>
-                    <span className="text-xs font-black uppercase tracking-widest text-[#FFEE00]">{stat.value}</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-neutral-700">{stat.label}</span>
+                    <span className="text-xs font-black tracking-widest text-neutral-400">{stat.value}</span>
                   </div>
                 ))}
               </div>
@@ -48,51 +47,48 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
           </div>
 
           {/* Text Column */}
-          <div className="lg:col-span-7 space-y-32">
+          <div className="lg:col-span-7 space-y-24">
             <header className="space-y-8">
-              <h1 className="text-7xl md:text-[11rem] font-black leading-[0.8] tracking-tighter uppercase">
+              <h1 className="text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter uppercase">
                 {t.title.split(' ')[0]} <br />
-                <span className="text-neutral-800 outline-text">{t.title.split(' ')[1] || ''}</span>
+                <span className="text-[#FFEE00]">{t.title.split(' ')[1] || ''}</span>
               </h1>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {(t as any).mantras?.map((m: string, i: number) => (
-                  <span key={i} className="px-4 py-1.5 border border-[#FFEE00] text-[#FFEE00] text-[10px] font-black uppercase tracking-[0.3em]">
+                  <span key={i} className="px-4 py-1 border border-neutral-800 text-neutral-500 text-[10px] font-black uppercase tracking-[0.3em] rounded-full">
                     {m}
                   </span>
                 ))}
               </div>
 
-              <p className="text-2xl md:text-5xl font-bold uppercase tracking-tight text-neutral-400 max-w-2xl pt-4 leading-tight">
+              <p className="text-2xl md:text-3xl font-medium text-neutral-400 max-w-2xl pt-4 leading-relaxed italic">
                 {t.subtitle}
               </p>
             </header>
 
-            <section className="space-y-12">
+            <section className="space-y-12 relative">
+              <div className="absolute -top-12 -left-12 text-[#FFEE00] opacity-10 text-[12rem] font-black pointer-events-none">“</div>
               <div className="flex items-center gap-4">
-                <div className="h-[2px] w-16 bg-[#FFEE00]"></div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">Strategic Manifesto</h3>
+                <div className="h-[1px] w-12 bg-[#FFEE00]"></div>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">Manifesto</h3>
               </div>
-              <p className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.95] text-white">
-                "{t.manifesto}"
+              <p className="text-3xl md:text-5xl font-black tracking-tighter leading-tight text-white uppercase italic">
+                {t.manifesto}
               </p>
             </section>
 
-            <section className="space-y-10">
-              <h3 className="text-xs font-black uppercase tracking-[0.5em] text-neutral-600 border-b border-neutral-900 pb-6">Core Biography</h3>
-              <div className="text-neutral-400 leading-relaxed text-2xl md:text-3xl font-medium max-w-3xl space-y-8">
+            <section className="space-y-8">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-700 border-b border-neutral-900 pb-4">BIOGRAFIA</h3>
+              <div className="text-neutral-400 leading-relaxed text-xl md:text-2xl font-medium max-w-2xl space-y-6 italic">
                 <p>{t.bio}</p>
               </div>
             </section>
 
-            {/* CTA in About */}
             <section className="pt-24 border-t border-neutral-900">
-               <a 
-                href="mailto:contato@fernandoramalho.com.br"
-                className="group block"
-               >
-                 <span className="block text-[11px] font-black uppercase tracking-[0.6em] text-neutral-600 mb-6 group-hover:text-[#FFEE00] transition-colors">Direct Inquiry</span>
-                 <span className="text-2xl md:text-5xl font-black border-b-8 border-[#FFEE00] pb-4 group-hover:bg-[#FFEE00] group-hover:text-black transition-all inline-block">
+               <a href="mailto:contato@fernandoramalho.com.br" className="group block">
+                 <span className="block text-[10px] font-black uppercase tracking-[0.6em] text-neutral-700 mb-4 group-hover:text-[#FFEE00] transition-colors">CONTATO DIRETO</span>
+                 <span className="text-2xl md:text-4xl font-black border-b-2 border-[#FFEE00] pb-2 group-hover:bg-[#FFEE00] group-hover:text-black transition-all inline-block uppercase tracking-tighter">
                    contato@fernandoramalho.com.br
                  </span>
                </a>
@@ -100,17 +96,6 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
           </div>
         </div>
       </main>
-
-      <style>{`
-        .outline-text {
-          -webkit-text-stroke: 1px #222;
-          color: transparent;
-          transition: -webkit-text-stroke 0.5s ease;
-        }
-        .outline-text:hover {
-          -webkit-text-stroke: 1px #FFEE00;
-        }
-      `}</style>
     </div>
   );
 };

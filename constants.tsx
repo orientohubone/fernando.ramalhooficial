@@ -13,179 +13,179 @@ export type Language = 'PT' | 'EN';
 
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'Capacidades', philosophy: 'Filosofia', contact: 'Direto', back: 'Voltar', about: 'Sobre', reports: 'Reports 2026' },
+    nav: { strategy: 'CAPACIDADES', philosophy: 'FILOSOFIA', contact: 'DIRETO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026' },
     hero: {
-      line1: 'Sistemas',
-      line2: 'de Futuro',
-      description: 'Estrategista de produto e growth especializado em transformar visão bruta em ecossistemas de alta performance.',
-      focus: 'Foco Atual'
+      line1: 'INOVAÇÃO',
+      line2: 'ESTRATÉGICA',
+      description: 'Arquiteto de lógica e inovação. Especialista em desenhar as fundações estratégicas que precedem e sustentam ecossistemas de alta performance.',
+      focus: 'FOCO ATUAL'
     },
     reportsPage: {
-      title: 'Intelligence',
-      subtitle: 'Hub 2026',
+      title: 'INTELLIGENCE',
+      subtitle: 'HUB 2026',
       description: 'Análises proprietárias sobre a convergência entre tecnologia, economia e comportamento humano no território brasileiro.',
       ui: {
-        summary: 'Sumário Executivo',
-        methodology: 'Metodologia de Inteligência',
-        analysis: 'Análise Principal de Mercado',
-        findings: 'Principais Descobertas (Key Findings)',
-        recommendations: 'Conclusões & Recomendações Estratégicas',
-        nextSteps: 'Próximos Pasos & Monitoramento',
-        references: 'Referências & Dados',
-        backToHub: 'Voltar para o Hub',
-        access: 'Acessar Report Completo',
-        truthIndex: 'Índice de Veracidade Probabilística',
-        metricsTitle: 'Indicadores de Performance 2026',
-        insightsTitle: 'Deep Insights & Projeções',
-        sourcesTitle: 'Fontes de Pesquisa & Verificação'
+        summary: 'SUMÁRIO EXECUTIVO',
+        methodology: 'METODOLOGIA DE INTELIGÊNCIA',
+        analysis: 'ANÁLISE PRINCIPAL DE MERCADO',
+        findings: 'PRINCIPAIS DESCOBERTAS',
+        recommendations: 'CONCLUSÕES & RECOMENDAÇÕES',
+        nextSteps: 'PRÓXIMOS PASSOS',
+        references: 'REFERÊNCIAS & DADOS',
+        backToHub: 'VOLTAR AO HUB',
+        access: 'ACESSAR REPORT',
+        truthIndex: 'VERACIDADE PROBABILÍSTICA',
+        metricsTitle: 'INDICADORES DE PERFORMANCE',
+        insightsTitle: 'DEEP INSIGHTS & PROJEÇÕES',
+        sourcesTitle: 'FONTES & VERIFICAÇÃO'
       },
       categories: {
-        all: 'Todos',
-        market: 'Mercado & IA',
-        algo: 'Algoritmos & Ontologia',
-        data: 'Dados & Esportes',
-        esg: 'Sustentabilidade',
-        consumer: 'Comportamento',
-        finance: 'Mercado Financeiro',
-        mobility: 'Mobilidade',
-        health: 'Saúde',
-        edu: 'Educação',
-        culture: 'Cultura',
-        exp: 'Experimental'
+        all: 'TODOS',
+        market: 'MERCADO & IA',
+        algo: 'ALGORITMOS',
+        data: 'DADOS',
+        esg: 'SUSTENTABILIDADE',
+        consumer: 'COMPORTAMENTO',
+        finance: 'FINANÇAS',
+        mobility: 'MOBILIDADE',
+        health: 'SAÚDE',
+        edu: 'EDUCAÇÃO',
+        culture: 'CULTURA',
+        exp: 'EXPERIMENTAL'
       },
       items: ALL_REPORTS
     },
     about: {
-      title: 'O Arquiteto',
+      title: 'O ARQUITETO',
       subtitle: 'Fernando Ramalho é a interseção entre o rigor analítico e a execução criativa.',
-      manifesto: 'Estratégia não é sobre o que você faz, é sobre o que você deixa de fazer para dominar o que resta. Eu não construo apenas produtos; eu projeto máquinas de crescimento que se auto-otimizam.',
+      manifesto: 'ESTRATÉGIA NÃO É SOBRE PREVER O FUTURO, MAS SOBRE ARQUITETAR A LÓGICA QUE O TORNA INEVITÁVEL. TRADUZO COMPLEXIDADE EM CLAREZA ABSOLUTA, DESENHANDO SISTEMAS ONDE A INOVAÇÃO DEIXA DE SER UMA APOSTA PARA SE TORNAR O NÚCLEO DE UMA VANTAGEM COMPETITIVA IMPLACÁVEL.',
       stats: [
-        { label: 'Visão', value: 'Estratégica' },
-        { label: 'Execução', value: 'Sistêmica' },
-        { label: 'Entrega', value: 'Impacto' }
+        { label: 'VISÃO', value: 'ESTRATÉGICA' },
+        { label: 'EXECUÇÃO', value: 'SISTÊMICA' },
+        { label: 'ENTREGA', value: 'IMPACTO' }
       ],
-      mantras: ['Não Pare', 'Avance', 'Termine'],
-      bio: 'Com mais de uma década atuando no núcleo de operações de growth e produto, Fernando desenvolveu uma metodologia que une Ciência de Dados a Psicologia de Consumo. Atua como um catalisador para empresas que buscam não apenas escala, mas dominância de mercado.'
+      mantras: ['NÃO PARE', 'AVANCE', 'TERMINE'],
+      bio: 'Desde 2019 criando soluções, estratégias e marcas que definem novos padrões de mercado. Minha prática une o rigor analítico à profundidade da psicologia de consumo, atuando como o núcleo lógico de ecossistemas que buscam não apenas escala, mas dominância através de inteligência aplicada.'
     },
     sections: {
-      thesis: 'A Tese',
-      stack: 'Sistemas & Ferramentas',
-      impact: 'Impacto & Escala'
+      thesis: 'A TESE',
+      stack: 'SISTEMAS & FERRAMENTAS',
+      impact: 'IMPACTO & ESCALA'
     },
     categories: {
-      vision: 'Visão & Inteligência',
-      craft: 'Craft & Construção',
-      market: 'Autoridade & Mercado'
+      vision: 'VISÃO & INTELIGÊNCIA',
+      craft: 'CRAFT & CONSTRUÇÃO',
+      market: 'AUTORIDADE & MERCADO'
     },
     capacities: {
-      title: 'Capacidades Centrais',
-      strategy: { title: 'Estratégias', category: 'Vision', desc: 'Desenho de manobras táticas e visão de longo prazo.', thesis: 'Estratégia não é um plano, é uma posição de poder em constante mutação.', impact: 'Criação de fossos competitivos e aumento de LTV.' },
-      innovation: { title: 'Inovação', category: 'Disruption', desc: 'Criação de novos paradigmas e produtos.', thesis: 'Inovação real é invisível até que se torne indispensável.', impact: 'Abertura de novos mercados e verticais.' },
-      marketing: { title: 'Marketing', category: 'Narrative', desc: 'Posicionamento e construção de autoridade.', thesis: 'Marketing é a tradução da verdade do produto para a linguagem do desejo.', impact: 'Redução de CAC e construção de Brand Equity.' },
-      paidMedia: { title: 'Mídia Paga', category: 'Performance', desc: 'Escalabilidade através de algoritmos.', thesis: 'Mídia paga é o combustível; o system é o motor.', impact: 'Escala exponencial de receita com ROI controlado.' },
-      design: { title: 'Design', category: 'Systems', desc: 'Interface onde a forma segue a intenção.', thesis: 'Design sistêmico elimina fricção e acelera a decisão.', impact: 'Aumento de conversão e retenção emocional.' },
-      ai: { title: 'IA', category: 'Intelligence', desc: 'Implementação de inteligência generativa.', thesis: 'IA não substitui o humano, ela amplia a capacidade de síntese e execução.', impact: 'Ganho de 10x em velocidade operacional.' },
-      vibeCoding: { title: 'Vibe Coding', category: 'Velocity', desc: 'Desenvolvimento ágil utilizando LLMs.', thesis: 'A barreira entre ideia e execução foi destruída pela linguagem natural.', impact: 'Deploy de protótipos funcionais em tempo recorde.' },
-      brandReg: { title: 'Registro de Marca', category: 'Equity', desc: 'Proteção de ativos intelectuais.', thesis: 'Uma marca sem proteção é apenas um empréstimo do mercado.', impact: 'Segurança jurídica e valorização de ativos.' }
+      title: 'CAPACIDADES CENTRAIS',
+      strategy: { title: 'ESTRATÉGIAS', category: 'VISION', desc: 'Desenho de manobras táticas e visão de longo prazo.', thesis: 'ESTRATÉGIA NÃO É UM PLANO, É UMA POSIÇÃO DE PODER EM CONSTANTE MUTAÇÃO.', impact: 'Criação de fossos competitivos e aumento de LTV.' },
+      innovation: { title: 'INOVAÇÃO', category: 'DISRUPTION', desc: 'Criação de novos paradigmas e produtos.', thesis: 'INOVAÇÃO REAL É INVISÍVEL ATÉ QUE SE TORNE INDISPENSÁVEL.', impact: 'Abertura de novos mercados e verticais.' },
+      marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Posicionamento e construção de autoridade.', thesis: 'MARKETING É A TRADUÇÃO DA VERDADE DO PRODUTO PARA A LINGUAGEM DO DESEJO.', impact: 'Redução de CAC e construção de Brand Equity.' },
+      paidMedia: { title: 'MÍDIA PAGA', category: 'PERFORMANCE', desc: 'Escalabilidade através de algoritmos.', thesis: 'MÍDIA PAGA É O COMBUSTÍVEL; O SYSTEM É O MOTOR.', impact: 'Escala exponencial de receita com ROI controlado.' },
+      design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface onde a forma segue a intenção.', thesis: 'DESIGN SISTÊMICO ELIMINA FRICÇÃO E ACELERA A DECISÃO.', impact: 'Aumento de conversão e retenção emocional.' },
+      ai: { title: 'IA', category: 'INTELLIGENCE', desc: 'Implementação de inteligência generativa.', thesis: 'IA NÃO SUBSTITUI O HUMANO, ELA AMPLIA A CAPACIDADE DE SÍNTESE E EXECUÇÃO.', impact: 'Ganho de 10x em velocidade operacional.' },
+      vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Desenvolvimento ágil utilizando LLMs.', thesis: 'A BARREIRA ENTRE IDEIA E EXECUÇÃO FOI DESTRUÍDA PELA LINGUAGEM NATURAL.', impact: 'Deploy de protótipos funcionais em tempo recorde.' },
+      brandReg: { title: 'PROPRIEDADE DE MARCA', category: 'EQUITY', desc: 'Proteção de ativos intelectuais.', thesis: 'UMA MARCA SEM PROTEÇÃO É APENAS UM EMPRÉSTIMO DO MERCADO.', impact: 'Segurança jurídica e valorização de ativos.' }
     },
     mindset: {
-      title: 'Mentalidade Operacional',
-      subtitle: 'Design não é como parece. \nEstratégia não é o que dizemos. \nSucesso é o subproduto de \nsistemas bem construídos.',
-      p1: { title: 'Sistemas sobre Funcionalidades', description: 'Funcionalidades resolvem problemas; sistemas resolvem padrões.' },
-      p2: { title: 'Clareza sobre Ruído', description: 'A vantagem competitiva definitiva é a capacidade de simplificar a complexidade.' },
-      p3: { title: 'Crescimento através de Resiliência', description: 'Construir loops que compõem valor ao longo do tempo.' }
+      title: 'MENTALIDADE OPERACIONAL',
+      subtitle: 'DESIGN NÃO É COMO PARECE. ESTRATÉGIA NÃO É O QUE DIZEMOS. SUCESSO É O SUBPRODUTO DE SISTEMAS BEM CONSTRUÍDOS.',
+      p1: { title: 'SISTEMAS SOBRE FUNCIONALIDADES', description: 'Funcionalidades resolvem problemas; sistemas resolvem padrões.' },
+      p2: { title: 'CLAREZA SOBRE RUÍDO', description: 'A vantagem competitiva definitiva é a capacidade de simplificar a complexidade.' },
+      p3: { title: 'CRESCIMENTO ATRAVÉS DE RESILIÊNCIA', description: 'Construir loops que compõem valor ao longo do tempo.' }
     },
     footer: {
-      cta: 'Vamos construir o que vem a seguir.',
-      rights: '© 2024 / Engenharia para Impacto'
+      cta: 'VAMOS CONSTRUIR O QUE VEM A SEGUIR.',
+      rights: '© 2024 / ENGENHARIA PARA IMPACTO'
     }
   },
   EN: {
-    nav: { strategy: 'Capacities', philosophy: 'Philosophy', contact: 'Direct', back: 'Back', about: 'About', reports: 'Reports 2026' },
+    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'DIRECT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026' },
     hero: {
-      line1: 'Future',
-      line2: 'Systems',
-      description: 'Product & growth strategist specialized in transforming raw vision into high-performance ecosystems.',
-      focus: 'Current Focus'
+      line1: 'STRATEGIC',
+      line2: 'INNOVATION',
+      description: 'Logic and Innovation Architect. Specialized in designing the strategic core that precedes and powers high-performance ecosystems.',
+      focus: 'CURRENT FOCUS'
     },
     reportsPage: {
-      title: 'Intelligence',
-      subtitle: 'Hub 2026',
+      title: 'INTELLIGENCE',
+      subtitle: 'HUB 2026',
       description: 'Proprietary analyses on the convergence of technology, economy, and human behavior.',
       ui: {
-        summary: 'Executive Summary',
-        methodology: 'Intelligence Methodology',
-        analysis: 'Main Market Analysis',
-        findings: 'Key Findings',
-        recommendations: 'Conclusions & Recommendations',
-        nextSteps: 'Next Steps',
-        references: 'References',
-        backToHub: 'Back to Hub',
-        access: 'Access Full Report',
-        truthIndex: 'Probabilistic Truth Index',
-        metricsTitle: '2026 Performance Indicators',
-        insightsTitle: 'Deep Insights & Projections',
-        sourcesTitle: 'Research Sources & Verification'
+        summary: 'EXECUTIVE SUMMARY',
+        methodology: 'INTELLIGENCE METHODOLOGY',
+        analysis: 'MARKET ANALYSIS',
+        findings: 'KEY FINDINGS',
+        recommendations: 'RECOMMENDATIONS',
+        nextSteps: 'NEXT STEPS',
+        references: 'REFERENCES',
+        backToHub: 'BACK TO HUB',
+        access: 'ACCESS REPORT',
+        truthIndex: 'PROBABILISTIC TRUTH',
+        metricsTitle: 'PERFORMANCE INDICATORS',
+        insightsTitle: 'DEEP INSIGHTS',
+        sourcesTitle: 'SOURCES'
       },
       categories: {
-        all: 'All',
-        market: 'Market & AI',
-        algo: 'Algorithms & Ontology',
-        data: 'Data & Sports',
-        esg: 'Sustainability',
-        consumer: 'Consumer Behavior',
-        finance: 'Finance & Real Estate',
-        mobility: 'Mobility',
-        health: 'Digital Health',
-        edu: 'Education & Tech',
-        culture: 'Culture & Gaming',
-        exp: 'Experimental'
+        all: 'ALL',
+        market: 'MARKET & AI',
+        algo: 'ALGORITHMS',
+        data: 'DATA',
+        esg: 'SUSTAINABILITY',
+        consumer: 'BEHAVIOR',
+        finance: 'FINANCE',
+        mobility: 'MOBILITY',
+        health: 'HEALTH',
+        edu: 'EDUCATION',
+        culture: 'CULTURE',
+        exp: 'EXPERIMENTAL'
       },
       items: ALL_REPORTS
     },
     about: {
-      title: 'The Architect',
+      title: 'THE ARCHITECT',
       subtitle: 'Fernando Ramalho is the intersection of analytical rigor and creative execution.',
-      manifesto: 'Strategy is not about what you do, it is about what you stop doing to dominate what remains.',
+      manifesto: 'STRATEGY IS NOT ABOUT PREDICTING THE FUTURE, BUT ABOUT ARCHITECTING THE LOGC THAT MAKES IT INEVITABLE. I TRANSLATE COMPLEXITY INTO ABSOLUTE CLARITY, DESIGNING SYSTEMS WHERE INNOVATION BECOMES THE CORE OF AN IMPLACABLE COMPETITIVE ADVANTAGE.',
       stats: [
-        { label: 'Vision', value: 'Strategic' },
-        { label: 'Execution', value: 'Systemic' },
-        { label: 'Delivery', value: 'Impact' }
+        { label: 'VISION', value: 'STRATEGIC' },
+        { label: 'EXECUTION', value: 'SYSTEMIC' },
+        { label: 'DELIVERY', value: 'IMPACT' }
       ],
-      mantras: ['Don\'t Stop', 'Advance', 'Finish'],
-      bio: 'With over a decade operating at the core of growth and product operations, Fernando has developed a methodology that bridges Data Science and Consumer Psychology.'
+      mantras: ['DON\'T STOP', 'ADVANCE', 'FINISH'],
+      bio: 'Since 2019 creating solutions, strategies, and brands that set new market standards. My practice bridges analytical rigor with consumer psychology, acting as the logical core for ecosystems seeking not just scale, but dominance through applied intelligence.'
     },
     sections: {
-      thesis: 'The Thesis',
-      stack: 'Systems & Tools',
-      impact: 'Impact & Scale'
+      thesis: 'THE THESIS',
+      stack: 'SYSTEMS & TOOLS',
+      impact: 'IMPACT & SCALE'
     },
     categories: {
-      vision: 'Vision & Intelligence',
-      craft: 'Craft & Construction',
-      market: 'Authority & Market'
+      vision: 'VISION & INTELLIGENCE',
+      craft: 'CRAFT & CONSTRUCTION',
+      market: 'AUTHORITY & MARKET'
     },
     capacities: {
-      title: 'Core Capacities',
-      strategy: { title: 'Strategies', category: 'Vision', desc: 'Designing tactical maneuvers and long-term vision.', thesis: 'Strategy is not a plan, it is a shifting position of power.', impact: 'Creation of competitive moats and LTV growth.' },
-      innovation: { title: 'Innovation', category: 'Disruption', desc: 'Creating new paradigms and products.', thesis: 'Real innovation is invisible until it becomes indispensable.', impact: 'Opening new markets and verticals.' },
-      marketing: { title: 'Marketing', category: 'Narrative', desc: 'Brand positioning and authority building.', thesis: 'Marketing is the translation of product truth into the language of desire.', impact: 'CAC reduction and Brand Equity building.' },
-      paidMedia: { title: 'Paid Media', category: 'Performance', desc: 'Scalability through algorithms.', thesis: 'Paid media is the fuel; the system is the engine.', impact: 'Exponential revenue scale with controlled ROI.' },
-      design: { title: 'Design', category: 'Systems', desc: 'Interface where form follows intent.', thesis: 'Systemic design eliminates friction and accelerates decision-making.', impact: 'Conversion increase and emotional retention.' },
-      ai: { title: 'AI', category: 'Intelligence', desc: 'Implementing generative intelligence.', thesis: 'AI does not replace humans, it amplifies the capacity for synthesis and execution.', impact: '10x gain in operational speed.' },
-      vibeCoding: { title: 'Vibe Coding', category: 'Velocity', desc: 'Agile development using LLMs.', thesis: 'The barrier between idea and execution has been destroyed by natural language.', impact: 'Deployment of functional prototypes in record time.' },
-      brandReg: { title: 'Brand Equity', category: 'Equity', desc: 'Protecting intellectual assets.', thesis: 'A brand without protection is just a loan from the market.', impact: 'Legal security and asset valuation.' }
+      title: 'CORE CAPACITIES',
+      strategy: { title: 'STRATEGIES', category: 'VISION', desc: 'Designing tactical maneuvers and long-term vision.', thesis: 'STRATEGY IS NOT A PLAN, IT IS A SHIFTING POSITION OF POWER.', impact: 'Creation of competitive moats and LTV growth.' },
+      innovation: { title: 'INNOVATION', category: 'DISRUPTION', desc: 'Creating new paradigms and products.', thesis: 'REAL INNOVATION IS INVISIBLE UNTIL IT BECOMES INDISPENSABLE.', impact: 'Opening new markets and verticals.' },
+      marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Brand positioning and authority building.', thesis: 'MARKETING IS THE TRANSLATION OF PRODUCT TRUTH INTO THE LANGUAGE OF DESIRE.', impact: 'CAC reduction and Brand Equity building.' },
+      paidMedia: { title: 'PAID MEDIA', category: 'PERFORMANCE', desc: 'Scalability through algorithms.', thesis: 'PAID MEDIA IS THE FUEL; THE SYSTEM IS THE ENGINE.', impact: 'Exponential revenue scale with controlled ROI.' },
+      design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface where form follows intent.', thesis: 'SYSTEMIC DESIGN ELIMINATES FRICTION AND ACCELERATES DECISION-MAKING.', impact: 'Conversion increase and emotional retention.' },
+      ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI DOES NOT REPLACE HUMANS, IT AMPLIFIES THE CAPACITY FOR SYNTHESIS AND EXECUTION.', impact: '10x gain in operational speed.' },
+      vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Agile development using LLMs.', thesis: 'THE BARRIER BETWEEN IDEA AND EXECUTION HAS BEEN DESTROYED BY NATURAL LANGUAGE.', impact: 'Deployment of functional prototypes in record time.' },
+      brandReg: { title: 'BRAND EQUITY', category: 'EQUITY', desc: 'Protecting intellectual assets.', thesis: 'A BRAND WITHOUT PROTECTION IS JUST A LOAN FROM THE MARKET.', impact: 'Legal security and asset valuation.' }
     },
     mindset: {
-      title: 'Operational Mindset',
-      subtitle: 'Design isn\'t how it looks. \nStrategy isn\'t what we say. \nSuccess is the byproduct of \nwell-built systems.',
-      p1: { title: 'Systems over Features', description: 'Features solve problems; systems solve patterns.' },
-      p2: { title: 'Clarity over Noise', description: 'The ultimate competitive advantage is the ability to simplify complexity.' },
-      p3: { title: 'Growth through Resilience', description: 'Building resilient loops that compound value over time.' }
+      title: 'OPERATIONAL MINDSET',
+      subtitle: 'DESIGN ISN\'T HOW IT LOOKS. STRATEGY ISN\'T WHAT WE SAY. SUCCESS IS THE BYPRODUCT OF WELL-BUILT SYSTEMS.',
+      p1: { title: 'SYSTEMS OVER FEATURES', description: 'Features solve problems; systems solve patterns.' },
+      p2: { title: 'CLARITY OVER NOISE', description: 'The ultimate competitive advantage is the ability to simplify complexity.' },
+      p3: { title: 'GROWTH THROUGH RESILIENCE', description: 'Building resilient loops that compound value over time.' }
     },
     footer: {
-      cta: 'Let\'s build what\'s next.',
-      rights: '© 2024 / Engineered for Impact'
+      cta: 'LET\'S BUILD WHAT\'S NEXT.',
+      rights: '© 2024 / ENGINEERED FOR IMPACT'
     }
   }
 };
@@ -195,12 +195,12 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
   const cats = TRANSLATIONS[lang].categories;
   
   const stackMap: Record<string, string[]> = {
-    'Estratégias': ['Game Theory', 'Value Chain Analysis', 'SWOT 2.0'],
-    'Strategies': ['Game Theory', 'Value Chain Analysis', 'SWOT 2.0'],
-    'IA': ['OpenAI API', 'Anthropic', 'LangChain', 'Custom GPTs'],
-    'AI': ['OpenAI API', 'Anthropic', 'LangChain', 'Custom GPTs'],
-    'Design': ['Figma', 'Systemic UI', 'Prototyping', 'Design Tokens'],
-    'Vibe Coding': ['Cursor', 'Bolt.new', 'v0.dev', 'LLM Engineering']
+    'ESTRATÉGIAS': ['GAME THEORY', 'VALUE CHAIN', 'SWOT 2.0'],
+    'STRATEGIES': ['GAME THEORY', 'VALUE CHAIN', 'SWOT 2.0'],
+    'IA': ['OPENAI', 'ANTHROPIC', 'LANGCHAIN'],
+    'AI': ['OPENAI', 'ANTHROPIC', 'LANGCHAIN'],
+    'DESIGN': ['FIGMA', 'SYSTEMIC UI', 'TOKENS'],
+    'VIBE CODING': ['CURSOR', 'BOLT.NEW', 'V0.DEV']
   };
 
   const createItem = (key: keyof typeof t, id: number, color: HighlightColor, src: string): ListItem => {
@@ -215,7 +215,7 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
       description: item.desc,
       thesis: item.thesis,
       impact: item.impact,
-      stack: stackMap[item.title] || ['Custom Frameworks', 'Proprietary Systems']
+      stack: stackMap[item.title] || ['CUSTOM FRAMEWORKS']
     };
   };
 

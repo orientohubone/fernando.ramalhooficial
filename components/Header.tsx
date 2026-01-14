@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
         <div className="hidden md:flex gap-8 text-[10px] font-black tracking-widest text-neutral-400">
           <a href="#work" className="hover:text-white transition-colors">{t.strategy}</a>
           <a href="#about-trigger" className="hover:text-white transition-colors">{t.about}</a>
-          <button onClick={onOpenReports} className="hover:text-[#FFEE00] transition-colors">{t.reports}</button>
+          <button onClick={onOpenReports} className="hover:text-[#5AB473] transition-colors">{t.reports}</button>
           <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="hover:text-[#58B573] transition-colors uppercase">{t.creative}</a>
           <a href="#about" className="hover:text-white transition-colors">{t.philosophy}</a>
           <a href="#contact" className="hover:text-white transition-colors">{t.contact}</a>
@@ -32,13 +32,13 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
         <div className="flex gap-1 border border-neutral-800 rounded-full p-1 bg-black/50 backdrop-blur-md">
           <button 
             onClick={() => setLang('PT')}
-            className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'PT' ? 'bg-[#FFEE00] text-black' : 'text-neutral-500 hover:text-white'}`}
+            className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'PT' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
           >
             PT
           </button>
           <button 
             onClick={() => setLang('EN')}
-            className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'EN' ? 'bg-[#FFEE00] text-black' : 'text-neutral-500 hover:text-white'}`}
+            className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'EN' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
           >
             EN
           </button>

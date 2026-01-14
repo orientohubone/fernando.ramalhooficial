@@ -14,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       <div className="space-y-4">
         <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tighter uppercase">
           Build <br /> 
-          <span className="text-[#FFEE00]">{t.line1}</span> <br /> 
+          <span className="text-[#5AB473]">{t.line1}</span> <br /> 
           {t.line2}
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">

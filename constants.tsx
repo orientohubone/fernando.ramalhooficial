@@ -41,6 +41,7 @@ export const TRANSLATIONS = {
       },
       categories: {
         all: 'TODOS',
+        brand: 'BRANDING & SEMIÓTICA',
         market: 'MERCADO & IA',
         algo: 'ALGORITMOS',
         data: 'DADOS',
@@ -49,8 +50,7 @@ export const TRANSLATIONS = {
         finance: 'FINANÇAS',
         mobility: 'MOBILIDADE',
         health: 'SAÚDE',
-        edu: 'EDUCAÇÃO',
-        culture: 'CULTURA',
+        culture: 'CULTURA & ENTRETENIMENTO',
         exp: 'EXPERIMENTAL'
       },
       items: ALL_REPORTS
@@ -101,7 +101,7 @@ export const TRANSLATIONS = {
     }
   },
   EN: {
-    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'DIRECT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026' },
+    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'DIRECT', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026' },
     hero: {
       line1: 'STRATEGIC',
       line2: 'INNOVATION',
@@ -129,6 +129,7 @@ export const TRANSLATIONS = {
       },
       categories: {
         all: 'ALL',
+        brand: 'BRANDING & SEMIOTICS',
         market: 'MARKET & AI',
         algo: 'ALGORITHMS',
         data: 'DATA',
@@ -137,8 +138,7 @@ export const TRANSLATIONS = {
         finance: 'FINANCE',
         mobility: 'MOBILITY',
         health: 'HEALTH',
-        edu: 'EDUCATION',
-        culture: 'CULTURE',
+        culture: 'CULTURE & ENT.',
         exp: 'EXPERIMENTAL'
       },
       items: ALL_REPORTS
@@ -172,7 +172,7 @@ export const TRANSLATIONS = {
       marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Brand positioning and authority building.', thesis: 'MARKETING IS THE TRANSLATION OF PRODUCT TRUTH INTO THE LANGUAGE OF DESIRE.', impact: 'CAC reduction and Brand Equity building.' },
       paidMedia: { title: 'PAID MEDIA', category: 'PERFORMANCE', desc: 'Scalability through algorithms.', thesis: 'PAID MEDIA IS THE FUEL; THE SYSTEM IS THE ENGINE.', impact: 'Exponential revenue scale with controlled ROI.' },
       design: { title: 'DESIGN', category: 'SYSTEMS', desc: 'Interface where form follows intent.', thesis: 'SYSTEMIC DESIGN ELIMINATES FRICTION AND ACCELERATES DECISION-MAKING.', impact: 'Conversion increase and emotional retention.' },
-      ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI DOES NOT REPLACE HUMANS, IT AMPLIFIES THE CAPACITY FOR SYNTHESIS AND EXECUTION.', impact: '10x gain in operational speed.' },
+      ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI DOES NOT REPLACE HUMANS, IT AMPLIFIES THE CAPACITY FOR SYNTHESIS AND EXECUTION.', impact: 'Gain in operational speed.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Agile development using LLMs.', thesis: 'THE BARRIER BETWEEN IDEA AND EXECUTION HAS BEEN DESTROYED BY NATURAL LANGUAGE.', impact: 'Deployment of functional prototypes in record time.' },
       brandReg: { title: 'BRAND EQUITY', category: 'EQUITY', desc: 'Protecting intellectual assets.', thesis: 'A BRAND WITHOUT PROTECTION IS JUST A LOAN FROM THE MARKET.', impact: 'Legal security and asset valuation.' }
     },
@@ -180,7 +180,7 @@ export const TRANSLATIONS = {
       title: 'OPERATIONAL MINDSET',
       subtitle: 'DESIGN ISN\'T HOW IT LOOKS. STRATEGY ISN\'T WHAT WE SAY. SUCCESS IS THE BYPRODUCT OF WELL-BUILT SYSTEMS.',
       p1: { title: 'SYSTEMS OVER FEATURES', description: 'Features solve problems; systems solve patterns.' },
-      p2: { title: 'CLARITY OVER NOISE', description: 'The ultimate competitive advantage is the ability to simplify complexity.' },
+      p2: { title: 'CLAREZA OVER NOISE', description: 'The ultimate competitive advantage is the ability to simplify complexity.' },
       p3: { title: 'GROWTH THROUGH RESILIENCE', description: 'Building resilient loops that compound value over time.' }
     },
     footer: {

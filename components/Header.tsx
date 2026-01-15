@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
 
@@ -13,22 +14,31 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
   const t = TRANSLATIONS[lang].nav;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Create language-specific URL
+  const createLangUrl = (path: string): string => {
+    return lang === 'EN' ? `/en${path}` : path;
+  };
+
+  // Handle language switch
+  const handleLanguageSwitch = (newLang: Language) => {
+    setLang(newLang);
+    const currentPath = window.location.pathname;
+    if (newLang === 'EN' && !currentPath.startsWith('/en')) {
+      navigate(`/en${currentPath}`);
+    } else if (newLang === 'PT' && currentPath.startsWith('/en')) {
+      navigate(currentPath.replace('/en', ''));
+    }
+  };
 
   const navItems = [
-    { label: t.strategy, href: "#work" },
-    { label: t.about, href: "#about-trigger" },
-    { label: t.reports, href: "#", onClick: onOpenReports },
+    { label: t.strategy, href: "/capacidades" },
+    { label: t.about, href: "/sobre" },
+    { label: t.reports, href: "/relatorios" },
     { label: t.creative, href: "https://www.behance.net/fernandoramalho1", external: true },
-    { label: t.philosophy, href: "#about" },
-    { label: t.contact, href: "#contact" },
+    { label: t.philosophy, href: "/filosofia" },
+    { label: t.contact, href: "/contato" },
   ];
 
   return (
@@ -59,14 +69,14 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
                 >
                   {item.label}
                 </a>
-              ) : item.onClick ? (
-                <button
+              ) : item.href.startsWith('/') ? (
+                <Link
                   key={item.href}
-                  onClick={item.onClick}
-                  className="px-4 py-2 rounded-full text-[10px] font-black tracking-widest text-neutral-400 hover:text-[#5AB473] transition-colors"
+                  to={createLangUrl(item.href)}
+                  className="px-4 py-2 rounded-full text-[10px] font-black tracking-widest text-neutral-400 hover:text-white transition-colors"
                 >
                   {item.label}
-                </button>
+                </Link>
               ) : (
                 <a
                   key={item.href}
@@ -82,13 +92,13 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
           {/* Language Switcher */}
           <div className="hidden md:flex items-center gap-1 border border-neutral-800 rounded-full p-1 bg-black/50 backdrop-blur-md ml-4">
             <button 
-              onClick={() => setLang('PT')}
+              onClick={() => handleLanguageSwitch('PT')}
               className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'PT' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
             >
               PT
             </button>
             <button 
-              onClick={() => setLang('EN')}
+              onClick={() => handleLanguageSwitch('EN')}
               className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'EN' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
             >
               EN
@@ -129,14 +139,15 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
                 >
                   {item.label}
                 </a>
-              ) : item.onClick ? (
-                <button
+              ) : item.href.startsWith('/') ? (
+                <Link
                   key={item.href}
-                  onClick={() => { item.onClick?.(); setIsMobileMenuOpen(false); }}
+                  to={createLangUrl(item.href)}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="px-4 py-3 rounded-xl text-sm font-black tracking-widest text-white hover:text-[#FFEE00] transition-colors text-left"
                 >
                   {item.label}
-                </button>
+                </Link>
               ) : (
                 <a
                   key={item.href}
@@ -152,13 +163,13 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
             {/* Mobile Language Switcher */}
             <div className="flex gap-1 border border-neutral-800 rounded-full p-1 bg-black/50 backdrop-blur-md mt-4 mx-auto">
               <button 
-                onClick={() => setLang('PT')}
+                onClick={() => handleLanguageSwitch('PT')}
                 className={`text-[9px] font-black px-3 py-1 rounded-full transition-all ${lang === 'PT' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
               >
                 PT
               </button>
               <button 
-                onClick={() => setLang('EN')}
+                onClick={() => handleLanguageSwitch('EN')}
                 className={`text-[9px] font-black px-3 py-1 rounded-full transition-all ${lang === 'EN' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
               >
                 EN

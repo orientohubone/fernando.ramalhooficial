@@ -1,7 +1,8 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Language, TRANSLATIONS } from '../constants';
 import { ReportItem } from '../types';
+import BrandLogo from './BrandLogo';
 
 interface ReportDetailProps {
   report: ReportItem;
@@ -10,8 +11,14 @@ interface ReportDetailProps {
 }
 
 const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) => {
+  const navigate = useNavigate();
   const t = TRANSLATIONS[lang].reportsPage.ui;
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleBackToHub = () => {
+    // Navigate back to reports list
+    navigate(lang === 'EN' ? '/en/relatorios' : '/relatorios');
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,7 +52,7 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
       {/* Header Fixo de Leitura */}
       <nav className="sticky top-0 left-0 w-full z-[210] px-4 md:px-6 py-4 md:py-6 bg-black/95 backdrop-blur-xl border-b border-neutral-900 flex justify-between items-center">
         <button 
-          onClick={onClose}
+          onClick={handleBackToHub}
           className="flex items-center gap-2 md:gap-4 group"
         >
           <div className="w-4 md:w-6 h-[1px] bg-[#FFEE00] group-hover:w-6 md:group-hover:w-10 transition-all" />
@@ -216,7 +223,7 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
         {/* Footer Detail */}
         <footer className="mt-24 md:mt-40 pt-16 md:pt-20 border-t border-neutral-900 flex flex-col items-center gap-8 md:gap-12 text-center">
            <button 
-            onClick={onClose}
+            onClick={handleBackToHub}
             className="text-2xl md:text-4xl lg:text-6xl font-black uppercase tracking-tighter text-[#FFEE00] hover:scale-105 transition-transform"
            >
              {t.backToHub}

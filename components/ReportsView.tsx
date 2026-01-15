@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Language, TRANSLATIONS } from '../constants';
 import { ReportItem } from '../types';
 import BrandLogo from './BrandLogo';
@@ -8,19 +9,38 @@ import ReportDetail from './ReportDetail';
 interface ReportsViewProps {
   lang: Language;
   onClose: () => void;
+  onReportSelect?: (report: ReportItem) => void;
+  selectedReport?: ReportItem | null;
 }
 
-const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose }) => {
+const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose, onReportSelect, selectedReport: propSelectedReport }) => {
+  const navigate = useNavigate();
   const t = TRANSLATIONS[lang].reportsPage;
   const nav = TRANSLATIONS[lang].nav;
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedReport, setSelectedReport] = useState<ReportItem | null>(null);
+  const [selectedReport, setSelectedReport] = useState<ReportItem | null>(propSelectedReport || null);
 
   useEffect(() => {
-    if (!selectedReport) {
-      window.scrollTo(0, 0);
+    if (propSelectedReport) {
+      setSelectedReport(propSelectedReport);
+    } else {
+      // Clear selected report when prop is null
+      setSelectedReport(null);
     }
-  }, [selectedReport]);
+  }, [propSelectedReport]);
+
+  const handleReportClick = (report: ReportItem) => {
+    const slug = report.title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+    
+    navigate(lang === 'EN' ? `/en/relatorio/${slug}` : `/relatorio/${slug}`);
+  };
 
   const filteredItems = activeFilter === 'all' 
     ? t.items 
@@ -30,7 +50,17 @@ const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose }) => {
     <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Navigation */}
       <nav className="sticky top-0 left-0 w-full z-[110] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <button onClick={onClose} className="group flex items-center gap-4">
+        <button onClick={() => {
+    if (selectedReport) {
+      // If we're in a specific report, go back to reports list
+      setSelectedReport(null);
+      // Use navigate without replace to add to history
+      navigate(lang === 'EN' ? '/en/relatorios' : '/relatorios');
+    } else {
+      // If we're in the list, close completely
+      onClose();
+    }
+  }} className="group flex items-center gap-4">
           <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" />
           <span className="text-[10px] font-black uppercase tracking-[0.3em]">{nav.back}</span>
         </button>
@@ -73,8 +103,8 @@ const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-900 border border-neutral-900">
           {(filteredItems as ReportItem[]).map((report) => (
             <div 
-              key={report.id} 
-              onClick={() => setSelectedReport(report)}
+              key={report.id}
+              onClick={() => handleReportClick(report)}
               className="bg-[#050505] p-6 md:p-8 lg:p-10 flex flex-col justify-between group hover:bg-neutral-950 transition-colors duration-500 min-h-[280px] md:min-h-[320px] cursor-pointer"
             >
               <div className="space-y-4 md:space-y-6">

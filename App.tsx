@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import CapacityDetail from './components/CapacityDetail';
 import AboutView from './components/AboutView';
 import ReportsView from './components/ReportsView';
+import CognitiveArchitectureView from './components/CognitiveArchitectureView';
 import WhatsAppButton from './components/WhatsAppButton';
 import { Language } from './constants';
 import { ListItem } from './types';
@@ -16,6 +17,7 @@ function App() {
   const [selectedCapacity, setSelectedCapacity] = useState<ListItem | null>(null);
   const [showAbout, setShowAbout] = useState(false);
   const [showReports, setShowReports] = useState(false);
+  const [showCognitiveArchitecture, setShowCognitiveArchitecture] = useState(false);
 
   // Smooth scroll implementation for anchor links
   useEffect(() => {
@@ -43,16 +45,25 @@ function App() {
     return () => window.removeEventListener('click', handleScroll);
   }, []);
 
-  // Lock scroll when detail or about or reports is open
+  // Handle capacity selection with special case for cognitive architecture
+  const handleCapacitySelect = (item: ListItem) => {
+    if (item.title === 'ARQUITETURA COGNITIVA' || item.title === 'COGNITIVE ARCHITECTURE') {
+      setShowCognitiveArchitecture(true);
+    } else {
+      setSelectedCapacity(item);
+    }
+  };
+
+  // Lock scroll when detail or about or reports or cognitive architecture is open
   useEffect(() => {
-    if (selectedCapacity || showAbout || showReports) {
+    if (selectedCapacity || showAbout || showReports || showCognitiveArchitecture) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [selectedCapacity, showAbout, showReports]);
+  }, [selectedCapacity, showAbout, showReports, showCognitiveArchitecture]);
 
-  const isAnyViewOpen = !!selectedCapacity || showAbout || showReports;
+  const isAnyViewOpen = !!selectedCapacity || showAbout || showReports || showCognitiveArchitecture;
 
   return (
     <div className="relative bg-[#050505] text-white overflow-x-hidden selection:bg-[#FFEE00] selection:text-black">
@@ -73,7 +84,7 @@ function App() {
           <div className="h-[1px] w-full bg-neutral-900"></div>
         </div>
 
-        <RollingList lang={lang} onSelectItem={setSelectedCapacity} />
+        <RollingList lang={lang} onSelectItem={handleCapacitySelect} />
         
         <StrategySection lang={lang} />
         
@@ -108,6 +119,13 @@ function App() {
         <ReportsView 
           lang={lang} 
           onClose={() => setShowReports(false)} 
+        />
+      )}
+
+      {showCognitiveArchitecture && (
+        <CognitiveArchitectureView 
+          lang={lang} 
+          onClose={() => setShowCognitiveArchitecture(false)} 
         />
       )}
 

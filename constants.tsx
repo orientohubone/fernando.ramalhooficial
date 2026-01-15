@@ -81,6 +81,7 @@ export const TRANSLATIONS = {
     },
     capacities: {
       title: 'CAPACIDADES CENTRAIS',
+      cognitive: { title: 'ARQUITETURA COGNITIVA', category: 'PERCEPTION', desc: 'Reorganização do campo mental onde decisões acontecem.', thesis: 'QUEM CONTROLA O CAMPO MENTAL CONTROLA O MERCADO.', impact: 'Marcas viram escolhas naturais antes da comparação.' },
       strategy: { title: 'ESTRATÉGIAS', category: 'VISION', desc: 'Desenho de manobras táticas e visão de longo prazo.', thesis: 'ESTRATÉGIA NÃO É UM PLANO, É uma posição de poder em constante mutação.', impact: 'Criação de fossos competitivos e aumento de LTV.' },
       innovation: { title: 'INOVAÇÃO', category: 'DISRUPTION', desc: 'Criação de novos paradigmas e produtos.', thesis: 'INOVAÇÃO REAL É INVISÍVEL ATÉ QUE SE TORNE INDISPENSÁVEL.', impact: 'Abertura de novos mercados e verticais.' },
       marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Posicionamento e construção de autoridade.', thesis: 'MARKETING É A TRADUÇÃO DA VERDADE DO PRODUTO PARA A LINGUAGEM DO DESEJO.', impact: 'Redução de CAC e construção de Brand Equity.' },
@@ -171,6 +172,7 @@ export const TRANSLATIONS = {
     },
     capacities: {
       title: 'CORE CAPACITIES',
+      cognitive: { title: 'COGNITIVE ARCHITECTURE', category: 'PERCEPTION', desc: 'Reorganization of the mental field where decisions happen.', thesis: 'WHOEVER CONTROLS THE MENTAL FIELD CONTROLS THE MARKET.', impact: 'Brands become natural choices before comparison.' },
       strategy: { title: 'STRATEGIES', category: 'VISION', desc: 'Designing tactical maneuvers and long-term vision.', thesis: 'STRATEGY IS NOT A PLAN, IT IS A SHIFTING POSITION OF POWER.', impact: 'Creation of competitive moats and LTV growth.' },
       innovation: { title: 'INNOVATION', category: 'DISRUPTION', desc: 'Creating new paradigms and products.', thesis: 'REAL INNOVATION IS INVISIBLE UNTIL IT BECOMES INDISPENSABLE.', impact: 'Opening new markets and verticals.' },
       marketing: { title: 'MARKETING', category: 'NARRATIVE', desc: 'Brand positioning and authority building.', thesis: 'MARKETING IS THE TRANSLATION OF PRODUCT TRUTH INTO THE LANGUAGE OF DESIRE.', impact: 'CAC reduction and Brand Equity building.' },
@@ -199,6 +201,8 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
   const cats = TRANSLATIONS[lang].categories;
   
   const stackMap: Record<string, string[]> = {
+    'ARQUITETURA COGNITIVA': ['CAMPO MENTAL', 'SEGURANÇA COGNITIVA', 'NORMALIDADE'],
+    'COGNITIVE ARCHITECTURE': ['MENTAL FIELD', 'COGNITIVE SECURITY', 'NORMALITY'],
     'ESTRATÉGIAS': ['GAME THEORY', 'VALUE CHAIN', 'SWOT 2.0'],
     'STRATEGIES': ['GAME THEORY', 'VALUE CHAIN', 'SWOT 2.0'],
     'IA': ['OPENAI', 'ANTHROPIC', 'LANGCHAIN'],
@@ -207,8 +211,8 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
     'VIBE CODING': ['CURSOR', 'BOLT.NEW', 'V0.DEV']
   };
 
-  const createItem = (key: keyof typeof t, id: number, color: HighlightColor, src: string): ListItem => {
-    const item = t[key] as any;
+  const createItem = (key: string, id: number, color: HighlightColor, src: string): ListItem => {
+    const item = t[key as keyof typeof t] as any;
     return {
       id,
       title: item.title,
@@ -227,24 +231,25 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
     {
       name: cats.vision,
       items: [
-        createItem('strategy', 1, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80"),
-        createItem('innovation', 2, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1200&q=80"),
-        createItem('ai', 3, HighlightColor.GREEN, "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80")
+        createItem('cognitive', 1, HighlightColor.GREEN, "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80"),
+        createItem('strategy', 2, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80"),
+        createItem('innovation', 3, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1200&q=80"),
+        createItem('ai', 4, HighlightColor.GREEN, "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80")
       ]
     },
     {
       name: cats.craft,
       items: [
-        createItem('design', 4, HighlightColor.GREEN, "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80"),
-        createItem('vibeCoding', 5, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80")
+        createItem('design', 5, HighlightColor.GREEN, "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80"),
+        createItem('vibeCoding', 6, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80")
       ]
     },
     {
       name: cats.market,
       items: [
-        createItem('marketing', 6, HighlightColor.GREEN, "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=1200&q=80"),
-        createItem('paidMedia', 7, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1551288049-bbda48658a7d?w=1200&q=80"),
-        createItem('brandReg', 8, HighlightColor.GREEN, "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80")
+        createItem('marketing', 7, HighlightColor.GREEN, "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=1200&q=80"),
+        createItem('paidMedia', 8, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1551288049-bbda48658a7d?w=1200&q=80"),
+        createItem('brandReg', 9, HighlightColor.GREEN, "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80")
       ]
     }
   ];

@@ -11,6 +11,14 @@ interface RollingTextItemProps {
 
 const RollingTextItem: React.FC<RollingTextItemProps> = ({ item, onHover, onClick }) => {
   const colorClass = item.color === HighlightColor.YELLOW ? "text-[#FFEE00]" : "text-[#58B573]";
+  
+  // Tratamento especial para "ARQUITETURA COGNITIVA"
+  const isCognitiveArchitecture = item.title === 'ARQUITETURA COGNITIVA' || item.title === 'COGNITIVE ARCHITECTURE';
+  const displayTitle = isCognitiveArchitecture 
+    ? item.title.includes('ARQUITETURA') 
+      ? ['ARQUITETURA', 'COGNITIVA'] 
+      : ['COGNITIVE', 'ARCHITECTURE']
+    : [item.title];
 
   return (
     <div 
@@ -24,15 +32,43 @@ const RollingTextItem: React.FC<RollingTextItemProps> = ({ item, onHover, onClic
         <div className="transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:-translate-y-1/2">
           {/* Linha 1: Texto Branco - Altura deve casar com o pai */}
           <div className="h-[40px] sm:h-[50px] md:h-[65px] lg:h-32 flex items-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-none transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
-              {item.title}
-            </h2>
+            <div className="flex items-center gap-2 md:gap-4">
+              {isCognitiveArchitecture && (
+                <span className="px-2 py-1 text-[6px] md:text-[8px] font-black uppercase tracking-[0.2em] bg-[#FFEE00] text-black rounded-full">
+                  NOVO
+                </span>
+              )}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-none transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
+                {isCognitiveArchitecture ? (
+                  <>
+                    {displayTitle[0]}<br />
+                    <span className="text-[#58B573]">{displayTitle[1]}</span>
+                  </>
+                ) : (
+                  item.title
+                )}
+              </h2>
+            </div>
           </div>
           {/* Linha 2: Texto Colorido - Altura deve casar com o pai */}
           <div className="h-[40px] sm:h-[50px] md:h-[65px] lg:h-32 flex items-center">
-            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-8xl font-black tracking-tighter uppercase italic leading-none ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
-              {item.title}
-            </h2>
+            <div className="flex items-center gap-2 md:gap-4">
+              {isCognitiveArchitecture && (
+                <span className="px-2 py-1 text-[6px] md:text-[8px] font-black uppercase tracking-[0.2em] bg-[#58B573] text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  EXCLUSIVO
+                </span>
+              )}
+              <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black tracking-tighter uppercase italic leading-none ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
+                {isCognitiveArchitecture ? (
+                  <>
+                    {displayTitle[0]}<br />
+                    {displayTitle[1]}
+                  </>
+                ) : (
+                  item.title
+                )}
+              </h2>
+            </div>
           </div>
         </div>
       </div>

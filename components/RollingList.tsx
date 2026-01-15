@@ -15,37 +15,36 @@ const RollingTextItem: React.FC<RollingTextItemProps> = ({ item, onHover, onClic
   return (
     <div 
       onMouseEnter={() => onHover(item)}
-      onMouseLeave={() => onHover(null)}
       onClick={() => onClick(item)}
-      className="group relative w-full cursor-pointer border-b border-neutral-900/50 py-6 md:py-10 overflow-visible z-10"
+      className="group relative w-full cursor-pointer border-b border-neutral-900/50 py-4 md:py-6 lg:py-10 overflow-visible z-10"
     >
       {/* Container fixo para o corte de overflow */}
-      <div className="relative overflow-hidden h-[65px] md:h-32">
+      <div className="relative overflow-hidden h-[40px] sm:h-[50px] md:h-[65px] lg:h-32">
         {/* Div que desliza - não deve ter h-full para não achatar os filhos */}
         <div className="transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:-translate-y-1/2">
           {/* Linha 1: Texto Branco - Altura deve casar com o pai */}
-          <div className="h-[65px] md:h-32 flex items-center">
-            <h2 className="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
+          <div className="h-[40px] sm:h-[50px] md:h-[65px] lg:h-32 flex items-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-none transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
               {item.title}
             </h2>
           </div>
           {/* Linha 2: Texto Colorido - Altura deve casar com o pai */}
-          <div className="h-[65px] md:h-32 flex items-center">
-            <h2 className={`text-4xl md:text-8xl font-black tracking-tighter uppercase italic leading-none ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
+          <div className="h-[40px] sm:h-[50px] md:h-[65px] lg:h-32 flex items-center">
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-8xl font-black tracking-tighter uppercase italic leading-none ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
               {item.title}
             </h2>
           </div>
         </div>
       </div>
 
-      {/* Descrição que aparece lateralmente no desktop */}
-      <div className="mt-4 md:mt-0 md:absolute md:top-1/2 md:left-[60%] md:-translate-y-1/2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:group-hover:translate-x-4 max-w-sm pointer-events-none">
-        <p className="text-sm text-neutral-400 leading-relaxed font-bold uppercase tracking-wider">
+      {/* Descrição que aparece lateralmente no desktop - sempre visível no mobile */}
+      <div className="mt-2 md:mt-0 md:absolute md:top-1/2 md:left-[60%] md:-translate-y-1/2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:group-hover:translate-x-4 max-w-sm pointer-events-none md:pointer-events-auto">
+        <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-bold uppercase tracking-wider">
           {item.description}
         </p>
       </div>
 
-      <span className="absolute top-10 right-0 text-[10px] font-black uppercase tracking-[0.5em] text-neutral-800 transition-all duration-500 group-hover:text-white/20 hidden md:block">
+      <span className="absolute top-6 md:top-10 right-0 text-[8px] md:text-[10px] font-black uppercase tracking-[0.5em] text-neutral-800 transition-all duration-500 group-hover:text-white/20">
         {item.category}
       </span>
     </div>
@@ -63,7 +62,7 @@ const RollingList: React.FC<RollingListProps> = ({ lang, onSelectItem }) => {
   const [hoveredItem, setHoveredItem] = useState<ListItem | null>(null);
 
   return (
-    <section id="work" className="relative px-6 md:px-12 py-24 md:py-32 bg-[#050505] overflow-hidden">
+    <section id="work" className="relative px-6 md:px-12 py-16 md:py-24 lg:py-32 bg-[#050505] overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className={`absolute inset-0 transition-all duration-1000 ease-out scale-105 ${hoveredItem ? 'opacity-10' : 'opacity-0'}`}>
           {hoveredItem && (
@@ -74,18 +73,18 @@ const RollingList: React.FC<RollingListProps> = ({ lang, onSelectItem }) => {
       </div>
 
       <div className="relative max-w-7xl mx-auto z-10">
-        <div className="flex items-center gap-4 mb-24">
-          <div className="h-[2px] w-12 bg-[#FFEE00]"></div>
-          <h3 className="text-[12px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">
+        <div className="flex items-center gap-4 mb-16 md:mb-24">
+          <div className="h-[2px] w-8 md:w-12 bg-[#FFEE00]"></div>
+          <h3 className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">
             {t.title}
           </h3>
         </div>
 
-        <div className="space-y-32">
+        <div className="space-y-16 md:space-y-24 lg:space-y-32">
           {groups.map((group, gIdx) => (
             <div key={group.name} className="relative">
-              <div className="mb-8 flex items-baseline justify-between border-b-2 border-neutral-900 pb-4">
-                <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-neutral-600">
+              <div className="mb-6 md:mb-8 flex items-baseline justify-between border-b-2 border-neutral-900 pb-4">
+                <h4 className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.8em] text-neutral-600">
                    {gIdx + 1} // {group.name}
                 </h4>
               </div>

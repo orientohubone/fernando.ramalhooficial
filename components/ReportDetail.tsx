@@ -43,20 +43,20 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
       </div>
 
       {/* Header Fixo de Leitura */}
-      <nav className="sticky top-0 left-0 w-full z-[210] px-6 py-6 bg-black/95 backdrop-blur-xl border-b border-neutral-900 flex justify-between items-center">
+      <nav className="sticky top-0 left-0 w-full z-[210] px-4 md:px-6 py-4 md:py-6 bg-black/95 backdrop-blur-xl border-b border-neutral-900 flex justify-between items-center">
         <button 
           onClick={onClose}
-          className="flex items-center gap-4 group"
+          className="flex items-center gap-2 md:gap-4 group"
         >
-          <div className="w-6 h-[1px] bg-[#FFEE00] group-hover:w-10 transition-all" />
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FFEE00]">{t.backToHub}</span>
+          <div className="w-4 md:w-6 h-[1px] bg-[#FFEE00] group-hover:w-6 md:group-hover:w-10 transition-all" />
+          <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-[#FFEE00]">{t.backToHub}</span>
         </button>
         <div className="hidden md:flex items-center gap-6">
           <div className="flex flex-col items-end">
             <span className="text-[7px] font-mono text-neutral-600 uppercase tracking-widest mb-1">{t.truthIndex}</span>
             <div className="flex items-center gap-2">
                <span className="text-xs font-black text-[#58B573] font-mono">{report.truthScore}%</span>
-               <div className="w-24 h-[3px] bg-neutral-900 overflow-hidden">
+               <div className="w-20 md:w-24 h-[3px] bg-neutral-900 overflow-hidden">
                 <div 
                   className="h-full bg-[#58B573] transition-all duration-1000"
                   style={{ width: `${report.truthScore}%` }}
@@ -67,34 +67,34 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
         </div>
       </nav>
 
-      <article className="max-w-4xl mx-auto px-6 pt-24 pb-48">
+      <article className="max-w-4xl mx-auto px-4 md:px-6 pt-16 md:pt-24 pb-32 md:pb-48">
         {/* Identidade do Report */}
-        <header className="mb-24 space-y-8">
+        <header className="mb-16 md:mb-24 space-y-6 md:space-y-8">
           <div className="flex items-center gap-4">
-            <span className="text-[10px] font-black font-mono text-neutral-800 tracking-[0.6em]">DEEP_INTELLIGENCE_FILE</span>
+            <span className="text-[8px] md:text-[10px] font-black font-mono text-neutral-800 tracking-[0.6em]">DEEP_INTELLIGENCE_FILE</span>
             <div className="h-[1px] flex-1 bg-neutral-900" />
-            <span className="text-[10px] font-black font-mono text-neutral-800 uppercase tracking-[0.6em]">{report.id}</span>
+            <span className="text-[8px] md:text-[10px] font-black font-mono text-neutral-800 uppercase tracking-[0.6em]">{report.id}</span>
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-tight italic">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-8xl font-black uppercase tracking-tighter leading-tight italic">
             {report.title}
           </h1>
           
-          <p className="text-2xl md:text-3xl font-medium text-neutral-400 tracking-tight leading-relaxed border-l-4 border-[#FFEE00] pl-8">
+          <p className="text-lg md:text-2xl lg:text-3xl font-medium text-neutral-400 tracking-tight leading-relaxed border-l-4 border-[#FFEE00] pl-4 md:pl-8">
             {report.desc}
           </p>
         </header>
 
         {/* Dashboard de Métricas Inicial */}
         {report.metrics && report.metrics.length > 0 && (
-          <section className="mb-32">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-600 mb-10">{t.metricsTitle}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <section className="mb-20 md:mb-32">
+            <h3 className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.5em] text-neutral-600 mb-6 md:mb-10">{t.metricsTitle}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
               {report.metrics.map((metric, i) => (
-                <div key={i} className="bg-neutral-950 p-8 border border-neutral-900 hover:border-[#FFEE00]/30 transition-colors group">
+                <div key={i} className="bg-neutral-950 p-4 md:p-8 border border-neutral-900 hover:border-[#FFEE00]/30 transition-colors group">
                   <div className="flex justify-between items-end mb-4">
-                    <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest">{metric.label}</span>
-                    <span className={`text-xl font-black ${metric.trend === 'up' ? 'text-[#58B573]' : 'text-red-500'}`}>
+                    <span className="text-[8px] md:text-[10px] font-black text-neutral-500 uppercase tracking-widest">{metric.label}</span>
+                    <span className={`text-lg md:text-xl font-black ${metric.trend === 'up' ? 'text-[#58B573]' : 'text-red-500'}`}>
                       {metric.value}
                     </span>
                   </div>
@@ -111,22 +111,22 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
         )}
 
         {/* Conteúdo Principal */}
-        <div className="space-y-32">
+        <div className="space-y-20 md:space-y-32">
           {/* Executive Summary */}
-          <section className="space-y-8">
+          <section className="space-y-6 md:space-y-8">
             <h3 className="text-xs font-black uppercase tracking-[0.5em] text-[#FFEE00] border-b border-neutral-900 pb-4">{t.summary}</h3>
-            <p className="text-xl md:text-2xl text-neutral-200 leading-relaxed font-semibold italic text-justify [text-justify:inter-word] [hyphens:auto] tracking-tight">
+            <p className="text-lg md:text-xl lg:text-2xl text-neutral-200 leading-relaxed font-semibold italic text-justify [text-justify:inter-word] [hyphens:auto] tracking-tight">
               {report.summary}
             </p>
           </section>
 
           {/* Analysis - Deep Long-form Content */}
-          <section className="space-y-12">
+          <section className="space-y-8 md:space-y-12">
             <h3 className="text-xs font-black uppercase tracking-[0.5em] text-neutral-600 border-b border-neutral-900 pb-4">{t.analysis}</h3>
             <div className="prose prose-invert prose-lg max-w-none">
-              <div className="text-lg md:text-xl text-neutral-400 leading-relaxed font-medium text-justify [text-justify:inter-word] [hyphens:auto] space-y-10">
+              <div className="text-base md:text-lg lg:text-xl text-neutral-400 leading-relaxed font-medium text-justify [text-justify:inter-word] [hyphens:auto] space-y-6 md:space-y-10">
                 {report.analysis.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx} className={idx === 0 ? "first-letter:text-6xl first-letter:font-black first-letter:text-[#FFEE00] first-letter:mr-4 first-letter:float-left first-letter:leading-none" : ""}>
+                  <p key={idx} className={idx === 0 ? "first-letter:text-4xl md:first-letter:text-6xl first-letter:font-black first-letter:text-[#FFEE00] first-letter:mr-2 md:first-letter:mr-4 first-letter:float-left first-letter:leading-none" : ""}>
                     {paragraph}
                   </p>
                 ))}
@@ -136,13 +136,13 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
 
           {/* Interactive Insight Cards */}
           {report.insightCards && report.insightCards.length > 0 && (
-            <section className="space-y-12">
+            <section className="space-y-8 md:space-y-12">
               <h3 className="text-xs font-black uppercase tracking-[0.5em] text-white border-b border-neutral-900 pb-4">{t.insightsTitle}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-900 border border-neutral-900 overflow-hidden rounded-sm">
                 {report.insightCards.map((card, i) => (
-                  <div key={i} className="bg-neutral-950 p-10 hover:bg-[#FFEE00]/5 transition-colors group">
+                  <div key={i} className="bg-neutral-950 p-6 md:p-10 hover:bg-[#FFEE00]/5 transition-colors group">
                     <span className="text-[8px] font-black font-mono text-[#FFEE00] tracking-[0.4em] mb-4 block">INSIGHT_0{i+1}</span>
-                    <h4 className="text-xl font-black uppercase tracking-tight mb-4 group-hover:translate-x-2 transition-transform">{card.title}</h4>
+                    <h4 className="text-lg md:text-xl font-black uppercase tracking-tight mb-4 group-hover:translate-x-2 transition-transform">{card.title}</h4>
                     <p className="text-neutral-500 text-sm leading-relaxed font-medium text-justify">{card.content}</p>
                   </div>
                 ))}
@@ -151,13 +151,13 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
           )}
 
           {/* Key Findings */}
-          <section className="space-y-12">
+          <section className="space-y-8 md:space-y-12">
             <h3 className="text-xs font-black uppercase tracking-[0.5em] text-[#58B573] border-b border-neutral-900 pb-4">{t.findings}</h3>
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-4 md:gap-6">
               {report.findings.map((finding, i) => (
-                <div key={i} className="flex gap-8 p-10 bg-neutral-950 border-l border-[#58B573] group hover:bg-neutral-900 transition-colors">
+                <div key={i} className="flex gap-4 md:gap-8 p-6 md:p-10 bg-neutral-950 border-l border-[#58B573] group hover:bg-neutral-900 transition-colors">
                   <span className="text-xs font-black text-[#58B573] font-mono">0{i+1}</span>
-                  <p className="text-lg md:text-xl font-black uppercase tracking-tight text-white leading-tight">{finding}</p>
+                  <p className="text-base md:text-lg lg:text-xl font-black uppercase tracking-tight text-white leading-tight">{finding}</p>
                 </div>
               ))}
             </div>
@@ -165,19 +165,19 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
 
           {/* Research Sources & Links */}
           {report.sources && report.sources.length > 0 && (
-            <section className="space-y-8 bg-neutral-950 p-10 border border-neutral-900">
+            <section className="space-y-6 md:space-y-8 bg-neutral-950 p-6 md:p-10 border border-neutral-900">
               <h3 className="text-xs font-black uppercase tracking-[0.5em] text-[#FFEE00] mb-6">{t.sourcesTitle}</h3>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-2 md:gap-4">
                 {report.sources.map((source, i) => (
                   <a 
                     key={i} 
                     href={source.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-4 py-2 bg-neutral-900 border border-neutral-800 hover:border-[#FFEE00] hover:text-[#FFEE00] transition-all group"
+                    className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 bg-neutral-900 border border-neutral-800 hover:border-[#FFEE00] hover:text-[#FFEE00] transition-all group"
                   >
-                    <span className="text-[10px] font-black font-mono text-neutral-600 group-hover:text-[#FFEE00]">SOURCE_0{i+1}</span>
-                    <span className="text-[10px] font-black uppercase tracking-widest">{source.label}</span>
+                    <span className="text-[8px] md:text-[10px] font-black font-mono text-neutral-600 group-hover:text-[#FFEE00]">SOURCE_0{i+1}</span>
+                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest">{source.label}</span>
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                   </a>
                 ))}
@@ -186,27 +186,27 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
           )}
 
           {/* Methodology */}
-          <section className="space-y-8 bg-neutral-950 p-10 border border-neutral-900">
+          <section className="space-y-6 md:space-y-8 bg-neutral-950 p-6 md:p-10 border border-neutral-900">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xs font-black uppercase tracking-[0.5em] text-neutral-600">{t.methodology}</h3>
               <div className="px-3 py-1 bg-[#58B573]/10 text-[#58B573] text-[8px] font-black uppercase tracking-widest rounded-full">Algoritmo Verificado</div>
             </div>
-            <p className="text-sm text-neutral-500 leading-relaxed font-medium font-mono text-justify uppercase [word-spacing:0.2em]">
+            <p className="text-xs md:text-sm text-neutral-500 leading-relaxed font-medium font-mono text-justify uppercase [word-spacing:0.2em]">
               {report.methodology}
             </p>
           </section>
 
           {/* Recommendations & Next Steps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-            <section className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+            <section className="space-y-4 md:space-y-6">
               <h3 className="text-xs font-black uppercase tracking-[0.5em] text-neutral-600 border-b border-neutral-900 pb-4">{t.recommendations}</h3>
-              <p className="text-lg text-neutral-300 font-bold leading-relaxed italic border-l-2 border-[#FFEE00] pl-6 text-justify">
+              <p className="text-base md:text-lg text-neutral-300 font-bold leading-relaxed italic border-l-2 border-[#FFEE00] pl-4 md:pl-6 text-justify">
                 {report.recommendations}
               </p>
             </section>
-            <section className="space-y-6">
+            <section className="space-y-4 md:space-y-6">
               <h3 className="text-xs font-black uppercase tracking-[0.5em] text-neutral-600 border-b border-neutral-900 pb-4">{t.nextSteps}</h3>
-              <p className="text-lg text-neutral-300 font-bold leading-relaxed italic border-l-2 border-neutral-700 pl-6 text-justify">
+              <p className="text-base md:text-lg text-neutral-300 font-bold leading-relaxed italic border-l-2 border-neutral-700 pl-4 md:pl-6 text-justify">
                 {report.nextSteps}
               </p>
             </section>
@@ -214,19 +214,19 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
         </div>
 
         {/* Footer Detail */}
-        <footer className="mt-40 pt-20 border-t border-neutral-900 flex flex-col items-center gap-12 text-center">
+        <footer className="mt-24 md:mt-40 pt-16 md:pt-20 border-t border-neutral-900 flex flex-col items-center gap-8 md:gap-12 text-center">
            <button 
             onClick={onClose}
-            className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#FFEE00] hover:scale-105 transition-transform"
+            className="text-2xl md:text-4xl lg:text-6xl font-black uppercase tracking-tighter text-[#FFEE00] hover:scale-105 transition-transform"
            >
              {t.backToHub}
            </button>
            <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <img src="/logofernando.png" alt="FERNANDO.RAMALHO" className="h-2" />
-              <span className="text-[8px] font-mono text-neutral-800 uppercase tracking-[1em]">/ Systems Architect 2026</span>
+              <span className="text-[6px] md:text-[8px] font-mono text-neutral-800 uppercase tracking-[1em]">/ Systems Architect 2026</span>
             </div>
-            <span className="text-[8px] font-mono text-neutral-800 uppercase tracking-[0.5em]">Strategically Engineered for Global Dominance</span>
+            <span className="text-[6px] md:text-[8px] font-mono text-neutral-800 uppercase tracking-[0.5em]">Strategically Engineered for Global Dominance</span>
            </div>
         </footer>
       </article>

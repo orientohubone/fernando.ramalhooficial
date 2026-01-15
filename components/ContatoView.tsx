@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Language } from '../constants';
 import BrandLogo from './BrandLogo';
 
@@ -8,31 +8,9 @@ interface ContatoViewProps {
 }
 
 const ContatoView: React.FC<ContatoViewProps> = ({ lang, onClose }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aqui você pode implementar o envio do formulário
-    console.log('Form data:', formData);
-    // Por enquanto, vamos abrir o WhatsApp
-    window.open('https://wa.me/5514998618547?text=' + encodeURIComponent(`Olá! Meu nome é ${formData.name} e gostaria de falar sobre ${formData.message}`), '_blank');
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -60,85 +38,12 @@ const ContatoView: React.FC<ContatoViewProps> = ({ lang, onClose }) => {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Formulário */}
-          <section className="space-y-8">
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white">
-                Envie sua <span className="text-[#FFEE00]">mensagem</span>
-              </h2>
-              <p className="text-neutral-400 leading-relaxed">
-                Preencha o formulário abaixo ou entre em contato diretamente via WhatsApp. 
-                Respondo rapidamente a todas as mensagens.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">Nome</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 bg-neutral-900 border border-neutral-800 rounded-lg text-white placeholder-neutral-600 focus:outline-none focus:border-[#FFEE00] focus:ring-1 focus:ring-[#FFEE00]/20 transition-all"
-                  placeholder="Seu nome completo"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 bg-neutral-900 border border-neutral-800 rounded-lg text-white placeholder-neutral-600 focus:outline-none focus:border-[#FFEE00] focus:ring-1 focus:ring-[#FFEE00]/20 transition-all"
-                  placeholder="seu@email.com"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">Empresa (opcional)</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-neutral-900 border border-neutral-800 rounded-lg text-white placeholder-neutral-600 focus:outline-none focus:border-[#FFEE00] focus:ring-1 focus:ring-[#FFEE00]/20 transition-all"
-                  placeholder="Nome da sua empresa"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">Mensagem</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-neutral-900 border border-neutral-800 rounded-lg text-white placeholder-neutral-600 focus:outline-none focus:border-[#FFEE00] focus:ring-1 focus:ring-[#FFEE00]/20 transition-all resize-none"
-                  placeholder="Descreva seu projeto ou necessidade..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-4 bg-[#FFEE00] text-black font-black text-sm uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
-              >
-                Enviar Mensagem
-              </button>
-            </form>
-          </section>
-
+        <div className="max-w-4xl mx-auto">
           {/* Informações de Contato */}
           <section className="space-y-12">
             <div className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white">
-                Outras formas de <span className="text-[#58B573]">contato</span>
+                Entre em <span className="text-[#58B573]">contato</span>
               </h2>
               <p className="text-neutral-400 leading-relaxed">
                 Prefere contato direto? Aqui estão todas as formas de me encontrar.

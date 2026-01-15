@@ -13,7 +13,7 @@ export type Language = 'PT' | 'EN';
 
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'CAPACIDADES', philosophy: 'FILOSOFIA', contact: 'DIRETO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026', creative: 'CRAFT' },
+    nav: { strategy: 'CAPACIDADES', philosophy: 'FILOSOFIA', contact: 'CONTATO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026', creative: 'CRAFT' },
     hero: {
       line1: 'INOVAÇÃO',
       line2: 'ESTRATÉGICA',
@@ -104,7 +104,7 @@ export const TRANSLATIONS = {
     }
   },
   EN: {
-    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'DIRECT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026', creative: 'CRAFT' },
+    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'CONTACT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026', creative: 'CRAFT' },
     hero: {
       line1: 'STRATEGIC',
       line2: 'INNOVATION',

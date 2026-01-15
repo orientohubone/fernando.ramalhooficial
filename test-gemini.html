@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Gemini API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; margin: 5px; background: #4285f4; color: white; border: none; cursor: pointer; }
+        button:hover { background: #3367d6; }
+        #result { margin-top: 20px; padding: 10px; background: #f5f5f5; border-radius: 5px; }
+        pre { background: #000; color: #0f0; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Teste Google Gemini API</h1>
+    
+    <div>
+        <input type="text" id="apiKey" placeholder="Cole sua API Key aqui" style="width: 400px; padding: 10px;">
+        <button onclick="testAllModels()">Testar Todos os Modelos</button>
+        <button onclick="testSpecificModel()">Testar Modelo Específico</button>
+    </div>
+    
+    <div>
+        <select id="modelSelect">
+            <option value="gemini-2.5-pro">gemini-2.5-pro</option>
+            <option value="gemini-2.5-flash">gemini-2.5-flash</option>
+            <option value="gemini-3-pro-preview">gemini-3-pro-preview</option>
+            <option value="gemini-3-flash-preview">gemini-3-flash-preview</option>
+            <option value="gemini-2.0-flash">gemini-2.0-flash</option>
+            <option value="gemini-2.0-flash-lite">gemini-2.0-flash-lite</option>
+            <option value="gemini-flash-latest">gemini-flash-latest</option>
+            <option value="gemini-pro-latest">gemini-pro-latest</option>
+            <option value="gemini-2.5-flash-preview-09-2025">gemini-2.5-flash-preview-09-2025</option>
+            <option value="gemini-2.5-flash-lite">gemini-2.5-flash-lite</option>
+            <option value="gemini-2.0-flash-exp">gemini-2.0-flash-exp</option>
+        </select>
+        <button onclick="listModels()">Listar Modelos Disponíveis</button>
+    </div>
+    
+    <div id="result"></div>
+
+    <script>
+        async function testModel(apiKey, model) {
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: "Olá, como você está?"
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+                    return { success: true, model, response: data.candidates[0].content.parts[0].text };
+                } else {
+                    return { success: false, model, error: data };
+                }
+            } catch (error) {
+                return { success: false, model, error: error.message };
+            }
+        }
+
+        async function testAllModels() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!apiKey) {
+                resultDiv.innerHTML = '<p class="error">Por favor, insira sua API Key</p>';
+                return;
+            }
+            
+            const models = [
+                'gemini-2.5-pro',
+                'gemini-2.5-flash',
+                'gemini-3-pro-preview',
+                'gemini-3-flash-preview',
+                'gemini-2.0-flash',
+                'gemini-2.0-flash-lite',
+                'gemini-flash-latest',
+                'gemini-pro-latest',
+                'gemini-2.5-flash-preview-09-2025',
+                'gemini-2.5-flash-lite',
+                'gemini-2.0-flash-exp'
+            ];
+            let results = '<h2>Resultados dos Testes:</h2>';
+            
+            for (const model of models) {
+                results += `<h3>Testando ${model}...</h3>`;
+                const result = await testModel(apiKey, model);
+                
+                if (result.success) {
+                    results += `<p class="success">✅ ${model}: Funcionou!</p>`;
+                    results += `<p><strong>Resposta:</strong> ${result.response}</p>`;
+                } else {
+                    results += `<p class="error">❌ ${model}: Falhou</p>`;
+                    results += `<pre>${JSON.stringify(result.error, null, 2)}</pre>`;
+                }
+                results += '<hr>';
+            }
+            
+            resultDiv.innerHTML = results;
+        }
+
+        async function listModels() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!apiKey) {
+                resultDiv.innerHTML = '<p class="error">Por favor, insira sua API Key</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<h3>Listando modelos disponíveis...</h3>';
+            
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+                
+                if (!response.ok) {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<p class="error">❌ Erro ao listar modelos: ${response.status}</p><pre>${error}</pre>`;
+                    return;
+                }
+                
+                const data = await response.json();
+                console.log('Modelos disponíveis:', data);
+                
+                let html = '<h2>Modelos Disponíveis:</h2>';
+                
+                if (data.models && data.models.length > 0) {
+                    html += '<h3>Todos os Modelos:</h3>';
+                    data.models.forEach(model => {
+                        const name = model.name.split('/').pop();
+                        const methods = model.supportedGenerationMethods || [];
+                        const supportsGenerate = methods.includes('generateContent');
+                        html += `<p><strong>${name}</strong> - ${supportsGenerate ? '✅' : '❌'} generateContent</p>`;
+                        html += `<small>Métodos: ${methods.join(', ')}</small><br><br>`;
+                    });
+                    
+                    const generateModels = data.models
+                        .filter(model => model.supportedGenerationMethods?.includes('generateContent'))
+                        .map(model => model.name.split('/').pop());
+                    
+                    html += `<h3>Modelos que suportam generateContent (${generateModels.length}):</h3>`;
+                    html += `<p>${generateModels.join(', ') || 'Nenhum'}</p>`;
+                } else {
+                    html += '<p>Nenhum modelo encontrado</p>';
+                }
+                
+                resultDiv.innerHTML = html;
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Erro: ${error.message}</p>`;
+            }
+        }
+
+        async function testSpecificModel() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const model = document.getElementById('modelSelect').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (!apiKey) {
+                resultDiv.innerHTML = '<p class="error">Por favor, insira sua API Key</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = `<h3>Testando ${model}...</h3>`;
+            const result = await testModel(apiKey, model);
+            
+            if (result.success) {
+                resultDiv.innerHTML += `<p class="success">✅ ${model}: Funcionou!</p>`;
+                resultDiv.innerHTML += `<p><strong>Resposta:</strong> ${result.response}</p>`;
+            } else {
+                resultDiv.innerHTML += `<p class="error">❌ ${model}: Falhou</p>`;
+                resultDiv.innerHTML += `<pre>${JSON.stringify(result.error, null, 2)}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

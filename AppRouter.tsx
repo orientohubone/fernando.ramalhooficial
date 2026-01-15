@@ -12,6 +12,7 @@ import CapacidadesView from './components/CapacidadesView';
 import ContatoView from './components/ContatoView';
 import FilosofiaView from './components/FilosofiaView';
 import CognitiveArchitectureView from './components/CognitiveArchitectureView';
+import IAView from './components/IAView';
 import WhatsAppButton from './components/WhatsAppButton';
 import { Language, TRANSLATIONS, getCategorizedPillars } from './constants';
 import { ALL_REPORTS } from './reportsData';
@@ -30,11 +31,11 @@ const createSlug = (text: string): string => {
   return text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Remove accents
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+    .trim();
 };
 
 // Helper function to find capacity by slug
@@ -101,6 +102,8 @@ const AppRouter: React.FC = () => {
       // Contact page - handled by route
     } else if (cleanPath === '/filosofia') {
       // Filosofia page - handled by route
+    } else if (cleanPath === '/capacidade/ia') {
+      // IA page - handled by route
     } else if (cleanPath === '/arquitetura-cognitiva') {
       // Cognitive architecture - handled by route
     } else if (cleanPath !== '/') {
@@ -214,6 +217,13 @@ const AppRouter: React.FC = () => {
         
         <Route path="/filosofia" element={
           <FilosofiaView 
+            lang={lang} 
+            onClose={() => navigate('/')} 
+          />
+        } />
+        
+        <Route path="/capacidade/ia" element={
+          <IAView 
             lang={lang} 
             onClose={() => navigate('/')} 
           />

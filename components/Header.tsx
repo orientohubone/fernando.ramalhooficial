@@ -42,14 +42,16 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4" role="banner">
       <div className="flex justify-center">
         <nav
           className={`flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-300 ${
             isScrolled
               ? "bg-black/80 backdrop-blur-xl border-neutral-800/50 shadow-lg shadow-black/20"
-              : "bg-black/40 backdrop-blur-xl border-white/10"
+              : "bg-black/40 backdrop-blur-md border-neutral-900/50"
           }`}
+          role="navigation"
+          aria-label="Navegação principal"
         >
           {/* Logo */}
           <a href="/" className="group py-2">
@@ -126,8 +128,8 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-auto max-w-sm bg-black/90 backdrop-blur-xl border border-neutral-800/50 rounded-2xl p-4 shadow-xl">
-          <nav className="flex flex-col gap-1">
+        <div className="md:hidden mt-2 mx-auto max-w-sm bg-black/90 backdrop-blur-xl border border-neutral-800/50 rounded-2xl p-4 shadow-xl" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+          <nav className="flex flex-col gap-1" role="navigation" aria-label="Menu mobile">
             {navItems.map((item) => (
               item.external ? (
                 <a

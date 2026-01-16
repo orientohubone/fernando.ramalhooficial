@@ -1,0 +1,52 @@
+User-agent: *
+Allow: /
+
+# Priority pages
+Allow: /capacidades
+Allow: /en/capacidades
+Allow: /sobre
+Allow: /en/sobre
+Allow: /relatorios
+Allow: /en/relatorios
+Allow: /contato
+Allow: /en/contato
+Allow: /filosofia
+Allow: /en/filosofia
+Allow: /arquitetura-cognitiva
+Allow: /en/arquitetura-cognitiva
+Allow: /ia
+Allow: /en/ia
+
+# Block admin and dynamic routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /_next/
+Disallow: /404
+Disallow: /500
+
+# Sitemap location
+Sitemap: https://fernandoramalho.vercel.app/sitemap.xml
+
+# Crawl delay (optional, be careful with this)
+Crawl-delay: 1
+
+# Specific instructions for major crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

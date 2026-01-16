@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import SEOMeta from './components/SEOMeta';
+import StructuredData from './components/StructuredData';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import { RollingList } from './components/RollingList';
@@ -25,6 +28,125 @@ const createLangUrl = (path: string, lang: Language): string => {
     return `/en${path}`;
   }
   return path;
+};
+
+// Helper function to generate SEO metadata
+const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?: any, selectedReport?: any) => {
+  const baseUrl = 'https://fernandoramalho.vercel.app';
+  const cleanPath = pathname.replace('/en', '');
+  
+  // Default metadata
+  let title = '';
+  let description = '';
+  let keywords = '';
+  let canonical = pathname;
+  let structuredData: any = null;
+  
+  if (cleanPath === '/' || cleanPath === '') {
+    title = lang === 'EN' ? 'Home - Strategic Innovation & AI Solutions' : 'Home - Inovação Estratégica e Soluções de IA';
+    description = lang === 'EN' 
+      ? 'OrientoHub specializes in cognitive architecture, AI implementation, digital transformation, and strategic innovation for businesses seeking competitive advantage.'
+      : 'OrientoHub é especializada em arquitetura cognitiva, implementação de IA, transformação digital e inovação estratégica para empresas que buscam vantagem competitiva.';
+    keywords = lang === 'EN' 
+      ? 'AI, artificial intelligence, cognitive architecture, digital transformation, innovation, strategy, machine learning, business intelligence'
+      : 'IA, inteligência artificial, arquitetura cognitiva, transformação digital, inovação, estratégia, machine learning, inteligência de negócios';
+    
+    structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OrientoHub",
+      "url": baseUrl,
+      "description": description,
+      "sameAs": [
+        "https://linkedin.com/company/orientohub",
+        "https://twitter.com/orientohub"
+      ]
+    };
+  } else if (cleanPath === '/capacidades') {
+    title = lang === 'EN' ? 'Our Capabilities - Strategic Services' : 'Nossas Capacidades - Serviços Estratégicos';
+    description = lang === 'EN'
+      ? 'Explore our comprehensive capabilities: Strategy, Innovation, AI, Design, Vibe Coding, Marketing, Paid Media, and Brand Registration.'
+      : 'Explore nossas capacidades completas: Estratégia, Inovação, IA, Design, Vibe Coding, Marketing, Mídia Paga e Registro de Marcas.';
+    keywords = lang === 'EN'
+      ? 'business strategy, innovation, AI services, design thinking, marketing, paid media, brand registration'
+      : 'estratégia empresarial, inovação, serviços de IA, design thinking, marketing, mídia paga, registro de marcas';
+  } else if (cleanPath.startsWith('/capacidade/') && selectedCapacity) {
+    const capacityTitle = selectedCapacity.title;
+    const capacityDesc = selectedCapacity.desc;
+    
+    title = `${capacityTitle} - ${lang === 'EN' ? 'Strategic Service' : 'Serviço Estratégico'}`;
+    description = capacityDesc;
+    keywords = `${capacityTitle}, ${lang === 'EN' ? 'strategic consulting, business solutions' : 'consultoria estratégica, soluções de negócio'}`;
+    
+    structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": capacityTitle,
+      "description": capacityDesc,
+      "provider": {
+        "@type": "Organization",
+        "name": "OrientoHub",
+        "url": baseUrl
+      }
+    };
+  } else if (cleanPath === '/sobre') {
+    title = lang === 'EN' ? 'About Us - Innovation Leaders' : 'Sobre Nós - Líderes em Inovação';
+    description = lang === 'EN'
+      ? 'Learn about OrientoHub\'s mission to transform businesses through strategic innovation and cutting-edge AI solutions.'
+      : 'Conheça a missão da OrientoHub de transformar negócios através de inovação estratégica e soluções de IA de ponta.';
+    keywords = lang === 'EN'
+      ? 'about orientohub, company profile, innovation leadership, AI expertise'
+      : 'sobre orientohub, perfil da empresa, liderança em inovação, expertise em IA';
+  } else if (cleanPath === '/relatorios') {
+    title = lang === 'EN' ? 'Reports & Insights' : 'Relatórios e Insights';
+    description = lang === 'EN'
+      ? 'Access our comprehensive reports on market trends, innovation strategies, and AI implementation insights.'
+      : 'Acesse nossos relatórios completos sobre tendências de mercado, estratégias de inovação e insights de implementação de IA.';
+    keywords = lang === 'EN'
+      ? 'business reports, market analysis, innovation insights, AI trends'
+      : 'relatórios empresariais, análise de mercado, insights de inovação, tendências de IA';
+  } else if (cleanPath === '/contato') {
+    title = lang === 'EN' ? 'Contact Us - Start Your Transformation' : 'Contato - Comece sua Transformação';
+    description = lang === 'EN'
+      ? 'Get in touch with OrientoHub to discuss how our strategic innovation and AI solutions can transform your business.'
+      : 'Entre em contato com a OrientoHub para discutir como nossas soluções de inovação estratégica e IA podem transformar seu negócio.';
+    keywords = lang === 'EN'
+      ? 'contact orientohub, business consultation, AI implementation, strategic partnership'
+      : 'contato orientohub, consultoria empresarial, implementação de IA, parceria estratégica';
+  } else if (cleanPath === '/filosofia') {
+    title = lang === 'EN' ? 'Our Philosophy - Strategic Innovation Principles' : 'Nossa Filosofia - Princípios de Inovação Estratégica';
+    description = lang === 'EN'
+      ? 'Discover OrientoHub\'s core philosophy: systems over tactics, value composition, and fundamental truths in business transformation.'
+      : 'Conheça a filosofia central da OrientoHub: sistemas sobre táticas, composição de valor e verdades fundamentais na transformação de negócios.';
+    keywords = lang === 'EN'
+      ? 'business philosophy, innovation principles, strategic thinking, systems thinking'
+      : 'filosofia empresarial, princípios de inovação, pensamento estratégico, pensamento sistêmico';
+  } else if (cleanPath === '/arquitetura-cognitiva') {
+    title = lang === 'EN' ? 'Cognitive Architecture - Advanced AI Systems' : 'Arquitetura Cognitiva - Sistemas de IA Avançados';
+    description = lang === 'EN'
+      ? 'Explore our cognitive architecture solutions: advanced AI systems designed for complex problem-solving and business intelligence.'
+      : 'Explore nossas soluções de arquitetura cognitiva: sistemas de IA avançados projetados para resolução complexa de problemas e inteligência de negócios.';
+    keywords = lang === 'EN'
+      ? 'cognitive architecture, advanced AI, business intelligence, problem-solving systems'
+      : 'arquitetura cognitiva, IA avançada, inteligência de negócios, sistemas de resolução de problemas';
+  } else if (cleanPath === '/ia') {
+    title = lang === 'EN' ? 'AI Solutions - Intelligent Automation' : 'Soluções de IA - Automação Inteligente';
+    description = lang === 'EN'
+      ? 'Experience our AI solutions through interactive chat. Discover how artificial intelligence can transform your business operations.'
+      : 'Experimente nossas soluções de IA através de chat interativo. Descubra como a inteligência artificial pode transformar suas operações de negócios.';
+    keywords = lang === 'EN'
+      ? 'AI solutions, artificial intelligence, business automation, intelligent systems'
+      : 'soluções de IA, inteligência artificial, automação empresarial, sistemas inteligentes';
+  }
+  
+  return {
+    title,
+    description,
+    keywords,
+    canonical,
+    structuredData,
+    lang
+  };
 };
 
 // Helper function to create URL-friendly slugs in Portuguese
@@ -57,6 +179,9 @@ const AppRouter: React.FC = () => {
   const [selectedReport, setSelectedReport] = useState<ReportItem | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
+  
+  // Generate SEO metadata
+  const seoMetadata = generateSEOMetadata(location.pathname, lang, selectedCapacity, selectedReport);
 
   // Parse URL and load content
   useEffect(() => {
@@ -142,16 +267,26 @@ const AppRouter: React.FC = () => {
   const isHomePage = location.pathname === '/' || location.pathname === '/en' || location.pathname === '/en/';
 
   return (
-    <div className="relative bg-[#050505] text-white overflow-x-hidden selection:bg-[#FFEE00] selection:text-black">
-      <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] z-50"></div>
+    <HelmetProvider>
+      <SEOMeta 
+        title={seoMetadata.title}
+        description={seoMetadata.description}
+        keywords={seoMetadata.keywords}
+        canonical={seoMetadata.canonical}
+        lang={seoMetadata.lang}
+        structuredData={seoMetadata.structuredData}
+      />
       
-      {isHomePage && (
-        <Header 
-          lang={lang} 
-          setLang={setLang} 
-          onOpenReports={() => navigate('/relatorios')} 
-        />
-      )}
+      <div className="relative bg-[#050505] text-white overflow-x-hidden selection:bg-[#FFEE00] selection:text-black">
+        <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] z-50"></div>
+        
+        {isHomePage && (
+          <Header 
+            lang={lang} 
+            setLang={setLang} 
+            onOpenReports={() => navigate('/relatorios')} 
+          />
+        )}
       
       <main className={!isHomePage ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
         <Hero lang={lang} />
@@ -316,7 +451,8 @@ const AppRouter: React.FC = () => {
 
       {/* WhatsApp Button - only show on home page */}
       {isHomePage && <WhatsAppButton />}
-    </div>
+      </div>
+    </HelmetProvider>
   );
 };
 

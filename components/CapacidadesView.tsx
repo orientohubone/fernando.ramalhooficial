@@ -54,20 +54,20 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <section className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700" aria-label="Capacidades e Serviços">
       {/* Navigation */}
-      <nav className="sticky top-0 left-0 w-full z-[110] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <button onClick={onClose} className="group flex items-center gap-4">
-          <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" />
+      <nav className="sticky top-0 left-0 w-full z-[110] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference" role="navigation" aria-label="Navegação principal">
+        <button onClick={onClose} className="group flex items-center gap-4" aria-label="Voltar para página anterior">
+          <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" aria-hidden="true" />
           <span className="text-[10px] font-black uppercase tracking-[0.3em]">VOLTAR</span>
         </button>
         <BrandLogo size="md" />
       </nav>
 
-      <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-40">
+      <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-40" role="main">
         <header className="mb-16 md:mb-24 space-y-4 md:space-y-6">
           <div className="flex items-center gap-4">
-            <div className="h-[2px] w-8 md:w-12 bg-[#58B573]"></div>
+            <div className="h-[2px] w-8 md:w-12 bg-[#58B573]" aria-hidden="true"></div>
             <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.6em] text-[#58B573]">CAPACIDADES</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.8]">
@@ -104,7 +104,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
             </div>
             <div className="mt-4 flex items-center gap-2 text-[#58B573] text-[10px] font-black uppercase tracking-wider">
               EXPLORAR
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </div>
@@ -267,7 +267,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
-                <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
@@ -351,7 +351,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           </div>
         </div>
       </main>
-    </div>
+    </section>
   );
 };
 

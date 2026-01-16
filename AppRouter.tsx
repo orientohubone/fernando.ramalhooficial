@@ -6,6 +6,7 @@ import { RollingList } from './components/RollingList';
 import StrategySection from './components/StrategySection';
 import Footer from './components/Footer';
 import CapacityDetail from './components/CapacityDetail';
+import ReportDetail from './components/ReportDetail';
 import AboutView from './components/AboutView';
 import ReportsView from './components/ReportsView';
 import CapacidadesView from './components/CapacidadesView';
@@ -102,10 +103,10 @@ const AppRouter: React.FC = () => {
       // Contact page - handled by route
     } else if (cleanPath === '/filosofia') {
       // Filosofia page - handled by route
-    } else if (cleanPath === '/capacidade/ia') {
-      // IA page - handled by route
     } else if (cleanPath === '/arquitetura-cognitiva') {
       // Cognitive architecture - handled by route
+    } else if (cleanPath === '/ia') {
+      // IA page - handled by route
     } else if (cleanPath !== '/') {
       // Redirect to home if invalid path
       navigate(createLangUrl('/', detectedLang), { replace: true });
@@ -130,7 +131,7 @@ const AppRouter: React.FC = () => {
 
   // Lock scroll when on detail pages
   useEffect(() => {
-    const isDetailPage = location.pathname !== '/';
+    const isDetailPage = location.pathname !== '/' && location.pathname !== '/en' && location.pathname !== '/en/';
     if (isDetailPage) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -138,7 +139,7 @@ const AppRouter: React.FC = () => {
     }
   }, [location]);
 
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/' || location.pathname === '/en' || location.pathname === '/en/';
 
   return (
     <div className="relative bg-[#050505] text-white overflow-x-hidden selection:bg-[#FFEE00] selection:text-black">
@@ -176,6 +177,72 @@ const AppRouter: React.FC = () => {
       </main>
 
       <Routes>
+        {/* English routes */}
+        <Route path="/en" element={null} />
+        <Route path="/en/" element={null} />
+        <Route path="/en/sobre" element={
+          <AboutView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        <Route path="/en/relatorios" element={
+          <ReportsView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+            onReportSelect={handleReportSelect}
+          />
+        } />
+        <Route path="/en/capacidades" element={
+          <CapacidadesView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        <Route path="/en/contato" element={
+          <ContatoView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        <Route path="/en/capacidade/:slug" element={
+          selectedCapacity && (
+            <CapacityDetail 
+              item={selectedCapacity} 
+              lang="EN" 
+              onClose={() => navigate('/en/capacidades')} 
+            />
+          )
+        } />
+        <Route path="/en/relatorio/:slug" element={
+          selectedReport && (
+            <ReportDetail 
+              report={selectedReport} 
+              lang="EN" 
+              onClose={() => navigate('/en/relatorios')} 
+            />
+          )
+        } />
+        <Route path="/en/filosofia" element={
+          <FilosofiaView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        <Route path="/en/arquitetura-cognitiva" element={
+          <CognitiveArchitectureView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        <Route path="/en/ia" element={
+          <IAView 
+            lang="EN" 
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        
+        {/* Portuguese routes */}
         <Route path="/capacidade/:slug" element={
           selectedCapacity && (
             <CapacityDetail 
@@ -231,10 +298,10 @@ const AppRouter: React.FC = () => {
         
         <Route path="/relatorio/:slug" element={
           selectedReport && (
-            <ReportsView 
+            <ReportDetail 
+              report={selectedReport} 
               lang={lang} 
-              onClose={() => navigate('/')} 
-              selectedReport={selectedReport}
+              onClose={() => navigate('/relatorios')} 
             />
           )
         } />

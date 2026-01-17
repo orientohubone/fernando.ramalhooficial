@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Helper function para combinar classes
-const cn = (...classes: (string | undefined | null | false)[]): string => {
+export const cn = (...classes: (string | undefined | null | false)[]): string => {
   return classes.filter(Boolean).join(' ');
 };
 
@@ -14,12 +14,17 @@ export const CommitsGrid: React.FC<CommitsGridProps> = ({ text, className = '' }
   const cleanString = (str: string): string => {
     const upperStr = str.toUpperCase();
 
-    const withoutAccents = upperStr
+    // Preservar Ç antes da normalização que remove acentos
+    const preserved = upperStr.replace(/Ç/g, "___CEDILLA___");
+
+    const withoutAccents = preserved
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
+    const restored = withoutAccents.replace(/___CEDILLA___/g, "Ç");
+
     const allowedChars = Object.keys(letterPatterns);
-    return withoutAccents
+    return restored
       .split("")
       .filter((char) => allowedChars.includes(char))
       .join("");
@@ -107,11 +112,12 @@ export const CommitsGrid: React.FC<CommitsGridProps> = ({ text, className = '' }
               ...(isHighlighted && {
                 backgroundColor: "#00FF41",
                 opacity: 1,
-                boxShadow: '0 0 15px rgba(0, 255, 65, 1)',
+                boxShadow: '0 0 20px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 65, 0.4)',
+                border: '1px solid rgba(0, 255, 65, 0.5)',
               }),
               ...(shouldFlash && {
                 backgroundColor: getRandomFlashColor(),
-                opacity: 0.3,
+                opacity: 0.15,
               }),
             } as React.CSSProperties}
           />
@@ -131,7 +137,7 @@ const letterPatterns: { [key: string]: number[] } = {
     104, 152, 153, 204, 254, 303,
   ],
   C: [0, 1, 2, 3, 4, 50, 100, 150, 200, 250, 300, 301, 302, 303, 304],
-  Ç: [0, 1, 2, 3, 4, 50, 100, 150, 200, 250, 300, 301, 302, 303, 304, 55, 105, 155, 205, 255],
+  Ç: [0, 1, 2, 3, 4, 50, 100, 150, 200, 250, 300, 301, 302, 303, 304, 352, 401],
   D: [
     0, 1, 2, 3, 50, 100, 150, 200, 250, 300, 301, 302, 54, 104, 154, 204, 254,
     303,

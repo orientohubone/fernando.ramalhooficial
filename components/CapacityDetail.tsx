@@ -33,15 +33,15 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-end">
         <div className="absolute inset-0 overflow-hidden">
-          <img 
-            src={item.src} 
-            alt={item.alt} 
+          <img
+            src={item.src}
+            alt={item.alt}
             className="w-full h-full object-cover opacity-20 grayscale scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505]" />
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 pb-20 w-full">
           <div className="space-y-6">
             <div className="flex items-center gap-4">
@@ -75,10 +75,10 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
 
         {/* Grid Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          
+
           {/* Left Column - Stack & Impact */}
           <div className="lg:col-span-7 space-y-20">
-            
+
             {/* Stack Section */}
             <section className="space-y-8">
               <div className="flex items-center gap-4">
@@ -87,12 +87,12 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {item.stack?.map((s, i) => (
-                  <div 
-                    key={i} 
+                  <div
+                    key={i}
                     className="group flex items-center gap-4 p-4 border border-neutral-900 hover:border-neutral-700 transition-all duration-300 bg-neutral-950/50"
                   >
-                    <div 
-                      className="w-3 h-3 rounded-full animate-pulse" 
+                    <div
+                      className="w-3 h-3 rounded-full animate-pulse"
                       style={{ backgroundColor: colorHex }}
                     />
                     <span className="text-sm font-black uppercase tracking-[0.15em] text-white group-hover:text-neutral-300 transition-colors">
@@ -133,13 +133,13 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'PRIMEIRO PRINCÍPIO' : 'FIRST PRINCIPLE'}
                       </h4>
                       <p className="text-xs text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Cada capacidade começa com uma verdade fundamental que não pode ser reduzida.' 
+                        {lang === 'PT'
+                          ? 'Cada capacidade começa com uma verdade fundamental que não pode ser reduzida.'
                           : 'Each capacity begins with a fundamental truth that cannot be reduced.'}
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: colorHex }}></div>
                     <div>
@@ -147,13 +147,13 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'SISTEMAS SOBRE TÁTICAS' : 'SYSTEMS OVER TACTICS'}
                       </h4>
                       <p className="text-xs text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Construímos frameworks que geram resultados consistentes versus ações isoladas.' 
+                        {lang === 'PT'
+                          ? 'Construímos frameworks que geram resultados consistentes versus ações isoladas.'
                           : 'We build frameworks that generate consistent results versus isolated actions.'}
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: colorHex }}></div>
                     <div>
@@ -161,8 +161,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'COMPOSIÇÃO DE VALOR' : 'VALUE COMPOSITION'}
                       </h4>
                       <p className="text-xs text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'O valor é criado através da sobreposição inteligente de múltiplas capacidades.' 
+                        {lang === 'PT'
+                          ? 'O valor é criado através da sobreposição inteligente de múltiplas capacidades.'
                           : 'Value is created through intelligent overlap of multiple capacities.'}
                       </p>
                     </div>
@@ -186,8 +186,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       {lang === 'PT' ? 'FASE 1: DIAGNÓSTICO ESTRATÉGICO' : 'PHASE 1: STRATEGIC DIAGNOSIS'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Análise completa do cenário competitivo, identificação de oportunidades e mapeamento de posicionamento atual.' 
+                      {lang === 'PT'
+                        ? 'Análise completa do cenário competitivo, identificação de oportunidades e mapeamento de posicionamento atual.'
                         : 'Complete competitive scenario analysis, opportunity identification and current positioning mapping.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -196,14 +196,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 bg-neutral-950 border border-neutral-900">
                     <h4 className="text-lg font-black uppercase text-white mb-4">
                       {lang === 'PT' ? 'FASE 2: DESENHO DA MANOBRA' : 'PHASE 2: MANEUVER DESIGN'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Criação de movimentos táticos, definição de vantagens competitivas e estabelecimento de marcos estratégicos.' 
+                      {lang === 'PT'
+                        ? 'Criação de movimentos táticos, definição de vantagens competitivas e estabelecimento de marcos estratégicos.'
                         : 'Creation of tactical movements, competitive advantage definition and strategic milestone establishment.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -212,14 +212,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 bg-neutral-950 border border-neutral-900">
                     <h4 className="text-lg font-black uppercase text-white mb-4">
                       {lang === 'PT' ? 'FASE 3: IMPLEMENTAÇÃO E MONITORAMENTO' : 'PHASE 3: IMPLEMENTATION & MONITORING'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Execução das iniciativas estratégicas com acompanhamento contínuo de KPIs e ajustes dinâmicos.' 
+                      {lang === 'PT'
+                        ? 'Execução das iniciativas estratégicas com acompanhamento contínuo de KPIs e ajustes dinâmicos.'
                         : 'Execution of strategic initiatives with continuous KPI monitoring and dynamic adjustments.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -247,8 +247,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       {lang === 'PT' ? 'DESCOBERTA E INSIGHT' : 'DISCOVERY & INSIGHT'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Pesquisa de necessidades latentes, análise de tendências e identificação de oportunidades de ruptura.' 
+                      {lang === 'PT'
+                        ? 'Pesquisa de necessidades latentes, análise de tendências e identificação de oportunidades de ruptura.'
                         : 'Latent needs research, trend analysis and disruption opportunity identification.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -257,14 +257,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 bg-neutral-950 border border-neutral-900">
                     <h4 className="text-lg font-black uppercase text-white mb-4">
                       {lang === 'PT' ? 'PROTOTIPAÇÃO RÁPIDA' : 'RAPID PROTOTYPING'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Desenvolvimento de MVPs, testes com usuários e iterações baseadas em feedback real.' 
+                      {lang === 'PT'
+                        ? 'Desenvolvimento de MVPs, testes com usuários e iterações baseadas em feedback real.'
                         : 'MVP development, user testing and iterations based on real feedback.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -273,14 +273,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 bg-neutral-950 border border-neutral-900">
                     <h4 className="text-lg font-black uppercase text-white mb-4">
                       {lang === 'PT' ? 'ESCALA E IMPLEMENTAÇÃO' : 'SCALE & IMPLEMENTATION'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Validação de modelo de negócio, preparação para escala e lançamento no mercado.' 
+                      {lang === 'PT'
+                        ? 'Validação de modelo de negócio, preparação para escala e lançamento no mercado.'
                         : 'Business model validation, scale preparation and market launch.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -315,8 +315,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Análise de Casos de Uso' : 'Use Case Analysis'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Identificação de processos que podem ser otimizados com IA e cálculo de ROI potencial.' 
+                        {lang === 'PT'
+                          ? 'Identificação de processos que podem ser otimizados com IA e cálculo de ROI potencial.'
                           : 'Identification of processes that can be optimized with AI and potential ROI calculation.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -342,8 +342,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Seleção de Modelos' : 'Model Selection'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Escolha dos modelos de IA adequados e preparação dos dados para treinamento.' 
+                        {lang === 'PT'
+                          ? 'Escolha dos modelos de IA adequados e preparação dos dados para treinamento.'
                           : 'Selection of suitable AI models and data preparation for training.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -369,8 +369,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Implementação' : 'Implementation'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Desenvolvimento e integração das soluções de IA nos sistemas existentes.' 
+                        {lang === 'PT'
+                          ? 'Desenvolvimento e integração das soluções de IA nos sistemas existentes.'
                           : 'Development and integration of AI solutions into existing systems.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -414,67 +414,6 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
               </section>
             )}
 
-            {/* Vibe Coding Process Flow - Only for VIBE CODING item */}
-            {item.id === 6 && (
-              <section className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="h-[1px] w-8 bg-neutral-700" />
-                  <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
-                    {lang === 'PT' ? 'FLUXO DE DESENVOLVIMENTO' : 'DEVELOPMENT FLOW'}
-                  </h3>
-                </div>
-                <div className="space-y-6">
-                  <div className="p-6 bg-neutral-950 border border-neutral-900">
-                    <h4 className="text-lg font-black uppercase text-white mb-4">
-                      {lang === 'PT' ? 'IDEIA PARA PROMPT' : 'IDEA TO PROMPT'}
-                    </h4>
-                    <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Transformação do conceito em prompts estruturados para LLMs e definição de arquitetura inicial.' 
-                        : 'Concept transformation into structured LLM prompts and initial architecture definition.'}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#00D9FF]/10 text-[#00D9FF] border border-[#00D9FF]/20">
-                        {lang === 'PT' ? '1-2 DIAS' : '1-2 DAYS'}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6 bg-neutral-950 border border-neutral-900">
-                    <h4 className="text-lg font-black uppercase text-white mb-4">
-                      {lang === 'PT' ? 'GERAÇÃO E ITERAÇÃO' : 'GENERATION & ITERATION'}
-                    </h4>
-                    <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Uso de ferramentas AI para gerar código base, refinar com prompts e iterar rapidamente.' 
-                        : 'AI tools usage for base code generation, prompt refinement and rapid iteration.'}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#00D9FF]/10 text-[#00D9FF] border border-[#00D9FF]/20">
-                        {lang === 'PT' ? '3-5 DIAS' : '3-5 DAYS'}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6 bg-neutral-950 border border-neutral-900">
-                    <h4 className="text-lg font-black uppercase text-white mb-4">
-                      {lang === 'PT' ? 'AJUSTE FINO E DEPLOY' : 'FINE-TUNING & DEPLOY'}
-                    </h4>
-                    <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Otimização de performance, testes finais e deploy em produção com monitoramento.' 
-                        : 'Performance optimization, final testing and production deployment with monitoring.'}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#00D9FF]/10 text-[#00D9FF] border border-[#00D9FF]/20">
-                        {lang === 'PT' ? '2-3 DIAS' : '2-3 DAYS'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            )}
-
             {/* Design System Process Flow - Only for DESIGN item */}
             {item.id === 5 && (
               <section className="space-y-8">
@@ -497,8 +436,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Research & Discovery' : 'Research & Discovery'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Análise de usuários, competitors e definição de requisitos do sistema.' 
+                        {lang === 'PT'
+                          ? 'Análise de usuários, competitors e definição de requisitos do sistema.'
                           : 'User analysis, competitor research and system requirements definition.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -524,8 +463,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Design System' : 'Design System'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Criação de tokens, componentes e guias de estilo consistentes.' 
+                        {lang === 'PT'
+                          ? 'Criação de tokens, componentes e guias de estilo consistentes.'
                           : 'Creation of tokens, components and consistent style guides.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -551,8 +490,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'UI/UX Implementation' : 'UI/UX Implementation'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Aplicação do design system nas interfaces e validação com usuários.' 
+                        {lang === 'PT'
+                          ? 'Aplicação do design system nas interfaces e validação com usuários.'
                           : 'Application of design system in interfaces and user validation.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -596,6 +535,127 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
               </section>
             )}
 
+            {/* Vibe Coding Process Flow - Only for VIBE CODING item */}
+            {item.id === 6 && (
+              <section className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-[1px] w-8 bg-neutral-700" />
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                    {lang === 'PT' ? 'FLUXO DE VIBE CODING' : 'VIBE CODING FLOW'}
+                  </h3>
+                </div>
+                <div className="space-y-6">
+                  {/* Step 1 */}
+                  <div className="flex gap-6 p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#FFEE00]/10 border-2 border-[#FFEE00] flex items-center justify-center">
+                        <span className="text-xl font-black text-[#FFEE00]">1</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="text-lg font-black uppercase text-white">
+                        {lang === 'PT' ? 'Ideação & Prompting' : 'Ideation & Prompting'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Definição ultrarrápida de escopo e arquitetura através de linguagem natural e prompts estruturados.'
+                          : 'Ultra-fast scope and architecture definition through natural language and structured prompts.'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FFEE00]/10 text-[#FFEE00] border border-[#FFEE00]/20">
+                          {lang === 'PT' ? '1-2 dias' : '1-2 days'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'ESCOPO' : 'SCOPE'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex gap-6 p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#FFEE00]/10 border-2 border-[#FFEE00] flex items-center justify-center">
+                        <span className="text-xl font-black text-[#FFEE00]">2</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="text-lg font-black uppercase text-white">
+                        {lang === 'PT' ? 'Geração Acelerada' : 'Accelerated Generation'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Desenvolvimento do core da aplicação utilizando LLMs avançados para gerar código limpo e funcional.'
+                          : 'Core application development using advanced LLMs to generate clean and functional code.'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FFEE00]/10 text-[#FFEE00] border border-[#FFEE00]/20">
+                          {lang === 'PT' ? '3-5 dias' : '3-5 days'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'CODING' : 'CODING'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex gap-6 p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#FFEE00]/10 border-2 border-[#FFEE00] flex items-center justify-center">
+                        <span className="text-xl font-black text-[#FFEE00]">3</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="text-lg font-black uppercase text-white">
+                        {lang === 'PT' ? 'Refinamento & Deploy' : 'Refinement & Deploy'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Ajustes finos de UX/UI, integração de APIs e deploy automatizado para produção.'
+                          : 'Fine UX/UI tuning, API integration and automated production deployment.'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FFEE00]/10 text-[#FFEE00] border border-[#FFEE00]/20">
+                          {lang === 'PT' ? '2-3 dias' : '2-3 days'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'DEPLOY' : 'DEPLOY'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Timeline Summary */}
+                  <div className="mt-8 p-6 bg-gradient-to-r from-[#FFEE00]/5 to-transparent border-l-4 border-[#FFEE00]">
+                    <h4 className="text-sm font-black uppercase tracking-wider text-[#FFEE00] mb-3">
+                      {lang === 'PT' ? 'TIMELINE ESTIMADO' : 'ESTIMATED TIMELINE'}
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                      <div>
+                        <span className="block text-lg font-black text-white">1-2</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-neutral-500">
+                          {lang === 'PT' ? 'DIAS' : 'DAYS'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="block text-lg font-black text-white">3-5</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-neutral-500">
+                          {lang === 'PT' ? 'DIAS' : 'DAYS'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="block text-lg font-black text-white">1-2</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-neutral-500">
+                          {lang === 'PT' ? 'SEMANAS' : 'WEEKS'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
             {/* Paid Media Process Flow - Only for PAID MEDIA item */}
             {item.id === 8 && (
               <section className="space-y-8">
@@ -611,8 +671,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       {lang === 'PT' ? 'ESTRUTURAÇÃO DE CAMpanhas' : 'CAMPAIGN STRUCTURING'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Definição de objetivos, seleção de canais, configuração de pixels e preparação de criativos.' 
+                      {lang === 'PT'
+                        ? 'Definição de objetivos, seleção de canais, configuração de pixels e preparação de criativos.'
                         : 'Objective definition, channel selection, pixel setup and creative preparation.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -621,14 +681,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 bg-neutral-950 border border-neutral-900">
                     <h4 className="text-lg font-black uppercase text-white mb-4">
                       {lang === 'PT' ? 'LANÇAMENTO E OTIMIZAÇÃO' : 'LAUNCH & OPTIMIZATION'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Ativação das campanhas, monitoramento em tempo real e ajustes baseados em performance inicial.' 
+                      {lang === 'PT'
+                        ? 'Ativação das campanhas, monitoramento em tempo real e ajustes baseados em performance inicial.'
                         : 'Campaign activation, real-time monitoring and initial performance-based adjustments.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -637,14 +697,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 bg-neutral-950 border border-neutral-900">
                     <h4 className="text-lg font-black uppercase text-white mb-4">
                       {lang === 'PT' ? 'ESCALA E AUTOMAÇÃO' : 'SCALE & AUTOMATION'}
                     </h4>
                     <p className="text-sm text-neutral-400 leading-relaxed mb-3">
-                      {lang === 'PT' 
-                        ? 'Expansão de budget otimizado, implementação de regras automáticas e scaling de resultados.' 
+                      {lang === 'PT'
+                        ? 'Expansão de budget otimizado, implementação de regras automáticas e scaling de resultados.'
                         : 'Optimized budget expansion, automatic rules implementation and results scaling.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -679,8 +739,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Análise de Mercado' : 'Market Analysis'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Pesquisa de mercado, análise competitiva e definição de posicionamento.' 
+                        {lang === 'PT'
+                          ? 'Pesquisa de mercado, análise competitiva e definição de posicionamento.'
                           : 'Market research, competitive analysis and positioning definition.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -706,8 +766,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Estratégia de Conteúdo' : 'Content Strategy'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Desenvolvimento de messaging, personas e calendarização de conteúdo.' 
+                        {lang === 'PT'
+                          ? 'Desenvolvimento de messaging, personas e calendarização de conteúdo.'
                           : 'Development of messaging, personas and content calendaring.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -733,8 +793,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Execução & Otimização' : 'Execution & Optimization'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Lançamento das campanhas e monitoramento contínuo de performance.' 
+                        {lang === 'PT'
+                          ? 'Lançamento das campanhas e monitoramento contínuo de performance.'
                           : 'Campaign launch and continuous performance monitoring.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -800,8 +860,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Busca de Viabilidade' : 'Viability Search'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Análise completa de anterioridades e conflitos com marcas registradas no INPI e bases internacionais.' 
+                        {lang === 'PT'
+                          ? 'Análise completa de anterioridades e conflitos com marcas registradas no INPI e bases internacionais.'
                           : 'Complete analysis of prior rights and conflicts with trademarks registered at INPI and international databases.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -827,8 +887,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Depósito do Pedido' : 'Application Filing'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Elaboração e protocolo do pedido de registro com especificação correta de classes e produtos/serviços.' 
+                        {lang === 'PT'
+                          ? 'Elaboração e protocolo do pedido de registro com especificação correta de classes e produtos/serviços.'
                           : 'Preparation and filing of registration application with correct specification of classes and products/services.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -854,8 +914,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Exame de Mérito' : 'Merit Examination'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Análise técnica pelo INPI verificando requisitos formais e substanciais para concessão do registro.' 
+                        {lang === 'PT'
+                          ? 'Análise técnica pelo INPI verificando requisitos formais e substanciais para concessão do registro.'
                           : 'Technical analysis by INPI verifying formal and substantive requirements for grant of registration.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -881,8 +941,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Publicação e Oposição' : 'Publication and Opposition'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Edital de publicação na RPI para que terceiros possam apresentar oposições em até 60 dias.' 
+                        {lang === 'PT'
+                          ? 'Edital de publicação na RPI para que terceiros possam apresentar oposições em até 60 dias.'
                           : 'Publication notice in RPI allowing third parties to file oppositions within 60 days.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -908,8 +968,8 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                         {lang === 'PT' ? 'Concessão e Certificado' : 'Grant and Certificate'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
-                        {lang === 'PT' 
-                          ? 'Emissão do certificado de registro e início da vigência de proteção por 10 anos (renovável).' 
+                        {lang === 'PT'
+                          ? 'Emissão do certificado de registro e início da vigência de proteção por 10 anos (renovável).'
                           : 'Issuance of registration certificate and beginning of 10-year protection period (renewable).'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
@@ -964,6 +1024,127 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                 </div>
               </section>
             )}
+
+            {/* Domain Process Flow - Only for DOMAIN item */}
+            {item.id === 10 && (
+              <section className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-[1px] w-8 bg-neutral-700" />
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                    {lang === 'PT' ? 'FLUXO DE PROPRIEDADE DIGITAL' : 'DIGITAL PROPERTY FLOW'}
+                  </h3>
+                </div>
+                <div className="space-y-6">
+                  {/* Step 1 */}
+                  <div className="flex gap-6 p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#FFEE00]/10 border-2 border-[#FFEE00] flex items-center justify-center">
+                        <span className="text-xl font-black text-[#FFEE00]">1</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="text-lg font-black uppercase text-white">
+                        {lang === 'PT' ? 'Busca e Registro' : 'Search & Registration'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Verificação de disponibilidade e aquisição de domínios estratégicos (.com, .br, .io).'
+                          : 'Availability check and acquisition of strategic domains (.com, .br, .io).'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FFEE00]/10 text-[#FFEE00] border border-[#FFEE00]/20">
+                          {lang === 'PT' ? '1 dia' : '1 day'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'REGISTRO' : 'REGISTRY'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex gap-6 p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#FFEE00]/10 border-2 border-[#FFEE00] flex items-center justify-center">
+                        <span className="text-xl font-black text-[#FFEE00]">2</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="text-lg font-black uppercase text-white">
+                        {lang === 'PT' ? 'Configuração DNS' : 'DNS Configuration'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Configuração de nameservers, propagação e segurança via Cloudflare.'
+                          : 'Nameserver configuration, propagation, and security via Cloudflare.'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FFEE00]/10 text-[#FFEE00] border border-[#FFEE00]/20">
+                          {lang === 'PT' ? '1-2 dias' : '1-2 days'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'INFRA' : 'INFRA'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex gap-6 p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#FFEE00]/10 border-2 border-[#FFEE00] flex items-center justify-center">
+                        <span className="text-xl font-black text-[#FFEE00]">3</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="text-lg font-black uppercase text-white">
+                        {lang === 'PT' ? 'Entradas e Apontamentos' : 'Records & Pointing'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Configuração de registros A, CNAME, MX e TXT para site e e-mail.'
+                          : 'Configuration of A, CNAME, MX, and TXT records for website and email.'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FFEE00]/10 text-[#FFEE00] border border-[#FFEE00]/20">
+                          {lang === 'PT' ? '1 dia' : '1 day'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'RECORDS' : 'RECORDS'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Timeline Summary */}
+                  <div className="mt-8 p-6 bg-gradient-to-r from-[#FFEE00]/5 to-transparent border-l-4 border-[#FFEE00]">
+                    <h4 className="text-sm font-black uppercase tracking-wider text-[#FFEE00] mb-3">
+                      {lang === 'PT' ? 'TIMELINE ESTIMADO' : 'ESTIMATED TIMELINE'}
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                      <div>
+                        <span className="block text-lg font-black text-white">1</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-neutral-500">
+                          {lang === 'PT' ? 'DIA' : 'DAY'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="block text-lg font-black text-white">1-2</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-neutral-500">
+                          {lang === 'PT' ? 'DIAS' : 'DAYS'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="block text-lg font-black text-white">1</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-neutral-500">
+                          {lang === 'PT' ? 'DIA' : 'DAY'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Right Column - Visual & Stats */}
@@ -971,14 +1152,14 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
             <div className="sticky top-32 space-y-12">
               {/* Image */}
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-700 group border border-neutral-900">
-                <img 
-                  src={item.src} 
-                  alt={item.alt} 
+                <img
+                  src={item.src}
+                  alt={item.alt}
                   className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
-                <div 
-                  className="absolute bottom-0 left-0 w-full h-1" 
+                <div
+                  className="absolute bottom-0 left-0 w-full h-1"
                   style={{ backgroundColor: colorHex }}
                 />
               </div>
@@ -1005,7 +1186,7 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
 
               {/* Category Badge */}
               <div className="flex items-center justify-center">
-                <span 
+                <span
                   className="px-6 py-3 text-[10px] font-black uppercase tracking-[0.4em] border"
                   style={{ borderColor: colorHex, color: colorHex }}
                 >
@@ -1014,28 +1195,28 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
               </div>
             </div>
           </div>
-        </div>
-      </main>
+        </div >
+      </main >
 
       {/* Footer-like CTA */}
-      <footer className="border-t border-neutral-900 px-6 md:px-12 py-20 bg-[#080808]">
+      < footer className="border-t border-neutral-900 px-6 md:px-12 py-20 bg-[#080808]" >
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-           <button 
+          <button
             onClick={onClose}
             className="text-5xl md:text-7xl font-black uppercase tracking-tighter hover:text-[#FFEE00] transition-colors"
-           >
-             {nav.back}
-           </button>
-           <div className="h-[2px] flex-1 bg-neutral-900 mx-12 hidden md:block" />
-           <div className="flex items-center gap-2">
-             <img src="/logofernando.png" alt="FERNANDO.RAMALHO" className="h-3" />
-             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-neutral-600">
-               / SYSTEMS FOR DOMINANCE
-             </span>
-           </div>
+          >
+            {nav.back}
+          </button>
+          <div className="h-[2px] flex-1 bg-neutral-900 mx-12 hidden md:block" />
+          <div className="flex items-center gap-2">
+            <img src="/logofernando.png" alt="FERNANDO.RAMALHO" className="h-3" />
+            <span className="text-[10px] font-black uppercase tracking-[0.6em] text-neutral-600">
+              / SYSTEMS FOR DOMINANCE
+            </span>
+          </div>
         </div>
-      </footer>
-    </div>
+      </footer >
+    </div >
   );
 };
 

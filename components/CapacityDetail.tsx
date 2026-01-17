@@ -97,6 +97,11 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                     />
                     <span className="text-sm font-black uppercase tracking-[0.15em] text-white group-hover:text-neutral-300 transition-colors">
                       {s}
+                      {s === 'AXION UI' && (
+                        <span className="ml-2 text-[8px] px-1.5 py-0.5 border border-neutral-700 rounded bg-neutral-900 text-neutral-400 font-medium tracking-normal normal-case">
+                          {lang === 'PT' ? 'em breve no npm' : 'coming soon to npm'}
+                        </span>
+                      )}
                     </span>
                   </div>
                 ))}

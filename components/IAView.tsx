@@ -250,10 +250,10 @@ Responda em português, de forma completa e detalhada, usando markdown para form
 
     // Estilização de seções específicas com ícones e containers
     const sections = [
-      { key: '📊 Contexto Atual', icon: '<span class="text-[#FFEE00] mr-2">📊</span>', class: 'bg-neutral-800/40 border-l-2 border-[#FFEE00] p-4 my-4 rounded-r-lg' },
-      { key: '🔍 Sinais Críticos', icon: '<span class="text-[#58B573] mr-2">🔍</span>', class: 'bg-neutral-800/40 border-l-2 border-[#58B573] p-4 my-4 rounded-r-lg' },
-      { key: '🎯 Oportunidades', icon: '<span class="text-[#FFEE00] mr-2">🎯</span>', class: 'bg-neutral-800/40 border-l-2 border-[#FFEE00] p-4 my-4 rounded-r-lg' },
-      { key: '⚡ Recomendações', icon: '<span class="text-[#58B573] mr-2">⚡</span>', class: 'bg-[#58B573]/10 border-l-2 border-[#58B573] p-4 my-4 rounded-r-lg' }
+      { key: '📊 Contexto Atual', icon: '<span class="text-[#FFEE00] mr-2">📊</span>', class: 'bg-neutral-800/40 border-l-2 border-[#FFEE00] p-3 md:p-4 my-4 rounded-r-lg' },
+      { key: '🔍 Sinais Críticos', icon: '<span class="text-[#58B573] mr-2">🔍</span>', class: 'bg-neutral-800/40 border-l-2 border-[#58B573] p-3 md:p-4 my-4 rounded-r-lg' },
+      { key: '🎯 Oportunidades', icon: '<span class="text-[#FFEE00] mr-2">🎯</span>', class: 'bg-neutral-800/40 border-l-2 border-[#FFEE00] p-3 md:p-4 my-4 rounded-r-lg' },
+      { key: '⚡ Recomendações', icon: '<span class="text-[#58B573] mr-2">⚡</span>', class: 'bg-[#58B573]/10 border-l-2 border-[#58B573] p-3 md:p-4 my-4 rounded-r-lg' }
     ];
 
     sections.forEach(section => {
@@ -277,7 +277,7 @@ Responda em português, de forma completa e detalhada, usando markdown para form
       </div>
 
       {/* Navigation */}
-      <nav className="relative w-full z-[110] px-6 py-6 md:px-12 flex justify-between items-center border-b border-white/5 bg-black/40 backdrop-blur-xl">
+      <nav className="relative w-full z-[110] px-4 md:px-12 py-4 md:py-6 flex justify-between items-center border-b border-white/5 bg-black/40 backdrop-blur-xl">
         <button onClick={onClose} className="group flex items-center gap-4">
           <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" />
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70 group-hover:text-white transition-colors">VOLTAR</span>
@@ -347,7 +347,7 @@ Responda em português, de forma completa e detalhada, usando markdown para form
         {/* Chat Area */}
         <div className="flex-1 flex flex-col min-w-0 bg-black/10">
           {/* Header Mobile/Compact */}
-          <div className="p-6 md:p-10 pb-4">
+          <div className="p-4 md:p-10 pb-2 md:pb-4">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-[2px] w-8 bg-[#FFEE00]"></div>
               <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">STRATEGIC AGENT</span>
@@ -358,7 +358,7 @@ Responda em português, de forma completa e detalhada, usando markdown para form
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto px-6 md:px-10 space-y-8 pb-10 scrollbar-thin scrollbar-thumb-white/5">
+          <div className="flex-1 overflow-y-auto px-4 md:px-10 space-y-8 pb-10 scrollbar-thin scrollbar-thumb-white/5">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -375,13 +375,13 @@ Responda em português, de forma completa e detalhada, usando markdown para form
 
                 <div className="relative group max-w-full md:max-w-[85%]">
                   <div
-                    className={`px-6 py-5 rounded-2xl text-sm leading-relaxed shadow-xl ${message.sender === 'user'
+                    className={`px-4 md:px-6 py-5 rounded-2xl text-sm leading-relaxed shadow-xl ${message.sender === 'user'
                       ? 'bg-[#FFEE00] text-black rounded-tr-none font-medium'
                       : 'bg-neutral-900/80 backdrop-blur-md text-neutral-200 rounded-tl-none border border-white/5'
                       }`}
                   >
                     <div
-                      className="prose prose-invert prose-sm max-w-none"
+                      className="prose prose-invert prose-sm max-w-none break-words"
                       dangerouslySetInnerHTML={{ __html: formatMessage(message.text) }}
                     />
                   </div>

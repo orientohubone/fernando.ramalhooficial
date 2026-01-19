@@ -90,7 +90,8 @@ export const TRANSLATIONS = {
       ai: { title: 'IA', category: 'INTELLIGENCE', desc: 'Implementação de inteligência generativa.', thesis: 'IA NÃO SUBSTITUI O HUMANO, ELA AMPLIA A CAPACIDADE DE SÍNTESE E EXECUÇÃO.', impact: 'Ganho de 10x em velocidade operacional.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Desenvolvimento ágil utilizando LLMs.', thesis: 'A BARREIRA ENTRE IDEIA E EXECUÇÃO FOI DESTRUÍDA PELA LINGUAGEM NATURAL.', impact: 'Deploy de protótipos funcionais em tempo recorde.' },
       brandReg: { title: 'MARCAS', category: 'EQUITY', desc: 'Proteção e valorização de marcas.', thesis: 'UMA MARCA SEM PROTEÇÃO É APENAS UM EMPRÉSTIMO DO MERCADO.', impact: 'Segurança jurídica e valorização de ativos.' },
-      domain: { title: 'DOMÍNIO', category: 'PRESENCE', desc: 'Gerenciamento estratégico de propriedades digitais.', thesis: 'SEU DOMÍNIO É O ÚNICO TERRENO PROPRIETÁRIO NA INTERNET.', impact: 'Soberania digital e proteção de marca.' }
+      domain: { title: 'DOMÍNIO', category: 'PRESENCE', desc: 'Gerenciamento estratégico de propriedades digitais.', thesis: 'SEU DOMÍNIO É O ÚNICO TERRENO PROPRIETÁRIO NA INTERNET.', impact: 'Soberania digital e proteção de marca.' },
+      sites: { title: 'SITES', category: 'PRESENÇA', desc: 'Criação de sites institucionais e landing pages.', thesis: 'SEU SITE É A ENGENHARIA DIGITAL DA SUA MARCA NO MUNDO FÍSICO.', impact: 'Conversão de visitantes em clientes e autoridade digital.' }
     },
     mindset: {
       title: 'MENTALIDADE OPERACIONAL',
@@ -182,7 +183,8 @@ export const TRANSLATIONS = {
       ai: { title: 'AI', category: 'INTELLIGENCE', desc: 'Implementing generative intelligence.', thesis: 'AI does not replace humans, it amplifies the capacity for synthesis and execution.', impact: '10x gain in operational speed.' },
       vibeCoding: { title: 'VIBE CODING', category: 'VELOCITY', desc: 'Agile development using LLMs.', thesis: 'THE BARRIER BETWEEN IDEA AND EXECUTION HAS BEEN DESTROYED BY NATURAL LANGUAGE.', impact: 'Deployment of functional prototypes in record time.' },
       brandReg: { title: 'BRANDS', category: 'EQUITY', desc: 'Brand protection and valuation.', thesis: 'A BRAND WITHOUT PROTECTION IS JUST A LOAN FROM THE MARKET.', impact: 'Legal security and asset valuation.' },
-      domain: { title: 'DOMAINS', category: 'PRESENCE', desc: 'Strategic management of digital properties.', thesis: 'YOUR DOMAIN IS THE ONLY PROPRIETARY LAND ON THE INTERNET.', impact: 'Digital sovereignty and brand protection.' }
+      domain: { title: 'DOMAINS', category: 'PRESENCE', desc: 'Strategic management of digital properties.', thesis: 'YOUR DOMAIN IS THE ONLY PROPRIETARY LAND ON THE INTERNET.', impact: 'Digital sovereignty and brand protection.' },
+      sites: { title: 'WEBSITES', category: 'PRESENCE', desc: 'Creation of institutional websites and landing pages.', thesis: 'YOUR WEBSITE IS THE DIGITAL ENGINEERING OF YOUR BRAND IN THE PHYSICAL WORLD.', impact: 'Conversion of visitors into customers and digital authority.' }
     },
     mindset: {
       title: 'OPERATIONAL MINDSET',
@@ -210,7 +212,9 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
     'IA': ['OPENAI', 'ANTHROPIC', 'LANGCHAIN'],
     'AI': ['OPENAI', 'ANTHROPIC', 'LANGCHAIN'],
     'DESIGN': ['FIGMA', 'SYSTEMIC UI', 'TOKENS', 'PHOTOSHOP', 'ILLUSTRATOR', 'AXION UI'],
-    'VIBE CODING': ['LOVABLE', 'CLAUDE', 'REPLIT', 'GOOGLE AI STUDIO', 'APIS', '21ST.DEV', 'ANTIGRAVITY', 'WINDSURF', 'VSCODE', 'SUPABASE', 'NEON', 'NETLIFY'],
+    'VIBE CODING': ['LOVABLE', 'CLAUDE', 'REPLIT', 'GOOGLE AI STUDIO', 'APIS', '21ST.DEV', 'ANTIGRAVITY', 'WINDSURF', 'VSCODE', 'SUPABASE', 'NEON', 'VERCEL', 'NETLIFY'],
+    'SITES': ['REACT', 'NEXT.JS', 'VERCEL', 'TAILWIND', 'FRAMER MOTION', 'RESPONSIVE', 'SEO', 'PERFORMANCE'],
+    'WEBSITES': ['REACT', 'NEXT.JS', 'VERCEL', 'TAILWIND', 'FRAMER MOTION', 'RESPONSIVE', 'SEO', 'PERFORMANCE'],
     'DOMÍNIO': ['CLOUDFLARE', 'REGISTRO.BR', 'ROUTE53', 'GODADDY'],
     'DOMAINS': ['CLOUDFLARE', 'REGISTRO.BR', 'ROUTE53', 'GODADDY']
   };
@@ -254,7 +258,8 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
         createItem('marketing', 7, HighlightColor.GREEN, "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=1200&q=80"),
         createItem('paidMedia', 8, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1551288049-bbda48658a7d?w=1200&q=80"),
         createItem('brandReg', 9, HighlightColor.GREEN, "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80"),
-        createItem('domain', 10, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&q=80")
+        createItem('domain', 10, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&q=80"),
+        createItem('sites', 11, HighlightColor.GREEN, "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80")
       ]
     }
   ];

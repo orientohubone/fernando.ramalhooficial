@@ -113,6 +113,44 @@ const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
               </div>
             </section>
 
+            <section className="space-y-12">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-12 bg-[#58B573]"></div>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#58B573]">Números que Falam por Si</h3>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center space-y-4">
+                  <div className="text-5xl md:text-6xl font-black text-[#58B573] leading-none">+5M</div>
+                  <div className="text-sm font-black uppercase tracking-[0.3em] text-neutral-500">Alcance Gerado</div>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div className="text-5xl md:text-6xl font-black text-[#FFEE00] leading-none">+R$1M</div>
+                  <div className="text-sm font-black uppercase tracking-[0.3em] text-neutral-500">Receita Gerada</div>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div className="text-5xl md:text-6xl font-black text-[#FF6B6B] leading-none">+50</div>
+                  <div className="text-sm font-black uppercase tracking-[0.3em] text-neutral-500">Marcas Impactadas</div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col md:flex-row justify-center items-center gap-8 pt-8 border-t border-neutral-900">
+                <div className="flex items-center gap-3">
+                  <div className="text-3xl md:text-4xl font-black text-[#58B573] leading-none">+R$100K</div>
+                  <div className="text-sm font-black uppercase tracking-[0.3em] text-neutral-500">em Ads Investidos</div>
+                </div>
+                
+                <div className="hidden md:block w-[1px] h-8 bg-neutral-900"></div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="text-sm font-black uppercase tracking-[0.3em] text-[#58B573]">Especialista em</div>
+                  <div className="text-xl md:text-2xl font-black text-white">SaaS</div>
+                </div>
+              </div>
+            </section>
+
             <section className="space-y-8">
               <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-700 border-b border-neutral-900 pb-4">BIOGRAFIA</h3>
               <div className="text-neutral-400 leading-relaxed text-xl md:text-2xl font-medium max-w-2xl space-y-12 italic">

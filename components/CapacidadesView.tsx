@@ -356,13 +356,13 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
             className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
-                <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-[rgb(155,89,182)]/10 rounded-full flex items-center justify-center group-hover:bg-[rgb(155,89,182)]/20 transition-colors">
+                <svg className="w-6 h-6 text-[rgb(155,89,182)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white group-hover:text-[#FFEE00] transition-colors">{t.capacities.domain.title}</h3>
+                <h3 className="text-xl font-bold text-white group-hover:text-[rgb(155,89,182)] transition-colors">{t.capacities.domain.title}</h3>
                 <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.capacities.domain.category}</p>
               </div>
             </div>
@@ -372,7 +372,37 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
             <div className="text-xs text-neutral-500 italic">
               "{t.capacities.domain.thesis}"
             </div>
-            <div className="mt-4 flex items-center gap-2 text-[#FFEE00] text-[10px] font-black uppercase tracking-wider">
+            <div className="mt-4 flex items-center gap-2 text-[rgb(155,89,182)] text-[10px] font-black uppercase tracking-wider">
+              EXPLORAR
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+          </div>
+
+          {/* SITES */}
+          <div
+            onClick={() => handleCapacityClick('sites')}
+            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-[#58B573]/10 rounded-full flex items-center justify-center group-hover:bg-[#58B573]/20 transition-colors">
+                <svg className="w-6 h-6 text-[#58B573]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white group-hover:text-[#58B573] transition-colors">{t.capacities.sites.title}</h3>
+                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.capacities.sites.category}</p>
+              </div>
+            </div>
+            <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              {t.capacities.sites.desc}
+            </p>
+            <div className="text-xs text-neutral-500 italic">
+              "{t.capacities.sites.thesis}"
+            </div>
+            <div className="mt-4 flex items-center gap-2 text-[#58B573] text-[10px] font-black uppercase tracking-wider">
               EXPLORAR
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />

@@ -179,9 +179,10 @@ const FilosofiaView: React.FC<FilosofiaViewProps> = ({ lang, onClose }) => {
                       
                       {item.title === "SIMPLES" && (
                         <>
-                          <p>Quanto mais eu estudo tecnologia, produto e neurociência, mais convicto fico de uma coisa: o simples não é raso, é refinado.</p>
-                          <p>Sistemas complexos demais quebram pessoas. Processos confusos geram ruído. Produtos difíceis não escalam.</p>
-                          <p>Minha busca constante é por soluções simples, mas profundamente pensadas. Simplicidade, para mim, é resultado de maturidade — não de preguiça.</p>
+                          <p>Simplicidade não é ausência de complexidade, é domínio dela.</p>
+                          <p>É a capacidade de transformar o complicado em compreensível, o caótico em organizado, o ambíguo em claro.</p>
+                          <p><span className="text-white font-bold">Simples é elegante.</span> Simples é eficaz. Simples escala.</p>
+                          <p>Tudo o que faço busca essa essência: remover o desnecessário para revelar o essencial.</p>
                         </>
                       )}
                       

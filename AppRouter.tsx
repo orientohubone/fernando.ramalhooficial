@@ -18,6 +18,12 @@ import FilosofiaView from './components/FilosofiaView';
 import CognitiveArchitectureView from './components/CognitiveArchitectureView';
 import IAView from './components/IAView';
 import WhatsAppButton from './components/WhatsAppButton';
+import BackToTop from './components/BackToTop';
+import LegalView from './components/LegalView';
+import PoliticaPrivacidade from './src/pages/PoliticaPrivacidade';
+import TermosUso from './src/pages/TermosUso';
+import LGPD from './src/pages/LGPD';
+import PoliticaCookies from './src/pages/PoliticaCookies';
 import { Language, TRANSLATIONS, getCategorizedPillars } from './constants';
 import { ALL_REPORTS } from './reportsData';
 import { ListItem, ReportItem } from './types';
@@ -232,6 +238,8 @@ const AppRouter: React.FC = () => {
       // Cognitive architecture - handled by route
     } else if (cleanPath === '/ia') {
       // IA page - handled by route
+    } else if (cleanPath === '/politica-de-privacidade' || cleanPath === '/termos-de-uso' || cleanPath === '/lgpd' || cleanPath === '/politica-de-cookies') {
+      // Legal pages - handled by route
     } else if (cleanPath !== '/') {
       // Redirect to home if invalid path
       navigate(createLangUrl('/', detectedLang), { replace: true });
@@ -312,6 +320,9 @@ const AppRouter: React.FC = () => {
       </main>
 
       <Routes>
+        {/* Default route - main content */}
+        <Route path="/" element={null} />
+        
         {/* English routes */}
         <Route path="/en" element={null} />
         <Route path="/en/" element={null} />
@@ -430,6 +441,64 @@ const AppRouter: React.FC = () => {
             onClose={() => navigate('/')} 
           />
         } />
+
+        {/* Legal Pages */}
+        <Route path="/politica-de-privacidade" element={
+          <PoliticaPrivacidade 
+            lang="PT"
+            onClose={() => navigate('/')} 
+          />
+        } />
+        
+        <Route path="/termos-de-uso" element={
+          <TermosUso 
+            lang="PT"
+            onClose={() => navigate('/')} 
+          />
+        } />
+        
+        <Route path="/lgpd" element={
+          <LGPD 
+            lang="PT"
+            onClose={() => navigate('/')} 
+          />
+        } />
+        
+        <Route path="/politica-de-cookies" element={
+          <PoliticaCookies 
+            lang="PT"
+            onClose={() => navigate('/')} 
+          />
+        } />
+
+        {/* English Legal Pages */}
+        <Route path="/en/privacy-policy" element={
+          <PoliticaPrivacidade 
+            lang="EN"
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        
+        <Route path="/en/terms-of-use" element={
+          <TermosUso 
+            lang="EN"
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        
+        <Route path="/en/lgpd" element={
+          <LGPD 
+            lang="EN"
+            onClose={() => navigate('/en')} 
+          />
+        } />
+        
+        <Route path="/en/cookie-policy" element={
+          <PoliticaCookies 
+            lang="EN"
+            onClose={() => navigate('/en')} 
+          />
+        } />
         
         <Route path="/relatorio/:slug" element={
           selectedReport && (
@@ -451,6 +520,9 @@ const AppRouter: React.FC = () => {
 
       {/* WhatsApp Button - only show on home page */}
       {isHomePage && <WhatsAppButton />}
+      
+      {/* Back to Top Button - show on all pages */}
+      <BackToTop />
       </div>
     </HelmetProvider>
   );

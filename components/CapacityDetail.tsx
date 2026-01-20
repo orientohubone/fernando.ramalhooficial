@@ -2311,6 +2311,333 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
           </div>
         </div>
       )}
+
+      {/* Ecommerce Process Flow - Only for ECOMMERCE item */}
+      {item.id === 12 && (
+        <main className="max-w-7xl mx-auto px-6 md:px-12 py-24">
+          <div className="space-y-16">
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-8 bg-neutral-700" />
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                  {lang === 'PT' ? 'FLUXO DE ECOMMERCE' : 'ECOMMERCE FLOW'}
+                </h3>
+              </div>
+              <div className="space-y-6">
+                <div className="p-6 bg-neutral-950 border border-neutral-900">
+                  <h4 className="text-lg font-black uppercase text-white mb-4">
+                    {lang === 'PT' ? 'FASE 1: PLANEJAMENTO E ESTRUTURAÇÃO' : 'PHASE 1: PLANNING & STRUCTURE'}
+                  </h4>
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-3">
+                    {lang === 'PT'
+                      ? 'Definição da plataforma, modelo de negócio, catálogo de produtos e estratégia de precificação.'
+                      : 'Platform definition, business model, product catalog and pricing strategy.'}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[rgb(155,89,182)]/10 text-[rgb(155,89,182)] border border-[rgb(155,89,182)]/20">
+                      {lang === 'PT' ? '1-2 SEMANAS' : '1-2 WEEKS'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-neutral-950 border border-neutral-900">
+                  <h4 className="text-lg font-black uppercase text-white mb-4">
+                    {lang === 'PT' ? 'FASE 2: DESENVOLVIMENTO E CONFIGURAÇÃO' : 'PHASE 2: DEVELOPMENT & CONFIGURATION'}
+                  </h4>
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-3">
+                    {lang === 'PT'
+                      ? 'Criação da loja virtual, configuração de produtos, integração de gateways de pagamento e frete.'
+                      : 'Virtual store creation, product setup, payment gateway and shipping integration.'}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[rgb(155,89,182)]/10 text-[rgb(155,89,182)] border border-[rgb(155,89,182)]/20">
+                      {lang === 'PT' ? '2-4 SEMANAS' : '2-4 WEEKS'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-neutral-950 border border-neutral-900">
+                  <h4 className="text-lg font-black uppercase text-white mb-4">
+                    {lang === 'PT' ? 'FASE 3: OTIMIMIZAÇÃO E LANÇAMENTO' : 'PHASE 3: OPTIMIZATION & LAUNCH'}
+                  </h4>
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-3">
+                    {lang === 'PT'
+                      ? 'Testes, otimização de conversão, configuração de banners e lançamento da loja.'
+                      : 'Testing, conversion optimization, banner setup and store launch.'}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[rgb(155,89,182)]/10 text-[rgb(155,89,182)] border border-[rgb(155,89,182)]/20">
+                      {lang === 'PT' ? '1-2 SEMANAS' : '1-2 WEEKS'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-8 bg-neutral-700" />
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                  {lang === 'PT' ? 'PLATAFORMAS PARCEIRAS' : 'PARTNER PLATFORMS'}
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-neutral-950/50 border border-neutral-800 rounded-xl p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                      <span className="text-lg font-black text-[rgb(155,89,182)]">T</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-black text-white">Tray Ecommerce</h4>
+                      <p className="text-sm text-neutral-400">Plataforma líder no Brasil</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 ml-16">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Mais de 100 mil lojas</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Integrações nativas</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Suporte especializado</span>
+                    </div>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-neutral-800">
+                    <a
+                      href="https://www.tray.com.br/parceria/ORIENTOHUB/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[rgb(155,89,182)] hover:bg-[rgb(155,89,182)]/90 text-black font-black text-xs uppercase tracking-wider rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[rgb(155,89,182)]/50"
+                    >
+                      <span>{lang === 'PT' ? 'CONTRATAR TRAY' : 'HIRE TRAY'}</span>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-neutral-950/50 border border-neutral-800 rounded-xl p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                      <span className="text-lg font-black text-[rgb(155,89,182)]">N</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-black text-white">Nuvemshop</h4>
+                      <p className="text-sm text-neutral-400">Crescimento acelerado</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 ml-16">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Fácil utilização</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Planos acessíveis</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Marketplace integrado</span>
+                    </div>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-neutral-800">
+                    <a
+                      href="https://www.nuvemshop.com.br/partners/orientohub-solues-empresariais"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[rgb(155,89,182)] hover:bg-[rgb(155,89,182)]/90 text-black font-black text-xs uppercase tracking-wider rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[rgb(155,89,182)]/50"
+                    >
+                      <span>{lang === 'PT' ? 'CONTRATAR NUVEMSHOP' : 'HIRE NUVEMSHOP'}</span>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-8 bg-neutral-700" />
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                  {lang === 'PT' ? 'GATEWAYS DE PAGAMENTO' : 'PAYMENT GATEWAYS'}
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  'Asaas', 'Mercado Pago', 'Pagar.me', 
+                  'PayPal', 'PicPay', 'PagBank'
+                ].map((gateway, index) => (
+                  <div key={index} className="bg-neutral-950/50 border border-neutral-800 rounded-xl p-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[rgb(155,89,182)]/20 rounded-lg flex items-center justify-center">
+                        <span className="text-xs font-black text-[rgb(155,89,182)]">{gateway[0]}</span>
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-black text-white">{gateway}</h5>
+                        <p className="text-xs text-neutral-400">
+                          {lang === 'PT' ? 'Integração completa' : 'Full integration'}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-8 bg-neutral-700" />
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                  {lang === 'PT' ? 'RECURSOS AVANÇADOS' : 'ADVANCED FEATURES'}
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-neutral-950/50 border border-neutral-800 rounded-xl p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                      <span className="text-lg font-black text-[rgb(155,89,182)]">🎨</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-black text-white">Banners Personalizados</h4>
+                      <p className="text-sm text-neutral-400">Design impactante</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 ml-16">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Banners responsivos</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Animações e transições</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">A/B testing integrado</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-neutral-950/50 border border-neutral-800 rounded-xl p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                      <span className="text-lg font-black text-[rgb(155,89,182)]">🚚</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-black text-white">Configuração de Frete</h4>
+                      <p className="text-sm text-neutral-400">Logística otimizada</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 ml-16">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Múltiplos transportadoras</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Cálculo automático</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[rgb(155,89,182)] rounded-full"></div>
+                      <span className="text-sm text-neutral-300">Frete grátis condicional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      )}
+
+      {/* Footer-like CTA */}
+      <footer className="border-t border-neutral-900 px-6 md:px-12 py-20 bg-[#080808]">
+        <div className="max-w-7xl mx-auto space-y-16">
+          {/* CTA Principal */}
+          <div className="text-center space-y-8">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+              {lang === 'PT' ? 'VAMOS CONSTRUIR' : 'LET\'S BUILD'}
+              <br />
+              <span style={{ color: colorHex }}>
+                {lang === 'PT' ? 'SUA LOJA VIRTUAL' : 'YOUR ONLINE STORE'}
+              </span>
+            </h2>
+            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+              {lang === 'PT'
+                ? 'Transforme suas ideias em uma máquina de vendas automatizada e escalável.'
+                : 'Transform your ideas into an automated and scalable sales machine.'}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a
+                href="https://wa.me/5514998618547?text=Olá! Vi a página de Ecommerce e quero criar minha loja virtual."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative px-12 py-6 bg-[#25D366] hover:bg-[#128C7E] text-black font-black text-lg uppercase tracking-wider rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[#25D366]/50 shadow-2xl"
+              >
+                <span className="relative z-10">
+                  {lang === 'PT' ? 'COMEÇAR AGORA' : 'START NOW'}
+                </span>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+              <button
+                onClick={() => window.location.href = lang === 'EN' ? '/en/capacidades' : '/capacidades'}
+                className="px-12 py-6 border border-neutral-700 text-white font-black text-lg uppercase tracking-wider rounded-full transition-all duration-300 hover:border-neutral-600 hover:bg-neutral-900"
+              >
+                {lang === 'PT' ? 'VER CAPACIDADES' : 'SEE CAPABILITIES'}
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Info */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 mx-auto bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl font-black text-[rgb(155,89,182)]">🚀</span>
+              </div>
+              <h4 className="text-lg font-black text-white">
+                {lang === 'PT' ? 'LANÇAMENTO RÁPIDO' : 'QUICK LAUNCH'}
+              </h4>
+              <p className="text-sm text-neutral-400">
+                {lang === 'PT'
+                  ? 'Sua loja no ar em até 4 semanas com todas as integrações.'
+                  : 'Your store live in up to 4 weeks with all integrations.'}
+              </p>
+            </div>
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 mx-auto bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl font-black text-[rgb(155,89,182)]">💳</span>
+              </div>
+              <h4 className="text-lg font-black text-white">
+                {lang === 'PT' ? 'PAGAMENTOS 100%' : '100% PAYMENTS'}
+              </h4>
+              <p className="text-sm text-neutral-400">
+                {lang === 'PT'
+                  ? 'Todos os principais gateways do mercado brasileiro integrados.'
+                  : 'All major Brazilian market payment gateways integrated.'}
+              </p>
+            </div>
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 mx-auto bg-[rgb(155,89,182)]/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl font-black text-[rgb(155,89,182)]">📈</span>
+              </div>
+              <h4 className="text-lg font-black text-white">
+                {lang === 'PT' ? 'CONVERSÃO OTIMIZADA' : 'OPTIMIZED CONVERSION'}
+              </h4>
+              <p className="text-sm text-neutral-400">
+                {lang === 'PT'
+                  ? 'Taxa de conversão até 3x maior com nossas estratégias.'
+                  : 'Conversion rate up to 3x higher with our strategies.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

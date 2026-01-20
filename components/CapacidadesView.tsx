@@ -79,7 +79,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* ARQUITETURA COGNITIVA */}
           <div
             onClick={() => handleCapacityClick('cognitive')}
@@ -403,6 +403,36 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
               "{t.capacities.sites.thesis}"
             </div>
             <div className="mt-4 flex items-center gap-2 text-[#58B573] text-[10px] font-black uppercase tracking-wider">
+              EXPLORAR
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+          </div>
+
+          {/* ECOMMERCE */}
+          <div
+            onClick={() => handleCapacityClick('ecommerce')}
+            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-[rgb(155,89,182)]/10 rounded-full flex items-center justify-center group-hover:bg-[rgb(155,89,182)]/20 transition-colors">
+                <svg className="w-6 h-6 text-[rgb(155,89,182)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white group-hover:text-[rgb(155,89,182)] transition-colors">{t.capacities.ecommerce.title}</h3>
+                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.capacities.ecommerce.category}</p>
+              </div>
+            </div>
+            <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              {t.capacities.ecommerce.desc}
+            </p>
+            <div className="text-xs text-neutral-500 italic">
+              "{t.capacities.ecommerce.thesis}"
+            </div>
+            <div className="mt-4 flex items-center gap-2 text-[rgb(155,89,182)] text-[10px] font-black uppercase tracking-wider">
               EXPLORAR
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />

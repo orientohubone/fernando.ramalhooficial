@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ListItem, HighlightColor } from '../types';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
@@ -21,9 +22,10 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
   const [showLinkedInFrameworkModal, setShowLinkedInFrameworkModal] = useState(false);
   const [showDesignSystemModal, setShowDesignSystemModal] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const handleBackToCapacities = () => {
-    window.location.href = lang === 'EN' ? '/en/capacidades' : '/capacidades';
+    navigate(lang === 'EN' ? '/en/capacidades' : '/capacidades');
   };
 
   useEffect(() => {
@@ -2842,7 +2844,7 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
                 <button
-                  onClick={() => window.location.href = lang === 'EN' ? '/en/capacidades' : '/capacidades'}
+                  onClick={() => navigate(lang === 'EN' ? '/en/capacidades' : '/capacidades')}
                   className="px-12 py-6 border border-neutral-700 text-white font-black text-lg uppercase tracking-wider rounded-full transition-all duration-300 hover:border-neutral-600 hover:bg-neutral-900"
                 >
                   {lang === 'PT' ? 'VER CAPACIDADES' : 'SEE CAPABILITIES'}

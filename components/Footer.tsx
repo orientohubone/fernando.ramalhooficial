@@ -54,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         {/* Sitemap Section */}
         <section className="border-t border-neutral-900/50 pt-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-            
+
             {/* CAPACIDADES */}
             <div className="space-y-4">
               <h3 className="text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-6">
@@ -111,6 +111,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               <nav className="space-y-3" role="navigation" aria-label="Informações da empresa">
                 <Link to={lang === 'EN' ? '/en/about' : '/sobre'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Sobre Fernando' : 'About Fernando'}
+                </Link>
+                <Link to={lang === 'EN' ? '/en/segmentos' : '/segmentos'} className="block text-sm text-neutral-400 hover:text-white transition-colors font-bold text-[#FFEE00]">
+                  {lang === 'PT' ? 'Na Prática (Nichos)' : 'In Practice (Niches)'}
                 </Link>
                 <Link to={lang === 'EN' ? '/en/filosofia' : '/filosofia'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Filosofia' : 'Philosophy'}

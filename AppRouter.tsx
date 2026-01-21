@@ -17,6 +17,7 @@ import ContatoView from './components/ContatoView';
 import FilosofiaView from './components/FilosofiaView';
 import CognitiveArchitectureView from './components/CognitiveArchitectureView';
 import IAView from './components/IAView';
+import SegmentosView from './components/SegmentosView';
 import WhatsAppButton from './components/WhatsAppButton';
 import BackToTop from './components/BackToTop';
 import LegalView from './components/LegalView';
@@ -156,6 +157,14 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords = lang === 'EN'
       ? 'AI solutions, artificial intelligence, business automation, intelligent systems'
       : 'soluções de IA, inteligência artificial, automação empresarial, sistemas inteligentes';
+  } else if (cleanPath === '/segmentos') {
+    title = lang === 'EN' ? 'Industries & Segments - Strategic Innovation' : 'Segmentos Atendidos - Inovação Estratégica';
+    description = lang === 'EN'
+      ? 'Multisector experience: real estate, tech, retail, and more. See how we apply strategic logic across different industries.'
+      : 'Experiência multissetorial: imobiliário, tecnologia, varejo e mais. Veja como aplicamos lógica estratégica em diferentes indústrias.';
+    keywords = lang === 'EN'
+      ? 'industry experience, business segments, retail innovation, tech consulting, real estate marketing'
+      : 'experiência multissetorial, segmentos de mercado, inovação no varejo, consultoria tech, marketing imobiliário';
   }
 
   return {
@@ -251,6 +260,8 @@ const AppRouter: React.FC = () => {
       // Cognitive architecture - handled by route
     } else if (cleanPath === '/ia') {
       // IA page - handled by route
+    } else if (cleanPath === '/segmentos') {
+      // Segmentos page - handled by route
     } else if (cleanPath === '/politica-de-privacidade' || cleanPath === '/termos-de-uso' || cleanPath === '/lgpd' || cleanPath === '/politica-de-cookies') {
       // Legal pages - handled by route
     } else if (cleanPath !== '/') {
@@ -409,6 +420,12 @@ const AppRouter: React.FC = () => {
               onClose={() => navigate('/en')}
             />
           } />
+          <Route path="/en/segmentos" element={
+            <SegmentosView
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
 
           {/* Portuguese routes */}
           <Route path="/capacidade/:slug" element={
@@ -416,7 +433,7 @@ const AppRouter: React.FC = () => {
               <CapacityDetail
                 item={selectedCapacity}
                 lang={lang}
-                onClose={() => navigate('/')}
+                onClose={() => navigate('/capacidades')}
               />
             )
           } />
@@ -438,6 +455,13 @@ const AppRouter: React.FC = () => {
 
           <Route path="/capacidades" element={
             <CapacidadesView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/segmentos" element={
+            <SegmentosView
               lang={lang}
               onClose={() => navigate('/')}
             />

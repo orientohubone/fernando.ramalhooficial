@@ -34,6 +34,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
 
   const navItems = [
     { label: t.strategy, href: "/capacidades" },
+    { label: t.practice, href: "/segmentos" },
     { label: t.about, href: "/sobre" },
     { label: t.reports, href: "/relatorios" },
     { label: t.creative, href: "https://www.behance.net/fernandoramalho1", external: true },
@@ -45,11 +46,10 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4" role="banner">
       <div className="flex justify-center">
         <nav
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-300 ${
-            isScrolled
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-300 ${isScrolled
               ? "bg-black/80 backdrop-blur-xl border-neutral-800/50 shadow-lg shadow-black/20"
               : "bg-black/40 backdrop-blur-md border-neutral-900/50"
-          }`}
+            }`}
           role="navigation"
           aria-label="Navegação principal"
         >
@@ -93,13 +93,13 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
 
           {/* Language Switcher */}
           <div className="hidden md:flex items-center gap-1 border border-neutral-800 rounded-full p-1 bg-black/50 backdrop-blur-md ml-4">
-            <button 
+            <button
               onClick={() => handleLanguageSwitch('PT')}
               className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'PT' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
             >
               PT
             </button>
-            <button 
+            <button
               onClick={() => handleLanguageSwitch('EN')}
               className={`text-[9px] font-black px-2 py-0.5 rounded-full transition-all ${lang === 'EN' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
             >
@@ -161,16 +161,16 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
                 </a>
               )
             ))}
-            
+
             {/* Mobile Language Switcher */}
             <div className="flex gap-1 border border-neutral-800 rounded-full p-1 bg-black/50 backdrop-blur-md mt-4 mx-auto">
-              <button 
+              <button
                 onClick={() => handleLanguageSwitch('PT')}
                 className={`text-[9px] font-black px-3 py-1 rounded-full transition-all ${lang === 'PT' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
               >
                 PT
               </button>
-              <button 
+              <button
                 onClick={() => handleLanguageSwitch('EN')}
                 className={`text-[9px] font-black px-3 py-1 rounded-full transition-all ${lang === 'EN' ? 'bg-[#5AB473] text-black' : 'text-neutral-500 hover:text-white'}`}
               >

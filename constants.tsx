@@ -13,7 +13,7 @@ export type Language = 'PT' | 'EN';
 
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'CAPACIDADES', philosophy: 'FILOSOFIA', contact: 'CONTATO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026', creative: 'CRAFT' },
+    nav: { strategy: 'CAPACIDADES', practice: 'NA PRÁTICA', philosophy: 'FILOSOFIA', contact: 'CONTATO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026', creative: 'CRAFT' },
     hero: {
       line1: 'INOVAÇÃO',
       line2: 'ESTRATÉGICA',
@@ -105,10 +105,32 @@ export const TRANSLATIONS = {
     footer: {
       cta: 'VAMOS CONSTRUIR O QUE VEM A SEGUIR.',
       rights: '© 2024 / ENGENHARIA PARA IMPACTO'
+    },
+    nichos: {
+      title: 'NA PRÁTICA',
+      subtitle: 'SEGMENTOS ATENDIDOS',
+      description: 'Experiência multissetorial transformando complexidade em resultados práticos e escaláveis.',
+      items: [
+        { title: 'Escritório de Contabilidade', category: 'FINANCE', desc: 'Capacidades aplicadas: Design e Social Media' },
+        { title: 'Lojas de Roupas', category: 'RETAIL', desc: 'Capacidades aplicadas: Estratégias, Marketing, Mídia paga, Design' },
+        { title: 'Imobiliária', category: 'REAL ESTATE', desc: 'Capacidades aplicadas: Estratégias, Marketing, Mídia paga, Design, Marcas, Domínio, site' },
+        { title: 'Igrejas', category: 'COMMUNITY', desc: 'Capacidades aplicadas: Design, Marcas' },
+        { title: 'Profissionais Autônomos', category: 'PERSONAL BRAND', desc: 'Capacidades Aplicadas: Estratégias, Inovação e Marketing' },
+        { title: 'Empresa de Tecnologia', category: 'SaaS/TECH', desc: 'Capacidades Aplicadas: Design, Estratégias, Inovação, Marcas, Mídia paga, site, vibe coding' },
+        { title: 'Marcenaria', category: 'CRAFT', desc: 'Capacidades aplicadas: Design e Marcas' },
+        { title: 'Atacadista', category: 'B2B', desc: 'Capacidades aplicadas: Estratégias, Marketing, Mídia Paga' },
+        { title: 'Transporte Corporativo', category: 'LOGISTICS', desc: 'Capacidades aplicadas: Design e Marcas' },
+        { title: 'Infoproduto', category: 'EDUCATION', desc: 'Capacidades aplicadas: Design, Estratégias e Marketing' },
+        { title: 'Consultoria Empresarial', category: 'CONSULTING', desc: 'Capacidades aplicadas: Estratégias, design, inovação, marketing, mídia paga' },
+        { title: 'Projetos Acadêmicos', category: 'ACADEMIC', desc: 'Capacidade aplicada: Design' },
+        { title: 'Doces Artesanais', category: 'FOOD', desc: 'Capacidades aplicadas: Design, estratégias e marketing' },
+        { title: 'Emissora de Televisão', category: 'MEDIA', desc: 'Capacidade aplicada: Design' },
+        { title: 'Administrador', category: 'MANAGEMENT', desc: 'Capacidade aplicada: Design' }
+      ]
     }
   },
   EN: {
-    nav: { strategy: 'CAPACITIES', philosophy: 'PHILOSOPHY', contact: 'CONTACT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026', creative: 'CRAFT' },
+    nav: { strategy: 'CAPACITIES', practice: 'IN PRACTICE', philosophy: 'PHILOSOPHY', contact: 'CONTACT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026', creative: 'CRAFT' },
     hero: {
       line1: 'STRATEGIC',
       line2: 'INNOVATION',
@@ -200,6 +222,28 @@ export const TRANSLATIONS = {
     footer: {
       cta: 'LET\'S BUILD WHAT\'S NEXT.',
       rights: '© 2024 / ENGINEERED FOR IMPACT'
+    },
+    nichos: {
+      title: 'IN PRACTICE',
+      subtitle: 'SERVED SEGMENTS',
+      description: 'Multi-sector experience transforming complexity into practical and scalable results.',
+      items: [
+        { title: 'Accounting Firm', category: 'FINANCE', desc: 'Applied Capabilities: Design and Social Media' },
+        { title: 'Clothing Stores', category: 'RETAIL', desc: 'Applied Capabilities: Strategies, Marketing, Paid Media, Design' },
+        { title: 'Real Estate', category: 'REAL ESTATE', desc: 'Applied Capabilities: Strategies, Marketing, Paid Media, Design, Brands, Domain, Website' },
+        { title: 'Churches', category: 'COMMUNITY', desc: 'Applied Capabilities: Design, Brands' },
+        { title: 'Freelancers', category: 'PERSONAL BRAND', desc: 'Applied Capabilities: Strategies, Innovation and Marketing' },
+        { title: 'Tech Company', category: 'SaaS/TECH', desc: 'Applied Capabilities: Design, Strategies, Innovation, Brands, Paid Media, Website, Vibe Coding' },
+        { title: 'Woodworking', category: 'CRAFT', desc: 'Applied Capabilities: Design and Brands' },
+        { title: 'Wholesaler', category: 'B2B', desc: 'Applied Capabilities: Strategies, Marketing, Paid Media' },
+        { title: 'Corporate Transport', category: 'LOGISTICS', desc: 'Applied Capabilities: Design and Brands' },
+        { title: 'Infoproduct', category: 'EDUCATION', desc: 'Applied Capabilities: Design, Strategies and Marketing' },
+        { title: 'Business Consulting', category: 'CONSULTING', desc: 'Applied Capabilities: Strategies, Design, Innovation, Marketing, Paid Media' },
+        { title: 'Academic Projects', category: 'ACADEMIC', desc: 'Applied Capability: Design' },
+        { title: 'Artisanal Sweets', category: 'FOOD', desc: 'Applied Capabilities: Design, Strategies and Marketing' },
+        { title: 'TV Station', category: 'MEDIA', desc: 'Applied Capability: Design' },
+        { title: 'Administrator', category: 'MANAGEMENT', desc: 'Applied Capability: Design' }
+      ]
     }
   }
 };

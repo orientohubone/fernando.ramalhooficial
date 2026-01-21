@@ -40,32 +40,44 @@ const createLangUrl = (path: string, lang: Language): string => {
 const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?: any, selectedReport?: any) => {
   const baseUrl = 'https://fernandoramalho.vercel.app';
   const cleanPath = pathname.replace('/en', '');
-  
+
   // Default metadata
   let title = '';
   let description = '';
   let keywords = '';
   let canonical = pathname;
   let structuredData: any = null;
-  
+
   if (cleanPath === '/' || cleanPath === '') {
-    title = lang === 'EN' ? 'Home - Strategic Innovation & AI Solutions' : 'Home - Inovação Estratégica e Soluções de IA';
-    description = lang === 'EN' 
-      ? 'OrientoHub specializes in cognitive architecture, AI implementation, digital transformation, and strategic innovation for businesses seeking competitive advantage.'
-      : 'OrientoHub é especializada em arquitetura cognitiva, implementação de IA, transformação digital e inovação estratégica para empresas que buscam vantagem competitiva.';
-    keywords = lang === 'EN' 
-      ? 'AI, artificial intelligence, cognitive architecture, digital transformation, innovation, strategy, machine learning, business intelligence'
-      : 'IA, inteligência artificial, arquitetura cognitiva, transformação digital, inovação, estratégia, machine learning, inteligência de negócios';
-    
+    title = lang === 'EN' ? 'Fernando Ramalho - Strategic Innovation & AI Solutions in São Paulo' : 'Fernando Ramalho - Inovação Estratégica e Soluções de IA em São Paulo';
+    description = lang === 'EN'
+      ? 'Fernando Ramalho specializes in cognitive architecture, AI implementation, digital transformation, and strategic innovation. Building systems of dominance for business leaders.'
+      : 'Fernando Ramalho é especialista em arquitetura cognitiva, implementação de IA, transformação digital e inovação estratégica. Construindo sistemas de dominância para líderes de negócios em São Paulo.';
+    keywords = lang === 'EN'
+      ? 'Fernando Ramalho, AI strategist, cognitive architecture, digital transformation São Paulo, innovation strategy, strategic consulting, AI solutions Brazil'
+      : 'Fernando Ramalho, estrategista de IA, arquitetura cognitiva, transformação digital São Paulo, agência de inovação, consultoria estratégica, soluções de inteligência artificial';
+
     structuredData = {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "OrientoHub",
+      "@type": "ProfessionalService",
+      "name": "Fernando Ramalho | Inovação Estratégica & IA",
       "url": baseUrl,
       "description": description,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.5614,
+        "longitude": -46.6559
+      },
       "sameAs": [
-        "https://linkedin.com/company/orientohub",
-        "https://twitter.com/orientohub"
+        "https://linkedin.com/in/fernandolsr/",
+        "https://www.instagram.com/fernando.ramalhooficial/",
+        "https://www.behance.net/fernandoramalho1"
       ]
     };
   } else if (cleanPath === '/capacidades') {
@@ -79,62 +91,63 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
   } else if (cleanPath.startsWith('/capacidade/') && selectedCapacity) {
     const capacityTitle = selectedCapacity.title;
     const capacityDesc = selectedCapacity.desc;
-    
-    title = `${capacityTitle} - ${lang === 'EN' ? 'Strategic Service' : 'Serviço Estratégico'}`;
-    description = capacityDesc;
-    keywords = `${capacityTitle}, ${lang === 'EN' ? 'strategic consulting, business solutions' : 'consultoria estratégica, soluções de negócio'}`;
-    
+
+    title = `${capacityTitle} | Fernando Ramalho - ${lang === 'EN' ? 'Digital Innovation' : 'Inovação Digital'}`;
+    description = `${capacityDesc} Especialista em transformar negócios através de ${capacityTitle.toLowerCase()} com foco em resultados e performance.`;
+    keywords = `${capacityTitle}, Fernando Ramalho, ${lang === 'EN' ? 'strategic consulting, growth, performance marketing, business innovation' : 'consultoria estratégica, growth, marketing de performance, inovação empresarial'}`;
+
     structuredData = {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": capacityTitle,
       "description": capacityDesc,
       "provider": {
-        "@type": "Organization",
-        "name": "OrientoHub",
+        "@type": "ProfessionalService",
+        "name": "Fernando Ramalho",
         "url": baseUrl
-      }
+      },
+      "areaServed": "BR"
     };
   } else if (cleanPath === '/sobre') {
-    title = lang === 'EN' ? 'About Us - Innovation Leaders' : 'Sobre Nós - Líderes em Inovação';
+    title = lang === 'EN' ? 'About Fernando Ramalho - Innovation Strategist' : 'Sobre Fernando Ramalho - Estrategista de Inovação';
     description = lang === 'EN'
-      ? 'Learn about OrientoHub\'s mission to transform businesses through strategic innovation and cutting-edge AI solutions.'
-      : 'Conheça a missão da OrientoHub de transformar negócios através de inovação estratégica e soluções de IA de ponta.';
+      ? 'Meet Fernando Ramalho, a specialist in AI systems and strategic innovation with over 15 years of experience transforming businesses.'
+      : 'Conheça Fernando Ramalho, especialista em sistemas de IA e inovação estratégica com mais de 15 anos de experiência transformando negócios.';
     keywords = lang === 'EN'
-      ? 'about orientohub, company profile, innovation leadership, AI expertise'
-      : 'sobre orientohub, perfil da empresa, liderança em inovação, expertise em IA';
+      ? 'Fernando Ramalho, innovation strategist, AI consultant, business transformation expert'
+      : 'Fernando Ramalho, estrategista de inovação, consultor de IA, especialista em transformação digital';
   } else if (cleanPath === '/relatorios') {
-    title = lang === 'EN' ? 'Reports & Insights' : 'Relatórios e Insights';
+    title = lang === 'EN' ? 'Intelligence Reports & Strategic Insights' : 'Relatórios de Inteligência e Insights Estratégicos';
     description = lang === 'EN'
-      ? 'Access our comprehensive reports on market trends, innovation strategies, and AI implementation insights.'
-      : 'Acesse nossos relatórios completos sobre tendências de mercado, estratégias de inovação e insights de implementação de IA.';
+      ? 'Access deep market analysis, AI trends, and the most effective marketing strategies to dominate your niche.'
+      : 'Acesse análises profundas de mercado, tendências de IA e as estratégias de marketing mais eficazes para dominar seu nicho.';
     keywords = lang === 'EN'
-      ? 'business reports, market analysis, innovation insights, AI trends'
-      : 'relatórios empresariais, análise de mercado, insights de inovação, tendências de IA';
+      ? 'market reports, AI trends 2026, marketing efficiency, strategic intelligence'
+      : 'relatórios de mercado, tendências de IA 2026, marketing eficaz, inteligência estratégica';
   } else if (cleanPath === '/contato') {
-    title = lang === 'EN' ? 'Contact Us - Start Your Transformation' : 'Contato - Comece sua Transformação';
+    title = lang === 'EN' ? 'Contact Fernando Ramalho - Strategic Consulting' : 'Contato Fernando Ramalho - Consultoria Estratégica';
     description = lang === 'EN'
-      ? 'Get in touch with OrientoHub to discuss how our strategic innovation and AI solutions can transform your business.'
-      : 'Entre em contato com a OrientoHub para discutir como nossas soluções de inovação estratégica e IA podem transformar seu negócio.';
+      ? 'Book a consultation with Fernando Ramalho for AI implementation and high-level strategic innovation.'
+      : 'Agende uma consultoria com Fernando Ramalho para implementação de IA e inovação estratégica de alto nível.';
     keywords = lang === 'EN'
-      ? 'contact orientohub, business consultation, AI implementation, strategic partnership'
-      : 'contato orientohub, consultoria empresarial, implementação de IA, parceria estratégica';
+      ? 'contact fernando ramalho, business consultation, AI advisory'
+      : 'contato fernando ramalho, consultoria empresarial, assessoria de IA';
   } else if (cleanPath === '/filosofia') {
-    title = lang === 'EN' ? 'Our Philosophy - Strategic Innovation Principles' : 'Nossa Filosofia - Princípios de Inovação Estratégica';
+    title = lang === 'EN' ? 'Philosophy - Systems Over Tactics' : 'Filosofia - Sistemas sobre Táticas';
     description = lang === 'EN'
-      ? 'Discover OrientoHub\'s core philosophy: systems over tactics, value composition, and fundamental truths in business transformation.'
-      : 'Conheça a filosofia central da OrientoHub: sistemas sobre táticas, composição de valor e verdades fundamentais na transformação de negócios.';
+      ? 'Discover the principles that guide our strategic innovation: fundamental truths and the search for absolute dominance.'
+      : 'Descubra os princípios que guiam nossa inovação estratégica: verdades fundamentais e a busca por dominância absoluta.';
     keywords = lang === 'EN'
-      ? 'business philosophy, innovation principles, strategic thinking, systems thinking'
-      : 'filosofia empresarial, princípios de inovação, pensamento estratégico, pensamento sistêmico';
+      ? 'strategic philosophy, systems thinking, business principles'
+      : 'filosofia estratégica, pensamento sistêmico, princípios de negócios';
   } else if (cleanPath === '/arquitetura-cognitiva') {
-    title = lang === 'EN' ? 'Cognitive Architecture - Advanced AI Systems' : 'Arquitetura Cognitiva - Sistemas de IA Avançados';
+    title = lang === 'EN' ? 'Cognitive Architecture - Proprietary AI Systems' : 'Arquitetura Cognitiva - Sistemas de IA Proprietários';
     description = lang === 'EN'
-      ? 'Explore our cognitive architecture solutions: advanced AI systems designed for complex problem-solving and business intelligence.'
-      : 'Explore nossas soluções de arquitetura cognitiva: sistemas de IA avançados projetados para resolução complexa de problemas e inteligência de negócios.';
+      ? 'Proprietary cognitive architecture for intelligent business automation and complex decision-making.'
+      : 'Arquitetura cognitiva proprietária para automação inteligente de negócios e tomada de decisão complexa.';
     keywords = lang === 'EN'
-      ? 'cognitive architecture, advanced AI, business intelligence, problem-solving systems'
-      : 'arquitetura cognitiva, IA avançada, inteligência de negócios, sistemas de resolução de problemas';
+      ? 'cognitive architecture, advanced AI, decision intelligence'
+      : 'arquitetura cognitiva, IA avançada, inteligência de decisão';
   } else if (cleanPath === '/ia') {
     title = lang === 'EN' ? 'AI Solutions - Intelligent Automation' : 'Soluções de IA - Automação Inteligente';
     description = lang === 'EN'
@@ -144,7 +157,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
       ? 'AI solutions, artificial intelligence, business automation, intelligent systems'
       : 'soluções de IA, inteligência artificial, automação empresarial, sistemas inteligentes';
   }
-  
+
   return {
     title,
     description,
@@ -185,18 +198,18 @@ const AppRouter: React.FC = () => {
   const [selectedReport, setSelectedReport] = useState<ReportItem | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   // Generate SEO metadata
   const seoMetadata = generateSEOMetadata(location.pathname, lang, selectedCapacity, selectedReport);
 
   // Parse URL and load content
   useEffect(() => {
     const path = location.pathname;
-    
+
     // Detect language from URL path
     let detectedLang: Language = 'PT';
     let cleanPath = path;
-    
+
     if (path.startsWith('/en/')) {
       detectedLang = 'EN';
       cleanPath = path.replace('/en', '');
@@ -204,14 +217,14 @@ const AppRouter: React.FC = () => {
       detectedLang = 'EN';
       cleanPath = '/';
     }
-    
+
     setLang(detectedLang);
 
     // Handle different routes
     if (cleanPath.startsWith('/capacidade/')) {
       const capacitySlug = cleanPath.split('/')[2];
       const capacity = findCapacityBySlug(capacitySlug, detectedLang);
-      
+
       if (capacity) {
         if (capacity.title === 'ARQUITETURA COGNITIVA' || capacity.title === 'COGNITIVE ARCHITECTURE') {
           navigate(createLangUrl('/arquitetura-cognitiva', detectedLang), { replace: true });
@@ -276,7 +289,7 @@ const AppRouter: React.FC = () => {
 
   return (
     <HelmetProvider>
-      <SEOMeta 
+      <SEOMeta
         title={seoMetadata.title}
         description={seoMetadata.description}
         keywords={seoMetadata.keywords}
@@ -284,245 +297,254 @@ const AppRouter: React.FC = () => {
         lang={seoMetadata.lang}
         structuredData={seoMetadata.structuredData}
       />
-      
+
+      {/* Renderiza o Structured Data dinâmico baseado na rota */}
+      {isHomePage ? (
+        <StructuredData type="LocalBusiness" lang={lang} />
+      ) : selectedCapacity ? (
+        <StructuredData type="Service" item={selectedCapacity} lang={lang} />
+      ) : (
+        <StructuredData type="Organization" lang={lang} />
+      )}
+
       <div className="relative bg-[#050505] text-white overflow-x-hidden selection:bg-[#FFEE00] selection:text-black">
         <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] z-50"></div>
-        
+
         {isHomePage && (
-          <Header 
-            lang={lang} 
-            setLang={setLang} 
-            onOpenReports={() => navigate('/relatorios')} 
+          <Header
+            lang={lang}
+            setLang={setLang}
+            onOpenReports={() => navigate('/relatorios')}
           />
         )}
-      
-      <main className={!isHomePage ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
-        <Hero lang={lang} />
-        
-        <div className="px-6 md:px-12 mb-20">
-          <div className="h-[1px] w-full bg-neutral-900"></div>
-        </div>
 
-        <RollingList lang={lang} onSelectItem={handleCapacitySelect} />
-        
-        <StrategySection lang={lang} />
-        
-        <section className="py-20 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-between items-center gap-12 text-sm font-black uppercase tracking-[0.5em]">
-            <span>Fortune 500</span>
-            <span>Unicorn SaaS</span>
-            <span>Seed Stars</span>
-            <span>Global Growth</span>
+        <main className={!isHomePage ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
+          <Hero lang={lang} />
+
+          <div className="px-6 md:px-12 mb-20">
+            <div className="h-[1px] w-full bg-neutral-900"></div>
           </div>
-        </section>
 
-        <Footer lang={lang} />
-      </main>
+          <RollingList lang={lang} onSelectItem={handleCapacitySelect} />
 
-      <Routes>
-        {/* Default route - main content */}
-        <Route path="/" element={null} />
-        
-        {/* English routes */}
-        <Route path="/en" element={null} />
-        <Route path="/en/" element={null} />
-        <Route path="/en/sobre" element={
-          <AboutView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        <Route path="/en/relatorios" element={
-          <ReportsView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-            onReportSelect={handleReportSelect}
-          />
-        } />
-        <Route path="/en/capacidades" element={
-          <CapacidadesView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        <Route path="/en/contato" element={
-          <ContatoView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        <Route path="/en/capacidade/:slug" element={
-          selectedCapacity && (
-            <CapacityDetail 
-              item={selectedCapacity} 
-              lang="EN" 
-              onClose={() => navigate('/en/capacidades')} 
+          <StrategySection lang={lang} />
+
+          <section className="py-20 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-between items-center gap-12 text-sm font-black uppercase tracking-[0.5em]">
+              <span>Fortune 500</span>
+              <span>Unicorn SaaS</span>
+              <span>Seed Stars</span>
+              <span>Global Growth</span>
+            </div>
+          </section>
+
+          <Footer lang={lang} />
+        </main>
+
+        <Routes>
+          {/* Default route - main content */}
+          <Route path="/" element={null} />
+
+          {/* English routes */}
+          <Route path="/en" element={null} />
+          <Route path="/en/" element={null} />
+          <Route path="/en/sobre" element={
+            <AboutView
+              lang="EN"
+              onClose={() => navigate('/en')}
             />
-          )
-        } />
-        <Route path="/en/relatorio/:slug" element={
-          selectedReport && (
-            <ReportDetail 
-              report={selectedReport} 
-              lang="EN" 
-              onClose={() => navigate('/en/relatorios')} 
+          } />
+          <Route path="/en/relatorios" element={
+            <ReportsView
+              lang="EN"
+              onClose={() => navigate('/en')}
+              onReportSelect={handleReportSelect}
             />
-          )
-        } />
-        <Route path="/en/filosofia" element={
-          <FilosofiaView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        <Route path="/en/arquitetura-cognitiva" element={
-          <CognitiveArchitectureView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        <Route path="/en/ia" element={
-          <IAView 
-            lang="EN" 
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        
-        {/* Portuguese routes */}
-        <Route path="/capacidade/:slug" element={
-          selectedCapacity && (
-            <CapacityDetail 
-              item={selectedCapacity} 
-              lang={lang} 
-              onClose={() => navigate('/')} 
+          } />
+          <Route path="/en/capacidades" element={
+            <CapacidadesView
+              lang="EN"
+              onClose={() => navigate('/en')}
             />
-          )
-        } />
-        
-        <Route path="/sobre" element={
-          <AboutView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/relatorios" element={
-          <ReportsView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-            onReportSelect={handleReportSelect}
-          />
-        } />
-        
-        <Route path="/capacidades" element={
-          <CapacidadesView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/contato" element={
-          <ContatoView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/filosofia" element={
-          <FilosofiaView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/capacidade/ia" element={
-          <IAView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-          />
-        } />
-
-        {/* Legal Pages */}
-        <Route path="/politica-de-privacidade" element={
-          <PoliticaPrivacidade 
-            lang="PT"
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/termos-de-uso" element={
-          <TermosUso 
-            lang="PT"
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/lgpd" element={
-          <LGPD 
-            lang="PT"
-            onClose={() => navigate('/')} 
-          />
-        } />
-        
-        <Route path="/politica-de-cookies" element={
-          <PoliticaCookies 
-            lang="PT"
-            onClose={() => navigate('/')} 
-          />
-        } />
-
-        {/* English Legal Pages */}
-        <Route path="/en/privacy-policy" element={
-          <PoliticaPrivacidade 
-            lang="EN"
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        
-        <Route path="/en/terms-of-use" element={
-          <TermosUso 
-            lang="EN"
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        
-        <Route path="/en/lgpd" element={
-          <LGPD 
-            lang="EN"
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        
-        <Route path="/en/cookie-policy" element={
-          <PoliticaCookies 
-            lang="EN"
-            onClose={() => navigate('/en')} 
-          />
-        } />
-        
-        <Route path="/relatorio/:slug" element={
-          selectedReport && (
-            <ReportDetail 
-              report={selectedReport} 
-              lang={lang} 
-              onClose={() => navigate('/relatorios')} 
+          } />
+          <Route path="/en/contato" element={
+            <ContatoView
+              lang="EN"
+              onClose={() => navigate('/en')}
             />
-          )
-        } />
-        
-        <Route path="/arquitetura-cognitiva" element={
-          <CognitiveArchitectureView 
-            lang={lang} 
-            onClose={() => navigate('/')} 
-          />
-        } />
-      </Routes>
+          } />
+          <Route path="/en/capacidade/:slug" element={
+            selectedCapacity && (
+              <CapacityDetail
+                item={selectedCapacity}
+                lang="EN"
+                onClose={() => navigate('/en/capacidades')}
+              />
+            )
+          } />
+          <Route path="/en/relatorio/:slug" element={
+            selectedReport && (
+              <ReportDetail
+                report={selectedReport}
+                lang="EN"
+                onClose={() => navigate('/en/relatorios')}
+              />
+            )
+          } />
+          <Route path="/en/filosofia" element={
+            <FilosofiaView
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+          <Route path="/en/arquitetura-cognitiva" element={
+            <CognitiveArchitectureView
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+          <Route path="/en/ia" element={
+            <IAView
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
 
-      {/* WhatsApp Button - only show on home page */}
-      {isHomePage && <WhatsAppButton />}
-      
-      {/* Back to Top Button - show on all pages */}
-      <BackToTop />
+          {/* Portuguese routes */}
+          <Route path="/capacidade/:slug" element={
+            selectedCapacity && (
+              <CapacityDetail
+                item={selectedCapacity}
+                lang={lang}
+                onClose={() => navigate('/')}
+              />
+            )
+          } />
+
+          <Route path="/sobre" element={
+            <AboutView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/relatorios" element={
+            <ReportsView
+              lang={lang}
+              onClose={() => navigate('/')}
+              onReportSelect={handleReportSelect}
+            />
+          } />
+
+          <Route path="/capacidades" element={
+            <CapacidadesView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/contato" element={
+            <ContatoView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/filosofia" element={
+            <FilosofiaView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/capacidade/ia" element={
+            <IAView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          {/* Legal Pages */}
+          <Route path="/politica-de-privacidade" element={
+            <PoliticaPrivacidade
+              lang="PT"
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/termos-de-uso" element={
+            <TermosUso
+              lang="PT"
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/lgpd" element={
+            <LGPD
+              lang="PT"
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/politica-de-cookies" element={
+            <PoliticaCookies
+              lang="PT"
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          {/* English Legal Pages */}
+          <Route path="/en/privacy-policy" element={
+            <PoliticaPrivacidade
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+
+          <Route path="/en/terms-of-use" element={
+            <TermosUso
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+
+          <Route path="/en/lgpd" element={
+            <LGPD
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+
+          <Route path="/en/cookie-policy" element={
+            <PoliticaCookies
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+
+          <Route path="/relatorio/:slug" element={
+            selectedReport && (
+              <ReportDetail
+                report={selectedReport}
+                lang={lang}
+                onClose={() => navigate('/relatorios')}
+              />
+            )
+          } />
+
+          <Route path="/arquitetura-cognitiva" element={
+            <CognitiveArchitectureView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+        </Routes>
+
+        {/* WhatsApp Button - only show on home page */}
+        {isHomePage && <WhatsAppButton />}
+
+        {/* Back to Top Button - show on all pages */}
+        <BackToTop />
       </div>
     </HelmetProvider>
   );

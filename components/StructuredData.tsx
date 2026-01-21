@@ -3,21 +3,21 @@ import { Helmet } from 'react-helmet-async';
 import { ListItem } from '../types';
 
 interface StructuredDataProps {
-  type: 'Organization' | 'Service' | 'Article' | 'WebPage' | 'BreadcrumbList';
+  type: 'Organization' | 'Service' | 'Article' | 'WebPage' | 'BreadcrumbList' | 'LocalBusiness' | 'FAQPage';
   data?: any;
   item?: ListItem;
   lang?: 'PT' | 'EN';
 }
 
-const StructuredData: React.FC<StructuredDataProps> = ({ 
-  type, 
-  data, 
-  item, 
-  lang = 'PT' 
+const StructuredData: React.FC<StructuredDataProps> = ({
+  type,
+  data,
+  item,
+  lang = 'PT'
 }) => {
   const generateStructuredData = () => {
     const baseUrl = 'https://fernandoramalho.vercel.app';
-    
+
     switch (type) {
       case 'Organization':
         return {
@@ -26,7 +26,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
           "name": "Fernando Ramalho",
           "url": baseUrl,
           "logo": `${baseUrl}/logo.png`,
-          "description": lang === 'EN' 
+          "description": lang === 'EN'
             ? "Strategic innovation and AI solutions company specializing in cognitive architecture, digital transformation, and business intelligence."
             : "Empresa de inovação estratégica e soluções de IA especializada em arquitetura cognitiva, transformação digital e inteligência de negócios.",
           "sameAs": [
@@ -124,13 +124,67 @@ const StructuredData: React.FC<StructuredDataProps> = ({
           }
         };
 
+      case 'LocalBusiness':
+        return {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "Fernando Ramalho | Inovação Estratégica & IA",
+          "image": `${baseUrl}/profile.jpg`,
+          "@id": baseUrl,
+          "url": baseUrl,
+          "telephone": "+55-14-99861-8547",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. Paulista",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "postalCode": "01311-000",
+            "addressCountry": "BR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -23.5614,
+            "longitude": -46.6559
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "sameAs": [
+            "https://linkedin.com/in/fernandolsr/",
+            "https://www.instagram.com/fernando.ramalhooficial/"
+          ]
+        };
+
+      case 'FAQPage':
+        return {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": data?.questions?.map((q: any) => ({
+            "@type": "Question",
+            "name": q.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": q.answer
+            }
+          })) || []
+        };
+
       default:
         return null;
     }
   };
 
   const structuredData = generateStructuredData();
-  
+
   if (!structuredData) return null;
 
   return (

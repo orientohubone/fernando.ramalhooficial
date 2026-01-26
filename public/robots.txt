@@ -26,7 +26,7 @@ Disallow: /404
 Disallow: /500
 
 # Sitemap location
-Sitemap: https://fernandoramalho.vercel.app/sitemap.xml
+Sitemap: https://fernandoramalhobuilder.com.br/sitemap.xml
 
 # Crawl delay (optional, be careful with this)
 Crawl-delay: 1

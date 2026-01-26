@@ -27,7 +27,7 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
   const baseTitle = lang === 'EN' ? 'Fernando Ramalho - Strategic Innovation & AI Solutions' : 'Fernando Ramalho - Inovação Estratégica e Soluções de IA';
   const fullTitle = title ? `${title} | ${baseTitle}` : baseTitle;
   
-  const baseUrl = 'https://fernandoramalho.vercel.app';
+  const baseUrl = 'https://fernandoramalhobuilder.com.br';
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : baseUrl;
 
   return (

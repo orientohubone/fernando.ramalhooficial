@@ -39,7 +39,7 @@ const createLangUrl = (path: string, lang: Language): string => {
 
 // Helper function to generate SEO metadata
 const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?: any, selectedReport?: any) => {
-  const baseUrl = 'https://fernandoramalho.vercel.app';
+  const baseUrl = 'https://fernandoramalhobuilder.com.br';
   const cleanPath = pathname.replace('/en', '');
 
   // Default metadata

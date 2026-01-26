@@ -16,7 +16,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
   lang = 'PT'
 }) => {
   const generateStructuredData = () => {
-    const baseUrl = 'https://fernandoramalho.vercel.app';
+    const baseUrl = 'https://fernandoramalhobuilder.com.br';
 
     switch (type) {
       case 'Organization':

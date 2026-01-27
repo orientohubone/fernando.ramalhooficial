@@ -8,6 +8,8 @@ Allow: /sobre
 Allow: /en/sobre
 Allow: /relatorios
 Allow: /en/relatorios
+Allow: /relatorio/
+Allow: /en/relatorio/
 Allow: /contato
 Allow: /en/contato
 Allow: /filosofia
@@ -40,6 +42,18 @@ Allow: /
 
 User-agent: Slurp
 Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: WhatsAppBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
 
 # Block unwanted bots
 User-agent: AhrefsBot

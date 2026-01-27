@@ -53,16 +53,23 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
       <html lang={lang === 'EN' ? 'en' : 'pt-BR'} />
       <meta name="language" content={lang === 'EN' ? 'English' : 'Portuguese'} />
       
-      {/* Robots */}
+      {/* Cache Control for Crawlers */}
+      <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+      <meta httpEquiv="Pragma" content="no-cache" />
+      <meta httpEquiv="Expires" content="0" />
+      
+      {/* Crawlers Instructions */}
       <meta name="robots" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
       <meta name="googlebot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
+      <meta name="linkedinbot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
+      <meta name="whatsappbot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${baseUrl}${ogImage}`} />
+      <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={lang === 'EN' ? 'en_US' : 'pt_BR'} />
@@ -72,7 +79,7 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
       <meta property="twitter:url" content={fullCanonical} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={`${baseUrl}${ogImage}`} />
+      <meta property="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`} />
       
       {/* Additional SEO */}
       <meta name="author" content="Fernando Ramalho" />

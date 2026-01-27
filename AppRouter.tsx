@@ -127,7 +127,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords = lang === 'EN'
       ? 'intelligence hub, market reports, AI trends 2026, strategic intelligence, cognitive architecture, business innovation'
       : 'intelligence hub, relatórios de mercado, tendências de IA 2026, inteligência estratégica, arquitetura cognitiva, inovação empresarial';
-    ogImage = '/og-intelligence-hub.jpg?v=202601271525';
+    ogImage = '/og-intelligence-hub.jpg?v=202601271600';
     ogType = 'website';
   } else if (cleanPath.startsWith('/relatorio/')) {
     // Generate dynamic Open Graph for individual reports
@@ -138,7 +138,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
       const reportTitle = report.title;
       const reportDesc = report.desc;
       const reportId = report.id;
-      const reportOgImage = report.ogImage || `/og-reports/${reportId}.jpg?v=202601271525`;
+      const reportOgImage = report.ogImage ? `${report.ogImage}?v=202601271600` : `/og-reports/${reportId}.jpg?v=202601271600`;
       
       title = `${reportTitle} | Intelligence Hub`;
       description = reportDesc;
@@ -150,7 +150,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
       title = lang === 'EN' ? 'Report Not Found | Intelligence Hub' : 'Relatório Não Encontrado | Intelligence Hub';
       description = lang === 'EN' ? 'The requested report was not found.' : 'O relatório solicitado não foi encontrado.';
       keywords = 'intelligence hub, report not found';
-      ogImage = '/og-intelligence-hub.jpg?v=202601271525';
+      ogImage = '/og-intelligence-hub.jpg?v=202601271600';
       ogType = 'website';
     }
   } else if (cleanPath === '/contato') {

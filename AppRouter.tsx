@@ -38,7 +38,7 @@ const createLangUrl = (path: string, lang: Language): string => {
 };
 
 // Helper function to generate SEO metadata
-const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?: any, selectedReport?: any) => {
+const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?: any) => {
   const baseUrl = 'https://fernandoramalhobuilder.com.br';
   const cleanPath = pathname.replace('/en', '');
 
@@ -238,7 +238,7 @@ const AppRouter: React.FC = () => {
   const navigate = useNavigate();
 
   // Generate SEO metadata
-  const seoMetadata = generateSEOMetadata(location.pathname, lang, selectedCapacity, selectedReport);
+  const seoMetadata = generateSEOMetadata(location.pathname, lang, selectedCapacity);
 
   // Parse URL and load content
   useEffect(() => {

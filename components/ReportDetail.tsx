@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Language, TRANSLATIONS } from '../constants';
 import { ReportItem } from '../types';
 import BrandLogo from './BrandLogo';
+import ShareButtons from './ShareButtons';
 
 interface ReportDetailProps {
   report: ReportItem;
@@ -222,6 +223,20 @@ const ReportDetail: React.FC<ReportDetailProps> = ({ report, lang, onClose }) =>
 
         {/* Footer Detail */}
         <footer className="mt-24 md:mt-40 pt-16 md:pt-20 border-t border-neutral-900 flex flex-col items-center gap-8 md:gap-12 text-center">
+           {/* Share Buttons */}
+           <div className="w-full max-w-md">
+             <h4 className="text-xs font-black uppercase tracking-[0.5em] text-neutral-600 mb-6 text-center">
+               {lang === 'EN' ? 'Share This Intelligence' : 'Compartilhar Esta Inteligência'}
+             </h4>
+             <ShareButtons
+               url={window.location.pathname}
+               title={report.title}
+               description={report.desc}
+               lang={lang}
+               className="justify-center"
+             />
+           </div>
+
            <button 
             onClick={handleBackToHub}
             className="text-2xl md:text-4xl lg:text-6xl font-black uppercase tracking-tighter text-[#FFEE00] hover:scale-105 transition-transform"

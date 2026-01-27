@@ -35,7 +35,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
           ],
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+55-11-9999-9999",
+            "telephone": "+55-14998618547",
             "contactType": "customer service",
             "availableLanguage": ["Portuguese", "English"]
           },

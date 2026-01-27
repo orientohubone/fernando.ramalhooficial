@@ -13,11 +13,11 @@ export type Language = 'PT' | 'EN';
 
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'CAPACIDADES', practice: 'NA PRÁTICA', philosophy: 'FILOSOFIA', contact: 'CONTATO', back: 'VOLTAR', about: 'SOBRE', reports: 'REPORTS 2026', creative: 'CRAFT' },
+    nav: { strategy: 'CAPACIDADES', practice: 'NA PRÁTICA', philosophy: 'FILOSOFIA', contact: 'CONTATO', back: 'VOLTAR', about: 'SOBRE', reports: 'INTELLIGENCE HUB', creative: 'CRAFT' },
     hero: {
       line1: 'INOVAÇÃO',
       line2: 'ESTRATÉGICA',
-      description: 'Arquiteto de lógica e inovação. Especialista em desenhar as fundações estratégicas que precedem e sustentam ecossistemas de alta performance.',
+      description: 'Arquitetando a lógica que torna o crescimento inevitável através da convergência entre Inteligência Humana e IA Generativa.',
       focus: 'FOCO ATUAL'
     },
     reportsPage: {
@@ -130,7 +130,7 @@ export const TRANSLATIONS = {
     }
   },
   EN: {
-    nav: { strategy: 'CAPACITIES', practice: 'IN PRACTICE', philosophy: 'PHILOSOPHY', contact: 'CONTACT', back: 'BACK', about: 'ABOUT', reports: 'REPORTS 2026', creative: 'CRAFT' },
+    nav: { strategy: 'CAPACITIES', practice: 'IN PRACTICE', philosophy: 'PHILOSOPHY', contact: 'CONTACT', back: 'BACK', about: 'ABOUT', reports: 'INTELLIGENCE HUB', creative: 'CRAFT' },
     hero: {
       line1: 'STRATEGIC',
       line2: 'INNOVATION',

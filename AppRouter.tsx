@@ -48,6 +48,8 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
   let keywords = '';
   let canonical = pathname;
   let structuredData: any = null;
+  let ogImage = '/og-image.jpg';
+  let ogType = 'website';
 
   if (cleanPath === '/' || cleanPath === '') {
     title = lang === 'EN' ? 'Fernando Ramalho - Strategic Innovation & AI Solutions in São Paulo' : 'Fernando Ramalho - Inovação Estratégica e Soluções de IA em São Paulo';
@@ -118,13 +120,26 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
       ? 'Fernando Ramalho, innovation strategist, AI consultant, business transformation expert'
       : 'Fernando Ramalho, estrategista de inovação, consultor de IA, especialista em transformação digital';
   } else if (cleanPath === '/relatorios') {
-    title = lang === 'EN' ? 'Intelligence Reports & Strategic Insights' : 'Relatórios de Inteligência e Insights Estratégicos';
+    title = lang === 'EN' ? 'Intelligence Hub: Strategic Reports & AI Insights' : 'Intelligence Hub: Relatórios Estratégicos e Insights de IA';
     description = lang === 'EN'
-      ? 'Access deep market analysis, AI trends, and the most effective marketing strategies to dominate your niche.'
-      : 'Acesse análises profundas de mercado, tendências de IA e as estratégias de marketing mais eficazes para dominar seu nicho.';
+      ? 'Access deep market analysis, AI trends, and strategic insights to dominate your niche. Proprietary intelligence reports on technology and business innovation.'
+      : 'Acesse análises profundas de mercado, tendências de IA e insights estratégicos para dominar seu nicho. Relatórios de inteligência proprietária sobre tecnologia e inovação nos negócios.';
     keywords = lang === 'EN'
-      ? 'market reports, AI trends 2026, marketing efficiency, strategic intelligence'
-      : 'relatórios de mercado, tendências de IA 2026, marketing eficaz, inteligência estratégica';
+      ? 'intelligence hub, market reports, AI trends 2026, strategic intelligence, cognitive architecture, business innovation'
+      : 'intelligence hub, relatórios de mercado, tendências de IA 2026, inteligência estratégica, arquitetura cognitiva, inovação empresarial';
+    ogImage = '/og-intelligence-hub.svg';
+    ogType = 'website';
+  } else if (cleanPath.startsWith('/relatorio/') && selectedReport) {
+    // Generate dynamic Open Graph for individual reports
+    const reportTitle = selectedReport.title;
+    const reportDesc = selectedReport.desc;
+    const reportId = selectedReport.id;
+    
+    title = `${reportTitle} | Intelligence Hub`;
+    description = reportDesc;
+    keywords = `${reportTitle}, intelligence hub, strategic report, ${lang === 'EN' ? 'AI insights, market analysis' : 'insights de IA, análise de mercado'}`;
+    ogImage = `/og-reports/${reportId}.svg`;
+    ogType = 'article';
   } else if (cleanPath === '/contato') {
     title = lang === 'EN' ? 'Contact Fernando Ramalho - Strategic Consulting' : 'Contato Fernando Ramalho - Consultoria Estratégica';
     description = lang === 'EN'
@@ -173,7 +188,9 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords,
     canonical,
     structuredData,
-    lang
+    lang,
+    ogImage,
+    ogType
   };
 };
 
@@ -305,6 +322,8 @@ const AppRouter: React.FC = () => {
         description={seoMetadata.description}
         keywords={seoMetadata.keywords}
         canonical={seoMetadata.canonical}
+        ogImage={seoMetadata.ogImage}
+        ogType={seoMetadata.ogType}
         lang={seoMetadata.lang}
         structuredData={seoMetadata.structuredData}
       />

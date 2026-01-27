@@ -74,11 +74,14 @@ const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose, onReportSelect
             <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.6em] text-[#58B573]">Proprietary Intelligence</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.8]">
-            {t.title} <br />
+            {lang === 'EN' ? 'Intelligence' : 'Inteligência'} <br />
             <span className="text-[#FFEE00]">{t.subtitle}</span>
           </h1>
           <p className="text-base md:text-xl lg:text-2xl text-neutral-500 max-w-2xl font-medium tracking-tight">
-            {t.description}
+            {lang === 'EN' 
+              ? 'Strategic reports and AI insights to dominate your niche. Proprietary analysis on technology convergence and business innovation.'
+              : 'Relatórios estratégicos e insights de IA para dominar seu nicho. Análises proprietárias sobre convergência tecnológica e inovação nos negócios.'
+            }
           </p>
         </header>
 

@@ -1,0 +1,62 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050505"/>
+      <stop offset="100%" style="stop-color:#1A1A1A"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Grid Pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="105" x2="1200" y2="105" stroke="#58B573" stroke-width="1"/>
+    <line x1="0" y1="210" x2="1200" y2="210" stroke="#58B573" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="#58B573" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#58B573" stroke-width="1"/>
+    <line x1="0" y1="525" x2="1200" y2="525" stroke="#58B573" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="630" stroke="#58B573" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="630" stroke="#58B573" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#58B573" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="630" stroke="#58B573" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="630" stroke="#58B573" stroke-width="1"/>
+  </g>
+  
+  <!-- Main Title -->
+  <text x="100" y="200" font-family="Arial, sans-serif" font-size="72" font-weight="900" fill="#FFEE00" letter-spacing="-2">
+    INTELLIGENCE
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="280" font-family="Arial, sans-serif" font-size="64" font-weight="900" fill="#58B573" letter-spacing="-1">
+    HUB 2026
+  </text>
+  
+  <!-- Description -->
+  <text x="100" y="350" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#FFFFFF" opacity="0.8">
+    Strategic Reports &amp; AI Insights
+  </text>
+  
+  <!-- Tagline -->
+  <text x="100" y="380" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#FFFFFF" opacity="0.6">
+    Proprietary Analysis on Technology Convergence
+  </text>
+  
+  <!-- Bottom Accent -->
+  <rect x="100" y="450" width="200" height="4" fill="#FFEE00"/>
+  <rect x="100" y="460" width="100" height="2" fill="#58B573"/>
+  
+  <!-- Logo Area -->
+  <g transform="translate(1000, 500)">
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#58B573" stroke-width="2"/>
+    <circle cx="50" cy="50" r="35" fill="none" stroke="#FFEE00" stroke-width="1"/>
+    <text x="50" y="58" font-family="Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">
+      FR
+    </text>
+  </g>
+  
+  <!-- Corner Accent -->
+  <path d="M 1100 50 L 1150 50 L 1150 100 Z" fill="#FFEE00" opacity="0.8"/>
+  <path d="M 50 580 L 100 580 L 50 530 Z" fill="#58B573" opacity="0.8"/>
+</svg>

@@ -127,7 +127,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords = lang === 'EN'
       ? 'intelligence hub, market reports, AI trends 2026, strategic intelligence, cognitive architecture, business innovation'
       : 'intelligence hub, relatórios de mercado, tendências de IA 2026, inteligência estratégica, arquitetura cognitiva, inovação empresarial';
-    ogImage = '/og-intelligence-hub.svg';
+    ogImage = '/og-intelligence-hub.jpg';
     ogType = 'website';
   } else if (cleanPath.startsWith('/relatorio/') && selectedReport) {
     // Generate dynamic Open Graph for individual reports
@@ -138,7 +138,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     title = `${reportTitle} | Intelligence Hub`;
     description = reportDesc;
     keywords = `${reportTitle}, intelligence hub, strategic report, ${lang === 'EN' ? 'AI insights, market analysis' : 'insights de IA, análise de mercado'}`;
-    ogImage = `/og-reports/${reportId}.svg`;
+    ogImage = `/og-reports/${reportId}.jpg`;
     ogType = 'article';
   } else if (cleanPath === '/contato') {
     title = lang === 'EN' ? 'Contact Fernando Ramalho - Strategic Consulting' : 'Contato Fernando Ramalho - Consultoria Estratégica';

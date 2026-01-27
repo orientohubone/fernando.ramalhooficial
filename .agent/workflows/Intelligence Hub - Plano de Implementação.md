@@ -20,14 +20,14 @@
 - [x] Atualizar `SEOMeta.tsx` para suportar tags Open Graph dinâmicas
 - [x] Criar sistema de thumbnails automáticos para reports
 - [x] Implementar metadados para LinkedIn (og:image, og:title, og:description)
-- [x] Criar imagens SVG reais para todos os reports (S.1 a S.6)
-- [x] Criar imagem principal do Intelligence Hub
-- [x] Atualizar extensões para .svg no AppRouter.tsx
+- [x] Usar imagens JPG personalizadas para todos os reports (S.1 a S.6)
+- [x] Usar imagem principal do Intelligence Hub
+- [x] Atualizar extensões para .jpg no AppRouter.tsx
 - [x] Documentar procedimento de teste com Post Inspector
 
-**Status:** ✅ **CONCLUÍDO** - 27/01/2026 14:55
-**Impacto:** 🔥 **ALTO** - Compartilhamento social 100% funcional com imagens reais
-**Nota:** 7 imagens SVG criadas (1 principal + 6 reports) com design minimalista
+**Status:** ✅ **CONCLUÍDO** - 27/01/2026 15:15
+**Impacto:** 🔥 **ALTO** - Compartilhamento social 100% funcional com imagens JPG personalizadas
+**Nota:** Imagens JPG personalizadas fornecidas pelo usuário, cada report com thumbnail única
 
 ---
 

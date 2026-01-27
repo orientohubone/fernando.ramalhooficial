@@ -138,11 +138,12 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
       const reportTitle = report.title;
       const reportDesc = report.desc;
       const reportId = report.id;
+      const reportOgImage = report.ogImage || `/og-reports/${reportId}.jpg?v=202601271525`;
       
       title = `${reportTitle} | Intelligence Hub`;
       description = reportDesc;
       keywords = `${reportTitle}, intelligence hub, strategic report, ${lang === 'EN' ? 'AI insights, market analysis' : 'insights de IA, análise de mercado'}`;
-      ogImage = `/og-reports/${reportId}.jpg?v=202601271525`;
+      ogImage = reportOgImage;
       ogType = 'article';
     } else {
       // Fallback if report not found

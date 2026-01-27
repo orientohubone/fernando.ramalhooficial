@@ -3,6 +3,7 @@ id: 'S.6'
 cat: 'saas'
 title: 'Oportunidades SaaS na América Latina'
 desc: 'Mercados emergentes como catalisador de inovação SaaS.'
+ogImage: '/og-reports/S.6.jpg'
 summary: 'Como Brasil e América Latina se tornaram hotspots para SaaS inovadores em 2026.'
 methodology: 'Análise de mercado regional, drivers econômicos e casos de sucesso locais.'
 analysis: 'A América Latina, especialmente o Brasil, emergiu como um dos mercados mais dinâmicos para SaaS global em 2026. Fatores únicos criaram um ambiente fértil para inovação:

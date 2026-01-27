@@ -60,4 +60,5 @@ export interface ReportItem {
   truthScore: number;
   metrics?: ReportMetric[];
   insightCards?: InsightCard[];
+  ogImage?: string;
 }

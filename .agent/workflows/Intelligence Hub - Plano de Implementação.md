@@ -84,9 +84,13 @@
 - [x] Corrigir problema de descrição geral vs descrição específica
 - [x] Implementar sistema de timestamp para quebrar cache do LinkedIn
 - [x] Testar e validar solução com URL específica
+- [x] Simplificar sistema injetando `ogImage` diretamente no metadado do report
+- [x] Adicionar campo `ogImage` ao tipo `ReportItem` e todos os reports existentes
+- [x] Remover complexidade de URLs dinâmicas com timestamp
 
-**Status:** ✅ **CONCLUÍDO** - 27/01/2026 15:30
-**Impacto:** 🔥 **ALTO** - Funcionalidade crítica de compartilhamento social 100% operacional
+**Status:** ✅ **CONCLUÍDO** - 27/01/2026 15:45
+**Impacto:** 🔥 **ALTO** - Sistema simplificado e 100% funcional para compartilhamento social
+**Nota:** Abordagem direta e confiável: cada report tem sua `ogImage` definida no frontmatter
 
 ---
 

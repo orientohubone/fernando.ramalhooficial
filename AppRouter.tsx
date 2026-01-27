@@ -127,19 +127,31 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords = lang === 'EN'
       ? 'intelligence hub, market reports, AI trends 2026, strategic intelligence, cognitive architecture, business innovation'
       : 'intelligence hub, relatórios de mercado, tendências de IA 2026, inteligência estratégica, arquitetura cognitiva, inovação empresarial';
-    ogImage = '/og-intelligence-hub.jpg';
+    ogImage = '/og-intelligence-hub.jpg?v=202601271525';
     ogType = 'website';
-  } else if (cleanPath.startsWith('/relatorio/') && selectedReport) {
+  } else if (cleanPath.startsWith('/relatorio/')) {
     // Generate dynamic Open Graph for individual reports
-    const reportTitle = selectedReport.title;
-    const reportDesc = selectedReport.desc;
-    const reportId = selectedReport.id;
+    const reportSlug = cleanPath.split('/')[2];
+    const report = findReportBySlug(reportSlug);
     
-    title = `${reportTitle} | Intelligence Hub`;
-    description = reportDesc;
-    keywords = `${reportTitle}, intelligence hub, strategic report, ${lang === 'EN' ? 'AI insights, market analysis' : 'insights de IA, análise de mercado'}`;
-    ogImage = `/og-reports/${reportId}.jpg`;
-    ogType = 'article';
+    if (report) {
+      const reportTitle = report.title;
+      const reportDesc = report.desc;
+      const reportId = report.id;
+      
+      title = `${reportTitle} | Intelligence Hub`;
+      description = reportDesc;
+      keywords = `${reportTitle}, intelligence hub, strategic report, ${lang === 'EN' ? 'AI insights, market analysis' : 'insights de IA, análise de mercado'}`;
+      ogImage = `/og-reports/${reportId}.jpg?v=202601271525`;
+      ogType = 'article';
+    } else {
+      // Fallback if report not found
+      title = lang === 'EN' ? 'Report Not Found | Intelligence Hub' : 'Relatório Não Encontrado | Intelligence Hub';
+      description = lang === 'EN' ? 'The requested report was not found.' : 'O relatório solicitado não foi encontrado.';
+      keywords = 'intelligence hub, report not found';
+      ogImage = '/og-intelligence-hub.jpg?v=202601271525';
+      ogType = 'website';
+    }
   } else if (cleanPath === '/contato') {
     title = lang === 'EN' ? 'Contact Fernando Ramalho - Strategic Consulting' : 'Contato Fernando Ramalho - Consultoria Estratégica';
     description = lang === 'EN'

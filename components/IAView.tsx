@@ -651,14 +651,14 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
               <AnnouncementBadge text="Builder.ia Intelligence V3.0" />
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase leading-none">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase leading-tight sm:leading-none">
               O que vamos <br />
-              <span className="text-[#FFEE00] italic px-4 inline-block">Buildar</span> hoje?
+              <span className="text-[#FFEE00] italic px-2 sm:px-4 inline-block">Buildar</span> hoje?
             </h1>
 
-            <p className="text-base md:text-lg text-neutral-500 mb-12 max-w-2xl font-medium tracking-wide">
-              Estratégia, Inovação e Inteligência Acadêmica. <br />
-              <span className="text-neutral-600 uppercase text-[10px] font-black tracking-[0.4em]">Sistemas de Dominância • Fernando Ramalho</span>
+            <p className="text-sm sm:text-base md:text-lg text-neutral-500 mb-8 sm:mb-12 max-w-2xl font-medium tracking-wide px-4">
+              Estratégia, Inovação e Inteligência Acadêmica. <br className="hidden sm:block" />
+              <span className="text-neutral-600 uppercase text-[8px] sm:text-[10px] font-black tracking-[0.4em]">Sistemas de Dominância • Fernando Ramalho</span>
             </p>
 
             {/* Initial Chat Input wrapper */}
@@ -684,7 +684,7 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
               />
             </div>
 
-            <div className="mt-12 flex flex-wrap justify-center gap-3">
+            <div className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
               {[
                 "Tendências de IA no Brasil",
                 "Metodologias Ágeis Acadêmicas",
@@ -694,25 +694,25 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
                 <button
                   key={i}
                   onClick={() => handleSendMessage(suggestion)}
-                  className="px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-medium text-neutral-400 hover:text-white transition-all active:scale-95"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[10px] sm:text-xs font-medium text-neutral-400 hover:text-white transition-all active:scale-95"
                 >
                   {suggestion}
                 </button>
               ))}
             </div>
 
-            <div className="mt-16 flex items-center gap-4 text-neutral-600">
-              <span className="text-xs uppercase tracking-[0.3em] font-black">ou importe de</span>
+            <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center gap-4 text-neutral-600">
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black">ou importe de</span>
               <div className="flex gap-2">
                 <button
                   onClick={() => handleImport('figma')}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#FFEE00]/40 hover:text-white transition-all active:scale-95"
+                  className="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#FFEE00]/40 hover:text-white transition-all active:scale-95"
                 >
                   <FigmaIcon className="size-3 text-[#FFEE00]" /> Figma
                 </button>
                 <button
                   onClick={() => handleImport('github')}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#58B573]/40 hover:text-white transition-all active:scale-95"
+                  className="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#58B573]/40 hover:text-white transition-all active:scale-95"
                 >
                   <Github className="size-3 text-[#58B573]" /> GitHub
                 </button>
@@ -720,15 +720,15 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
             </div>
           </div>
         ) : (
-          <div className="max-w-[800px] mx-auto py-12 pb-32 space-y-8">
+          <div className="max-w-4xl mx-auto py-8 sm:py-12 pb-32 space-y-6 sm:space-y-8 px-4">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} animate-in fade-in slide-in-from-bottom-5 duration-500`}>
-                <div className="flex items-center gap-2 mb-2 px-2 text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                <div className="flex items-center gap-2 mb-2 px-2 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-neutral-500">
                   {msg.sender === 'bot' ? <span className={selectedPersona.color}>{selectedPersona.icon}</span> : null}
                   {msg.sender === 'user' ? 'Você' : `Builder.ia ${selectedPersona.name}`}
                 </div>
 
-                <div className={`relative group max-w-full md:max-w-[90%] p-6 rounded-2xl leading-relaxed text-sm ${msg.sender === 'user'
+                <div className={`relative group max-w-full sm:max-w-[85%] p-4 sm:p-6 rounded-2xl leading-relaxed text-sm ${msg.sender === 'user'
                   ? 'bg-[#FFEE00] text-black font-bold shadow-[0_8px_30px_rgba(255,238,0,0.15)]'
                   : 'bg-[#121212] text-neutral-200 border border-white/5'
                   }`}>
@@ -776,8 +776,8 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
 
       {/* Floating Chat Input (Permanent when messages exist) */}
       {!isInitialState && (
-        <div className="w-full h-auto p-4 md:p-8 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent sticky bottom-0 z-[130]">
-          <div className="max-w-[680px] mx-auto">
+        <div className="w-full h-auto p-4 sm:p-8 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent sticky bottom-0 z-[130]">
+          <div className="max-w-4xl mx-auto">
             <ChatInputLayout
               value={inputValue}
               onChange={setInputValue}
@@ -1025,10 +1025,10 @@ function ChatInputLayout({
             <PersonaSelector selectedPersona={selectedPersona} onPersonaChange={onPersonaChange} />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               onClick={handlePlan}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-black uppercase tracking-widest text-neutral-500 hover:text-[#FFEE00] hover:bg-[#FFEE00]/5 transition-all"
+              className="flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest text-neutral-500 hover:text-[#FFEE00] hover:bg-[#FFEE00]/5 transition-all"
             >
               <Lightbulb className="size-4" />
               <span className="hidden sm:inline">Planejar</span>
@@ -1037,7 +1037,7 @@ function ChatInputLayout({
             {isLoading ? (
               <button
                 onClick={handleStop}
-                className="flex items-center gap-2 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest bg-red-500/20 hover:bg-red-500/30 text-red-500 border border-red-500/50 transition-all active:scale-95 animate-pulse"
+                className="flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest bg-red-500/20 hover:bg-red-500/30 text-red-500 border border-red-500/50 transition-all active:scale-95 animate-pulse"
               >
                 <span>Parar</span>
                 <div className="size-2 bg-red-500 rounded-sm animate-spin" />
@@ -1046,7 +1046,7 @@ function ChatInputLayout({
               <button
                 onClick={() => onSend()}
                 disabled={!value.trim()}
-                className="flex items-center gap-2 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest bg-[#FFEE00] hover:bg-[#fff033] text-black transition-all disabled:opacity-30 active:scale-95 shadow-[0_4px_20px_rgba(255,238,0,0.2)]"
+                className="flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest bg-[#FFEE00] hover:bg-[#fff033] text-black transition-all disabled:opacity-30 active:scale-95 shadow-[0_4px_20px_rgba(255,238,0,0.2)]"
               >
                 <span className="hidden sm:inline">Buildar</span>
                 <SendHorizontal className="size-4" />

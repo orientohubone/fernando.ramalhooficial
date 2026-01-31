@@ -13,7 +13,22 @@ export type Language = 'PT' | 'EN';
 
 export const TRANSLATIONS = {
   PT: {
-    nav: { strategy: 'CAPACIDADES', practice: 'NA PRÁTICA', philosophy: 'FILOSOFIA', contact: 'CONTATO', back: 'VOLTAR', about: 'SOBRE', reports: 'INTELLIGENCE HUB', creative: 'CRAFT' },
+    nav: {
+      strategy: 'CAPACIDADES',
+      practice: 'NA PRÁTICA',
+      philosophy: 'FILOSOFIA',
+      contact: 'CONTATO',
+      back: 'VOLTAR',
+      about: 'SOBRE',
+      reports: 'INTELLIGENCE HUB',
+      creative: 'BEHANCE',
+      frameworks: 'FRAMEWORKS',
+      groups: {
+        systems: 'SISTEMAS',
+        insights: 'INSIGHTS',
+        direct: 'BIO'
+      }
+    },
     hero: {
       line1: 'INOVAÇÃO',
       line2: 'ESTRATÉGICA',
@@ -127,10 +142,35 @@ export const TRANSLATIONS = {
         { title: 'Emissora de Televisão', category: 'MEDIA', desc: 'Capacidade aplicada: Design' },
         { title: 'Administrador', category: 'MANAGEMENT', desc: 'Capacidade aplicada: Design' }
       ]
+    },
+    frameworks: {
+      title: 'FRAMEWORKS PROPRIETÁRIOS',
+      vibeArc: {
+        title: 'Vibe Arc Builder',
+        category: 'METODOLOGIA',
+        desc: 'Método de building IA para criação de sistemas inteligentes e escaláveis.',
+        thesis: 'A ARQUITETURA É O DESTINO DO CÓDIGO.',
+        impact: 'Sistemas que evoluem sozinhos através de lógica recursiva.'
+      }
     }
   },
   EN: {
-    nav: { strategy: 'CAPACITIES', practice: 'IN PRACTICE', philosophy: 'PHILOSOPHY', contact: 'CONTACT', back: 'BACK', about: 'ABOUT', reports: 'INTELLIGENCE HUB', creative: 'CRAFT' },
+    nav: {
+      strategy: 'CAPACITIES',
+      practice: 'IN PRACTICE',
+      philosophy: 'PHILOSOPHY',
+      contact: 'CONTACT',
+      back: 'BACK',
+      about: 'ABOUT',
+      reports: 'INTELLIGENCE HUB',
+      creative: 'BEHANCE',
+      frameworks: 'FRAMEWORKS',
+      groups: {
+        systems: 'SYSTEMS',
+        insights: 'INSIGHTS',
+        direct: 'ABOUT'
+      }
+    },
     hero: {
       line1: 'STRATEGIC',
       line2: 'INNOVATION',
@@ -244,6 +284,16 @@ export const TRANSLATIONS = {
         { title: 'TV Station', category: 'MEDIA', desc: 'Applied Capability: Design' },
         { title: 'Administrator', category: 'MANAGEMENT', desc: 'Applied Capability: Design' }
       ]
+    },
+    frameworks: {
+      title: 'PROPRIETARY FRAMEWORKS',
+      vibeArc: {
+        title: 'Vibe Arc Builder',
+        category: 'METHODOLOGY',
+        desc: 'AI building method for creating intelligent and scalable systems.',
+        thesis: 'ARCHITECTURE IS THE DESTINY OF CODE.',
+        impact: 'Systems that evolve on their own through recursive logic.'
+      }
     }
   }
 };
@@ -310,6 +360,40 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
         createItem('domain', 10, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&q=80"),
         createItem('sites', 11, HighlightColor.GREEN, "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80"),
         createItem('ecommerce', 12, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80")
+      ]
+    }
+  ];
+};
+
+export const getFrameworks = (lang: Language): CategoryGroup[] => {
+  const t = (TRANSLATIONS[lang] as any).frameworks;
+  const cats = TRANSLATIONS[lang].categories;
+
+  const stackMap: Record<string, string[]> = {
+    'Vibe Arc Builder': ['COGNITIVE ARCHITECTURE', 'RECURSIVE LOGIC', 'AI AGENTS', 'PROMPT ENGINEERING']
+  };
+
+  const createItem = (key: string, id: number, color: HighlightColor, src: string): ListItem => {
+    const item = t[key as keyof typeof t] as any;
+    return {
+      id,
+      title: item.title,
+      category: item.category,
+      src,
+      alt: item.title,
+      color,
+      description: item.desc,
+      thesis: item.thesis,
+      impact: item.impact,
+      stack: stackMap[item.title] || ['AI FRAMEWORK']
+    };
+  };
+
+  return [
+    {
+      name: 'BUILDING IA',
+      items: [
+        createItem('vibeArc', 1, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80")
       ]
     }
   ];

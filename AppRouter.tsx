@@ -13,6 +13,8 @@ import ReportDetail from './components/ReportDetail';
 import AboutView from './components/AboutView';
 import ReportsView from './components/ReportsView';
 import CapacidadesView from './components/CapacidadesView';
+import FrameworksView from './components/FrameworksView';
+import FrameworkDetail from './components/FrameworkDetail';
 import ContatoView from './components/ContatoView';
 import FilosofiaView from './components/FilosofiaView';
 import CognitiveArchitectureView from './components/CognitiveArchitectureView';
@@ -25,7 +27,7 @@ import PoliticaPrivacidade from './src/pages/PoliticaPrivacidade';
 import TermosUso from './src/pages/TermosUso';
 import LGPD from './src/pages/LGPD';
 import PoliticaCookies from './src/pages/PoliticaCookies';
-import { Language, TRANSLATIONS, getCategorizedPillars } from './constants';
+import { Language, TRANSLATIONS, getCategorizedPillars, getFrameworks } from './constants';
 import { ALL_REPORTS } from './reportsData';
 import { ListItem, ReportItem } from './types';
 
@@ -133,13 +135,13 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     // Generate dynamic Open Graph for individual reports
     const reportSlug = cleanPath.split('/')[2];
     const report = findReportBySlug(reportSlug);
-    
+
     if (report) {
       const reportTitle = report.title;
       const reportDesc = report.desc;
       const reportId = report.id;
       const reportOgImage = report.ogImage ? `${report.ogImage}?v=202601271600` : `/og-reports/${reportId}.jpg?v=202601271600`;
-      
+
       title = `${reportTitle} | Intelligence Hub`;
       description = reportDesc;
       keywords = `${reportTitle}, intelligence hub, strategic report, ${lang === 'EN' ? 'AI insights, market analysis' : 'insights de IA, análise de mercado'}`;
@@ -193,6 +195,21 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords = lang === 'EN'
       ? 'industry experience, business segments, retail innovation, tech consulting, real estate marketing'
       : 'experiência multissetorial, segmentos de mercado, inovação no varejo, consultoria tech, marketing imobiliário';
+  } else if (cleanPath === '/frameworks') {
+    title = lang === 'EN' ? 'Proprietary Frameworks - AI Methodology' : 'Frameworks Proprietários - Metodologia de IA';
+    description = lang === 'EN'
+      ? 'Discover our exclusive methodologies: Vibe Arc Builder and other proprietary systems for AI building and cognitive engineering.'
+      : 'Descubra nossas metodologias exclusivas: Vibe Arc Builder e outros sistemas proprietários de building IA e engenharia cognitiva.';
+    keywords = lang === 'EN'
+      ? 'AI frameworks, Vibe Arc Builder, cognitive engineering, AI methodology, proprietary systems'
+      : 'frameworks de IA, Vibe Arc Builder, engenharia cognitiva, metodologia de IA, sistemas proprietários';
+  } else if (cleanPath.startsWith('/framework/') && selectedCapacity) {
+    const frameworkTitle = selectedCapacity.title;
+    const frameworkDesc = selectedCapacity.description;
+
+    title = `${frameworkTitle} | Frameworks - Fernando Ramalho`;
+    description = frameworkDesc;
+    keywords = `${frameworkTitle}, AI framework, Fernando Ramalho methodology`;
   }
 
   return {
@@ -223,6 +240,12 @@ const createSlug = (text: string): string => {
 const findCapacityBySlug = (slug: string, lang: Language): ListItem | null => {
   const allCapacities = getCategorizedPillars(lang).flatMap(group => group.items);
   return allCapacities.find(item => createSlug(item.title) === slug) || null;
+};
+
+// Helper function to find framework by slug
+const findFrameworkBySlug = (slug: string, lang: Language): ListItem | null => {
+  const allFrameworks = getFrameworks(lang).flatMap(group => group.items);
+  return allFrameworks.find(item => createSlug(item.title) === slug) || null;
 };
 
 // Helper function to find report by slug
@@ -271,6 +294,13 @@ const AppRouter: React.FC = () => {
           setSelectedCapacity(capacity);
         }
       }
+    } else if (cleanPath.startsWith('/framework/')) {
+      const frameworkSlug = cleanPath.split('/')[2];
+      const framework = findFrameworkBySlug(frameworkSlug, detectedLang);
+
+      if (framework) {
+        setSelectedCapacity(framework as any); // Reuse selectedCapacity state for details
+      }
     } else if (cleanPath.startsWith('/relatorio/')) {
       const reportSlug = cleanPath.split('/')[2];
       const report = findReportBySlug(reportSlug);
@@ -292,6 +322,8 @@ const AppRouter: React.FC = () => {
       // IA page - handled by route
     } else if (cleanPath === '/segmentos') {
       // Segmentos page - handled by route
+    } else if (cleanPath === '/frameworks') {
+      // Frameworks page - handled by route
     } else if (cleanPath === '/politica-de-privacidade' || cleanPath === '/termos-de-uso' || cleanPath === '/lgpd' || cleanPath === '/politica-de-cookies') {
       // Legal pages - handled by route
     } else if (cleanPath !== '/') {
@@ -416,6 +448,21 @@ const AppRouter: React.FC = () => {
               onClose={() => navigate('/en')}
             />
           } />
+          <Route path="/en/frameworks" element={
+            <FrameworksView
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+          <Route path="/en/framework/:slug" element={
+            selectedCapacity && (
+              <FrameworkDetail
+                item={selectedCapacity}
+                lang="EN"
+                onClose={() => navigate('/en/frameworks')}
+              />
+            )
+          } />
           <Route path="/en/capacidade/:slug" element={
             selectedCapacity && (
               <CapacityDetail
@@ -490,6 +537,23 @@ const AppRouter: React.FC = () => {
               lang={lang}
               onClose={() => navigate('/')}
             />
+          } />
+
+          <Route path="/frameworks" element={
+            <FrameworksView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
+          <Route path="/framework/:slug" element={
+            selectedCapacity && (
+              <FrameworkDetail
+                item={selectedCapacity}
+                lang={lang}
+                onClose={() => navigate('/frameworks')}
+              />
+            )
           } />
 
           <Route path="/segmentos" element={

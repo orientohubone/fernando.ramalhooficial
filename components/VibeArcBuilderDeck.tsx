@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Maximize2, Minimize2, FileDown, Rocket, Lightbulb, Cpu, Eye, Palette, Wrench, Send, Zap, Github, Terminal } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, Minimize2, FileDown, Rocket, Lightbulb, Cpu, Eye, Palette, Wrench, Send, Zap, Github, Terminal, ExternalLink } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import BrandLogo from './BrandLogo';
 
 interface Slide {
     id: number;
@@ -11,6 +12,7 @@ interface Slide {
     details: string[];
     icon: React.ReactNode;
     color: string;
+    isCTA?: boolean;
 }
 
 const stepsPT: Slide[] = [
@@ -103,6 +105,25 @@ const stepsPT: Slide[] = [
         details: ["Ajustes finos", "Gestão de assets", "Variáveis", "Arquitetura"],
         icon: <Terminal className="w-12 h-12" />,
         color: "#58B573"
+    },
+    {
+        id: 11,
+        title: "11. BACKEND",
+        subtitle: "Definição de Infra e Banco de Dados",
+        content: "Escolha estratégica de infraestrutura serverless ou edge baseada em custo-benefício e escalabilidade.",
+        details: ["Supabase", "Neon / PostgreSQL", "Firebase", "Auth & Storage"],
+        icon: <Cpu className="w-12 h-12" />,
+        color: "#FFEE00"
+    },
+    {
+        id: 12,
+        title: "VIBE CODING",
+        subtitle: "Pronto para escalar sua ideia?",
+        content: "Transforme sua visão em sistemas inteligentes e produtos digitais de alta performance.",
+        details: ["Estratégia", "Design", "Tecnologia", "Inteligência"],
+        icon: <BrandLogo size="lg" className="opacity-100 mix-blend-difference" />,
+        color: "#FFEE00",
+        isCTA: true
     }
 ];
 
@@ -150,21 +171,23 @@ const VibeArcBuilderDeck: React.FC = () => {
     }, []);
 
     const generatePDF = async () => {
-        const pdf = new jsPDF('l', 'px', [1280, 720]);
+        const pdf = new jsPDF('l', 'px', [1920, 1080]);
         const originalSlide = currentSlide;
 
         for (let i = 0; i < stepsPT.length; i++) {
             setCurrentSlide(i);
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise(resolve => setTimeout(resolve, 800));
 
             if (contentRef.current) {
                 const canvas = await html2canvas(contentRef.current, {
-                    scale: 2,
+                    scale: 3,
                     useCORS: true,
-                    backgroundColor: '#050505'
+                    backgroundColor: '#050505',
+                    logging: false,
+                    allowTaint: false
                 });
                 const imgData = canvas.toDataURL('image/png');
-                pdf.addImage(imgData, 'PNG', 0, 0, 1280, 720);
+                pdf.addImage(imgData, 'PNG', 0, 0, 1920, 1080, undefined, 'FAST');
                 if (i < stepsPT.length - 1) {
                     pdf.addPage();
                 }
@@ -213,8 +236,11 @@ const VibeArcBuilderDeck: React.FC = () => {
                 {/* Left Side: Icon & Title */}
                 <div className="w-full md:w-2/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-neutral-900 relative">
                     <div
-                        className="mb-6 md:mb-8 w-12 h-12 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0"
-                        style={{ backgroundColor: `${slide.color}15`, color: slide.color }}
+                        className={slide.isCTA
+                            ? "mb-6 md:mb-8 transition-all duration-500 shrink-0"
+                            : "mb-6 md:mb-8 w-12 h-12 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0"
+                        }
+                        style={slide.isCTA ? {} : { backgroundColor: `${slide.color}15`, color: slide.color }}
                     >
                         {slide.icon}
                     </div>
@@ -232,16 +258,34 @@ const VibeArcBuilderDeck: React.FC = () => {
                         {slide.content}
                     </p>
 
-                    <div className="grid grid-cols-2 gap-4">
-                        {slide.details.map((detail, idx) => (
-                            <div key={idx} className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: slide.color }}></div>
-                                <span className="text-[8px] md:text-xs font-black uppercase tracking-widest text-neutral-500">
-                                    {detail}
-                                </span>
+                    {slide.isCTA ? (
+                        <div className="space-y-6">
+                            <p className="text-base md:text-xl text-neutral-400 font-medium">
+                                Entre em contato para escalar sua ideia:
+                            </p>
+                            <div className="flex flex-col gap-3">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFEE00]"></div>
+                                    <span className="text-sm md:text-lg font-black text-white">fernandoramalhobuilder.com.br</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFEE00]"></div>
+                                    <span className="text-sm md:text-lg font-black text-white">fernando@orientohub.com.br</span>
+                                </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 gap-4">
+                            {slide.details.map((detail, idx) => (
+                                <div key={idx} className="flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: slide.color }}></div>
+                                    <span className="text-[8px] md:text-xs font-black uppercase tracking-widest text-neutral-500">
+                                        {detail}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {/* Progress Bar */}

@@ -96,6 +96,96 @@ const FrameworksView: React.FC<FrameworksViewProps> = ({ lang, onClose }) => {
                             </svg>
                         </div>
                     </div>
+
+                    {/* BACKEND SCALE STRATEGY */}
+                    <div
+                        onClick={() => handleFrameworkClick('backend')}
+                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-12 h-12 bg-[#00D9FF]/10 rounded-full flex items-center justify-center group-hover:bg-[#00D9FF]/20 transition-colors">
+                                <svg className="w-6 h-6 text-[#00D9FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V7M4 7h16M10 11v6m4-6v6" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white group-hover:text-[#00D9FF] transition-colors">{t.frameworks.backend.title}</h3>
+                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.backend.category}</p>
+                            </div>
+                        </div>
+                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                            {t.frameworks.backend.desc}
+                        </p>
+                        <div className="text-xs text-neutral-500 italic">
+                            "{t.frameworks.backend.thesis}"
+                        </div>
+                        <div className="mt-4 flex items-center gap-2 text-[#00D9FF] text-[10px] font-black uppercase tracking-wider">
+                            EXPLORAR
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* API INTEGRATION INTELLIGENCE */}
+                    <div
+                        onClick={() => handleFrameworkClick('apiInt')}
+                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-12 h-12 bg-[#58B573]/10 rounded-full flex items-center justify-center group-hover:bg-[#58B573]/20 transition-colors">
+                                <svg className="w-6 h-6 text-[#58B573]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white group-hover:text-[#58B573] transition-colors">{t.frameworks.apiInt.title}</h3>
+                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.apiInt.category}</p>
+                            </div>
+                        </div>
+                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                            {t.frameworks.apiInt.desc}
+                        </p>
+                        <div className="text-xs text-neutral-500 italic">
+                            "{t.frameworks.apiInt.thesis}"
+                        </div>
+                        <div className="mt-4 flex items-center gap-2 text-[#58B573] text-[10px] font-black uppercase tracking-wider">
+                            EXPLORAR
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* DEPLOY AUTOMATION */}
+                    <div
+                        onClick={() => handleFrameworkClick('deploy')}
+                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
+                                <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white group-hover:text-[#FFEE00] transition-colors">{t.frameworks.deploy.title}</h3>
+                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.deploy.category}</p>
+                            </div>
+                        </div>
+                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                            {t.frameworks.deploy.desc}
+                        </p>
+                        <div className="text-xs text-neutral-500 italic">
+                            "{t.frameworks.deploy.thesis}"
+                        </div>
+                        <div className="mt-4 flex items-center gap-2 text-[#FFEE00] text-[10px] font-black uppercase tracking-wider">
+                            EXPLORAR
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </main>
         </section>

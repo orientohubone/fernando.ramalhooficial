@@ -4,6 +4,9 @@ import { ListItem, HighlightColor } from '../types';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
 import VibeArcBuilderDeck from './VibeArcBuilderDeck';
+import BackendStrategyDeck from './BackendStrategyDeck';
+import APIIntegrationDeck from './APIIntegrationDeck';
+import DeployAutomationDeck from './DeployAutomationDeck';
 
 interface FrameworkDetailProps {
     item: ListItem;
@@ -14,7 +17,8 @@ interface FrameworkDetailProps {
 const FrameworkDetail: React.FC<FrameworkDetailProps> = ({ item, lang, onClose }) => {
     const t = (TRANSLATIONS[lang] as any).sections;
     const nav = TRANSLATIONS[lang].nav;
-    const colorHex = '#FFEE00';
+    const colorHex = item.color === HighlightColor.GREEN ? '#58B573' :
+        item.color === HighlightColor.BLUE ? '#00D9FF' : '#FFEE00';
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,6 +26,9 @@ const FrameworkDetail: React.FC<FrameworkDetailProps> = ({ item, lang, onClose }
     }, []);
 
     const isVibeArc = item.title === 'Vibe Arc Builder';
+    const isBackendScale = item.title === 'Backend Scale Strategy';
+    const isAPIInt = item.title === 'API Integration Intelligence';
+    const isDeploy = item.title === 'Deploy Automation';
 
     return (
         <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto selection:bg-[#FFEE00] selection:text-black animate-in fade-in duration-500">
@@ -122,7 +129,6 @@ const FrameworkDetail: React.FC<FrameworkDetailProps> = ({ item, lang, onClose }
                     </div>
                 </div>
 
-                {/* Interactive Method Deck */}
                 {isVibeArc && (
                     <section className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                         <div className="flex items-center gap-4">
@@ -132,6 +138,42 @@ const FrameworkDetail: React.FC<FrameworkDetailProps> = ({ item, lang, onClose }
                             </h3>
                         </div>
                         <VibeArcBuilderDeck />
+                    </section>
+                )}
+
+                {isBackendScale && (
+                    <section className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[1px] w-12" style={{ backgroundColor: colorHex }} />
+                            <h3 className="text-[10px] font-black uppercase tracking-[0.5em]" style={{ color: colorHex }}>
+                                {lang === 'PT' ? 'ESTRATÉGIA DE INFRA' : 'INFRA STRATEGY'}
+                            </h3>
+                        </div>
+                        <BackendStrategyDeck />
+                    </section>
+                )}
+
+                {isAPIInt && (
+                    <section className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[1px] w-12" style={{ backgroundColor: colorHex }} />
+                            <h3 className="text-[10px] font-black uppercase tracking-[0.5em]" style={{ color: colorHex }}>
+                                {lang === 'PT' ? 'MÉTODO DE INTEGRAÇÃO' : 'INTEGRATION METHOD'}
+                            </h3>
+                        </div>
+                        <APIIntegrationDeck />
+                    </section>
+                )}
+
+                {isDeploy && (
+                    <section className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[1px] w-12" style={{ backgroundColor: colorHex }} />
+                            <h3 className="text-[10px] font-black uppercase tracking-[0.5em]" style={{ color: colorHex }}>
+                                {lang === 'PT' ? 'FLUXO DE DEPLOY' : 'DEPLOY FLOW'}
+                            </h3>
+                        </div>
+                        <DeployAutomationDeck />
                     </section>
                 )}
             </main>

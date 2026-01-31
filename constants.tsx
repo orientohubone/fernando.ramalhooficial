@@ -151,6 +151,27 @@ export const TRANSLATIONS = {
         desc: 'Método de building IA para criação de sistemas inteligentes e escaláveis.',
         thesis: 'A ARQUITETURA É O DESTINO DO CÓDIGO.',
         impact: 'Sistemas que evoluem sozinhos através de lógica recursiva.'
+      },
+      backend: {
+        title: 'Backend Scale Strategy',
+        category: 'ARQUITETURA',
+        desc: 'Estratégia de infraestrutura baseada em Supabase, Neon e Firebase.',
+        thesis: 'A ESCALABILIDADE NÃO DEVE SER UM CUSTO FIXO.',
+        impact: 'Arquitetura que cresce sob demanda com o melhor custo-benefício.'
+      },
+      apiInt: {
+        title: 'API Integration Intelligence',
+        category: 'INTEGRAÇÃO',
+        desc: 'Método de mapeamento e integração de APIs via documentação assistida por IA.',
+        thesis: 'A DOCUMENTAÇÃO É O CÓDIGO QUE A IA EXECUTA.',
+        impact: 'Integrações autônomas através de contexto arquitetural estruturado.'
+      },
+      deploy: {
+        title: 'Deploy Automation',
+        category: 'DEVOPS',
+        desc: 'Automação de deploy contínuo via Netlify e Vercel com Git integration.',
+        thesis: 'DEPLOY NÃO DEVE SER UM EVENTO, DEVE SER UM FLUXO.',
+        impact: 'Da commit ao production em segundos, sem intervenção manual.'
       }
     }
   },
@@ -293,6 +314,27 @@ export const TRANSLATIONS = {
         desc: 'AI building method for creating intelligent and scalable systems.',
         thesis: 'ARCHITECTURE IS THE DESTINY OF CODE.',
         impact: 'Systems that evolve on their own through recursive logic.'
+      },
+      backend: {
+        title: 'Backend Scale Strategy',
+        category: 'ARCHITECTURE',
+        desc: 'Infrastructure strategy based on Supabase, Neon, and Firebase.',
+        thesis: 'SCALABILITY SHOULD NOT BE A FIXED COST.',
+        impact: 'Architecture that grows on demand with the best cost-benefit ratio.'
+      },
+      apiInt: {
+        title: 'API Integration Intelligence',
+        category: 'INTEGRATION',
+        desc: 'API mapping and integration method via AI-assisted documentation.',
+        thesis: 'DOCUMENTATION IS THE CODE THAT AI EXECUTES.',
+        impact: 'Autonomous integrations through structured architectural context.'
+      },
+      deploy: {
+        title: 'Deploy Automation',
+        category: 'DEVOPS',
+        desc: 'Continuous deployment automation via Netlify and Vercel with Git integration.',
+        thesis: 'DEPLOY SHOULD NOT BE AN EVENT, IT SHOULD BE A FLOW.',
+        impact: 'From commit to production in seconds, without manual intervention.'
       }
     }
   }
@@ -370,7 +412,10 @@ export const getFrameworks = (lang: Language): CategoryGroup[] => {
   const cats = TRANSLATIONS[lang].categories;
 
   const stackMap: Record<string, string[]> = {
-    'Vibe Arc Builder': ['COGNITIVE ARCHITECTURE', 'RECURSIVE LOGIC', 'AI AGENTS', 'PROMPT ENGINEERING']
+    'Vibe Arc Builder': ['COGNITIVE ARCHITECTURE', 'RECURSIVE LOGIC', 'AI AGENTS', 'PROMPT ENGINEERING'],
+    'Backend Scale Strategy': ['SUPABASE', 'NEON DB', 'SERVERLESS', 'EDGE FUNCTIONS', 'POSTGRESQL'],
+    'API Integration Intelligence': ['LLM CONTEXT', 'API DOCS', 'MARKDOWN', 'AUTONOMOUS CONFIG', 'OAUTH'],
+    'Deploy Automation': ['NETLIFY', 'VERCEL', 'CI/CD', 'GIT HOOKS', 'EDGE DEPLOY']
   };
 
   const createItem = (key: string, id: number, color: HighlightColor, src: string): ListItem => {
@@ -394,6 +439,24 @@ export const getFrameworks = (lang: Language): CategoryGroup[] => {
       name: 'BUILDING IA',
       items: [
         createItem('vibeArc', 1, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80")
+      ]
+    },
+    {
+      name: 'INFRASTRUCTURE',
+      items: [
+        createItem('backend', 2, HighlightColor.BLUE, "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?w=1200&q=80")
+      ]
+    },
+    {
+      name: 'INTEGRATION',
+      items: [
+        createItem('apiInt', 3, HighlightColor.GREEN, "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80")
+      ]
+    },
+    {
+      name: 'DEVOPS',
+      items: [
+        createItem('deploy', 4, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=1200&q=80")
       ]
     }
   ];

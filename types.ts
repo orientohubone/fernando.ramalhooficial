@@ -1,7 +1,8 @@
 
 export enum HighlightColor {
   YELLOW = 'YELLOW',
-  GREEN = 'GREEN'
+  GREEN = 'GREEN',
+  BLUE = 'BLUE'
 }
 
 export interface ListItem {
@@ -35,7 +36,7 @@ export interface ReportSource {
 export interface ReportMetric {
   label: string;
   value: string;
-  percentage: number; 
+  percentage: number;
   trend: 'up' | 'down';
 }
 

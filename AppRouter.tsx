@@ -19,6 +19,9 @@ import ContatoView from './components/ContatoView';
 import FilosofiaView from './components/FilosofiaView';
 import CognitiveArchitectureView from './components/CognitiveArchitectureView';
 import IAView from './components/IAView';
+import MarcasGuiasView from './components/MarcasGuiasView';
+import TestComponent from './components/TestComponent';
+import SimpleTest from './components/SimpleTest';
 import SegmentosView from './components/SegmentosView';
 import WhatsAppButton from './components/WhatsAppButton';
 import BackToTop from './components/BackToTop';
@@ -506,7 +509,21 @@ const AppRouter: React.FC = () => {
             />
           } />
 
+          <Route path="/en/capacidade/marcas-guias" element={
+            <MarcasGuiasView
+              lang="EN"
+              onClose={() => navigate('/en')}
+            />
+          } />
+
           {/* Portuguese routes */}
+          <Route path="/capacidade/marcas-guias" element={
+            <MarcasGuiasView
+              lang={lang}
+              onClose={() => navigate('/')}
+            />
+          } />
+
           <Route path="/capacidade/:slug" element={
             selectedCapacity && (
               <CapacityDetail

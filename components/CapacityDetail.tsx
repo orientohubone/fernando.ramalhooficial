@@ -1326,6 +1326,49 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
               </section>
             )}
 
+            {/* Brand Registration Guides Button - Only for MARCAS item */}
+            {item.id === 9 && (
+              <section className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-[1px] w-8 bg-neutral-700" />
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                    {lang === 'PT' ? 'FERRAMENTAS' : 'TOOLS'}
+                  </h3>
+                </div>
+                <div className="p-6 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 transition-all duration-300">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="text-lg font-black uppercase text-white mb-2">
+                        {lang === 'PT' ? 'Gerador de Guia INPI' : 'INPI Guide Generator'}
+                      </h4>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {lang === 'PT'
+                          ? 'Preencha nosso formulário para contratar nosso serviço de registro de marcas.'
+                          : 'Fill out our form to hire our trademark registration service.'}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FF6B6B]/10 text-[#FF6B6B] border border-[#FF6B6B]/20">
+                          {lang === 'PT' ? 'INPI' : 'INPI'}
+                        </span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-neutral-800 text-neutral-400">
+                          {lang === 'PT' ? 'GUIAS' : 'GUIDES'}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => navigate(lang === 'PT' ? '/capacidade/marcas-guias' : '/en/capacidade/marcas-guias')}
+                      className="px-6 py-3 bg-[#FF6B6B] text-white font-black uppercase tracking-[0.1em] text-sm hover:bg-[#FF6B6B]/80 transition-all duration-300 flex items-center gap-2"
+                    >
+                      {lang === 'PT' ? 'Solicitar Registro' : 'Request Registration'}
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
+
             {/* Domain Process Flow - Only for DOMAIN item */}
             {item.id === 10 && (
               <section className="space-y-8">

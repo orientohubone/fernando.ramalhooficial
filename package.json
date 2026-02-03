@@ -10,6 +10,7 @@
     "install:legacy": "npm install --legacy-peer-deps"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.94.0",
     "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "html2canvas": "^1.4.1",

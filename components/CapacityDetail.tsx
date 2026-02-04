@@ -1153,8 +1153,65 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       {/* Taxa Information */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-4">
-                          <div className="px-3 py-1 bg-[#FF6B6B]/10 border border-[#FF6B6B]/20 rounded-full">
-                            <span className="text-sm font-black text-[#FF6B6B]">R$210,00</span>
+                          <div className="relative group">
+                            <div className="px-3 py-1 bg-[#FF6B6B]/10 border border-[#FF6B6B]/20 rounded-full cursor-help">
+                              <span className="text-sm font-black text-[#FF6B6B]">
+                                {lang === 'PT' ? 'Ver valores' : 'See prices'}
+                              </span>
+                            </div>
+                            
+                            {/* Tooltip */}
+                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                              <div className="bg-neutral-900 border border-[#FF6B6B]/30 rounded-lg p-4 shadow-xl">
+                                <div className="space-y-3">
+                                  <h4 className="text-sm font-bold text-[#FF6B6B]">
+                                    {lang === 'PT' ? 'Pedidos de Registro' : 'Registration Requests'}
+                                  </h4>
+                                  
+                                  <div className="space-y-2">
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs text-neutral-300">
+                                        {lang === 'PT' ? 'Registro com especificação pré-aprovada (Rápido)' : 'Pre-approved specification (Fast)'}
+                                      </span>
+                                      <span className="text-xs font-semibold text-green-400">R$ 880,00</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs text-neutral-300">
+                                        {lang === 'PT' ? 'Registro com livre preenchimento (Completo)' : 'Free specification (Complete)'}
+                                      </span>
+                                      <span className="text-xs font-semibold text-green-400">R$ 1.720,00</span>
+                                    </div>
+                                  </div>
+                                  
+                                  <div className="border-t border-neutral-700 pt-2">
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs font-semibold text-[#FF6B6B]">
+                                        {lang === 'PT' ? 'Taxa de Serviço' : 'Service Fee'}
+                                      </span>
+                                      <span className="text-xs font-bold text-[#FF6B6B]">R$ 780,00</span>
+                                    </div>
+                                  </div>
+                                  
+                                  <div className="border-t border-neutral-700 pt-2">
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs font-bold text-yellow-400">
+                                        {lang === 'PT' ? 'VALOR TOTAL' : 'TOTAL VALUE'}
+                                      </span>
+                                      <span className="text-xs font-bold text-yellow-400">R$ 1.660,00 - R$ 2.500,00</span>
+                                    </div>
+                                  </div>
+                                  
+                                  <div className="text-xs text-neutral-400">
+                                    {lang === 'PT' ? '*Valores sujeitos a descontos conforme política INPI' : '*Values subject to discounts according to INPI policy'}
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Arrow */}
+                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                                <div className="w-2 h-2 bg-neutral-900 border-r border-b border-[#FF6B6B]/30 transform rotate-45"></div>
+                              </div>
+                            </div>
                           </div>
                           <span className="text-xs text-neutral-500">
                             {lang === 'PT' ? 'Taxa INPI via GRU' : 'INPI fee via GRU'}
@@ -1269,8 +1326,59 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                       {/* Taxa Information */}
                       <div className="space-y-3">
                         <div className="flex items-center gap-4">
-                          <div className="px-3 py-1 bg-[#FF6B6B]/10 border border-[#FF6B6B]/20 rounded-full">
-                            <span className="text-sm font-black text-[#FF6B6B]">R$375,00</span>
+                          <div className="relative group">
+                            <div className="px-3 py-1 bg-[#FF6B6B]/10 border border-[#FF6B6B]/20 rounded-full cursor-help">
+                              <span className="text-sm font-black text-[#FF6B6B]">
+                                {lang === 'PT' ? 'Ver valores' : 'See prices'}
+                              </span>
+                            </div>
+                            
+                            {/* Tooltip */}
+                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                              <div className="bg-neutral-900 border border-[#FF6B6B]/30 rounded-lg p-4 shadow-xl">
+                                <div className="space-y-3">
+                                  <h4 className="text-sm font-bold text-[#FF6B6B]">
+                                    {lang === 'PT' ? 'Concessão e Prorrogação' : 'Grant and Renewal'}
+                                  </h4>
+                                  
+                                  <div className="space-y-2">
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs text-neutral-300">
+                                        {lang === 'PT' ? 'Primeiro decênio - prazo ordinário' : 'First decade - ordinary deadline'}
+                                      </span>
+                                      <span className="text-xs font-semibold text-green-400">R$ 0,00</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs text-neutral-300">
+                                        {lang === 'PT' ? 'Primeiro decênio - prazo extraordinário' : 'First decade - extraordinary deadline'}
+                                      </span>
+                                      <span className="text-xs font-semibold text-green-400">R$ 0,00</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs text-neutral-300">
+                                        {lang === 'PT' ? 'Prorrogação - prazo ordinário' : 'Renewal - ordinary deadline'}
+                                      </span>
+                                      <span className="text-xs font-semibold text-green-400">R$ 1.000,00</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-xs text-neutral-300">
+                                        {lang === 'PT' ? 'Prorrogação - prazo extraordinário' : 'Renewal - extraordinary deadline'}
+                                      </span>
+                                      <span className="text-xs font-semibold text-green-400">R$ 2.000,00</span>
+                                    </div>
+                                  </div>
+                                  
+                                  <div className="text-xs text-neutral-400">
+                                    {lang === 'PT' ? '*Primeiro decênio gratuito conforme legislação' : '*First decade free according to legislation'}
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Arrow */}
+                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                                <div className="w-2 h-2 bg-neutral-900 border-r border-b border-[#FF6B6B]/30 transform rotate-45"></div>
+                              </div>
+                            </div>
                           </div>
                           <span className="text-xs text-neutral-500">
                             {lang === 'PT' ? 'Taxa INPI via GRU' : 'INPI fee via GRU'}
@@ -1344,12 +1452,12 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="text-lg font-black uppercase text-white mb-2">
-                        {lang === 'PT' ? 'Gerador de Guia INPI' : 'INPI Guide Generator'}
+                        {lang === 'PT' ? 'Pré-contratação e análise' : 'Pre-Contract and Analysis'}
                       </h4>
                       <p className="text-sm text-neutral-400 leading-relaxed">
                         {lang === 'PT'
-                          ? 'Preencha nosso formulário para contratar nosso serviço de registro de marcas.'
-                          : 'Fill out our form to hire our trademark registration service.'}
+                          ? 'Preencha nosso formulário para pré-contratar nosso serviço de registro de marcas.'
+                          : 'Fill out our form to pre-contract our trademark registration service.'}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
                         <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-[#FF6B6B]/10 text-[#FF6B6B] border border-[#FF6B6B]/20">

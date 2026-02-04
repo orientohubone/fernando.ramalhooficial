@@ -19,25 +19,25 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         <section className="flex flex-col md:flex-row justify-between items-start md:items-end gap-16">
           <div className="max-w-2xl flex flex-col gap-6">
 
-            <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-tight mt-2 uppercase">
+            <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter leading-tight mt-2 uppercase">
               {t.cta.split(' ').slice(0, -1).join(' ')} <span className="text-[#5AB473] italic">{t.cta.split(' ').slice(-1)}</span>
             </h2>
 
-            <address className="flex flex-wrap gap-8 items-center mt-2 not-italic">
-              <a href="mailto:fernando@orientohub.com.br" className="text-base md:text-lg font-black uppercase tracking-widest border-b-2 border-[#5AB473] pb-1 hover:bg-[#5AB473] hover:text-black transition-all">
+            <address className="flex flex-wrap gap-4 xs:gap-6 sm:gap-8 items-center mt-2 not-italic">
+              <a href="mailto:fernando@orientohub.com.br" className="text-sm xs:text-base sm:text-lg md:text-lg font-black uppercase tracking-widest border-b-2 border-[#5AB473] pb-1 hover:bg-[#5AB473] hover:text-black transition-all break-words">
                 fernando@orientohub.com.br
               </a>
             </address>
           </div>
 
           <div className="flex flex-col gap-6 items-start md:items-end">
-            <nav className="flex flex-wrap gap-6 items-center justify-start md:justify-end" role="navigation" aria-label="Redes sociais e links">
-              <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black uppercase tracking-[0.3em] text-[#5AB473] hover:text-white transition-colors">FOUNDER @ ORIENTOHUB</a>
+            <nav className="flex flex-wrap gap-3 xs:gap-4 sm:gap-5 md:gap-6 items-center justify-start md:justify-end" role="navigation" aria-label="Redes sociais e links">
+              <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-[10px] font-black uppercase tracking-[0.3em] text-[#5AB473] hover:text-white transition-colors break-words">FOUNDER @ ORIENTOHUB</a>
               <div className="w-[1px] h-4 bg-neutral-800 hidden md:block" aria-hidden="true" />
-              <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="text-[9px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#5AB473] transition-colors">Behance</a>
-              <a href="https://www.linkedin.com/in/fernandolsr/" target="_blank" rel="noopener noreferrer" className="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">LinkedIn</a>
-              <a href="https://www.instagram.com/fernando.ramalhooficial/" target="_blank" rel="noopener noreferrer" className="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">Instagram</a>
-              <a href="#" className="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">X / Twitter</a>
+              <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="text-[7px] xs:text-[8px] sm:text-[9px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-white hover:text-[#5AB473] transition-colors">Behance</a>
+              <a href="https://www.linkedin.com/in/fernandolsr/" target="_blank" rel="noopener noreferrer" className="text-[7px] xs:text-[8px] sm:text-[9px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://www.instagram.com/fernando.ramalhooficial/" target="_blank" rel="noopener noreferrer" className="text-[7px] xs:text-[8px] sm:text-[9px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">Instagram</a>
+              <a href="#" className="text-[7px] xs:text-[8px] sm:text-[9px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-600 hover:text-white transition-colors">X / Twitter</a>
             </nav>
             <div className="text-[8px] font-black uppercase tracking-[0.4em] text-neutral-600 text-left md:text-right leading-loose">
               {t.rights} <br />
@@ -52,28 +52,28 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         </section>
 
         {/* Sitemap Section */}
-        <section className="border-t border-neutral-900/50 pt-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+        <section className="border-t border-neutral-900/50 pt-12 xs:pt-14 sm:pt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-12">
 
             {/* CAPACIDADES */}
             <div className="space-y-4">
-              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-6">
+              <h3 className="text-[10px] xs:text-xs sm:text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-4 xs:mb-5 sm:mb-6">
                 {lang === 'PT' ? 'CAPACIDADES' : 'CAPABILITIES'}
               </h3>
-              <nav className="space-y-3" role="navigation" aria-label="Capacidades e serviços">
-                <Link to={lang === 'EN' ? '/en/capacidades' : '/capacidades'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+              <nav className="space-y-2 xs:space-y-3" role="navigation" aria-label="Capacidades e serviços">
+                <Link to={lang === 'EN' ? '/en/capacidades' : '/capacidades'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Todas as Capacidades' : 'All Capabilities'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/capacidade/ecommerce' : '/capacidade/ecommerce'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/capacidade/ecommerce' : '/capacidade/ecommerce'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   Ecommerce
                 </Link>
-                <Link to={lang === 'EN' ? '/en/capacidade/ia' : '/capacidade/ia'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/capacidade/ia' : '/capacidade/ia'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'IA' : 'AI'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/arquitetura-cognitiva' : '/arquitetura-cognitiva'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/arquitetura-cognitiva' : '/arquitetura-cognitiva'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Arquitetura Cognitiva' : 'Cognitive Architecture'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/capacidade/marketing' : '/capacidade/marketing'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/capacidade/marketing' : '/capacidade/marketing'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   Marketing
                 </Link>
               </nav>
@@ -81,23 +81,23 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
 
             {/* RELATÓRIOS */}
             <div className="space-y-4">
-              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-6">
+              <h3 className="text-[10px] xs:text-xs sm:text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-4 xs:mb-5 sm:mb-6">
                 {lang === 'PT' ? 'RELATÓRIOS' : 'REPORTS'}
               </h3>
-              <nav className="space-y-3" role="navigation" aria-label="Relatórios e inteligência">
-                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+              <nav className="space-y-2 xs:space-y-3" role="navigation" aria-label="Relatórios e inteligência">
+                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Todos os Relatórios' : 'All Reports'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   SAAS 2026
                 </Link>
-                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Mercado & IA' : 'Market & AI'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Algoritmos' : 'Algorithms'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/relatorios' : '/relatorios'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Educação' : 'Education'}
                 </Link>
               </nav>
@@ -105,26 +105,26 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
 
             {/* EMPRESA */}
             <div className="space-y-4">
-              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-6">
+              <h3 className="text-[10px] xs:text-xs sm:text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-4 xs:mb-5 sm:mb-6">
                 {lang === 'PT' ? 'EMPRESA' : 'COMPANY'}
               </h3>
-              <nav className="space-y-3" role="navigation" aria-label="Informações da empresa">
-                <Link to={lang === 'EN' ? '/en/about' : '/sobre'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+              <nav className="space-y-2 xs:space-y-3" role="navigation" aria-label="Informações da empresa">
+                <Link to={lang === 'EN' ? '/en/about' : '/sobre'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Sobre Fernando' : 'About Fernando'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/segmentos' : '/segmentos'} className="block text-sm text-neutral-400 hover:text-white transition-colors font-bold text-[#FFEE00]">
+                <Link to={lang === 'EN' ? '/en/segmentos' : '/segmentos'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors font-bold text-[#FFEE00]">
                   {lang === 'PT' ? 'Na Prática (Nichos)' : 'In Practice (Niches)'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/filosofia' : '/filosofia'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/filosofia' : '/filosofia'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Filosofia' : 'Philosophy'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/contato' : '/contato'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/contato' : '/contato'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Contato' : 'Contact'}
                 </Link>
-                <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   OrientoHub
                 </a>
-                <a href="https://wa.me/5514998618547" target="_blank" rel="noopener noreferrer" className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <a href="https://wa.me/5514998618547" target="_blank" rel="noopener noreferrer" className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'WhatsApp' : 'WhatsApp'}
                 </a>
               </nav>
@@ -132,20 +132,20 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
 
             {/* LEGAL */}
             <div className="space-y-4">
-              <h3 className="text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-6">
+              <h3 className="text-[10px] xs:text-xs sm:text-xs font-black uppercase tracking-[0.4em] text-[#5AB473] mb-4 xs:mb-5 sm:mb-6">
                 {lang === 'PT' ? 'LEGAL' : 'LEGAL'}
               </h3>
-              <nav className="space-y-3" role="navigation" aria-label="Informações legais">
-                <Link to={lang === 'EN' ? '/en/privacy-policy' : '/politica-de-privacidade'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+              <nav className="space-y-2 xs:space-y-3" role="navigation" aria-label="Informações legais">
+                <Link to={lang === 'EN' ? '/en/privacy-policy' : '/politica-de-privacidade'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Política de Privacidade' : 'Privacy Policy'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/terms-of-use' : '/termos-de-uso'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/terms-of-use' : '/termos-de-uso'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Termos de Uso' : 'Terms of Use'}
                 </Link>
-                <Link to={lang === 'EN' ? '/en/lgpd' : '/lgpd'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/lgpd' : '/lgpd'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   LGPD
                 </Link>
-                <Link to={lang === 'EN' ? '/en/cookie-policy' : '/politica-de-cookies'} className="block text-sm text-neutral-400 hover:text-white transition-colors">
+                <Link to={lang === 'EN' ? '/en/cookie-policy' : '/politica-de-cookies'} className="block text-[11px] xs:text-sm sm:text-sm text-neutral-400 hover:text-white transition-colors">
                   {lang === 'PT' ? 'Política de Cookies' : 'Cookie Policy'}
                 </Link>
               </nav>

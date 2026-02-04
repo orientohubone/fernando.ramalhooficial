@@ -3,13 +3,14 @@ import React from 'react';
 
 interface BrandLogoProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 }
 
 const BrandLogo: React.FC<BrandLogoProps> = ({ className = '', size = 'md' }) => {
   const sizes = {
+    xs: 'h-1.5 w-auto',
     sm: 'h-2 w-auto',
-    md: 'h-3 w-auto',
+    md: 'h-4 w-auto',
     lg: 'h-6 w-auto'
   };
 

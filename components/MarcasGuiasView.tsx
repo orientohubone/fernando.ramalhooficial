@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
 import { supabase } from '../lib/supabase';
-import { Upload, FileCheck, X, Image, File, CheckCircle, AlertCircle, Info } from 'lucide-react';
+import { Upload, FileCheck, X, Image, File, CheckCircle, AlertCircle, Info, FileText, QrCode, Receipt, CreditCard } from 'lucide-react';
 
 interface MarcasGuiasViewProps {
   lang: Language;
@@ -740,10 +740,10 @@ const MarcasGuiasView: React.FC<MarcasGuiasViewProps> = ({ lang, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <nav className="sticky top-0 left-0 w-full z-[110] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <button onClick={onClose} className="group flex items-center gap-4">
-          <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" />
-          <span className="text-[10px] font-black uppercase tracking-[0.3em]">{nav.back}</span>
+      <nav className="sticky top-0 left-0 w-full z-[110] px-4 xs:px-6 py-6 xs:py-8 md:px-12 flex justify-between items-center mix-blend-difference">
+        <button onClick={onClose} className="group flex items-center gap-2 xs:gap-3 xs:gap-4">
+          <div className="w-5 xs:w-6 sm:w-8 h-[1px] bg-white group-hover:w-6 xs:group-hover:w-8 sm:group-hover:w-12 transition-all duration-300" />
+          <span className="text-[7px] xs:text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em]">{nav.back}</span>
         </button>
         <BrandLogo size="md" />
       </nav>
@@ -1297,6 +1297,183 @@ const MarcasGuiasView: React.FC<MarcasGuiasViewProps> = ({ lang, onClose }) => {
                           )}
                         </div>
                       </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Resumo da Contratação */}
+                {selectedService && (
+                  <div className="bg-gradient-to-br from-neutral-900 to-neutral-950 rounded-2xl p-6 md:p-8 border-2 border-yellow-500/30">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                        <FileText className="w-5 h-5 text-black" />
+                      </div>
+                      <h3 className="text-xl font-black uppercase text-white">
+                        {lang === 'PT' ? 'Resumo da Contratação' : 'Contract Summary'}
+                      </h3>
+                    </div>
+
+                    {/* Valores */}
+                    <div className="space-y-4 mb-6">
+                      {/* Taxa INPI */}
+                      <div className="bg-neutral-800/50 rounded-lg p-4">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="text-sm font-semibold text-neutral-300 mb-1">
+                              {lang === 'PT' ? 'Taxa INPI (Serviço Selecionado)' : 'INPI Fee (Selected Service)'}
+                            </h4>
+                            <p className="text-xs text-neutral-500">
+                              {lang === 'PT' ? 'Código ' : 'Code '}{selectedService}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            {getServiceDescription(selectedService, lang)?.discount ? (
+                              <>
+                                <p className="text-sm text-neutral-500 line-through">
+                                  {getServiceDescription(selectedService, lang)?.price}
+                                </p>
+                                <p className="text-lg font-bold text-blue-400">
+                                  {getServiceDescription(selectedService, lang)?.discount}
+                                </p>
+                                <p className="text-xs text-blue-400">
+                                  {lang === 'PT' ? '(com desconto aplicável)' : '(with applicable discount)'}
+                                </p>
+                              </>
+                            ) : (
+                              <p className="text-lg font-bold text-green-400">
+                                {getServiceDescription(selectedService, lang)?.price}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Honorários */}
+                      <div className="bg-neutral-800/50 rounded-lg p-4">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="text-sm font-semibold text-neutral-300 mb-1">
+                              {lang === 'PT' ? 'Honorários Profissionais' : 'Professional Fees'}
+                            </h4>
+                            <p className="text-xs text-neutral-500">
+                              {lang === 'PT' ? 'Assessoria completa no processo' : 'Complete process advisory'}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-lg font-bold text-yellow-400">
+                              R$ 780,00
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Total */}
+                      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+                        <div className="flex justify-between items-center">
+                          <h4 className="text-lg font-bold text-white">
+                            {lang === 'PT' ? 'TOTAL ESTIMADO' : 'ESTIMATED TOTAL'}
+                          </h4>
+                          <p className="text-2xl font-black text-yellow-400">
+                            {(() => {
+                              const serviceData = getServiceDescription(selectedService, lang);
+                              const inpiValue = serviceData?.discount 
+                                ? parseFloat(serviceData.discount.replace('R$ ', '').replace('.', '').replace(',', '.'))
+                                : parseFloat((serviceData?.price || 'R$ 0,00').replace('R$ ', '').replace('.', '').replace(',', '.'));
+                              const honorarios = 780;
+                              const total = inpiValue + honorarios;
+                              return `R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                            })()}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Formas de Pagamento */}
+                    <div className="space-y-4">
+                      <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-400">
+                        {lang === 'PT' ? 'Formas de Pagamento' : 'Payment Methods'}
+                      </h4>
+                      
+                      {/* Taxa INPI - GRU */}
+                      <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <AlertCircle className="w-4 h-4 text-red-400" />
+                          </div>
+                          <div>
+                            <h5 className="text-sm font-semibold text-red-400 mb-1">
+                              {lang === 'PT' ? 'Taxa INPI' : 'INPI Fee'}
+                            </h5>
+                            <p className="text-xs text-neutral-300 leading-relaxed">
+                              {lang === 'PT' 
+                                ? 'O pagamento da taxa INPI deve ser realizado pelo cliente diretamente via GRU (Guia de Recolhimento da União). Enviaremos as instruções e o boleto GRU após a confirmação do pedido.'
+                                : 'The INPI fee must be paid by the client directly via GRU (Federal Collection Guide). We will send the instructions and GRU slip after order confirmation.'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Honorários - Múltiplas opções */}
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <CheckCircle className="w-4 h-4 text-green-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h5 className="text-sm font-semibold text-green-400 mb-2">
+                              {lang === 'PT' ? 'Honorários Profissionais (R$ 780,00)' : 'Professional Fees (R$ 780.00)'}
+                            </h5>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                              <div className="bg-neutral-900/30 backdrop-blur-sm border border-green-500/30 rounded-xl p-4 text-center hover:bg-neutral-900/40 hover:border-green-500/50 transition-all duration-300">
+                                <div className="flex justify-center mb-3">
+                                  <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center">
+                                    <QrCode className="w-6 h-6 text-green-400" />
+                                  </div>
+                                </div>
+                                <p className="text-sm font-semibold text-white mb-1">PIX</p>
+                                <p className="text-xs text-neutral-400">
+                                  {lang === 'PT' ? 'À vista' : 'Instant'}
+                                </p>
+                              </div>
+                              <div className="bg-neutral-900/30 backdrop-blur-sm border border-blue-500/30 rounded-xl p-4 text-center hover:bg-neutral-900/40 hover:border-blue-500/50 transition-all duration-300">
+                                <div className="flex justify-center mb-3">
+                                  <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center">
+                                    <Receipt className="w-6 h-6 text-blue-400" />
+                                  </div>
+                                </div>
+                                <p className="text-sm font-semibold text-white mb-1">
+                                  {lang === 'PT' ? 'Boleto' : 'Bank Slip'}
+                                </p>
+                                <p className="text-xs text-neutral-400">
+                                  {lang === 'PT' ? 'À vista' : 'Instant'}
+                                </p>
+                              </div>
+                              <div className="bg-neutral-900/30 backdrop-blur-sm border border-yellow-500/30 rounded-xl p-4 text-center hover:bg-neutral-900/40 hover:border-yellow-500/50 transition-all duration-300">
+                                <div className="flex justify-center mb-3">
+                                  <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center">
+                                    <CreditCard className="w-6 h-6 text-yellow-400" />
+                                  </div>
+                                </div>
+                                <p className="text-sm font-semibold text-white mb-1">
+                                  {lang === 'PT' ? 'Cartão' : 'Card'}
+                                </p>
+                                <p className="text-xs text-neutral-400">
+                                  {lang === 'PT' ? 'Até 5x sem juros' : 'Up to 5x interest-free'}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Nota */}
+                    <div className="mt-4 pt-4 border-t border-neutral-800">
+                      <p className="text-[10px] text-neutral-500 leading-relaxed">
+                        {lang === 'PT' 
+                          ? '* Os valores com desconto aplicam-se a: MEI, ME, EPP, ICTs, entidades sem fins lucrativos (50%) e pessoas físicas hipossuficientes ou PcD (100%). Verifique sua elegibilidade.'
+                          : '* Discounted values apply to: Individual microentrepreneurs, micro/small businesses, ICTs, non-profits (50%) and low-income individuals or people with disabilities (100%). Check your eligibility.'}
+                      </p>
                     </div>
                   </div>
                 )}

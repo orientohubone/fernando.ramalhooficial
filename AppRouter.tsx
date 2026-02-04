@@ -8,6 +8,7 @@ import Hero from './components/Hero';
 import { RollingList } from './components/RollingList';
 import StrategySection from './components/StrategySection';
 import Footer from './components/Footer';
+import { LogoCloud } from './components/LogoCloud';
 import CapacityDetail from './components/CapacityDetail';
 import ReportDetail from './components/ReportDetail';
 import AboutView from './components/AboutView';
@@ -399,9 +400,27 @@ const AppRouter: React.FC = () => {
         <main className={!isHomePage ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
           <Hero lang={lang} />
 
-          <div className="px-6 md:px-12 mb-20">
+          <div className="px-6 md:px-12">
             <div className="h-[1px] w-full bg-neutral-900"></div>
           </div>
+
+          <LogoCloud 
+            logos={[
+              { src: "/logos/supabase.svg", alt: "Supabase" },
+              { src: "/logos/vercel.svg", alt: "Vercel" },
+              { src: "/logos/netlify.svg", alt: "Netlify" },
+              { src: "/logos/neon.svg", alt: "NeonDB" },
+                            { src: "/logos/windsurf.svg", alt: "Windsurf" },
+              { src: "/logos/vscode.svg", alt: "VSCode" },
+              { src: "/logos/github.svg", alt: "GitHub" },
+              { src: "/logos/cursor.svg", alt: "Cursor" },
+              { src: "/logos/openai.svg", alt: "OpenAI" },
+              { src: "/logos/claude.svg", alt: "Claude" },
+                            { src: "/logos/replit.svg", alt: "Replit" },
+            ]}
+          />
+
+          <div className="px-6 md:px-12 mb-20"></div>
 
           <RollingList lang={lang} onSelectItem={handleCapacitySelect} />
 

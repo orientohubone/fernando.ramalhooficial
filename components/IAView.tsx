@@ -625,25 +625,25 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
       {isInitialState && <RayBackground />}
 
       {/* Floating UI Support */}
-      <div className="absolute top-6 left-6 z-[120]">
-        <button onClick={handleCloseRequest} className="group flex items-center gap-2 text-[#8a8a8f] hover:text-white transition-all bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-xl">
-          <X className="size-4" />
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] hidden sm:inline text-neutral-500 group-hover:text-white transition-colors">Build Down</span>
+      <div className="absolute top-3 xs:top-4 sm:top-6 left-3 xs:left-4 sm:left-6 z-[120]">
+        <button onClick={handleCloseRequest} className="group flex items-center gap-2 text-[#8a8a8f] hover:text-white transition-all bg-black/40 backdrop-blur-md px-2 xs:px-3 py-1.5 rounded-full border border-white/10 shadow-xl">
+          <X className="size-3 xs:size-4" />
+          <span className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.2em] hidden sm:inline text-neutral-500 group-hover:text-white transition-colors">Build Down</span>
         </button>
       </div>
 
-      <div className="absolute top-6 right-6 z-[120] flex items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md border border-white/5 rounded-full shadow-xl">
-          <div className={`size-1.5 rounded-full ${isConfigured ? 'bg-[#58B573] animate-pulse' : 'bg-red-500'}`} />
-          <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/40">
+      <div className="absolute top-3 xs:top-4 sm:top-6 right-3 xs:right-4 sm:right-6 z-[120] flex items-center gap-2 xs:gap-3">
+        <div className="flex items-center gap-2 px-2 xs:px-3 py-1.5 bg-black/40 backdrop-blur-md border border-white/5 rounded-full shadow-xl">
+          <div className={`size-1 xs:size-1.5 rounded-full ${isConfigured ? 'bg-[#58B573] animate-pulse' : 'bg-red-500'}`} />
+          <span className="text-[7px] xs:text-[9px] font-black uppercase tracking-[0.2em] text-white/40">
             {isConfigured ? 'System Ready' : 'Offline'}
           </span>
-          <Zap className="size-3 text-[#FFEE00]" />
+          <Zap className="size-2 xs:size-3 text-[#FFEE00]" />
         </div>
       </div>
 
       {/* Content Area */}
-      <div className={`flex-1 w-full overflow-y-auto relative z-10 transition-all duration-700 ${isInitialState ? 'flex flex-col items-center justify-center p-4 pt-32 md:pt-40' : 'px-4 md:px-0 pt-24'}`}>
+      <div className={`flex-1 w-full overflow-y-auto relative z-10 transition-all duration-700 ${isInitialState ? 'flex flex-col items-center justify-center p-3 xs:p-4 pt-24 xs:pt-32 sm:pt-40' : 'px-3 xs:px-4 sm:px-0 pt-20 xs:pt-24'}`}>
 
         {isInitialState ? (
           <div className="w-full max-w-[800px] flex flex-col items-center text-center animate-in fade-in zoom-in-95 duration-700">
@@ -651,18 +651,18 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
               <AnnouncementBadge text="Builder.ia Intelligence V3.0" />
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase leading-tight sm:leading-none">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter mb-4 text-white uppercase leading-tight sm:leading-none">
               O que vamos <br />
-              <span className="text-[#FFEE00] italic px-2 sm:px-4 inline-block">Buildar</span> hoje?
+              <span className="text-[#FFEE00] italic px-1 xs:px-2 sm:px-4 inline-block">Buildar</span> hoje?
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-neutral-500 mb-8 sm:mb-12 max-w-2xl font-medium tracking-wide px-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-lg text-neutral-500 mb-6 xs:mb-8 sm:mb-12 max-w-2xl font-medium tracking-wide px-4">
               Estratégia, Inovação e Inteligência Acadêmica. <br className="hidden sm:block" />
-              <span className="text-neutral-600 uppercase text-[8px] sm:text-[10px] font-black tracking-[0.4em]">Sistemas de Dominância • Fernando Ramalho</span>
+              <span className="text-neutral-600 uppercase text-[6px] xs:text-[8px] sm:text-[10px] font-black tracking-[0.4em]">Sistemas de Dominância • Fernando Ramalho</span>
             </p>
 
             {/* Initial Chat Input wrapper */}
-            <div className="w-full max-w-[680px]">
+            <div className="w-full max-w-[600px] xs:max-w-[640px] sm:max-w-[680px]">
               <ChatInputLayout
                 value={inputValue}
                 onChange={setInputValue}
@@ -684,7 +684,7 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
               />
             </div>
 
-            <div className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
+            <div className="mt-6 xs:mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 xs:gap-3 px-4">
               {[
                 "Tendências de IA no Brasil",
                 "Metodologias Ágeis Acadêmicas",
@@ -694,33 +694,33 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
                 <button
                   key={i}
                   onClick={() => handleSendMessage(suggestion)}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[10px] sm:text-xs font-medium text-neutral-400 hover:text-white transition-all active:scale-95"
+                  className="px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[9px] xs:text-xs sm:text-xs font-medium text-neutral-400 hover:text-white transition-all active:scale-95"
                 >
                   {suggestion}
                 </button>
               ))}
             </div>
 
-            <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center gap-4 text-neutral-600">
-              <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black">ou importe de</span>
+            <div className="mt-8 xs:mt-10 sm:mt-16 flex flex-col sm:flex-row items-center gap-3 xs:gap-4 text-neutral-600">
+              <span className="text-[8px] xs:text-[9px] sm:text-xs uppercase tracking-[0.3em] font-black">ou importe de</span>
               <div className="flex gap-2">
                 <button
                   onClick={() => handleImport('figma')}
-                  className="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#FFEE00]/40 hover:text-white transition-all active:scale-95"
+                  className="flex items-center gap-1.5 px-2 xs:px-3 sm:px-4 py-2 rounded-full text-[8px] xs:text-[9px] sm:text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#FFEE00]/40 hover:text-white transition-all active:scale-95"
                 >
-                  <FigmaIcon className="size-3 text-[#FFEE00]" /> Figma
+                  <FigmaIcon className="size-2.5 xs:size-3 text-[#FFEE00]" /> <span className="hidden xs:inline">Figma</span><span className="xs:hidden">F</span>
                 </button>
                 <button
                   onClick={() => handleImport('github')}
-                  className="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#58B573]/40 hover:text-white transition-all active:scale-95"
+                  className="flex items-center gap-1.5 px-2 xs:px-3 sm:px-4 py-2 rounded-full text-[8px] xs:text-[9px] sm:text-[10px] font-black uppercase tracking-widest border border-white/10 bg-black hover:border-[#58B573]/40 hover:text-white transition-all active:scale-95"
                 >
-                  <Github className="size-3 text-[#58B573]" /> GitHub
+                  <Github className="size-2.5 xs:size-3 text-[#58B573]" /> <span className="hidden xs:inline">GitHub</span><span className="xs:hidden">G</span>
                 </button>
               </div>
             </div>
           </div>
         ) : (
-          <div className="max-w-4xl mx-auto py-8 sm:py-12 pb-32 space-y-6 sm:space-y-8 px-4">
+          <div className="max-w-4xl mx-auto py-4 xs:py-6 sm:py-12 pb-28 xs:pb-32 space-y-4 xs:space-y-6 sm:space-y-8 px-2 xs:px-4">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} animate-in fade-in slide-in-from-bottom-5 duration-500`}>
                 <div className="flex items-center gap-2 mb-2 px-2 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-neutral-500">
@@ -728,7 +728,7 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
                   {msg.sender === 'user' ? 'Você' : `Builder.ia ${selectedPersona.name}`}
                 </div>
 
-                <div className={`relative group max-w-full sm:max-w-[85%] p-4 sm:p-6 rounded-2xl leading-relaxed text-sm ${msg.sender === 'user'
+                <div className={`relative group max-w-full sm:max-w-[85%] p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl leading-relaxed text-xs xs:text-sm ${msg.sender === 'user'
                   ? 'bg-[#FFEE00] text-black font-bold shadow-[0_8px_30px_rgba(255,238,0,0.15)]'
                   : 'bg-[#121212] text-neutral-200 border border-white/5'
                   }`}>
@@ -776,8 +776,8 @@ const IAView: React.FC<IAViewProps> = ({ lang, onClose }) => {
 
       {/* Floating Chat Input (Permanent when messages exist) */}
       {!isInitialState && (
-        <div className="w-full h-auto p-4 sm:p-8 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent sticky bottom-0 z-[130]">
-          <div className="max-w-4xl mx-auto">
+        <div className="w-full h-auto p-2 xs:p-4 sm:p-8 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent sticky bottom-0 z-[130]">
+          <div className="max-w-4xl mx-auto px-1 xs:px-0">
             <ChatInputLayout
               value={inputValue}
               onChange={setInputValue}
@@ -939,18 +939,18 @@ function ChatInputLayout({
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={onKeyDown}
             placeholder="Qual o tema da sua pesquisa?"
-            className="w-full resize-none bg-transparent text-[15px] text-white placeholder-neutral-600 px-5 pt-4 pb-3 focus:outline-none min-h-[60px] max-h-[200px]"
+            className="w-full resize-none bg-transparent text-[13px] xs:text-[14px] sm:text-[15px] text-white placeholder-neutral-600 px-3 xs:px-4 sm:px-5 pt-3 xs:pt-4 pb-2 xs:pb-3 focus:outline-none min-h-[50px] xs:min-h-[60px] max-h-[150px] xs:max-h-[200px]"
           />
         </div>
 
-        <div className="flex items-center justify-between px-3 pb-3 pt-1">
-          <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between px-2 xs:px-3 pb-2 xs:pb-3 pt-1 flex-wrap gap-2">
+          <div className="flex items-center gap-0.5 xs:gap-1 flex-wrap">
             <div className="relative">
               <button
                 onClick={() => setShowAttach(!showAttach)}
-                className="size-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all shadow-inner"
+                className="size-7 xs:size-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-all shadow-inner"
               >
-                <Plus className={`size-4 transition-transform duration-200 ${showAttach ? 'rotate-45' : ''}`} />
+                <Plus className={`size-3.5 xs:size-4 transition-transform duration-200 ${showAttach ? 'rotate-45' : ''}`} />
               </button>
 
               {showAttach && (
@@ -980,18 +980,18 @@ function ChatInputLayout({
                 <button
                   onClick={handleReset}
                   title="Reset Context"
-                  className="size-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-red-500/10 text-neutral-500 hover:text-red-400 transition-all"
+                  className="size-7 xs:size-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-red-500/10 text-neutral-500 hover:text-red-400 transition-all"
                 >
-                  <Trash2 className="size-3.5" />
+                  <Trash2 className="size-3 xs:size-3.5" />
                 </button>
 
                 <div className="relative">
                   <button
                     onClick={() => setShowExportMenu(!showExportMenu)}
                     title="Export Session"
-                    className={`size-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#FFEE00]/10 text-neutral-500 hover:text-[#FFEE00] transition-all ${showExportMenu ? 'text-[#FFEE00] bg-[#FFEE00]/5' : ''}`}
+                    className={`size-7 xs:size-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#FFEE00]/10 text-neutral-500 hover:text-[#FFEE00] transition-all ${showExportMenu ? 'text-[#FFEE00] bg-[#FFEE00]/5' : ''}`}
                   >
-                    <Download className="size-3.5" />
+                    <Download className="size-3 xs:size-3.5" />
                   </button>
 
                   {showExportMenu && (
@@ -1020,36 +1020,38 @@ function ChatInputLayout({
                 </div>
               </div>
             )}
-            <ModelSelector selectedModel={selectedModel} onModelChange={onModelChange} />
-            <div className="h-4 w-[1px] bg-white/10 mx-1 hidden sm:block" />
-            <PersonaSelector selectedPersona={selectedPersona} onPersonaChange={onPersonaChange} />
+            <div className="flex items-center">
+              <ModelSelector selectedModel={selectedModel} onModelChange={onModelChange} />
+              <div className="h-4 w-[1px] bg-white/10 mx-1 hidden sm:block" />
+              <PersonaSelector selectedPersona={selectedPersona} onPersonaChange={onPersonaChange} />
+            </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1 xs:gap-1.5 sm:gap-2">
             <button
               onClick={handlePlan}
-              className="flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest text-neutral-500 hover:text-[#FFEE00] hover:bg-[#FFEE00]/5 transition-all"
+              className="flex items-center gap-1 xs:gap-1.5 px-2 sm:px-3 py-1.5 xs:py-2 rounded-full text-[8px] xs:text-[9px] sm:text-xs font-black uppercase tracking-widest text-neutral-500 hover:text-[#FFEE00] hover:bg-[#FFEE00]/5 transition-all"
             >
-              <Lightbulb className="size-4" />
-              <span className="hidden sm:inline">Planejar</span>
+              <Lightbulb className="size-3.5 xs:size-4" />
+              <span className="hidden xs:inline">Planejar</span>
             </button>
 
             {isLoading ? (
               <button
                 onClick={handleStop}
-                className="flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest bg-red-500/20 hover:bg-red-500/30 text-red-500 border border-red-500/50 transition-all active:scale-95 animate-pulse"
+                className="flex items-center gap-1 xs:gap-2 px-3 xs:px-4 sm:px-6 py-1.5 xs:py-2 rounded-full text-[8px] xs:text-[9px] sm:text-xs font-black uppercase tracking-widest bg-red-500/20 hover:bg-red-500/30 text-red-500 border border-red-500/50 transition-all active:scale-95 animate-pulse"
               >
                 <span>Parar</span>
-                <div className="size-2 bg-red-500 rounded-sm animate-spin" />
+                <div className="size-1.5 xs:size-2 bg-red-500 rounded-sm animate-spin" />
               </button>
             ) : (
               <button
                 onClick={() => onSend()}
                 disabled={!value.trim()}
-                className="flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest bg-[#FFEE00] hover:bg-[#fff033] text-black transition-all disabled:opacity-30 active:scale-95 shadow-[0_4px_20px_rgba(255,238,0,0.2)]"
+                className="flex items-center gap-1 xs:gap-2 px-3 xs:px-4 sm:px-6 py-1.5 xs:py-2 rounded-full text-[8px] xs:text-[9px] sm:text-xs font-black uppercase tracking-widest bg-[#FFEE00] hover:bg-[#fff033] text-black transition-all disabled:opacity-30 active:scale-95 shadow-[0_4px_20px_rgba(255,238,0,0.2)]"
               >
                 <span className="hidden sm:inline">Buildar</span>
-                <SendHorizontal className="size-4" />
+                <SendHorizontal className="size-3.5 xs:size-4" />
               </button>
             )}
           </div>

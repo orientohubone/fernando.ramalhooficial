@@ -17,10 +17,10 @@ const SegmentosView: React.FC<SegmentosViewProps> = ({ lang, onClose }) => {
     return (
         <section className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700" aria-label="Segmentos Atendidos">
             {/* Navigation */}
-            <nav className="sticky top-0 left-0 w-full z-[110] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference" role="navigation">
-                <button onClick={onClose} className="group flex items-center gap-4">
-                    <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" aria-hidden="true" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">{lang === 'PT' ? 'VOLTAR' : 'BACK'}</span>
+            <nav className="sticky top-0 left-0 w-full z-[110] px-4 xs:px-6 py-6 xs:py-8 md:px-12 flex justify-between items-center mix-blend-difference">
+                <button onClick={onClose} className="group flex items-center gap-2 xs:gap-3 xs:gap-4">
+                    <div className="w-5 xs:w-6 sm:w-8 h-[1px] bg-white group-hover:w-6 xs:group-hover:w-8 sm:group-hover:w-12 transition-all duration-300" aria-hidden="true" />
+                    <span className="text-[7px] xs:text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em]">{lang === 'PT' ? 'VOLTAR' : 'BACK'}</span>
                 </button>
                 <BrandLogo size="md" />
             </nav>

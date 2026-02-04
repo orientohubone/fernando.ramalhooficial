@@ -60,9 +60,9 @@ const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose, onReportSelect
       // If we're in the list, close completely
       onClose();
     }
-  }} className="group flex items-center gap-4">
-          <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300" />
-          <span className="text-[10px] font-black uppercase tracking-[0.3em]">{nav.back}</span>
+  }} className="group flex items-center gap-2 xs:gap-3 xs:gap-4">
+          <div className="w-5 xs:w-6 sm:w-8 h-[1px] bg-white group-hover:w-6 xs:group-hover:w-8 sm:group-hover:w-12 transition-all duration-300" />
+          <span className="text-[7px] xs:text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em]">{nav.back}</span>
         </button>
         <BrandLogo size="md" />
       </nav>

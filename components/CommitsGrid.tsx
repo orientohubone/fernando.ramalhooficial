@@ -87,7 +87,7 @@ export const CommitsGrid: React.FC<CommitsGridProps> = ({ text, className = '' }
   return (
     <section
       className={cn(
-        "w-full max-w-xl bg-[#050505] border border-neutral-900 grid p-3 gap-1 rounded-[15px]",
+        "w-full max-w-xl bg-[#050505] border border-neutral-900 grid p-3 gap-1 rounded-[15px] relative",
         className
       )}
       style={{
@@ -95,6 +95,21 @@ export const CommitsGrid: React.FC<CommitsGridProps> = ({ text, className = '' }
         gridTemplateRows: `repeat(${gridHeight}, minmax(0, 1fr))`,
       }}
     >
+      {/* Neon border beam effect */}
+      <div className="absolute inset-0 rounded-[15px]">
+        <div className="absolute inset-x-0 top-0 h-px">
+          <div className="w-full h-full bg-gradient-to-r from-transparent via-[#58B573] to-transparent opacity-80 animate-pulse shadow-[0_0_15px_rgba(88,181,115,0.8)]"></div>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 h-px">
+          <div className="w-full h-full bg-gradient-to-r from-transparent via-[#58B573] to-transparent opacity-80 animate-pulse shadow-[0_0_15px_rgba(88,181,115,0.8)]"></div>
+        </div>
+        <div className="absolute inset-y-0 left-0 w-px">
+          <div className="w-full h-full bg-gradient-to-b from-transparent via-[#58B573] to-transparent opacity-60 animate-pulse shadow-[0_0_10px_rgba(88,181,115,0.5)]"></div>
+        </div>
+        <div className="absolute inset-y-0 right-0 w-px">
+          <div className="w-full h-full bg-gradient-to-b from-transparent via-[#58B573] to-transparent opacity-60 animate-pulse shadow-[0_0_10px_rgba(88,181,115,0.5)]"></div>
+        </div>
+      </div>
       {Array.from({ length: gridWidth * gridHeight }).map((_, index) => {
         const isHighlighted = highlightedCells.includes(index);
         const shouldFlash = !isHighlighted && getRandomFlash();

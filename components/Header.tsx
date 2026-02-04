@@ -75,13 +75,22 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onOpenReports }) => {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4" role="banner">
       <div className="flex justify-center">
         <nav
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-300 ${isScrolled
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-300 relative overflow-visible ${isScrolled
             ? "bg-black/80 backdrop-blur-xl border-neutral-800/50 shadow-lg shadow-black/20"
             : "bg-black/40 backdrop-blur-md border-neutral-900/50"
             }`}
           role="navigation"
           aria-label="Navegação principal"
         >
+          {/* Neon border beam effect - apenas bordas horizontais para evitar riscos nos cantos */}
+          <div className="absolute inset-0 rounded-full pointer-events-none overflow-hidden">
+            <div className="absolute inset-x-4 top-0 h-px">
+              <div className="w-full h-full bg-gradient-to-r from-transparent via-[#58B573] to-transparent opacity-80 animate-pulse shadow-[0_0_15px_rgba(88,181,115,0.8)]"></div>
+            </div>
+            <div className="absolute inset-x-4 bottom-0 h-px">
+              <div className="w-full h-full bg-gradient-to-r from-transparent via-[#58B573] to-transparent opacity-80 animate-pulse shadow-[0_0_15px_rgba(88,181,115,0.8)]"></div>
+            </div>
+          </div>
           {/* Logo */}
           <Link to={createLangUrl("/")} className="group py-2">
             <BrandLogo size="md" />

@@ -14,9 +14,24 @@
   <meta name="googlebot" content="index, follow" />
   <meta name="google-site-verification" content="-9QaK6Fg6BQkBVKsHwOH8WkTpu1aj1i01ziVCPpb5k0" />
   <link rel="canonical" href="https://fernandoramalhobuilder.com.br/" />
+  
+  <!-- PWA & Icons -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#58B573" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Fernando Ramalho" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
   <link rel="shortcut icon" href="/favicon.png" />
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -64,12 +79,12 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #222;
+      background: #58B573;
       border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #333;
+      background: #46a35c;
     }
 
     /* Fix para animações que dependem do prefixo animate-in */

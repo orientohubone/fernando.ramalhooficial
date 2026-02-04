@@ -5,6 +5,7 @@ import { Language, TRANSLATIONS } from '../constants';
 import { ReportItem } from '../types';
 import BrandLogo from './BrandLogo';
 import ReportDetail from './ReportDetail';
+import CategoryCarousel from './CategoryCarousel';
 
 interface ReportsViewProps {
   lang: Language;
@@ -45,6 +46,27 @@ const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose, onReportSelect
   const filteredItems = activeFilter === 'all' 
     ? t.items 
     : (t.items as ReportItem[]).filter(item => item.cat === activeFilter);
+
+  // Prepare categories for carousel
+  const categories = [
+    { id: 'all', name: t.categories.all, color: '#58B573' },
+    { id: 'market', name: t.categories.market, color: '#FFEE00' },
+    { id: 'algo', name: t.categories.algo, color: '#58B573' },
+    { id: 'data', name: t.categories.data, color: '#FFEE00' },
+    { id: 'esg', name: t.categories.esg, color: '#58B573' },
+    { id: 'consumer', name: t.categories.consumer, color: '#FFEE00' },
+    { id: 'finance', name: t.categories.finance, color: '#58B573' },
+    { id: 'mobility', name: t.categories.mobility, color: '#FFEE00' },
+    { id: 'health', name: t.categories.health, color: '#58B573' },
+    { id: 'edu', name: t.categories.edu, color: '#FFEE00' },
+    { id: 'culture', name: t.categories.culture, color: '#58B573' },
+    { id: 'exp', name: t.categories.exp, color: '#FFEE00' },
+    { id: 'saas', name: t.categories.saas, color: '#58B573' }
+  ];
+
+  const handleCategoryClick = (category: { id: string }) => {
+    setActiveFilter(category.id);
+  };
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -133,6 +155,25 @@ const ReportsView: React.FC<ReportsViewProps> = ({ lang, onClose, onReportSelect
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Category Carousel */}
+        <div className="mt-16 md:mt-24">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white mb-4">
+              Explore por <span className="text-[#58B573]">Categoria</span>
+            </h3>
+            <p className="text-neutral-500 text-sm md:text-base max-w-2xl mx-auto">
+              Navegue pelas categorias de inteligência para descobrir insights específicos do seu interesse.
+            </p>
+          </div>
+          <div className="relative flex justify-center items-center">
+            <CategoryCarousel 
+              categories={categories}
+              lang={lang}
+              onCategoryClick={handleCategoryClick}
+            />
+          </div>
         </div>
 
         {/* Intelligence Footer */}

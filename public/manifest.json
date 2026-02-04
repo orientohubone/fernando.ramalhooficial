@@ -1,0 +1,67 @@
+{
+  "name": "Fernando Ramalho - Inovação Estratégica & IA",
+  "short_name": "Fernando Ramalho",
+  "description": "Especialista em Arquitetura Cognitiva, Inteligência Artificial e Transformação Digital. Construindo sistemas de dominância para negócios que querem liderar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#58B573",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Capacidades",
+      "short_name": "Capacidades",
+      "description": "Ver todas as capacidades e serviços",
+      "url": "/capacidades",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Intelligence Hub",
+      "short_name": "Relatórios",
+      "description": "Acessar relatórios estratégicos",
+      "url": "/relatorios",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Builder.ia",
+      "short_name": "IA",
+      "description": "Chat com IA",
+      "url": "/ia",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entre em contato",
+      "url": "/contato",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    }
+  ]
+}

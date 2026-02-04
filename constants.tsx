@@ -219,7 +219,7 @@ export const TRANSLATIONS = {
       },
       categories: {
         all: 'ALL',
-        market: 'MARKET & AI',
+        market: 'MARKET & INTELLIGENCE',
         algo: 'ALGORITHMS',
         data: 'DATA',
         esg: 'SUSTAINABILITY',

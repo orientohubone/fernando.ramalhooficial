@@ -348,5 +348,72 @@
     <xhtml:link rel="alternate" hreflang="pt-br" href="https://fernandoramalhobuilder.com.br/contato" />
     <xhtml:link rel="alternate" hreflang="en" href="https://fernandoramalhobuilder.com.br/en/contato" />
   </url>
-  
+
+  <!-- Frameworks Pages -->
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/frameworks</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://fernandoramalhobuilder.com.br/frameworks" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fernandoramalhobuilder.com.br/en/frameworks" />
+  </url>
+
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/en/frameworks</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://fernandoramalhobuilder.com.br/frameworks" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fernandoramalhobuilder.com.br/en/frameworks" />
+  </url>
+
+  <!-- Segmentos Pages -->
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/segmentos</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://fernandoramalhobuilder.com.br/segmentos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fernandoramalhobuilder.com.br/en/segmentos" />
+  </url>
+
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/en/segmentos</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://fernandoramalhobuilder.com.br/segmentos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fernandoramalhobuilder.com.br/en/segmentos" />
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/politica-de-privacidade</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/termos-de-uso</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/lgpd</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://fernandoramalhobuilder.com.br/politica-de-cookies</loc>
+    <lastmod>2026-02-03T12:00:00-03:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

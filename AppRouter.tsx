@@ -31,6 +31,8 @@ import PoliticaPrivacidade from './src/pages/PoliticaPrivacidade';
 import TermosUso from './src/pages/TermosUso';
 import LGPD from './src/pages/LGPD';
 import PoliticaCookies from './src/pages/PoliticaCookies';
+import NotFound from './components/NotFound';
+import { getFAQByTitle } from './faqData';
 import { Language, TRANSLATIONS, getCategorizedPillars, getFrameworks } from './constants';
 import { ALL_REPORTS } from './reportsData';
 import { ListItem, ReportItem } from './types';
@@ -105,6 +107,9 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     description = `${capacityDesc} Especialista em transformar negócios através de ${capacityTitle.toLowerCase()} com foco em resultados e performance.`;
     keywords = `${capacityTitle}, Fernando Ramalho, ${lang === 'EN' ? 'strategic consulting, growth, performance marketing, business innovation' : 'consultoria estratégica, growth, marketing de performance, inovação empresarial'}`;
 
+    // Get FAQ data for this capacity
+    const faqs = getFAQByTitle(capacityTitle);
+    
     structuredData = {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -115,7 +120,18 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
         "name": "Fernando Ramalho",
         "url": baseUrl
       },
-      "areaServed": "BR"
+      "areaServed": "BR",
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }
     };
   } else if (cleanPath === '/sobre') {
     title = lang === 'EN' ? 'About Fernando Ramalho - Innovation Strategist' : 'Sobre Fernando Ramalho - Estrategista de Inovação';
@@ -694,6 +710,10 @@ const AppRouter: React.FC = () => {
               onClose={() => navigate('/')}
             />
           } />
+
+          {/* 404 Not Found - Catch all routes */}
+          <Route path="/en/*" element={<NotFound lang="EN" />} />
+          <Route path="*" element={<NotFound lang="PT" />} />
         </Routes>
 
         {/* WhatsApp Button - only show on home page */}

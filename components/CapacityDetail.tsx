@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { ListItem, HighlightColor } from '../types';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
+import FAQSection from './FAQSection';
+import { getFAQByTitle } from '../faqData';
 
 interface CapacityDetailProps {
   item: ListItem;
@@ -23,6 +25,9 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
   const [showDesignSystemModal, setShowDesignSystemModal] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<number | null>(null);
   const navigate = useNavigate();
+  
+  // Get FAQ data for this capacity
+  const faqs = getFAQByTitle(item.title);
 
   const handleBackToCapacities = () => {
     navigate(lang === 'EN' ? '/en/capacidades' : '/capacidades');
@@ -2939,6 +2944,13 @@ const CapacityDetail: React.FC<CapacityDetailProps> = ({ item, lang, onClose }) 
             </div>
           </div>
         </footer>
+      )}
+      
+      {/* FAQ Section */}
+      {faqs.length > 0 && (
+        <div className="border-t border-neutral-900">
+          <FAQSection faqs={faqs} lang={lang} />
+        </div>
       )}
     </div>
   );

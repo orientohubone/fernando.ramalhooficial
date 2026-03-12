@@ -83,7 +83,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* ARQUITETURA COGNITIVA */}
           <div
             onClick={() => handleCapacityClick('cognitive')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#58B573]/10 rounded-full flex items-center justify-center group-hover:bg-[#58B573]/20 transition-colors">
@@ -113,7 +113,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* ESTRATÉGIAS */}
           <div
             onClick={() => handleCapacityClick('strategy')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
@@ -143,7 +143,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* INOVAÇÃO */}
           <div
             onClick={() => handleCapacityClick('innovation')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#FF6B6B]/10 rounded-full flex items-center justify-center group-hover:bg-[#FF6B6B]/20 transition-colors">
@@ -173,7 +173,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* MARKETING */}
           <div
             onClick={() => handleCapacityClick('marketing')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#4ECDC4]/10 rounded-full flex items-center justify-center group-hover:bg-[#4ECDC4]/20 transition-colors">
@@ -203,7 +203,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* MÍDIA PAGA */}
           <div
             onClick={() => handleCapacityClick('paidMedia')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#9B59B6]/10 rounded-full flex items-center justify-center group-hover:bg-[#9B59B6]/20 transition-colors">
@@ -233,7 +233,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* DESIGN */}
           <div
             onClick={() => handleCapacityClick('design')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#E67E22]/10 rounded-full flex items-center justify-center group-hover:bg-[#E67E22]/20 transition-colors">
@@ -263,7 +263,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* IA */}
           <div
             onClick={() => handleCapacityClick('ai')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
@@ -293,7 +293,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* VIBE CODING */}
           <div
             onClick={() => handleCapacityClick('vibeCoding')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#00D9FF]/10 rounded-full flex items-center justify-center group-hover:bg-[#00D9FF]/20 transition-colors">
@@ -323,7 +323,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* MARCAS */}
           <div
             onClick={() => handleCapacityClick('brandReg')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#FF6B6B]/10 rounded-full flex items-center justify-center group-hover:bg-[#FF6B6B]/20 transition-colors">
@@ -353,7 +353,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* DOMÍNIO */}
           <div
             onClick={() => handleCapacityClick('domain')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[rgb(155,89,182)]/10 rounded-full flex items-center justify-center group-hover:bg-[rgb(155,89,182)]/20 transition-colors">
@@ -383,7 +383,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* SITES */}
           <div
             onClick={() => handleCapacityClick('sites')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[#58B573]/10 rounded-full flex items-center justify-center group-hover:bg-[#58B573]/20 transition-colors">
@@ -413,7 +413,7 @@ const CapacidadesView: React.FC<CapacidadesViewProps> = ({ lang, onClose }) => {
           {/* ECOMMERCE */}
           <div
             onClick={() => handleCapacityClick('ecommerce')}
-            className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            className="group cursor-pointer bg-[#020202] border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-[rgb(155,89,182)]/10 rounded-full flex items-center justify-center group-hover:bg-[rgb(155,89,182)]/20 transition-colors">

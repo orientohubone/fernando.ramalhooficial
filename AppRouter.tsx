@@ -56,14 +56,14 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
   let keywords = '';
   let canonical = pathname;
   let structuredData: any = null;
-  let ogImage = '/og-image.jpg';
+  let ogImage = '/Strategic-builder-banner.png';
   let ogType = 'website';
 
   if (cleanPath === '/' || cleanPath === '') {
     title = lang === 'EN' ? 'Fernando Ramalho - Strategic Innovation & AI Solutions in São Paulo' : 'Fernando Ramalho - Inovação Estratégica e Soluções de IA em São Paulo';
     description = lang === 'EN'
-      ? 'Fernando Ramalho specializes in cognitive architecture, AI implementation, digital transformation, and strategic innovation. Building systems of dominance for business leaders.'
-      : 'Fernando Ramalho é especialista em arquitetura cognitiva, implementação de IA, transformação digital e inovação estratégica. Construindo sistemas de dominância para líderes de negócios em São Paulo.';
+      ? 'Building innovation, digital products, and performance-focused experiences. Simplicity, strategy, and execution in creating the future of business.'
+      : 'Construindo inovação, produtos digitais e experiências focadas em performance. Simplicidade, estratégia e execução na criação do futuro dos negócios.';
     keywords = lang === 'EN'
       ? 'Fernando Ramalho, AI strategist, cognitive architecture, digital transformation São Paulo, innovation strategy, strategic consulting, AI solutions Brazil'
       : 'Fernando Ramalho, estrategista de IA, arquitetura cognitiva, transformação digital São Paulo, agência de inovação, consultoria estratégica, soluções de inteligência artificial';
@@ -109,7 +109,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
 
     // Get FAQ data for this capacity
     const faqs = getFAQByTitle(capacityTitle);
-    
+
     structuredData = {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -149,7 +149,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
     keywords = lang === 'EN'
       ? 'intelligence hub, market reports, AI trends 2026, strategic intelligence, cognitive architecture, business innovation'
       : 'intelligence hub, relatórios de mercado, tendências de IA 2026, inteligência estratégica, arquitetura cognitiva, inovação empresarial';
-    ogImage = '/og-intelligence-hub.jpg?v=202601271600';
+    ogImage = '/og-intelligence-hub.png?v=202601271600';
     ogType = 'website';
   } else if (cleanPath.startsWith('/relatorio/')) {
     // Generate dynamic Open Graph for individual reports
@@ -172,7 +172,7 @@ const generateSEOMetadata = (pathname: string, lang: Language, selectedCapacity?
       title = lang === 'EN' ? 'Report Not Found | Intelligence Hub' : 'Relatório Não Encontrado | Intelligence Hub';
       description = lang === 'EN' ? 'The requested report was not found.' : 'O relatório solicitado não foi encontrado.';
       keywords = 'intelligence hub, report not found';
-      ogImage = '/og-intelligence-hub.jpg?v=202601271600';
+      ogImage = '/og-intelligence-hub.png?v=202601271600';
       ogType = 'website';
     }
   } else if (cleanPath === '/contato') {
@@ -420,19 +420,19 @@ const AppRouter: React.FC = () => {
             <div className="h-[1px] w-full bg-neutral-900"></div>
           </div>
 
-          <LogoCloud 
+          <LogoCloud
             logos={[
               { src: "/logos/supabase.svg", alt: "Supabase" },
               { src: "/logos/vercel.svg", alt: "Vercel" },
               { src: "/logos/netlify.svg", alt: "Netlify" },
               { src: "/logos/neon.svg", alt: "NeonDB" },
-                            { src: "/logos/windsurf.svg", alt: "Windsurf" },
+              { src: "/logos/windsurf.svg", alt: "Windsurf" },
               { src: "/logos/vscode.svg", alt: "VSCode" },
               { src: "/logos/github.svg", alt: "GitHub" },
               { src: "/logos/cursor.svg", alt: "Cursor" },
               { src: "/logos/openai.svg", alt: "OpenAI" },
               { src: "/logos/claude.svg", alt: "Claude" },
-                            { src: "/logos/replit.svg", alt: "Replit" },
+              { src: "/logos/replit.svg", alt: "Replit" },
             ]}
           />
 

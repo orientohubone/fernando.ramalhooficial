@@ -18,7 +18,7 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
   description,
   keywords,
   canonical,
-  ogImage = '/og-image.jpg',
+  ogImage = '/Strategic-builder-banner.png',
   ogType = 'website',
   structuredData,
   lang = 'PT',
@@ -26,7 +26,7 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
 }) => {
   const baseTitle = lang === 'EN' ? 'Fernando Ramalho - Strategic Innovation & AI Solutions' : 'Fernando Ramalho - Inovação Estratégica e Soluções de IA';
   const fullTitle = title ? `${title} | ${baseTitle}` : baseTitle;
-  
+
   const baseUrl = 'https://fernandoramalhobuilder.com.br';
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : baseUrl;
 
@@ -42,28 +42,28 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
           gtag('config', 'G-WSRNQQLJCG');
         `
       }} />
-      
+
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <link rel="canonical" href={fullCanonical} />
-      
+
       {/* Language and Region */}
       <html lang={lang === 'EN' ? 'en' : 'pt-BR'} />
       <meta name="language" content={lang === 'EN' ? 'English' : 'Portuguese'} />
-      
+
       {/* Cache Control for Crawlers */}
       <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
       <meta httpEquiv="Pragma" content="no-cache" />
       <meta httpEquiv="Expires" content="0" />
-      
+
       {/* Crawlers Instructions */}
       <meta name="robots" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
       <meta name="googlebot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
       <meta name="linkedinbot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
       <meta name="whatsappbot" content={noIndex ? 'noindex,nofollow' : 'index,follow'} />
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={fullCanonical} />
@@ -73,19 +73,19 @@ const SEOMeta: React.FC<SEOMetaProps> = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={lang === 'EN' ? 'en_US' : 'pt_BR'} />
-      
+
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={fullCanonical} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`} />
-      
+
       {/* Additional SEO */}
       <meta name="author" content="Fernando Ramalho" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charSet="UTF-8" />
-      
+
       {/* Structured Data */}
       {structuredData && (
         <script type="application/ld+json">

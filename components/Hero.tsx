@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   ];
 
   return (
-    <section className="relative w-full bg-[#050505] overflow-hidden min-h-[95vh] flex flex-col pt-16 md:pt-24">
+    <section className="relative w-full bg-[#050505] overflow-hidden min-h-[95vh] flex flex-col pt-24 md:pt-24">
       {/* Container Principal Hero */}
       <div className="flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 pb-16 md:pb-24 mt-2 md:mt-4 flex flex-col lg:flex-row gap-16 lg:gap-0 items-center relative z-10">
 
@@ -138,6 +138,13 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         {/* Right Column: Capabilities Grid */}
         <div className="relative z-10 w-full lg:w-[55%] lg:pl-28 xl:pl-40 flex items-center justify-center lg:justify-end mt-16 lg:mt-0">
           <div className="w-full max-w-[550px]">
+            {/* Label introdutório */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-4 h-[1px] bg-[#00FF66]/50"></div>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#00FF66]/70">
+                {lang === 'EN' ? 'Core Capabilities' : 'Capacidades Centrais'}
+              </span>
+            </div>
             <div className="grid grid-cols-2 gap-x-8 gap-y-6 lg:gap-y-8">
               {rightColumnItems.map((item, index) => {
                 const Icon = item.icon;

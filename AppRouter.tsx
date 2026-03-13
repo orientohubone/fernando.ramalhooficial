@@ -433,6 +433,7 @@ const AppRouter: React.FC = () => {
               { src: "/logos/openai.svg", alt: "OpenAI" },
               { src: "/logos/claude.svg", alt: "Claude" },
               { src: "/logos/replit.svg", alt: "Replit" },
+              { src: "/logos/firecrawl-light-wordmark.svg", alt: "Firecrawl" },
             ]}
           />
 

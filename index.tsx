@@ -14,3 +14,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Signal vite-plugin-prerender that the app is ready for snapshotting
+document.dispatchEvent(new Event('render-event'));

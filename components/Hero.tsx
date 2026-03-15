@@ -15,8 +15,15 @@ import {
   Globe2,
   ShoppingBag,
   Code2,
-  Layers
+  Layers,
+  ArrowRight
 } from 'lucide-react';
+import {
+  AnimatePresence,
+  motion
+} from 'motion/react';
+import { AppleDock, AppleDockIcon } from './AppleDock';
+import { useNavigate } from 'react-router-dom';
 
 const createSlug = (text: string): string =>
   text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
@@ -26,20 +33,31 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ lang }) => {
+  const navigate = useNavigate();
+  const [hoveredId, setHoveredId] = React.useState<string | null>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const caps = TRANSLATIONS[lang].capacities;
 
   const rightColumnItems = [
-    { id: 'strategy',   icon: BarChart2,        color: '#FFEE00', title: caps.strategy.title,   category: caps.strategy.category   },
-    { id: 'innovation', icon: Zap,              color: '#FF3366', title: caps.innovation.title, category: caps.innovation.category },
-    { id: 'marketing',  icon: Megaphone,        color: '#00FF66', title: caps.marketing.title,  category: caps.marketing.category  },
-    { id: 'paidMedia',  icon: CircleDollarSign, color: '#9D4EDD', title: caps.paidMedia.title,  category: caps.paidMedia.category  },
-    { id: 'design',     icon: SwatchBook,       color: '#FF9900', title: caps.design.title,     category: caps.design.category     },
-    { id: 'ai',         icon: Monitor,          color: '#FFEE00', title: caps.ai.title,         category: caps.ai.category         },
-    { id: 'vibeCoding', icon: Code,             color: '#00D4FF', title: caps.vibeCoding.title, category: caps.vibeCoding.category },
-    { id: 'brandReg',   icon: ShieldCheck,      color: '#FF4D4D', title: caps.brandReg.title,  category: caps.brandReg.category   },
-    { id: 'domain',     icon: Globe,            color: '#B185DB', title: caps.domain.title,    category: caps.domain.category     },
-    { id: 'sites',      icon: Globe2,           color: '#00FF66', title: caps.sites.title,     category: caps.sites.category      },
-    { id: 'ecommerce',  icon: ShoppingBag,      color: '#9D4EDD', title: caps.ecommerce.title, category: caps.ecommerce.category  },
+    { id: 'strategy', icon: BarChart2, color: '#FFEE00', title: caps.strategy.title, category: caps.strategy.category },
+    { id: 'innovation', icon: Zap, color: '#FF3366', title: caps.innovation.title, category: caps.innovation.category },
+    { id: 'marketing', icon: Megaphone, color: '#00FF66', title: caps.marketing.title, category: caps.marketing.category },
+    { id: 'paidMedia', icon: CircleDollarSign, color: '#9D4EDD', title: caps.paidMedia.title, category: caps.paidMedia.category },
+    { id: 'design', icon: SwatchBook, color: '#FF9900', title: caps.design.title, category: caps.design.category },
+    { id: 'ai', icon: Monitor, color: '#FFEE00', title: caps.ai.title, category: caps.ai.category },
+    { id: 'vibeCoding', icon: Code, color: '#00D4FF', title: caps.vibeCoding.title, category: caps.vibeCoding.category },
+    { id: 'brandReg', icon: ShieldCheck, color: '#FF4D4D', title: caps.brandReg.title, category: caps.brandReg.category },
+    { id: 'domain', icon: Globe, color: '#B185DB', title: caps.domain.title, category: caps.domain.category },
+    { id: 'sites', icon: Globe2, color: '#00FF66', title: caps.sites.title, category: caps.sites.category },
+    { id: 'ecommerce', icon: ShoppingBag, color: '#9D4EDD', title: caps.ecommerce.title, category: caps.ecommerce.category },
   ];
 
   return (
@@ -135,42 +153,108 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           </div>
         </div>
 
-        {/* Right Column: Capabilities Grid */}
+        {/* Right Column: Interactive Dock */}
         <div className="relative z-10 w-full lg:w-[55%] lg:pl-28 xl:pl-40 flex items-center justify-center lg:justify-end mt-16 lg:mt-0">
-          <div className="w-full max-w-[550px]">
-            {/* Label introdutório */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-4 h-[1px] bg-[#00FF66]/50"></div>
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#00FF66]/70">
-                {lang === 'EN' ? 'Core Capabilities' : 'Capacidades Centrais'}
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-6 lg:gap-y-8">
-              {rightColumnItems.map((item, index) => {
-                const Icon = item.icon;
-                const slug = createSlug(item.title);
-                const url = lang === 'EN' ? `/en/capacidade/${slug}` : `/capacidade/${slug}`;
-                return (
-                  <Link
-                    to={url}
-                    key={item.id}
-                    className="flex items-center gap-4 lg:gap-5 group"
+          <div className="w-full max-w-[600px] flex flex-col items-center lg:items-end">
+
+            {/* Display Area for Hovered Item */}
+            <div className="h-40 mb-8 flex flex-col items-center lg:items-end justify-center text-center lg:text-right">
+              <AnimatePresence mode="wait">
+                {hoveredId ? (
+                  <motion.div
+                    key={hoveredId}
+                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="flex flex-col items-center lg:items-end"
                   >
-                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black/60 border border-neutral-800/80 flex flex-col items-center justify-center shrink-0 group-hover:bg-[#111] group-hover:border-neutral-700 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.8)]">
-                      <Icon size={22} color={item.color} strokeWidth={2.5} className="opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-transform" />
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-4 h-[1px] bg-[#00FF66]/50"></div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#00FF66]/70">
+                        {rightColumnItems.find(i => i.id === hoveredId)?.category}
+                      </span>
                     </div>
-                    <div>
-                      <h3 className="text-white font-bold text-lg md:text-xl tracking-tight leading-none mb-2 group-hover:text-white/90 transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-neutral-500 text-[10px] md:text-xs font-black uppercase tracking-[0.3em]">
-                        {item.category}
-                      </p>
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter mb-4 leading-tight">
+                      {rightColumnItems.find(i => i.id === hoveredId)?.title}
+                    </h3>
+                    <motion.div
+                      whileHover={{ x: 10 }}
+                      className="flex items-center gap-2 text-[#00FF66] text-xs font-bold uppercase tracking-widest cursor-pointer group/link bg-[#00FF66]/5 px-4 py-1.5 rounded-full border border-[#00FF66]/20"
+                      onClick={() => {
+                        const item = rightColumnItems.find(i => i.id === hoveredId);
+                        if (item) {
+                          const slug = createSlug(item.title);
+                          navigate(lang === 'EN' ? `/en/capacidade/${slug}` : `/capacidade/${slug}`);
+                        }
+                      }}
+                    >
+                      {lang === 'EN' ? 'Explore Capability' : 'Explorar Capacidade'}
+                      <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                    </motion.div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.4 }}
+                    exit={{ opacity: 0 }}
+                    className="flex flex-col items-center lg:items-end"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-4 h-[1px] bg-[#00FF66]/30"></div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#00FF66]/50">
+                        {lang === 'EN' ? 'Interactive Guide' : 'Guia Interativo'}
+                      </span>
                     </div>
-                  </Link>
-                );
-              })}
+                    <h3 className="text-3xl md:text-4xl font-bold text-neutral-500 tracking-tight">
+                      {lang === 'EN' ? 'Hover to discover' : 'Passe o mouse para descobrir'}
+                    </h3>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+
+            {/* Apple Style Dock */}
+            <div className="relative group">
+              {/* Decorative background glow for the dock area */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00FF66]/5 to-transparent blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+              <AppleDock
+                iconSize={isMobile ? 32 : 48}
+                iconMagnification={isMobile ? 44 : 72}
+                iconDistance={isMobile ? 80 : 150}
+                className="bg-black/40 border-neutral-800/80 backdrop-blur-xl"
+              >
+                {rightColumnItems.map((item) => {
+                  const Icon = item.icon;
+                  const slug = createSlug(item.title);
+                  const url = lang === 'EN' ? `/en/capacidade/${slug}` : `/capacidade/${slug}`;
+
+                  return (
+                    <AppleDockIcon
+                      key={item.id}
+                      label={isMobile ? undefined : item.title}
+                      className="bg-neutral-900/60 border border-neutral-800/50 hover:border-neutral-700 transition-colors"
+                      onMouseEnter={() => setHoveredId(item.id)}
+                      onMouseLeave={() => setHoveredId(null)}
+                      onClick={() => navigate(url)}
+                    >
+                      <Icon
+                        size={isMobile ? 18 : 24}
+                        style={{ color: item.color }}
+                        strokeWidth={2}
+                        className="drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]"
+                      />
+                    </AppleDockIcon>
+                  );
+                })}
+              </AppleDock>
+            </div>
+
+            {/* Hint message */}
+            <p className="mt-8 text-neutral-600 text-[9px] font-black uppercase tracking-[0.5em] text-center lg:text-right w-full opacity-60">
+              {lang === 'EN' ? 'Interactive Capabilities Menu' : 'Menu de Capacidades Interativo'}
+            </p>
           </div>
         </div>
       </div>

@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Language } from '../constants';
 import BrandLogo from './BrandLogo';
 import { supabase } from '../lib/supabase';
+import {
+  X,
+  Send,
+  MessageSquare,
+  Mail,
+  Linkedin,
+  Figma,
+  ArrowRight,
+  CheckCircle2,
+  AlertCircle
+} from 'lucide-react';
 
 interface ContatoViewProps {
   lang: Language;
@@ -21,6 +33,11 @@ const ContatoView: React.FC<ContatoViewProps> = ({ lang, onClose }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Prevent scrolling of underlying body
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,6 +77,9 @@ const ContatoView: React.FC<ContatoViewProps> = ({ lang, onClose }) => {
         message: '',
         service: ''
       });
+
+      // Auto-reset status after 5s
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
@@ -68,317 +88,384 @@ const ContatoView: React.FC<ContatoViewProps> = ({ lang, onClose }) => {
     }
   };
 
+  const contactMethods = [
+    {
+      id: 'whatsapp',
+      icon: MessageSquare,
+      title: 'WhatsApp',
+      subtitle: lang === 'EN' ? 'Fastest response' : 'Resposta mais rápida',
+      value: '+55 14 99861-8547',
+      link: 'https://wa.me/5514998618547',
+      color: '#25D366'
+    },
+    {
+      id: 'email',
+      icon: Mail,
+      title: 'Email',
+      subtitle: lang === 'EN' ? 'Formal proposals' : 'Propostas formais',
+      value: 'fernando@orientohub.com.br',
+      link: 'mailto:fernando@orientohub.com.br',
+      color: '#FFEE00'
+    },
+    {
+      id: 'linkedin',
+      icon: Linkedin,
+      title: 'LinkedIn',
+      subtitle: lang === 'EN' ? 'Professional networking' : 'Networking profissional',
+      value: '/in/fernandolsr',
+      link: 'https://linkedin.com/in/fernandolsr',
+      color: '#0077B5'
+    },
+    {
+      id: 'behance',
+      icon: () => (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z" />
+        </svg>
+      ),
+      title: 'Behance',
+      subtitle: lang === 'EN' ? 'Creative portfolio' : 'Portfólio criativo',
+      value: '/fernandoramalho1',
+      link: 'https://www.behance.net/fernandoramalho1',
+      color: '#FF5733'
+    }
+  ];
+
+  const serviceOptions = [
+    { value: 'arquitetura-cognitiva', label: lang === 'PT' ? 'Arquitetura Cognitiva' : 'Cognitive Architecture' },
+    { value: 'estrategia', label: lang === 'PT' ? 'Estratégias' : 'Strategies' },
+    { value: 'inovacao', label: lang === 'PT' ? 'Inovação' : 'Innovation' },
+    { value: 'marketing', label: lang === 'PT' ? 'Marketing' : 'Marketing' },
+    { value: 'ia', label: lang === 'PT' ? 'Inteligência Artificial' : 'Artificial Intelligence' },
+    { value: 'vibe-coding', label: 'Vibe Coding' },
+    { value: 'design', label: 'Design & Branding' },
+    { value: 'ecommerce', label: 'Ecommerce' }
+  ];
+
   return (
-    <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* Navigation */}
-      <nav className="sticky top-0 left-0 w-full z-[110] px-4 xs:px-6 py-6 xs:py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <button onClick={onClose} className="group flex items-center gap-2 xs:gap-3 xs:gap-4">
-          <div className="w-5 xs:w-6 sm:w-8 h-[1px] bg-white group-hover:w-6 xs:group-hover:w-8 sm:group-hover:w-12 transition-all duration-300" />
-          <span className="text-[7px] xs:text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em]">VOLTAR</span>
-        </button>
-        <BrandLogo size="md" />
-      </nav>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto overscroll-none"
+    >
+      {/* Top Fade Edge */}
+      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#050505] to-transparent z-[120] pointer-events-none" />
+      {/* Dynamic Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+            x: [0, 50, 0],
+            y: [0, -30, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] bg-[#65EFC1]/20 blur-[120px] rounded-full"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.02, 0.08, 0.02],
+            x: [0, -40, 0],
+            y: [0, 50, 0]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-[20%] -left-[20%] w-[60%] h-[60%] bg-[#009966]/5 blur-[120px] rounded-full"
+        />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] contrast-150 brightness-50 pointer-events-none" />
+      </div>
 
-      <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-40">
-        <header className="mb-16 md:mb-24 space-y-4 md:space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="h-[2px] w-8 md:w-12 bg-[#58B573]"></div>
-            <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.6em] text-[#58B573]">CONTATO</span>
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Navigation */}
+        <nav className="w-full px-6 py-8 md:px-12 flex justify-between items-center bg-transparent">
+          <motion.button
+            whileHover={{ x: -10 }}
+            onClick={onClose}
+            className="group flex items-center gap-4 text-white/60 hover:text-white transition-colors"
+          >
+            <div className="w-8 h-[1px] bg-current transition-all group-hover:w-12" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em]">
+              {lang === 'PT' ? 'VOLTAR' : 'BACK'}
+            </span>
+          </motion.button>
+
+          <div className="hidden sm:block">
+            <BrandLogo size="md" />
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.8]">
-            ENTRE EM <br />
-            <span className="text-[#FFEE00]">CONTATO</span>
-          </h1>
-          <p className="text-base md:text-xl lg:text-2xl text-neutral-500 max-w-2xl font-medium tracking-tight">
-            Vamos construir o próximo ecossistema de mercado juntos.
-          </p>
-        </header>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Formulário de Contato */}
-          <section className="space-y-12 mb-16">
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white">
-                Envie sua <span className="text-[#58B573]">mensagem</span>
-              </h2>
-              <p className="text-neutral-400 leading-relaxed">
-                Preencha o formulário abaixo e retornarei o mais breve possível.
-              </p>
-            </div>
+          <motion.button
+            whileHover={{ rotate: 90 }}
+            onClick={onClose}
+            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <X size={20} className="text-white" />
+          </motion.button>
+        </nav>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-2">
-                    Nome *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-neutral-900/50 border border-neutral-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-[#58B573] focus:bg-neutral-900/70 transition-colors"
-                    placeholder="Seu nome completo"
-                  />
-                </div>
+        <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 pt-12 pb-32">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-neutral-900/50 border border-neutral-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-[#58B573] focus:bg-neutral-900/70 transition-colors"
-                    placeholder="seu@email.com"
-                  />
-                </div>
+            {/* Left Content: Narrative */}
+            <div className="space-y-12">
+              <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, x: -20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-[#65EFC1]/10 border border-[#65EFC1]/30"
+                >
+                  <div className="w-2 h-2 rounded-full bg-[#65EFC1] animate-pulse" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#65EFC1]">
+                    {lang === 'PT' ? 'SISTEMAS PARA DOMINÂNCIA' : 'SYSTEMS FOR DOMINANCE'}
+                  </span>
+                </motion.div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-6xl sm:text-7xl md:text-8xl xl:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-white"
+                >
+                  VAMOS <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#65EFC1] to-[#009966]">BUILDAR</span> <br />
+                  O FUTURO.
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-lg md:text-xl text-neutral-400 max-w-lg leading-relaxed font-medium"
+                >
+                  {lang === 'PT'
+                    ? 'Transformamos visão em infraestrutura digital. Do código à estratégia, do design à IA - estamos prontos para sua ideia mais ambiciosa.'
+                    : 'We turn vision into digital infrastructure. From code to strategy, design to AI - we are ready for your most ambitious idea.'}
+                </motion.p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-neutral-300 mb-2">
-                    Empresa
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-neutral-900/50 border border-neutral-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-[#58B573] focus:bg-neutral-900/70 transition-colors"
-                    placeholder="Nome da sua empresa"
-                  />
-                </div>
+              {/* Contact Grid Card-style */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {contactMethods.map((method, idx) => {
+                  const Icon = method.icon;
+                  return (
+                    <motion.a
+                      key={method.id}
+                      href={method.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + (idx * 0.1) }}
+                      whileHover={{ y: -5, scale: 1.02 }}
+                      className="p-6 bg-white/[0.03] border border-white/10 rounded-3xl backdrop-blur-xl hover:bg-white/[0.07] hover:border-white/20 transition-all group"
+                    >
+                      <div className="flex flex-col gap-4">
+                        <div className="w-10 h-10 rounded-2xl flex items-center justify-center bg-[#050505] border border-white/10 shadow-lg group-hover:scale-110 transition-transform">
+                          <Icon size={20} style={{ color: method.color }} />
+                        </div>
+                        <div>
+                          <h3 className="text-white font-bold text-sm">{method.title}</h3>
+                          <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest mt-1">{method.subtitle}</p>
+                          <p className="text-sm text-neutral-300 mt-2 font-medium truncate">{method.value}</p>
+                        </div>
+                      </div>
+                    </motion.a>
+                  );
+                })}
+              </div>
 
-                <div className="relative">
-                  <label htmlFor="service" className="block text-sm font-medium text-neutral-300 mb-2">
-                    Serviço de Interesse
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      placeholder="Selecione um serviço"
-                      readOnly
-                      className="w-full px-4 py-3 bg-neutral-900/50 border border-neutral-800 rounded-lg text-white focus:outline-none focus:border-[#58B573] focus:bg-neutral-900/70 transition-colors cursor-pointer pr-10"
-                      onClick={(event) => {
-                        const dropdown = document.createElement('div');
-                        dropdown.className = 'absolute top-full left-0 w-full bg-neutral-900 border border-neutral-800 rounded-lg mt-1 z-50 max-h-48 overflow-y-auto';
-                        dropdown.innerHTML = `
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="">Selecione um serviço</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="arquitetura-cognitiva">Arquitetura Cognitiva</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="estrategia">Estratégias</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="inovacao">Inovação</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="marketing">Marketing</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="midia-paga">Mídia Paga</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="design">Design</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="ia">IA</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="vibe-coding">Vibe Coding</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="marcas">Marcas</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="dominio">Domínios</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="sites">Sites</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="ecommerce">Ecommerce</div>
-                          <div class="px-4 py-2 hover:bg-neutral-800 cursor-pointer text-white" data-value="outro">Outro</div>
-                        `;
-                        
-                        dropdown.addEventListener('click', (e) => {
-                          const target = e.target as HTMLElement;
-                          if (target.dataset.value) {
-                            setFormData(prev => ({ ...prev, service: target.dataset.value || '' }));
-                            document.querySelector('[name="service"]')?.setAttribute('value', target.dataset.value || '');
-                            dropdown.remove();
-                          }
-                        });
-                        
-                        // Remove dropdown when clicking outside
-                        setTimeout(() => {
-                          document.addEventListener('click', function removeDropdown(e) {
-                            if (!dropdown.contains(e.target as Node)) {
-                              dropdown.remove();
-                              document.removeEventListener('click', removeDropdown);
-                            }
-                          });
-                        }, 100);
-                        
-                        event.currentTarget.parentElement?.appendChild(dropdown);
-                      }}
-                    />
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <svg className="w-5 h-5 text-[#58B573]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
+              {/* Availability Indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="p-8 rounded-[2.5rem] bg-gradient-to-br from-neutral-900/50 to-neutral-900/10 border border-white/5 backdrop-blur-md"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex -space-x-4">
+                    <img src="/fernando.png" className="w-12 h-12 rounded-full border-2 border-[#050505] object-cover object-[center_20%]" alt="FP" />
+                    <div className="w-12 h-12 rounded-full bg-neutral-800 border-2 border-[#050505] flex items-center justify-center text-[10px] font-bold text-white">
+                      +AI
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm tracking-tight">{lang === 'PT' ? 'Fale diretamente comigo' : 'Speak directly with me'}</h4>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-[10px] text-green-500 font-black uppercase tracking-widest">Online & {lang === 'PT' ? 'Disponível' : 'Available'}</span>
                     </div>
                   </div>
                 </div>
-              </div>
+                <p className="text-xs text-neutral-500 leading-relaxed font-medium">
+                  {lang === 'PT'
+                    ? 'Respondo propostas de projetos estratégicos em até 30 minutos via WhatsApp.'
+                    : 'I respond to strategic project proposals within 30 minutes via WhatsApp.'}
+                </p>
+              </motion.div>
+            </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-2">
-                  Mensagem *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-neutral-900/50 border border-neutral-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-[#58B573] focus:bg-neutral-900/70 transition-colors resize-none"
-                  placeholder="Descreva seu projeto ou necessidade..."
-                />
-              </div>
+            {/* Right Side: High-end Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="relative"
+            >
+              {/* Decorative Frame */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#65EFC1]/10 via-transparent to-[#009966]/5 blur-3xl opacity-20 pointer-events-none" />
 
-              <div className="flex items-center justify-between">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="px-8 py-4 bg-[#58B573] text-black font-black text-sm uppercase tracking-[0.2em] hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
-                >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
-                </button>
+              <div className="relative bg-white/[0.02] border border-white/10 rounded-[3rem] p-8 md:p-12 backdrop-blur-2xl shadow-2xl">
+                <div className="mb-10 text-center lg:text-left">
+                  <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
+                    {lang === 'PT' ? 'ENVIAR BRIEFING' : 'SEND BRIEFING'}
+                  </h2>
+                  <p className="text-sm text-neutral-500 font-medium mt-2">
+                    {lang === 'PT' ? 'Campos marcados com * são essenciais.' : 'Fields marked with * are essential.'}
+                  </p>
+                </div>
 
-                {submitStatus === 'success' && (
-                  <div className="flex items-center gap-2 text-green-400">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm font-medium">Mensagem enviada com sucesso!</span>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name Input */}
+                  <div className="group space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 group-focus-within:text-[#65EFC1] transition-colors">
+                      {lang === 'PT' ? 'Nome Completo *' : 'Full Name *'}
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      placeholder={lang === 'PT' ? 'Ex: João da Silva' : 'Ex: John Doe'}
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-neutral-700 outline-none focus:border-[#65EFC1]/50 focus:bg-white/[0.05] transition-all"
+                    />
                   </div>
-                )}
 
-                {submitStatus === 'error' && (
-                  <div className="flex items-center gap-2 text-red-400">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span className="text-sm font-medium">Erro ao enviar. Tente novamente.</span>
+                  {/* Email & Service Grid */}
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div className="group space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 group-focus-within:text-[#009966] transition-colors">
+                        {lang === 'PT' ? 'Seu Melhor Email *' : 'Best Email *'}
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="contato@empresa.com"
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-neutral-700 outline-none focus:border-[#009966]/50 focus:bg-white/[0.05] transition-all"
+                      />
+                    </div>
+                    <div className="group space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 group-focus-within:text-[#65EFC1] transition-colors">
+                        {lang === 'PT' ? 'Interesse' : 'Interest'}
+                      </label>
+                      <select
+                        name="service"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-neutral-700 outline-none focus:border-[#65EFC1]/50 focus:bg-white/[0.05] transition-all appearance-none cursor-pointer"
+                      >
+                        <option value="" className="bg-[#0A0A0A]">{lang === 'PT' ? 'Selecione um serviço' : 'Select a service'}</option>
+                        {serviceOptions.map(opt => (
+                          <option key={opt.value} value={opt.value} className="bg-[#0A0A0A]">{opt.label}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
-                )}
-              </div>
-            </form>
-          </section>
 
-          {/* Informações de Contato */}
-          <section className="space-y-12">
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white">
-                Ou entre em <span className="text-[#58B573]">contato direto</span>
-              </h2>
-              <p className="text-neutral-400 leading-relaxed">
-                Prefere contato direto? Aqui estão todas as formas de me encontrar.
-              </p>
+                  {/* Message Area */}
+                  <div className="group space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 group-focus-within:text-[#009966] transition-colors">
+                      {lang === 'PT' ? 'Fale sobre o projeto *' : 'Tell about the project *'}
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={5}
+                      placeholder={lang === 'PT' ? 'Qual é seu objetivo principal?' : 'What is your main goal?'}
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-3xl px-6 py-4 text-white placeholder-neutral-700 outline-none focus:border-[#009966]/50 focus:bg-white/[0.05] transition-all resize-none"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-4">
+                    <motion.button
+                      type="submit"
+                      disabled={isSubmitting}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full relative group overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#65EFC1] to-[#009966] transition-all group-hover:scale-110" />
+                      <div className="relative px-8 py-5 flex items-center justify-center gap-3 text-black font-black uppercase tracking-[0.2em] text-xs">
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                            {lang === 'PT' ? 'ENVIANDO...' : 'SENDING...'}
+                          </>
+                        ) : (
+                          <>
+                            {lang === 'PT' ? 'ENVIAR AGORA' : 'SEND NOW'}
+                            <Send size={16} />
+                          </>
+                        )}
+                      </div>
+                    </motion.button>
+                  </div>
+
+                  {/* Status Messages */}
+                  <AnimatePresence mode="wait">
+                    {submitStatus === 'success' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="flex items-center gap-3 justify-center p-4 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-400"
+                      >
+                        <CheckCircle2 size={18} />
+                        <span className="text-xs font-bold uppercase tracking-wider">
+                          {lang === 'PT' ? 'Mensagem enviada!' : 'Message sent!'}
+                        </span>
+                      </motion.div>
+                    )}
+                    {submitStatus === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="flex items-center gap-3 justify-center p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400"
+                      >
+                        <AlertCircle size={18} />
+                        <span className="text-xs font-bold uppercase tracking-wider">
+                          {lang === 'PT' ? 'Erro no envio.' : 'Sending error.'}
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </form>
+              </div>
+            </motion.div>
+
+          </div>
+        </main>
+
+        <footer className="px-6 md:px-12 py-12 border-t border-white/5 opacity-40">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-8">
+            <div className="text-[9px] font-black uppercase tracking-[0.5em] text-neutral-500">
+              © 2025 FERNANDO RAMALHO. {lang === 'PT' ? 'TODOS OS DIREITOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
             </div>
-
-            <div className="space-y-8">
-              {/* WhatsApp */}
-              <div className="group flex items-center gap-6 p-6 bg-neutral-900/50 border border-neutral-800 rounded-lg hover:bg-neutral-900/70 transition-all">
-                <div className="w-12 h-12 bg-[#58B573]/10 rounded-full flex items-center justify-center group-hover:bg-[#58B573]/20 transition-colors">
-                  <svg className="w-6 h-6 text-[#58B573]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197 0-.395.059-.612.18-.22.122-.436.297-.647.461-.125.095-.258.199-.4.312-.312.277-.646.447-.997.447-.345 0-.673-.165-.997-.447-.244-.186-.48-.393-.707-.617-.227-.224-.454-.457-.673-.697-.248-.277-.473-.568-.675-.87-.192-.29-.347-.596-.464-.914-.117-.319-.176-.654-.176-1.005 0-.345.055-.68.165-1.005.11-.325.275-.63.494-.914.22-.285.48-.535.778-.75.298-.215.635-.388 1.01-.519.375-.13.787-.195 1.236-.195.449 0 .861.065 1.236.195.375.13.712.304 1.01.519.298.215.558.465.778.75.219.284.384.59.494.914.11.325.165.66.165 1.005 0 .351-.059.686-.176 1.005-.117.318-.272.624-.464.914-.202.302-.427.593-.675.87-.219.24-.445.473-.673.697-.227.224-.463.431-.707.617-.324.282-.652.447-.997.447-.351 0-.685-.17-.997-.447-.351-.277-.685-.547-.997-.812-.312-.265-.646-.536-.997-.812-.351-.277-.685-.547-.997-.812-.312-.265-.646-.536-.997-.812-.351-.277-.685-.547-.997-.812z"/>
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">WhatsApp</h3>
-                  <p className="text-neutral-400 text-sm">Resposta mais rápida</p>
-                  <a 
-                    href="https://wa.me/5514998618547"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#58B573] hover:text-green-400 transition-colors text-sm font-medium"
-                  >
-                    +55 14 99861-8547
-                  </a>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="group flex items-center gap-6 p-6 bg-neutral-900/50 border border-neutral-800 rounded-lg hover:bg-neutral-900/70 transition-all">
-                <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
-                  <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">Email</h3>
-                  <p className="text-neutral-400 text-sm">Para propostas formais</p>
-                  <a 
-                    href="mailto:fernando@orientohub.com.br"
-                    className="text-[#FFEE00] hover:text-yellow-300 transition-colors text-sm font-medium"
-                  >
-                    fernando@orientohub.com.br
-                  </a>
-                </div>
-              </div>
-
-              {/* LinkedIn */}
-              <div className="group flex items-center gap-6 p-6 bg-neutral-900/50 border border-neutral-800 rounded-lg hover:bg-neutral-900/70 transition-all">
-                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                  <svg className="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">LinkedIn</h3>
-                  <p className="text-neutral-400 text-sm">Networking profissional</p>
-                  <a 
-                    href="https://linkedin.com/in/fernandolsr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:text-blue-400 transition-colors text-sm font-medium"
-                  >
-                    /in/fernandolsr
-                  </a>
-                </div>
-              </div>
-
-              {/* Behance */}
-              <div className="group flex items-center gap-6 p-6 bg-neutral-900/50 border border-neutral-800 rounded-lg hover:bg-neutral-900/70 transition-all">
-                <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                  <svg className="w-6 h-6 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3h-7v-6h8c.51 0 .975-.369 1.053-.897.064-.437-.07-.936-.504-1.254-.434-.317-.918-.479-1.449-.479h-7.1v-6h6.6c3.072 0 4.659 1.703 5.101 3 .209.613.274 1.254.209 1.897z"/>
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">Behance</h3>
-                  <p className="text-neutral-400 text-sm">Portfólio criativo</p>
-                  <a 
-                    href="https://www.behance.net/fernandoramalho1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-500 hover:text-purple-400 transition-colors text-sm font-medium"
-                  >
-                    /fernandoramalho1
-                  </a>
-                </div>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] font-black uppercase tracking-[0.5em] text-neutral-500">MADE IN</span>
+              <img src="/bandeira-brasil.svg" alt="BR" className="w-5 h-3 object-contain" />
             </div>
-
-            {/* Tempo de Resposta */}
-            <div className="mt-12 p-6 bg-gradient-to-r from-[#FFEE00]/10 to-[#58B573]/10 border border-neutral-800 rounded-lg">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-2 h-2 bg-[#FFEE00] rounded-full animate-pulse"></div>
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">Tempo de resposta</span>
-              </div>
-              <p className="text-neutral-300 text-sm leading-relaxed">
-                WhatsApp: <span className="text-white font-medium">até 30 minutos</span><br/>
-                Email: <span className="text-white font-medium">até 24 horas</span><br/>
-                Redes sociais: <span className="text-white font-medium">até 48 horas</span>
-              </p>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
+          </div>
+        </footer>
+      </div>
+    </motion.div>
   );
 };
 

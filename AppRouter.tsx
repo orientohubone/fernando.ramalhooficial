@@ -416,10 +416,6 @@ const AppRouter: React.FC = () => {
         <main className={!isHomePage ? 'opacity-0 scale-95 transition-all duration-700 pointer-events-none' : 'opacity-100 scale-100 transition-all duration-700'}>
           <Hero lang={lang} />
 
-          <div className="px-6 md:px-12">
-            <div className="h-[1px] w-full bg-neutral-900"></div>
-          </div>
-
           <LogoCloud
             logos={[
               { src: "/logos/supabase.svg", alt: "Supabase" },
@@ -436,8 +432,6 @@ const AppRouter: React.FC = () => {
               { src: "/logos/firecrawl-light-wordmark.svg", alt: "Firecrawl" },
             ]}
           />
-
-          <div className="px-6 md:px-12 mb-20"></div>
 
           <RollingList lang={lang} onSelectItem={handleCapacitySelect} />
 

@@ -1,91 +1,81 @@
-
 import React, { useState } from 'react';
-import { ListItem, HighlightColor } from '../types';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ListItem } from '../types';
 import { Language, TRANSLATIONS, getCategorizedPillars } from '../constants';
+import { ArrowUpRight, Compass, Zap, Globe } from 'lucide-react';
 
-interface RollingTextItemProps {
+interface ArsenalCardProps {
   item: ListItem;
-  onHover: (item: ListItem | null) => void;
   onClick: (item: ListItem) => void;
+  index: number;
 }
 
-const RollingTextItem: React.FC<RollingTextItemProps> = ({ item, onHover, onClick }) => {
-  const colorClass = item.color === HighlightColor.YELLOW ? "text-[#FFEE00]" : "text-[#58B573]";
-  
-  // Tratamento especial para "ARQUITETURA COGNITIVA"
-  const isCognitiveArchitecture = item.title === 'ARQUITETURA COGNITIVA' || item.title === 'COGNITIVE ARCHITECTURE';
-  const displayTitle = isCognitiveArchitecture 
-    ? item.title.includes('ARQUITETURA') 
-      ? ['ARQUITETURA', 'COGNITIVA'] 
-      : ['COGNITIVE', 'ARCHITECTURE']
-    : [item.title];
+const getPillarStyle = (index: number) => {
+  switch (index) {
+    case 0: return { color: '#58B573', icon: <Compass size={18} /> }; // Visão
+    case 1: return { color: '#FFEE00', icon: <Zap size={18} /> };     // Craft
+    case 2: return { color: '#00D4FF', icon: <Globe size={18} /> };   // Mercado
+    default: return { color: '#FFFFFF', icon: <Zap size={18} /> };
+  }
+};
+
+const ArsenalCard: React.FC<ArsenalCardProps> = ({ item, onClick, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
-      onMouseEnter={() => onHover(item)}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.03, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       onClick={() => onClick(item)}
-      className="group relative w-full cursor-pointer border-b border-neutral-900/50 py-4 md:py-6 lg:py-10 overflow-visible z-10"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex flex-col py-6 cursor-pointer border-b border-white/[0.03] transition-colors duration-500"
     >
-      {/* Container fixo para o corte de overflow */}
-      <div className="relative overflow-hidden h-[45px] xs:h-[50px] sm:h-[55px] md:h-[65px] lg:h-32">
-        {/* Div que desliza - não deve ter h-full para não achatar os filhos */}
-        <div className="transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:-translate-y-1/2">
-          {/* Linha 1: Texto Branco - Altura deve casar com o pai */}
-          <div className="h-[45px] xs:h-[50px] sm:h-[55px] md:h-[65px] lg:h-32 flex items-center">
-            <div className="flex items-center gap-1 xs:gap-2 sm:gap-3 md:gap-4">
-              {isCognitiveArchitecture && (
-                <span className="px-1.5 py-0.5 text-[5px] xs:text-[6px] sm:text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] bg-[#FFEE00] text-black rounded-full">
-                  NOVO
-                </span>
-              )}
-              <h2 className="text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-none transition-all duration-500 group-hover:opacity-10 group-hover:blur-sm">
-                {isCognitiveArchitecture ? (
-                  <div className="flex flex-col leading-tight">
-                    <span className="block">{displayTitle[0]}</span>
-                    <span className="text-[#58B573]">{displayTitle[1]}</span>
-                  </div>
-                ) : (
-                  item.title
-                )}
-              </h2>
-            </div>
+      {/* Principal Row */}
+      <div className="flex items-center justify-between relative z-10">
+        <div className="flex items-center gap-4">
+          <span className="text-[10px] font-black text-neutral-800 group-hover:text-[#FFEE00] transition-colors duration-500">
+            0{item.id}
+          </span>
+          <div className="flex flex-col">
+            <h4 className="text-base md:text-lg font-black uppercase tracking-tight text-white/50 group-hover:text-white transition-all duration-500">
+              {item.title}
+            </h4>
+            <motion.span
+              initial={{ opacity: 0, x: -5 }}
+              animate={isHovered ? { opacity: 0.4, x: 0 } : { opacity: 0, x: -5 }}
+              className="text-[8px] font-black uppercase tracking-[0.4em] text-white"
+            >
+              {item.category}
+            </motion.span>
           </div>
-          {/* Linha 2: Texto Colorido - Altura deve casar com o pai */}
-          <div className="h-[45px] xs:h-[50px] sm:h-[55px] md:h-[65px] lg:h-32 flex items-center">
-            <div className="flex items-center gap-1 xs:gap-2 sm:gap-3 md:gap-4">
-              {isCognitiveArchitecture && (
-                <span className="px-1.5 py-0.5 text-[5px] xs:text-[6px] sm:text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] bg-[#58B573] text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  EXCLUSIVO
-                </span>
-              )}
-              <h2 className={`text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-6xl font-black tracking-tighter uppercase italic leading-none ${colorClass} drop-shadow-[0_0_30px_rgba(255,238,0,0.2)]`}>
-                {isCognitiveArchitecture ? (
-                  <div className="flex flex-col leading-tight">
-                    <span className="block">{displayTitle[0]}</span>
-                    <span>{displayTitle[1]}</span>
-                  </div>
-                ) : (
-                  item.title
-                )}
-              </h2>
-            </div>
-          </div>
+        </div>
+
+        <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
+          <ArrowUpRight size={16} className="text-[#FFEE00]" />
         </div>
       </div>
 
-      {/* Descrição que aparece lateralmente no desktop - sempre visível no mobile */}
-      <div className="mt-3 md:mt-0 md:absolute md:top-1/2 md:left-[60%] md:-translate-y-1/2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:group-hover:translate-x-4 max-w-sm pointer-events-none md:pointer-events-auto">
-        <p className="text-[10px] xs:text-xs sm:text-sm text-neutral-400 leading-relaxed font-bold uppercase tracking-wider">
-          {item.description}
+      {/* Thesis Expansion - Perfect Motion */}
+      <motion.div
+        initial={false}
+        animate={{
+          height: isHovered ? "auto" : 0,
+          opacity: isHovered ? 1 : 0,
+          marginTop: isHovered ? 12 : 0
+        }}
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        className="overflow-hidden"
+      >
+        <p className="text-[11px] text-neutral-500 font-medium italic uppercase tracking-wider leading-relaxed max-w-xl pb-2 border-l-2 border-[#FFEE00]/20 pl-4">
+          "{item.thesis}"
         </p>
-      </div>
-
-      <span className="absolute top-4 xs:top-5 sm:top-6 md:top-10 right-0 text-[6px] xs:text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-[0.5em] text-neutral-800 transition-all duration-500 group-hover:text-white/20">
-        {item.category}
-      </span>
-    </div>
+      </motion.div>
+    </motion.div>
   );
-}
+};
 
 interface RollingListProps {
   lang: Language;
@@ -93,50 +83,87 @@ interface RollingListProps {
 }
 
 const RollingList: React.FC<RollingListProps> = ({ lang, onSelectItem }) => {
-  const t = TRANSLATIONS[lang].capacities;
   const groups = getCategorizedPillars(lang);
-  const [hoveredItem, setHoveredItem] = useState<ListItem | null>(null);
 
   return (
-    <section id="work" className="relative px-4 xs:px-6 sm:px-8 md:px-12 py-12 xs:py-14 sm:py-16 md:py-24 lg:py-32 bg-[#050505] overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className={`absolute inset-0 transition-all duration-1000 ease-out scale-105 ${hoveredItem ? 'opacity-10' : 'opacity-0'}`}>
-          {hoveredItem && (
-            <img src={hoveredItem.src} alt="" className="w-full h-full object-cover grayscale" />
-          )}
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
+    <section className="relative bg-[#050505] pt-24 md:pt-32 lg:pt-40 pb-12 md:pb-16 lg:pb-20 overflow-hidden">
+      {/* Background System */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[150%] bg-[#58B573]/2 blur-[120px] rounded-full opacity-30" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] contrast-150 brightness-50 pointer-events-none" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto z-10">
-        <div className="flex items-center gap-3 xs:gap-4 sm:gap-5 md:gap-6 mb-12 xs:mb-14 sm:mb-16 md:mb-24">
-          <div className="h-[1.5px] xs:h-[2px] sm:h-[2px] md:h-[2px] w-6 xs:w-8 sm:w-10 md:w-12 bg-[#FFEE00]"></div>
-          <h3 className="text-[8px] xs:text-[10px] sm:text-[10px] md:text-[12px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">
-            {t.title}
-          </h3>
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12 z-10">
+        {/* Header Section */}
+        <header className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
+          <div className="space-y-6 max-w-2xl">
+            <div className="flex items-center gap-4">
+              <div className="h-[2px] w-12 bg-[#FFEE00]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">ARSENAL TÁTICO</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.8] text-white">
+              SISTEMAS DE <br />
+              <span className="text-neutral-500">DOMINÂNCIA</span>
+            </h2>
+          </div>
+
+          <div className="hidden lg:block pb-5">
+            <p className="text-[10px] text-right font-black uppercase tracking-[0.4em] text-neutral-600 leading-relaxed max-w-xs">
+              Módulos estratégicos orquestrados para converter complexidade em vantagem competitiva absoluta.
+            </p>
+          </div>
+        </header>
+
+        {/* Pillars Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
+          {groups.map((group, gIdx) => {
+            const style = getPillarStyle(gIdx);
+            return (
+              <div key={group.name} className="flex flex-col gap-10">
+                {/* Pillar Header */}
+                <div className="relative group/pillar">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div style={{ color: style.color }} className="opacity-80">
+                      {style.icon}
+                    </div>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-[9px] font-black text-white/20">0{gIdx + 1}</span>
+                      <h3 className="text-2xl font-black uppercase tracking-tighter text-white">
+                        {group.name}
+                      </h3>
+                    </div>
+                  </div>
+                  <div
+                    className="h-[1px] w-full bg-gradient-to-r transition-all duration-700"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, ${style.color}44, transparent)`
+                    }}
+                  />
+                </div>
+
+                {/* Pillar Items */}
+                <div className="flex flex-col">
+                  {group.items.map((item, iIdx) => (
+                    <ArsenalCard
+                      key={item.id}
+                      item={item}
+                      onClick={onSelectItem}
+                      index={iIdx + (gIdx * 4)}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="space-y-12 xs:space-y-14 sm:space-y-16 md:space-y-24 lg:space-y-32">
-          {groups.map((group, gIdx) => (
-            <div key={group.name} className="relative">
-              <div className="mb-4 xs:mb-5 sm:mb-6 md:mb-8 flex items-baseline justify-between border-b-2 border-neutral-900 pb-3 xs:pb-4">
-                <h4 className="text-[6px] xs:text-[8px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-[0.8em] text-neutral-600">
-                   {gIdx + 1} // {group.name}
-                </h4>
-              </div>
-              <div className="flex flex-col">
-                {group.items.map((item) => (
-                  <RollingTextItem 
-                    key={item.id} 
-                    item={item} 
-                    onHover={setHoveredItem}
-                    onClick={onSelectItem} 
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Footer Note */}
+        <footer className="mt-32 pt-10 border-t border-white/[0.03] flex justify-between items-center opacity-30">
+          <span className="text-[8px] font-black uppercase tracking-[0.5em] text-neutral-500">
+            ENGINEERED FOR SCALABLE LOGIC
+          </span>
+          <div className="h-[1px] w-32 bg-white/10 hidden md:block"></div>
+        </footer>
       </div>
     </section>
   );

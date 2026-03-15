@@ -166,7 +166,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
 
         <section className="flex justify-center items-center pt-8 border-t border-neutral-900/50">
           <div className="text-[8px] font-black uppercase tracking-[0.4em] text-neutral-600 text-center">
-            © 2024 FERNANDO RAMALHO. {lang === 'PT' ? 'TODOS OS DIREITOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
+            © 2025 FERNANDO RAMALHO. {lang === 'PT' ? 'TODOS OS DIREITOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
           </div>
         </section>
 

@@ -1,8 +1,9 @@
-
 import React, { useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Language, TRANSLATIONS } from '../constants';
 import BrandLogo from './BrandLogo';
 import ProfileImage from './ProfileImage';
+import { ArrowRight, Quote, Zap, Target, Award, Globe, MessageSquare, Briefcase } from 'lucide-react';
 
 interface AboutViewProps {
   lang: Language;
@@ -12,182 +13,263 @@ interface AboutViewProps {
 const AboutView: React.FC<AboutViewProps> = ({ lang, onClose }) => {
   const t = TRANSLATIONS[lang].about;
   const nav = TRANSLATIONS[lang].nav;
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <nav className="sticky top-0 left-0 w-full z-[110] px-4 xs:px-6 py-6 xs:py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <button onClick={onClose} className="group flex items-center gap-2 xs:gap-3 xs:gap-4">
-          <div className="w-5 xs:w-6 sm:w-8 h-[1px] bg-white group-hover:w-6 xs:group-hover:w-8 sm:group-hover:w-12 transition-all duration-300" />
-          <span className="text-[7px] xs:text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em]">{nav.back}</span>
-        </button>
-        <BrandLogo size="md" />
-      </nav>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto overscroll-none"
+    >
+      {/* Top Fade Edge */}
+      <div className="fixed top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#050505] to-transparent z-[120] pointer-events-none" />
 
-      <main className="max-w-7xl mx-auto px-4 xs:px-6 md:px-12 pt-16 xs:pt-20 pb-32 xs:pb-40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xs:gap-16 lg:gap-24">
-          
-          {/* Photo Column */}
-          <div className="lg:col-span-5 relative">
-            <div className="sticky top-20 xs:top-32 md:top-40">
-              <ProfileImage className="aspect-[3/4] rounded-sm border border-neutral-900" />
-              
-              <div className="mt-8 xs:mt-12 grid grid-cols-1 gap-3 xs:gap-4">
-                {t.stats.map((stat, i) => (
-                  <div key={i} className="flex justify-between items-end border-b border-neutral-900 pb-2 xs:pb-3">
-                    <span className="text-[8px] xs:text-[9px] font-black uppercase tracking-[0.4em] text-neutral-700">{stat.label}</span>
-                    <span className="text-[10px] xs:text-xs font-black tracking-widest text-neutral-400">{stat.value}</span>
+      {/* Background Subtle Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#FFEE00]/5 blur-[120px] rounded-full opacity-50" />
+        <div className="absolute bottom-[20%] left-[-5%] w-[30%] h-[30%] bg-[#FFEE00]/3 blur-[100px] rounded-full opacity-30" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] contrast-150 brightness-50 pointer-events-none" />
+      </div>
+
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Navigation */}
+        <nav className="w-full px-6 py-6 md:px-12 flex justify-between items-center bg-transparent shrink-0">
+          <button
+            onClick={onClose}
+            className="group flex items-center gap-4 text-white/60 hover:text-white transition-colors"
+          >
+            <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em]">{nav.back}</span>
+          </button>
+          <BrandLogo size="md" />
+        </nav>
+
+        <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 pt-8 pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+            {/* Left Column: Image & Status */}
+            <div className="lg:col-span-5 space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="relative group"
+              >
+                <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/50 p-2">
+                  <ProfileImage className="w-full aspect-[4/5] rounded-xl object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                </div>
+
+                {/* Status Badge */}
+                <div className="mt-6 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 space-y-4">
+                  {t.stats.map((stat, i) => (
+                    <div key={i} className="flex justify-between items-center">
+                      <span className="text-[8px] font-black uppercase tracking-[0.3em] text-neutral-500">{stat.label}</span>
+                      <span className="text-[10px] font-black tracking-widest text-[#FFEE00] uppercase font-bold">{stat.value}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tech Stack Panel */}
+                <div className="mt-6 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 space-y-6">
+                  <div className="flex items-center gap-3">
+                    <Briefcase size={12} className="text-[#FFEE00]" />
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white">STACK TECNOLÓGICA</span>
+                  </div>
+
+                  <div className="grid grid-cols-4 gap-4">
+                    {[
+                      { src: "/logos/supabase.svg", alt: "Supabase" },
+                      { src: "/logos/vercel.svg", alt: "Vercel" },
+                      { src: "/logos/openai.svg", alt: "OpenAI" },
+                      { src: "/logos/claude.svg", alt: "Claude" },
+                      { src: "/logos/windsurf.svg", alt: "Windsurf" },
+                      { src: "/logos/cursor.svg", alt: "Cursor" },
+                      { src: "/logos/replit.svg", alt: "Replit" },
+                      { src: "/logos/github.svg", alt: "GitHub" },
+                      { src: "/logos/vscode.svg", alt: "VSCode" },
+                      { src: "/logos/netlify.svg", alt: "Netlify" },
+                      { src: "/logos/neon.svg", alt: "NeonDB" },
+                      { src: "/logos/firecrawl-light-wordmark.svg", alt: "Firecrawl" },
+                    ].map((logo, i) => (
+                      <div
+                        key={i}
+                        className="aspect-square rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2.5 group/logo hover:border-[#FFEE00]/30 hover:bg-white/10 transition-all"
+                        title={logo.alt}
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="w-full h-full object-contain opacity-50 grayscale brightness-[2] group-hover/logo:opacity-100 group-hover/logo:grayscale-0 group-hover/logo:brightness-100 transition-all duration-500"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-2 border-t border-white/5">
+                    <p className="text-[10px] text-neutral-500 font-medium leading-relaxed italic">
+                      "Infraestrutura baseada em agentes autônomos e arquiteturas distribuídas."
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Narrative */}
+            <div className="lg:col-span-7 space-y-16">
+
+              {/* Header */}
+              <header className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-[2px] w-12 bg-[#FFEE00]" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">BIO CORPORATIVA</span>
+                </div>
+
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-black leading-[0.8] tracking-tighter uppercase text-white">
+                  {t.title.split(' ')[0]} <br />
+                  <span className="text-[#FFEE00]">{t.title.split(' ').slice(1).join(' ')}</span>
+                </h1>
+
+                <p className="text-lg md:text-xl text-neutral-400 font-medium leading-relaxed max-w-xl">
+                  {t.subtitle}
+                </p>
+              </header>
+
+              {/* Manifesto Section (Restored Pillars) */}
+              <section className="p-8 md:p-12 rounded-3xl bg-neutral-900/30 border border-neutral-800/50 relative overflow-hidden group">
+                <Quote className="absolute -top-4 -right-4 w-32 h-32 text-white/[0.02] group-hover:text-[#FFEE00]/[0.05] transition-colors" />
+
+                <div className="relative space-y-12">
+                  <div className="flex items-center gap-3">
+                    <Target size={14} className="text-[#FFEE00]" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">MANIFESTO ESTRATÉGICO</span>
+                  </div>
+
+                  <div className="grid gap-12">
+                    {/* Strategy */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <Zap size={14} className="text-[#FFEE00]" />
+                        <span className="text-xs font-black uppercase tracking-[0.2em] text-white">ESTRATÉGIA</span>
+                      </div>
+                      <p className="text-lg md:text-xl text-neutral-200 font-medium leading-relaxed">
+                        Não é sobre prever o futuro, mas sobre arquitetar a lógica que o torna inevitável.
+                      </p>
+                    </div>
+
+                    {/* Complexity */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <Briefcase size={14} className="text-[#FFEE00]" />
+                        <span className="text-xs font-black uppercase tracking-[0.2em] text-white">COMPLEXIDADE</span>
+                      </div>
+                      <p className="text-lg md:text-xl text-neutral-200 font-medium leading-relaxed">
+                        Traduzo em clareza absoluta, desenhando sistemas onde cada peça tem propósito.
+                      </p>
+                    </div>
+
+                    {/* Innovation */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <Award size={14} className="text-[#FFEE00]" />
+                        <span className="text-xs font-black uppercase tracking-[0.2em] text-white">INOVAÇÃO</span>
+                      </div>
+                      <p className="text-lg md:text-xl text-neutral-200 font-medium leading-relaxed">
+                        Deixa de ser uma aposta para se tornar o núcleo de uma vantagem competitiva implacável.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Metrics (Restored original values) */}
+              <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { val: '+5M', label: 'Alcance Gerado' },
+                  { val: '+R$1M', label: 'Receita Gerada' },
+                  { val: '+50', label: 'Marcas Impactadas' }
+                ].map((item, i) => (
+                  <div key={i} className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 text-center">
+                    <div className="text-3xl font-black text-white">{item.val}</div>
+                    <div className="text-[8px] font-black uppercase tracking-widest text-neutral-500 mt-1">{item.label}</div>
                   </div>
                 ))}
+              </section>
+
+              {/* Bio Text */}
+              <section className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-[1px] w-8 bg-neutral-800" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.4em] text-neutral-500">RESUMO EXECUTIVO</span>
+                </div>
+                <p className="text-lg md:text-xl text-neutral-400 font-medium leading-[1.6]">
+                  {t.bio}
+                </p>
+              </section>
+
+              {/* Ventures & Contact (Restored Behance) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                <a
+                  href="https://orientohub.com.br/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-[#FFEE00]/30 transition-all group"
+                >
+                  <Globe size={20} className="text-[#FFEE00] mb-4" />
+                  <p className="text-xs font-black uppercase tracking-widest text-[#FFEE00] mb-1">Empresa</p>
+                  <h4 className="text-lg font-black text-white uppercase group-hover:translate-x-1 transition-transform">Orientohub</h4>
+                </a>
+
+                <a
+                  href="https://www.behance.net/fernandoramalho1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-[#FFEE00]/30 transition-all group"
+                >
+                  <Briefcase size={20} className="text-[#FFEE00] mb-4" />
+                  <p className="text-xs font-black uppercase tracking-widest text-[#FFEE00] mb-1">Portfólio</p>
+                  <h4 className="text-lg font-black text-white uppercase group-hover:translate-x-1 transition-transform">Behance</h4>
+                </a>
               </div>
+
+              {/* Contact Button */}
+              <div className="pt-4">
+                <a
+                  href="mailto:fernando@orientohub.com.br"
+                  className="w-full p-6 rounded-2xl bg-[#FFEE00] border border-[#FFEE00] hover:bg-white hover:border-white transition-all group flex items-center justify-between"
+                >
+                  <div className="flex flex-col">
+                    <p className="text-xs font-black uppercase tracking-widest text-black/60 mb-1">Contato Direto</p>
+                    <h4 className="text-lg md:text-xl font-black text-black uppercase">Falar com Fernando</h4>
+                  </div>
+                  <MessageSquare size={24} className="text-black" />
+                </a>
+              </div>
+
             </div>
           </div>
+        </main>
 
-          {/* Text Column */}
-          <div className="lg:col-span-7 space-y-16 xs:space-y-20 md:space-y-24">
-            <header className="space-y-6 xs:space-y-8">
-              <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-8xl font-black leading-[0.85] tracking-tighter uppercase">
-                {t.title.split(' ')[0]} <br />
-                <span className="text-[#FFEE00]">{t.title.split(' ')[1] || ''}</span>
-              </h1>
-              
-              <div className="flex flex-wrap gap-1.5 xs:gap-2">
-                {(t as any).mantras?.map((m: string, i: number) => (
-                  <span key={i} className="px-3 xs:px-4 py-1 border border-neutral-800 text-neutral-500 text-[8px] xs:text-[10px] font-black uppercase tracking-[0.3em] rounded-full">
-                    {m}
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-medium text-neutral-400 max-w-2xl pt-3 xs:pt-4 leading-relaxed italic">
-                {t.subtitle}
-              </p>
-            </header>
-
-            <section className="space-y-8 xs:space-y-10 sm:space-y-12 relative">
-              <div className="absolute -top-8 xs:-top-12 -left-8 xs:-left-12 text-[#FFEE00] opacity-10 text-[8rem] xs:text-[12rem] font-black pointer-events-none">"</div>
-              <div className="flex items-center gap-3 xs:gap-4">
-                <div className="h-[1px] w-8 xs:w-12 bg-[#FFEE00]"></div>
-                <h3 className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">Manifesto</h3>
-              </div>
-              
-              <div className="space-y-6 xs:space-y-8">
-                {/* Palavra-chave 1 */}
-                <div className="space-y-2 xs:space-y-3">
-                  <span className="inline-block px-3 xs:px-4 py-1.5 xs:py-2 bg-[#FFEE00] text-black text-xs xs:text-sm font-black uppercase tracking-wider">
-                    {lang === 'PT' ? 'ESTRATÉGIA' : 'STRATEGY'}
-                  </span>
-                  <p className="text-base xs:text-lg sm:text-xl text-neutral-400 leading-relaxed pl-0 xs:pl-1">
-                    {lang === 'PT' 
-                      ? 'Não é sobre prever o futuro, mas sobre arquitetar a lógica que o torna inevitável.'
-                      : 'Is not about predicting the future, but about architecting the logic that makes it inevitable.'}
-                  </p>
-                </div>
-
-                {/* Palavra-chave 2 */}
-                <div className="space-y-2 xs:space-y-3">
-                  <span className="inline-block px-3 xs:px-4 py-1.5 xs:py-2 bg-[#FFEE00] text-black text-xs xs:text-sm font-black uppercase tracking-wider">
-                    {lang === 'PT' ? 'COMPLEXIDADE' : 'COMPLEXITY'}
-                  </span>
-                  <p className="text-base xs:text-lg sm:text-xl text-neutral-400 leading-relaxed pl-0 xs:pl-1">
-                    {lang === 'PT' 
-                      ? 'Traduzo em clareza absoluta, desenhando sistemas onde cada peça tem propósito.'
-                      : 'I translate into absolute clarity, designing systems where every piece has purpose.'}
-                  </p>
-                </div>
-
-                {/* Palavra-chave 3 */}
-                <div className="space-y-2 xs:space-y-3">
-                  <span className="inline-block px-3 xs:px-4 py-1.5 xs:py-2 bg-[#FFEE00] text-black text-xs xs:text-sm font-black uppercase tracking-wider">
-                    {lang === 'PT' ? 'INOVAÇÃO' : 'INNOVATION'}
-                  </span>
-                  <p className="text-base xs:text-lg sm:text-xl text-neutral-400 leading-relaxed pl-0 xs:pl-1">
-                    {lang === 'PT' 
-                      ? 'Deixa de ser uma aposta para se tornar o núcleo de uma vantagem competitiva implacável.'
-                      : 'Becomes the core of an implacable competitive advantage, not a gamble.'}
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section className="space-y-8 xs:space-y-10 sm:space-y-12">
-              <div className="flex items-center gap-3 xs:gap-4">
-                <div className="h-[1px] w-8 xs:w-12 bg-[#58B573]"></div>
-                <h3 className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.5em] text-[#58B573]">Números que Falam por Si</h3>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 xs:gap-8">
-                <div className="text-center space-y-3 xs:space-y-4">
-                  <div className="text-4xl xs:text-5xl sm:text-6xl font-black text-[#58B573] leading-none">+5M</div>
-                  <div className="text-xs xs:text-sm font-black uppercase tracking-[0.3em] text-neutral-500">Alcance Gerado</div>
-                </div>
-                
-                <div className="text-center space-y-3 xs:space-y-4">
-                  <div className="text-4xl xs:text-5xl sm:text-6xl font-black text-[#FFEE00] leading-none">+R$1M</div>
-                  <div className="text-xs xs:text-sm font-black uppercase tracking-[0.3em] text-neutral-500">Receita Gerada</div>
-                </div>
-                
-                <div className="text-center space-y-3 xs:space-y-4">
-                  <div className="text-4xl xs:text-5xl sm:text-6xl font-black text-[#FF6B6B] leading-none">+50</div>
-                  <div className="text-xs xs:text-sm font-black uppercase tracking-[0.3em] text-neutral-500">Marcas Impactadas</div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 xs:gap-8 pt-6 xs:pt-8 border-t border-neutral-900">
-                <div className="flex items-center gap-2 xs:gap-3">
-                  <div className="text-2xl xs:text-3xl sm:text-4xl font-black text-[#58B573] leading-none">+R$100K</div>
-                  <div className="text-xs xs:text-sm font-black uppercase tracking-[0.3em] text-neutral-500">em Ads Investidos</div>
-                </div>
-                
-                <div className="hidden sm:block w-[1px] h-6 xs:h-8 bg-neutral-900"></div>
-                
-                <div className="flex items-center gap-2 xs:gap-3">
-                  <div className="text-xs xs:text-sm font-black uppercase tracking-[0.3em] text-[#58B573]">Especialista em</div>
-                  <div className="text-lg xs:text-xl sm:text-2xl font-black text-white">SaaS</div>
-                </div>
-              </div>
-            </section>
-
-            <section className="space-y-6 xs:space-y-8">
-              <h3 className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.5em] text-neutral-700 border-b border-neutral-900 pb-3 xs:pb-4">BIOGRAFIA</h3>
-              <div className="text-neutral-400 leading-relaxed text-lg xs:text-xl md:text-2xl font-medium max-w-2xl space-y-8 xs:space-y-12 italic">
-                <p>{t.bio}</p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 xs:gap-12">
-                  <div className="space-y-4 xs:space-y-6">
-                    <h4 className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.5em] text-neutral-600">{(t as any).ventureTitle}</h4>
-                    <a href="https://orientohub.com.br/" target="_blank" rel="noopener noreferrer" className="group flex flex-col gap-2">
-                      <span className="text-3xl xs:text-4xl sm:text-5xl font-black uppercase tracking-tighter text-white group-hover:text-[#FFEE00] transition-colors leading-none">Orientohub</span>
-                      <span className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.4em] text-neutral-700 group-hover:text-white transition-colors">Founder & Strategist</span>
-                    </a>
-                  </div>
-
-                  <div className="space-y-4 xs:space-y-6">
-                    <h4 className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.5em] text-[#58B573]">{(t as any).creativeTitle}</h4>
-                    <a href="https://www.behance.net/fernandoramalho1" target="_blank" rel="noopener noreferrer" className="group flex flex-col gap-2">
-                      <span className="text-3xl xs:text-4xl sm:text-5xl font-black uppercase tracking-tighter text-white group-hover:text-[#58B573] transition-colors leading-none">Behance</span>
-                      <span className="text-[8px] xs:text-[10px] font-black uppercase tracking-[0.4em] text-neutral-700 group-hover:text-white transition-colors">Case Studies & Craft</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section className="pt-16 xs:pt-20 sm:pt-24 border-t border-neutral-900">
-               <a href="mailto:fernando@orientohub.com.br" className="group block break-words">
-                 <span className="block text-[8px] xs:text-[10px] font-black uppercase tracking-[0.6em] text-neutral-700 mb-3 xs:mb-4 group-hover:text-[#FFEE00] transition-colors">CONTATO DIRETO</span>
-                 <span className="text-lg xs:text-xl sm:text-2xl md:text-4xl font-black border-b-2 border-[#FFEE00] pb-1 xs:pb-2 group-hover:bg-[#FFEE00] group-hover:text-black transition-all inline-block uppercase tracking-tighter break-words">
-                   fernando@orientohub.com.br
-                 </span>
-               </a>
-            </section>
+        <footer className="px-6 md:px-12 py-8 border-t border-white/5 opacity-40 shrink-0 mt-auto">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div className="text-[8px] font-black uppercase tracking-[0.5em] text-neutral-500 text-center sm:text-left">
+              © 2025 FERNANDO RAMALHO. {lang === 'PT' ? 'TODOS OS DIREITOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[8px] font-black uppercase tracking-[0.5em] text-neutral-500">POWERED BY</span>
+              <div className="w-1 h-1 rounded-full bg-[#FFEE00]" />
+              <span className="text-[8px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">STRATEGY</span>
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </footer>
+      </div>
+    </motion.div>
   );
 };
 

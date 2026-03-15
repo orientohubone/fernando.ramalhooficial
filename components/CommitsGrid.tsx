@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 
 // Helper function para combinar classes
 export const cn = (...classes: (string | undefined | null | false)[]): string => {
@@ -81,13 +82,41 @@ export const CommitsGrid: React.FC<CommitsGridProps> = ({ text, className = '' }
     return flashColors[randomIndex];
   };
 
-  const getRandomDelay = () => `${(Math.random() * 0.6).toFixed(1)}s`;
+  const getRandomDelay = () => Math.random() * 0.5;
   const getRandomFlash = () => +(Math.random() < 0.3);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.001,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cellVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0,
+      backgroundColor: "#050505"
+    },
+    visible: (isHighlighted: boolean) => ({
+      opacity: isHighlighted ? 1 : 0.05,
+      scale: 1,
+      backgroundColor: isHighlighted ? "#00FF41" : "#111",
+      transition: {
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    })
+  };
 
   return (
     <section
       className={cn(
-        "w-full max-w-xl bg-[#050505] border border-neutral-900 grid p-3 gap-1 rounded-[15px] relative",
+        "w-full max-w-2xl bg-[#050505] border border-neutral-900 grid p-3 gap-0.5 md:gap-1 rounded-[15px] relative overflow-hidden",
         className
       )}
       style={{
@@ -96,43 +125,41 @@ export const CommitsGrid: React.FC<CommitsGridProps> = ({ text, className = '' }
       }}
     >
       {/* Neon border beam effect */}
-      <div className="absolute inset-0 rounded-[15px]">
+      <div className="absolute inset-0 rounded-[15px] pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px">
           <div className="w-full h-full bg-gradient-to-r from-transparent via-[#58B573] to-transparent opacity-80 animate-pulse shadow-[0_0_15px_rgba(88,181,115,0.8)]"></div>
         </div>
         <div className="absolute inset-x-0 bottom-0 h-px">
           <div className="w-full h-full bg-gradient-to-r from-transparent via-[#58B573] to-transparent opacity-80 animate-pulse shadow-[0_0_15px_rgba(88,181,115,0.8)]"></div>
         </div>
-        <div className="absolute inset-y-0 left-0 w-px">
-          <div className="w-full h-full bg-gradient-to-b from-transparent via-[#58B573] to-transparent opacity-60 animate-pulse shadow-[0_0_10px_rgba(88,181,115,0.5)]"></div>
-        </div>
-        <div className="absolute inset-y-0 right-0 w-px">
-          <div className="w-full h-full bg-gradient-to-b from-transparent via-[#58B573] to-transparent opacity-60 animate-pulse shadow-[0_0_10px_rgba(88,181,115,0.5)]"></div>
-        </div>
       </div>
+
       {Array.from({ length: gridWidth * gridHeight }).map((_, index) => {
         const isHighlighted = highlightedCells.includes(index);
-        const shouldFlash = !isHighlighted && getRandomFlash();
 
         return (
-          <div
+          <motion.div
             key={index}
+            initial={isHighlighted ? { opacity: 0, scale: 0, backgroundColor: "#050505" } : { opacity: 0.05 }}
+            whileInView={isHighlighted ? {
+              opacity: 1,
+              scale: 1,
+              backgroundColor: "#00FF41",
+            } : { opacity: 0.05 }}
+            viewport={{ once: true }}
+            transition={isHighlighted ? {
+              duration: 0.5,
+              delay: 0.2 + (Math.random() * 1.5), // Staggered reveal for digital effect
+              ease: "easeOut"
+            } : { duration: 0 }}
             className={cn(
-              `border border-neutral-900 h-full w-full aspect-square rounded-[3px]`,
-              !isHighlighted && !shouldFlash ? "bg-[#050505]" : ""
+              "h-full w-full aspect-square rounded-[1px] md:rounded-[2px]",
+              isHighlighted ? "border-none" : "border border-neutral-900/30 bg-[#111]"
             )}
             style={{
-              animationDelay: getRandomDelay(),
-              "--highlight": shouldFlash ? getRandomFlashColor() : getRandomColor(),
               ...(isHighlighted && {
-                backgroundColor: "#00FF41",
-                opacity: 1,
-                boxShadow: '0 0 20px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 65, 0.4)',
-                border: '1px solid rgba(0, 255, 65, 0.5)',
-              }),
-              ...(shouldFlash && {
-                backgroundColor: getRandomFlashColor(),
-                opacity: 0.15,
+                boxShadow: '0 0 15px rgba(0, 255, 65, 0.4)',
+                zIndex: 1
               }),
             } as React.CSSProperties}
           />

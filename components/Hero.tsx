@@ -61,14 +61,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   ];
 
   return (
-    <section className="relative w-full bg-[#050505] overflow-hidden min-h-[95vh] flex flex-col pt-24 md:pt-24">
+    <section className="relative w-full bg-[#050505] min-h-[95vh] flex flex-col pt-24 md:pt-24">
       {/* Container Principal Hero */}
       <div className="flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 pb-16 md:pb-24 mt-2 md:mt-4 flex flex-col lg:flex-row gap-16 lg:gap-0 items-center relative z-10">
 
         {/* Left Column: Concentric Circles + Titles */}
         <div className="relative flex flex-col justify-center items-center lg:items-start w-full lg:w-[45%] lg:min-h-[500px]">
           {/* Concentric Circles Background SVG */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-[150%] aspect-square pointer-events-none z-0">
+          <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-[160%] aspect-square pointer-events-none z-0">
             <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">

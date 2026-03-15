@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Language, TRANSLATIONS, getFrameworks } from '../constants';
 import BrandLogo from './BrandLogo';
+import { Terminal, Database, Cpu, Zap, ArrowRight, Layers } from 'lucide-react';
 
 interface FrameworksViewProps {
     lang: Language;
@@ -11,9 +13,14 @@ interface FrameworksViewProps {
 const FrameworksView: React.FC<FrameworksViewProps> = ({ lang, onClose }) => {
     const navigate = useNavigate();
     const t = TRANSLATIONS[lang] as any;
+    const nav = TRANSLATIONS[lang].nav;
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, []);
 
     const createSlug = (text: string): string => {
@@ -40,155 +47,154 @@ const FrameworksView: React.FC<FrameworksViewProps> = ({ lang, onClose }) => {
         }
     };
 
+    const frameworks = [
+        {
+            key: 'vibeArc',
+            color: '#FFEE00',
+            icon: <Cpu size={24} />,
+            data: t.frameworks.vibeArc
+        },
+        {
+            key: 'backend',
+            color: '#3B82F6',
+            icon: <Database size={24} />,
+            data: t.frameworks.backend
+        },
+        {
+            key: 'apiInt',
+            color: '#58B573',
+            icon: <Terminal size={24} />,
+            data: t.frameworks.apiInt
+        },
+        {
+            key: 'deploy',
+            color: '#FFEE00',
+            icon: <Zap size={24} />,
+            data: t.frameworks.deploy
+        }
+    ];
+
     return (
-        <section className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-700" aria-label="Frameworks Proprietários">
-            {/* Navigation */}
-            <nav className="sticky top-0 left-0 w-full z-[110] px-4 xs:px-6 py-6 xs:py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-                <button onClick={onClose} className="group flex items-center gap-2 xs:gap-3 xs:gap-4">
-                    <div className="w-5 xs:w-6 sm:w-8 h-[1px] bg-white group-hover:w-6 xs:group-hover:w-8 sm:group-hover:w-12 transition-all duration-300" aria-hidden="true" />
-                    <span className="text-[7px] xs:text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em]">VOLTAR</span>
-                </button>
-                <BrandLogo size="md" />
-            </nav>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-[#050505] overflow-y-auto overscroll-none"
+        >
+            {/* Top Fade Edge */}
+            <div className="fixed top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#050505] to-transparent z-[120] pointer-events-none" />
 
-            <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-40" role="main">
-                <header className="mb-16 md:mb-24 space-y-4 md:space-y-6">
-                    <div className="flex items-center gap-4">
-                        <div className="h-[2px] w-8 md:w-12 bg-[#FFEE00]" aria-hidden="true"></div>
-                        <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.6em] text-[#FFEE00]">FRAMEWORKS</span>
-                    </div>
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.8]">
-                        SISTEMAS <br />
-                        <span className="text-[#FFEE00]">PROPRIETÁRIOS</span>
-                    </h1>
-                    <p className="text-base md:text-xl lg:text-2xl text-neutral-500 max-w-2xl font-medium tracking-tight">
-                        Metodologias exclusivas de building IA e engenharia cognitiva para escala exponencial.
-                    </p>
-                </header>
+            {/* Background Subtle Elements */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#FFEE00]/5 blur-[120px] rounded-full opacity-50" />
+                <div className="absolute bottom-[20%] left-[-10%] w-[30%] h-[30%] bg-[#FFEE00]/3 blur-[100px] rounded-full opacity-30" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] contrast-150 brightness-50 pointer-events-none" />
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {/* VIBE ARC BUILDER */}
-                    <div
-                        onClick={() => handleFrameworkClick('vibeArc')}
-                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
+            <div className="relative z-10 min-h-screen flex flex-col">
+                {/* Navigation */}
+                <nav className="w-full px-6 py-6 md:px-12 flex justify-between items-center bg-transparent shrink-0">
+                    <button
+                        onClick={onClose}
+                        className="group flex items-center gap-4 text-white/60 hover:text-white transition-colors"
                     >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
-                                <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-white group-hover:text-[#FFEE00] transition-colors">{t.frameworks.vibeArc.title}</h3>
-                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.vibeArc.category}</p>
-                            </div>
+                        <div className="w-8 h-[1px] bg-white group-hover:w-12 transition-all" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">{nav.back}</span>
+                    </button>
+                    <BrandLogo size="md" />
+                </nav>
+
+                <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 pt-8 pb-32">
+                    {/* Header */}
+                    <header className="max-w-4xl mb-24 space-y-8">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[2px] w-12 bg-[#58B573]" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#58B573]">ENGENHARIA ESTRUTURAL</span>
                         </div>
-                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                            {t.frameworks.vibeArc.desc}
+
+                        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black leading-[0.8] tracking-tighter uppercase text-white">
+                            SISTEMAS <br />
+                            <span className="text-[#FFEE00]">PROPRIETÁRIOS</span>
+                        </h1>
+
+                        <p className="text-xl md:text-2xl text-neutral-400 font-medium leading-relaxed max-w-3xl">
+                            Metodologias exclusivas de building IA e engenharia cognitiva para escala exponencial e automação de alta performance.
                         </p>
-                        <div className="text-xs text-neutral-500 italic">
-                            "{t.frameworks.vibeArc.thesis}"
-                        </div>
-                        <div className="mt-4 flex items-center gap-2 text-[#FFEE00] text-[10px] font-black uppercase tracking-wider">
-                            EXPLORAR
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </div>
+                    </header>
+
+                    {/* Grid de Frameworks */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {frameworks.map((fw, index) => (
+                            <motion.div
+                                key={fw.key}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                onClick={() => handleFrameworkClick(fw.key)}
+                                className="group cursor-pointer p-7 rounded-[2rem] bg-black/60 border border-white/5 transition-all duration-500 relative overflow-hidden flex flex-col gap-6 hover:bg-black/80 h-full"
+                                onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${fw.color}4D`)}
+                                onMouseLeave={(e) => (e.currentTarget.style.borderColor = '')}
+                            >
+                                {/* Header do Card */}
+                                <div className="flex justify-between items-start">
+                                    <div
+                                        className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110"
+                                        style={{ backgroundColor: `${fw.color}1A`, color: fw.color }}
+                                    >
+                                        {React.cloneElement(fw.icon as React.ReactElement, { size: 20 })}
+                                    </div>
+                                    <div className="flex flex-col items-end">
+                                        <span className="text-[8px] font-black uppercase tracking-[0.3em] text-neutral-500">{fw.data.category}</span>
+                                    </div>
+                                </div>
+
+                                {/* Conteúdo */}
+                                <div className="space-y-3">
+                                    <h3 className="text-lg font-black uppercase tracking-tight text-white transition-colors leading-tight">
+                                        {fw.data.title}
+                                    </h3>
+                                    <p className="text-xs text-neutral-400 font-medium leading-relaxed">
+                                        {fw.data.desc}
+                                    </p>
+                                </div>
+
+                                {/* Tese e Footer */}
+                                <div className="mt-auto space-y-4">
+                                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] italic">
+                                        <p className="text-[10px] text-neutral-500 leading-relaxed">
+                                            "{fw.data.thesis}"
+                                        </p>
+                                    </div>
+
+                                    <div className="flex items-center gap-2 transition-transform group-hover:translate-x-1">
+                                        <div
+                                            className="text-[8px] font-black uppercase tracking-[0.3em]"
+                                            style={{ color: fw.color }}
+                                        >
+                                            EXPLORAR
+                                        </div>
+                                        <ArrowRight size={10} style={{ color: fw.color }} />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
 
-                    {/* BACKEND SCALE STRATEGY */}
-                    <div
-                        onClick={() => handleFrameworkClick('backend')}
-                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
-                    >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-[#00D9FF]/10 rounded-full flex items-center justify-center group-hover:bg-[#00D9FF]/20 transition-colors">
-                                <svg className="w-6 h-6 text-[#00D9FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V7M4 7h16M10 11v6m4-6v6" />
-                                </svg>
+                    {/* Closing Section */}
+                    <footer className="mt-40 pt-20 border-t border-white/5 opacity-40">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-8">
+                            <div className="text-[9px] font-black uppercase tracking-[0.5em] text-neutral-500">
+                                © 2025 FERNANDO RAMALHO. PROPRIETARY FRAMEWORKS & AI ARCO.
                             </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-white group-hover:text-[#00D9FF] transition-colors">{t.frameworks.backend.title}</h3>
-                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.backend.category}</p>
+                            <div className="flex items-center gap-4">
+                                <span className="text-[9px] font-black uppercase tracking-[0.5em] text-[#FFEE00]">SYSTEMS OVER TACTICS</span>
                             </div>
                         </div>
-                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                            {t.frameworks.backend.desc}
-                        </p>
-                        <div className="text-xs text-neutral-500 italic">
-                            "{t.frameworks.backend.thesis}"
-                        </div>
-                        <div className="mt-4 flex items-center gap-2 text-[#00D9FF] text-[10px] font-black uppercase tracking-wider">
-                            EXPLORAR
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    {/* API INTEGRATION INTELLIGENCE */}
-                    <div
-                        onClick={() => handleFrameworkClick('apiInt')}
-                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
-                    >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-[#58B573]/10 rounded-full flex items-center justify-center group-hover:bg-[#58B573]/20 transition-colors">
-                                <svg className="w-6 h-6 text-[#58B573]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-white group-hover:text-[#58B573] transition-colors">{t.frameworks.apiInt.title}</h3>
-                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.apiInt.category}</p>
-                            </div>
-                        </div>
-                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                            {t.frameworks.apiInt.desc}
-                        </p>
-                        <div className="text-xs text-neutral-500 italic">
-                            "{t.frameworks.apiInt.thesis}"
-                        </div>
-                        <div className="mt-4 flex items-center gap-2 text-[#58B573] text-[10px] font-black uppercase tracking-wider">
-                            EXPLORAR
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    {/* DEPLOY AUTOMATION */}
-                    <div
-                        onClick={() => handleFrameworkClick('deploy')}
-                        className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 rounded-lg p-8 hover:bg-neutral-900/70 transition-all duration-300"
-                    >
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-[#FFEE00]/10 rounded-full flex items-center justify-center group-hover:bg-[#FFEE00]/20 transition-colors">
-                                <svg className="w-6 h-6 text-[#FFEE00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-white group-hover:text-[#FFEE00] transition-colors">{t.frameworks.deploy.title}</h3>
-                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-neutral-500">{t.frameworks.deploy.category}</p>
-                            </div>
-                        </div>
-                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                            {t.frameworks.deploy.desc}
-                        </p>
-                        <div className="text-xs text-neutral-500 italic">
-                            "{t.frameworks.deploy.thesis}"
-                        </div>
-                        <div className="mt-4 flex items-center gap-2 text-[#FFEE00] text-[10px] font-black uppercase tracking-wider">
-                            EXPLORAR
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </section>
+                    </footer>
+                </main>
+            </div>
+        </motion.div>
     );
 };
 

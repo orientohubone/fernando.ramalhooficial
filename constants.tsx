@@ -400,7 +400,7 @@ export const getCategorizedPillars = (lang: Language): CategoryGroup[] => {
         createItem('paidMedia', 8, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"),
         createItem('brandReg', 9, HighlightColor.GREEN, "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80"),
         createItem('domain', 10, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&q=80"),
-        createItem('sites', 11, HighlightColor.GREEN, "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80"),
+        createItem('sites', 11, HighlightColor.GREEN, "/sites.png"),
         createItem('ecommerce', 12, HighlightColor.YELLOW, "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80")
       ]
     }

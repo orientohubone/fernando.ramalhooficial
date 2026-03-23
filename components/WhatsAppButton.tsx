@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 const WhatsAppButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
   const phoneNumber = '5514998618547';
   const message = encodeURIComponent('Olá! Encontrei seu portfólio e gostaria de conversar sobre um projeto.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+  const handleWhatsAppClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'click_whatsapp_flutuante', {
+        event_category: 'Contato',
+        event_label: 'Botão Flutuante WhatsApp',
+        value: 1
+      });
+    }
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-[95]">
@@ -15,6 +31,7 @@ const WhatsAppButton: React.FC = () => {
         rel="noopener noreferrer"
         className="relative block"
         aria-label="Contato via WhatsApp"
+        onClick={handleWhatsAppClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
